@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HRSU Indore Pvt. Ltd. - The Vanguard of Calcium Nitrate Innovation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-navy: #0a192f;
+            --gold-accent: #d4af37;
+            --slate-text: #8892b0;
+            --light-slate: #ccd6f6;
+            --white: #ffffff;
+            --background: #f0f2f5;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--white); color: var(--slate-text); line-height: 1.7; overflow-x: hidden; overflow-y: hidden; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--dark-navy); font-weight: 700; }
+
+        /* --- Preloader & Nav --- */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background-color: var(--dark-navy); display: flex; justify-content: center; align-items: center; z-index: 1000; transition: opacity 0.8s ease-in-out, visibility 0.8s; }
+        #preloader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        .preloader-name { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 6vw, 5rem); color: var(--gold-accent); text-align: center; }
+        #navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 0; background-color: var(--dark-navy); box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 500; opacity: 0; transform: translateY(-100%); transition: opacity 0.5s ease-out, transform 0.5s ease-out; }
+        #navbar.visible { opacity: 1; transform: translateY(0); }
+        .navbar-content { display: flex; justify-content: space-between; align-items: center; }
+        .navbar-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--gold-accent) !important; text-decoration: none; font-weight: 700; }
+
+        /* --- Animations & Hero --- */
+        .reveal { position: relative; transform: translateY(100px); opacity: 0; transition: 1s all ease; }
+        .reveal.active { transform: translateY(0); opacity: 1; }
+        .hero { display: flex; align-items: center; justify-content: center; text-align: center; min-height: 100vh; background-image: linear-gradient(to bottom, var(--dark-navy) 20%, rgba(10, 25, 47, 0.85) 50%, rgba(10, 25, 47, 0.75) 100%), url('https://images.unsplash.com/photo-1579168765467-3b235f938319?q=80&w=1974&auto-format&fit=crop'); background-size: cover; background-position: center; background-attachment: fixed; color: var(--white); }
+        .hero-content { max-width: 900px; padding: 0 20px; }
+        
+        .hero-company-name {
+            font-size: clamp(3rem, 7vw, 6rem);
+            color: var(--gold-accent);
+            line-height: 1.1;
+            margin-bottom: 80px;
+        }
+
+        @media (min-width: 992px) {
+            .hero-company-name {
+                white-space: nowrap;
+            }
+        }
+
+        .hero-headline { font-size: clamp(2rem, 4vw, 3.5rem); color: var(--white); line-height: 1.2; }
+        .hero-headline .highlight { color: var(--gold-accent); }
+        .hero p { font-size: clamp(1rem, 2vw, 1.2rem); margin: 20px 0 30px; color: var(--light-slate); font-weight: 300; }
+        .cta-button { font-size: 1rem; color: var(--gold-accent); background-color: transparent; border: 1px solid var(--gold-accent); padding: 14px 30px; border-radius: 5px; text-decoration: none; transition: all 0.3s ease; }
+        .cta-button:hover { background-color: rgba(212, 175, 55, 0.1); }
+
+        /* --- General Section Styling --- */
+        .section { padding: 100px 0; overflow: hidden; position: relative; }
+        .section-title { text-align: center; margin-bottom: 60px; font-size: clamp(2rem, 4vw, 3rem); position: relative; z-index: 2; }
+        .advantage-intro { text-align: center; max-width: 750px; margin: 0 auto 60px auto; font-size: 1.1rem; line-height: 1.8; position: relative; z-index: 2; }
+        
+        /* --- CONTEXTUAL BACKGROUNDS --- */
+        .section-bg { background-size: cover; background-position: center; background-attachment: fixed; }
+        .section-bg .section-title, .section-bg .advantage-intro { color: var(--white); }
+        .section-bg::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(10, 25, 47, 0.7); z-index: 1; }
+        #difference { background-image: url('https://2.wlimg.com/product_images/bc-full/2025/3/304148/calcium-nitrate-tetrahydrate-1741154835-7908937.jpeg'); }
+        #quality { background-image: url('https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070&auto=format&fit=crop'); }
+        #responsibility { background-image: url('https://hydroland.com.au/cdn/shop/files/KL38034-CalciumNitrate25kgBag.jpg?v=1707890031'); }
+        
+        /* --- Feature Card Styling --- */
+        .features-grid { display: grid; grid-template-columns: 1fr; gap: 30px; text-align: center; position: relative; z-index: 2; }
+        @media (min-width: 768px) {
+            .features-grid.grid-3-items { grid-template-columns: repeat(3, 1fr); }
+            .features-grid.grid-4-items { grid-template-columns: repeat(2, 1fr); max-width: 730px; margin: 0 auto; }
+            .features-grid.grid-2-items { grid-template-columns: repeat(2, 1fr); max-width: 730px; margin: 0 auto; }
+        }
+        .feature-card { background: var(--white); padding: 40px 25px; border-radius: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .feature-card:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.08); }
+        .feature-icon { font-size: 3rem; color: var(--gold-accent); margin-bottom: 20px; }
+        .feature-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+
+        /* --- Footer --- */
+        .footer { background-color: var(--dark-navy); color: var(--slate-text); padding: 80px 0; text-align: center; }
+        .footer h2 { color: var(--white); }
+        .footer p { max-width: 600px; margin: 20px auto 30px; color: var(--light-slate); }
+        .footer .contact-info a { color: var(--gold-accent); text-decoration: none; font-size: 1.2rem; margin: 0 15px; font-weight: 400; display: inline-block; margin-bottom: 10px; }
+        .footer .contact-info a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <div id="preloader"><h1 class="preloader-name">HRSU Indore Pvt. Ltd.</h1></div>
+    <nav id="navbar"><div class="container navbar-content"><a href="#" class="navbar-logo">HRSU Indore Pvt. Ltd.</a></div></nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-company-name">HRSU Indore Pvt. Ltd.</h1>
+            <h2 class="hero-headline">Beyond Granules. <br><span class="highlight">The Purity of Powder.</span></h2>
+            <p> HRSU introduces a revolutionary hyper-soluble powdered Calcium Nitrate, engineered for maximum performance and zero waste. Where traditional granules lag, our fine crystalline powder dissolves instantly, providing immediate, powerful results for both high-tech agriculture and precision industrial applications.</p>
+            <p>HRSU Indore Pvt. Ltd. is redefining Calcium Nitrate manufacturing. Our unique powdered form delivers superior solubility and rapid plant absorption, setting a new standard for performance and quality.</p>
+            <a href="#contact" class="cta-button">Partner With Us</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- SECTION: POWDER ADVANTAGE with POWDER BG -->
+        <section id="difference" class="section section-bg">
+            <div class="container">
+                <h1 class="section-title reveal">The Powder Advantage</h1>
+                <p class="advantage-intro reveal">The industry settled for granules. They were good enough. But innovation doesn't happen when you settle. We engineered our Calcium Nitrate as a fine powder—not for a minor improvement, but for a fundamental leap in performance.</p>
+                <div class="features-grid grid-3-items">
+                    <div class="feature-card reveal"><div class="feature-icon">💧</div><h3>Total Dissolution.<br>Zero Waste.</h3><p>Our powder doesn't just dissolve—it vanishes. This means your tanks stay pristine, your nozzles never clog, and every gram you purchase gets put to work. It’s a level of efficiency granules can't offer.</p></div>
+                    <div class="feature-card reveal"><div class="feature-icon">⚡</div><h3>Instant Bioavailability.<br>Zero Waiting.</h3><p>Your crops don't wait, so why should their nutrients? Our powder delivers for immediate uptake, promoting faster, more vigorous growth. It’s not just fertilizer; it’s nourishment on demand.</p></div>
+                    <div class="feature-card reveal"><div class="feature-icon">🎯</div><h3>Absolute Consistency.<br>Zero Guesswork.</h3><p>For industrial applications, inconsistency is failure. Where granules introduce variability, our powder delivers a perfectly homogeneous blend every time. This is the precision you need for reliable, repeatable results.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION: EXCELLENCE with AGRICULTURE BG -->
+        <section id="quality" class="section section-bg">
+            <div class="container">
+                <h2 class="section-title reveal">An Unwavering Commitment to Excellence</h2>
+                <div class="features-grid grid-4-items">
+                    <div class="feature-card reveal"><div class="feature-icon">🏆</div><h3>Industrial-Grade Certified</h3><p>Our process meets the stringent standards of the industryies — a testament to our precision and quality control.</p></div>
+                    <div class="feature-card reveal"><div class="feature-icon">🌿</div><h3>Exceeding Agri-Standards</h3><p>Independent lab results confirm our product surpasses key agricultural benchmarks, ensuring premium performance.</p></div>
+                    <div class="feature-card reveal"><div class="feature-icon">⚙️</div><h3>State-of-the-Art Equipment</h3><p>We utilize the best equipment and premium source materials, governed by meticulous procedures for a flawless output.</p></div>
+                    <div class="feature-card reveal"><div class="feature-icon">👥</div><h3>Expert Workforce</h3><p>Our team consists of highly knowledgeable personnel with decades of collective experience in chemical manufacturing.</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SECTION: RESPONSIBILITY with SACKS BG -->
+        <section id="responsibility" class="section section-bg">
+            <div class="container">
+                <h2 class="section-title reveal">Sustainable & Ethical Operations</h2>
+                <div class="features-grid grid-2-items">
+                    <div class="feature-card reveal"><div class="feature-icon">🌍</div><h3>Sustainable Manufacturing</h3><p>We reduce our environmental impact yearly with robust pollution controls and a carbon offset program via tree planting.</p></div>
+                    <div class="feature-card reveal"><div class="feature-icon">🛡️</div><h3>Commitment to Safety</h3><p>The safety and well-being of our workforce are paramount, reflected in our excellent conditions and safety protocols.</p></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container reveal">
+            <h2 class="section-title">Become a Partner</h2>
+            <p>Experience the future of Calcium Nitrate. Contact us to discuss your requirements, request a sample, and discover how our commitment to innovation can benefit your business.</p>
+            <div class="contact-info">
+                <a href="tel:+919425000484">+91 9425000484</a>
+                <a href="mailto:hrsuindorepvtltd@gmail.com">hrsuindorepvtltd@gmail.com</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- PRELOADER AND SCROLL ANIMATIONS (Your Original Code) ---
+        const preloader = document.getElementById('preloader');
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('load', () => { setTimeout(() => { preloader.classList.add('hidden'); document.body.style.overflowY = 'auto'; }, 1500); });
+        
+        function handleScroll() {
+            if (window.scrollY > 200) { navbar.classList.add('visible'); } else { navbar.classList.remove('visible'); }
+            const reveals = document.querySelectorAll(".reveal");
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) { reveals[i].classList.add("active"); }
+            }
+        }
+        window.addEventListener("scroll", handleScroll);
+        handleScroll();
+
+        // --- NEW CODE TO FIX ANCHOR LINK SCROLLING IN GOOGLE SITES ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent the default jump
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth' // This makes the scroll smooth
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
