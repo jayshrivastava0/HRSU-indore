@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Explicitly allow AI bots (ChatGPT, Google Gemini, Anthropic)
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# Point bots to the sitemap
+Sitemap: https://hrsuindore.com/sitemap.xml
