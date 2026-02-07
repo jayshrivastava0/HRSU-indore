@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <!-- Main Website -->
    <url>
       <loc>https://hrsuindore.com/</loc>
-      <lastmod>2025-12-27</lastmod>
+      <lastmod>2025-01-28</lastmod>
       <changefreq>weekly</changefreq>
       <priority>1.0</priority>
    </url>
-   <!-- If you eventually have a separate blog page, you would add it here -->
+   
+   <!-- Your New Blog (Added for Indexing) -->
+   <url>
+      <loc>https://blog.hrsuindore.com/</loc>
+      <lastmod>2025-01-28</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>0.9</priority>
+   </url>
 </urlset>

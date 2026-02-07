@@ -30,20 +30,25 @@
 		rel="stylesheet">
 	<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
 	<link rel="manifest" href="/site.webmanifest">
-	<link rel="icon" type="image/png" href="/logo.png">
+	
+    <!-- FAVICON FIX: Make sure 'Logo.png' is in your root folder -->
+	<link rel="icon" type="image/png" href="Logo.png">
+    <link rel="shortcut icon" type="image/png" href="Logo.png">
+    <link rel="apple-touch-icon" href="Logo.png">
 	<meta name="theme-color" content="#0a192f">
 
-	<!-- GEO: ADVANCED JSON-LD -->
+	<!-- GEO: ADVANCED JSON-LD (Optimized for AI Crawlers) -->
 	<script type="application/ld+json">
     [
       {
         "@context": "https://schema.org",
         "@type": "ChemicalManufacturer",
         "name": "HRSU Indore Pvt. Ltd.",
-        "image": "https://hrsuindore.com/logo.png",
+        "image": "https://hrsuindore.com/Logo.png",
         "url": "https://hrsuindore.com",
         "telephone": "+919425000484",
         "email": "contact@hrsuindore.com",
+        "knowsAbout": ["Calcium Nitrate", "Water Soluble Fertilizers", "Industrial Chemicals"],
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "53, Industrial Area",
@@ -60,7 +65,7 @@
         "sameAs": [
           "https://www.linkedin.com/company/hrsu-indore",
           "https://www.globallinker.com/seller/hrsu-indore-private-limited",
-          "https://blog.hrsuindore.com"
+          "https://blog.hrsuindore.com" 
         ]
       },
       {
@@ -95,7 +100,6 @@
 			--light-slate: #ccd6f6;
 			--white: #ffffff;
 			--card-dark: #112240;
-			/* Lighter navy for cards */
 		}
 
 		* {
@@ -111,7 +115,6 @@
 		body {
 			font-family: 'Poppins', sans-serif;
 			background-color: var(--dark-navy);
-			/* CHANGED TO DARK DEFAULT */
 			color: var(--light-slate);
 			line-height: 1.7;
 			overflow-x: hidden;
@@ -123,10 +126,7 @@
 			padding: 0 20px;
 		}
 
-		h1,
-		h2,
-		h3,
-		h4 {
+		h1, h2, h3, h4 {
 			font-family: 'Playfair Display', serif;
 			color: var(--white);
 			font-weight: 700;
@@ -278,6 +278,24 @@
 		.nav-link-sub:hover {
 			color: var(--gold-accent);
 			opacity: 1;
+		}
+
+		/* Featured Blog Button Style */
+		.nav-link-blog {
+			font-family: 'Playfair Display', serif;
+			font-size: 1.5rem;
+			color: var(--dark-navy);
+			background-color: var(--gold-accent);
+			padding: 10px 30px;
+			text-decoration: none;
+			border-radius: 4px;
+			transition: all 0.3s;
+			font-weight: 700;
+		}
+
+		.nav-link-blog:hover {
+			background-color: var(--white);
+			color: var(--dark-navy);
 		}
 
 		.nav-btn-highlight {
@@ -652,6 +670,21 @@
 			text-decoration: underline;
 		}
 
+        .footer-blog-link {
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+        
+        .footer-blog-link a {
+            color: var(--light-slate);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-blog-link a:hover {
+            color: var(--gold-accent);
+        }
+
 		.reveal {
 			position: relative;
 			transform: translateY(100px);
@@ -684,6 +717,11 @@
 				<a href="https://www.globallinker.com/seller/hrsu-indore-private-limited" target="_blank"
 					class="nav-btn-highlight" onclick="toggleMenu()">Order Online</a>
 				<div style="height: 10px;"></div>
+				
+                <!-- IMPORTANT: Optimized Blog Link for SEO -->
+				<a href="https://blog.hrsuindore.com" class="nav-link-blog"
+					onclick="toggleMenu()">Visit Our Blog</a>
+                
 				<a href="mailto:contact@hrsuindore.com" class="nav-link-item" onclick="toggleMenu()">Email Us</a>
 				<a href="tel:+919425000484" class="nav-link-item" onclick="toggleMenu()">Call Us</a>
 				<div style="height: 10px;"></div>
@@ -691,8 +729,6 @@
 					class="nav-link-sub" onclick="toggleMenu()">Visit Factory (Google Maps)</a>
 				<a href="https://www.linkedin.com/company/hrsu-indore" target="_blank" class="nav-link-sub"
 					onclick="toggleMenu()">LinkedIn Profile</a>
-				<a href="https://blog.hrsuindore.com" target="_blank" class="nav-link-sub"
-					onclick="toggleMenu()">Industry Blog</a>
 			</div>
 		</div>
 	</nav>
@@ -751,10 +787,11 @@
 						<p style="margin-bottom: 20px; color: var(--light-slate);">Download official documents to verify
 							safety and technical compliance.</p>
 
-						<a href="/calcium-nitrate-tds-hrsu.pdf" class="doc-btn" target="_blank">📄 Download TDS
+						<a href="/TDS_HRSU_Indore.pdf" class="doc-btn" target="_blank">📄 Download TDS
 							(Technical Data)</a>
-						<a href="/calcium-nitrate-sds-hrsu.pdf" class="doc-btn" target="_blank">🛡️ Download SDS (Safety
+						<a href="/SDS_HRSU_Indore.pdf" class="doc-btn" target="_blank">🛡️ Download SDS (Safety
 							Data)</a>
+                        <a href="https://blog.hrsuindore.com" class="doc-btn" target="_blank" style="border-color: var(--white); color: var(--white);">📚 Read Technical Blog</a>
 
 						<hr style="margin: 30px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
 
@@ -924,6 +961,11 @@
 				<a href="tel:+919425000484">+91 9425000484</a>
 				<a href="mailto:contact@hrsuindore.com">contact@hrsuindore.com</a>
 			</div>
+            
+            <!-- ADDED FOOTER BLOG LINK FOR SEO CRAWLING -->
+            <div class="footer-blog-link">
+                <a href="https://blog.hrsuindore.com">HRSU Blog & Insights</a>
+            </div>
 		</div>
 	</footer>
 
