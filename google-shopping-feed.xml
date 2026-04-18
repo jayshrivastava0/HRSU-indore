@@ -3,7 +3,7 @@
   ═══════════════════════════════════════════════════════════════════
   HRSU Indore Pvt. Ltd. — Google Merchant Center Product Feed
   Feed URL: https://hrsuindore.com/google-shopping-feed.xml
-  Last updated: 2026-04-18
+  Last updated: 2026-04-19
   Spec: https://support.google.com/merchants/answer/7052112
 
   Shipping policy (matches Merchant Center exactly):
@@ -33,8 +33,7 @@
       <g:image_link>https://lsmedia.linker-cdn.net/1051955/2026/14878524.jpeg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in stock</g:availability>
-      <g:price>35.00 INR</g:price>
-      <g:sale_price>30.00 INR</g:sale_price>
+      <g:price>750.00 INR</g:price>
 
       <!-- ── Brand & identifiers ── -->
       <g:brand>HRSU Indore</g:brand>
@@ -122,8 +121,7 @@
       <g:image_link>https://lsmedia.linker-cdn.net/1051955/2026/14878524.jpeg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in stock</g:availability>
-      <g:price>35.00 INR</g:price>
-      <g:sale_price>30.00 INR</g:sale_price>
+      <g:price>1500.00 INR</g:price>
 
       <g:brand>HRSU Indore</g:brand>
       <g:mpn>HRSU-CN-50KG-001</g:mpn>
