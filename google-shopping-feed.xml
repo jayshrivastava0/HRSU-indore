@@ -5,6 +5,11 @@
   Feed URL: https://hrsuindore.com/google-shopping-feed.xml
   Last updated: 2026-04-18
   Spec: https://support.google.com/merchants/answer/7052112
+
+  Shipping policy (matches Merchant Center exactly):
+    India      → weight-based: 0–5 kg free, >5 kg = ₹20 flat | 4–10 days
+    All others → flat ₹10,000 | 21–30 days
+  Return policy: No returns (B2B, all sales final)
   ═══════════════════════════════════════════════════════════════════
 -->
 <rss version="2.0"
@@ -17,12 +22,13 @@
 
     <!-- ═══════════════════════════════════════════════════════
          PRODUCT 1 — Calcium Nitrate Powder (25 kg Bag)
+         Both 25kg and 50kg are >5kg → India shipping = ₹20
     ═══════════════════════════════════════════════════════ -->
     <item>
-      <!-- Required fields -->
+      <!-- ── Required ── -->
       <g:id>HRSU-CN-25KG-001</g:id>
       <g:title>Calcium Nitrate Powder 25kg — 100% Soluble | HRSU Indore</g:title>
-      <g:description>HRSU Indore industrial-grade Calcium Nitrate in fine crystalline powder form. 100% water-soluble with zero insoluble residue. Contains 18.5–19% Calcium (Ca) and 15.5%+ Nitrogen (N). Instant dissolution — no clogging of drip emitters or spray nozzles. Suitable for drip irrigation, foliar spray, hydroponics (Part-A formulation), concrete acceleration (ASTM C494 Type C/E), and wastewater H₂S control. Certificate of Analysis issued with every batch. Made in Maksi, Madhya Pradesh, India.</g:description>
+      <g:description>HRSU Indore industrial-grade Calcium Nitrate in fine crystalline powder form. 100% water-soluble with zero insoluble residue. Contains 18.5–19% Calcium (Ca) and 15.5%+ Nitrogen (N). Instant dissolution — no clogging of drip emitters or spray nozzles. Suitable for drip irrigation, foliar spray, hydroponics (Part-A formulation), concrete acceleration (ASTM C494 Type C/E), wastewater H₂S control, and latex coagulation. Certificate of Analysis issued with every batch. Made in Maksi, Madhya Pradesh, India.</g:description>
       <g:link>https://store.hrsuindore.com/products/calcium-nitrate-powder-form</g:link>
       <g:image_link>https://lsmedia.linker-cdn.net/1051955/2026/14878524.jpeg</g:image_link>
       <g:condition>new</g:condition>
@@ -30,51 +36,78 @@
       <g:price>35.00 INR</g:price>
       <g:sale_price>30.00 INR</g:sale_price>
 
-      <!-- Brand & identifiers -->
+      <!-- ── Brand & identifiers ── -->
       <g:brand>HRSU Indore</g:brand>
       <g:mpn>HRSU-CN-25KG-001</g:mpn>
       <g:identifier_exists>yes</g:identifier_exists>
 
-      <!-- Category — Google product taxonomy -->
+      <!-- ── Category ── -->
       <!-- 2934 = Home & Garden > Lawn & Garden > Gardening > Fertilizers -->
       <g:google_product_category>2934</g:google_product_category>
       <g:product_type>Fertilizers &gt; Water Soluble Fertilizers &gt; Calcium Nitrate</g:product_type>
 
-      <!-- Product details -->
+      <!-- ── Variant grouping ── -->
       <g:item_group_id>HRSU-CN-001</g:item_group_id>
       <g:size>25 kg</g:size>
       <g:color>White</g:color>
 
-      <!-- Custom labels for campaign segmentation -->
+      <!-- ── Custom labels for campaign targeting ── -->
       <g:custom_label_0>calcium-nitrate</g:custom_label_0>
       <g:custom_label_1>agriculture</g:custom_label_1>
       <g:custom_label_2>25kg</g:custom_label_2>
       <g:custom_label_3>powder</g:custom_label_3>
       <g:custom_label_4>in-stock</g:custom_label_4>
 
-      <!-- Shipping (India) -->
+      <!-- ── Shipping weight (25kg → above 5kg threshold = ₹20 in India) ── -->
+      <g:shipping_weight>25 kg</g:shipping_weight>
+
+      <!-- India: weight-based, >5kg = ₹20, 4–10 days -->
       <g:shipping>
         <g:country>IN</g:country>
-        <g:service>Standard Delivery</g:service>
-        <g:price>0 INR</g:price>
+        <g:service>Standard Delivery (4–10 days)</g:service>
+        <g:price>20.00 INR</g:price>
+        <g:min_handling_time>1</g:min_handling_time>
+        <g:max_handling_time>2</g:max_handling_time>
+        <g:min_transit_time>2</g:min_transit_time>
+        <g:max_transit_time>8</g:max_transit_time>
       </g:shipping>
 
-      <!-- Tax (India — inclusive) -->
+      <!-- International: flat ₹10,000 — all 17 export countries, 21–30 days -->
+      <g:shipping><g:country>AU</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>US</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>GB</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>AE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>SA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>DE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>CA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>MY</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>PH</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>NZ</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>BH</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>OM</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>BR</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>ZA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>KE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>UG</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>IE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+
+      <!-- ── Tax (India, 18% GST, not on shipping) ── -->
       <g:tax>
         <g:country>IN</g:country>
         <g:rate>18</g:rate>
         <g:tax_ship>no</g:tax_ship>
       </g:tax>
 
-      <!-- Unit pricing (legally required in some regions) -->
-      <g:unit_pricing_measure>25kg</g:unit_pricing_measure>
-      <g:unit_pricing_base_measure>1kg</g:unit_pricing_base_measure>
+      <!-- ── Unit pricing (required in some regions) ── -->
+      <g:unit_pricing_measure>25 kg</g:unit_pricing_measure>
+      <g:unit_pricing_base_measure>1 kg</g:unit_pricing_base_measure>
 
-      <!-- Additional attributes -->
+      <!-- ── Return policy: no returns (B2B) ── -->
+      <g:return_policy_label>no-returns</g:return_policy_label>
+
+      <!-- ── Additional ── -->
       <g:material>Calcium Nitrate Tetrahydrate</g:material>
       <g:origin>IN</g:origin>
-
-      <!-- Additional images -->
       <g:additional_image_link>https://hrsuindore.com/Logo.png</g:additional_image_link>
     </item>
 
@@ -89,8 +122,8 @@
       <g:image_link>https://lsmedia.linker-cdn.net/1051955/2026/14878524.jpeg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in stock</g:availability>
-      <g:price>65.00 INR</g:price>
-      <g:sale_price>58.00 INR</g:sale_price>
+      <g:price>35.00 INR</g:price>
+      <g:sale_price>30.00 INR</g:sale_price>
 
       <g:brand>HRSU Indore</g:brand>
       <g:mpn>HRSU-CN-50KG-001</g:mpn>
@@ -109,11 +142,37 @@
       <g:custom_label_3>bulk</g:custom_label_3>
       <g:custom_label_4>in-stock</g:custom_label_4>
 
+      <g:shipping_weight>50 kg</g:shipping_weight>
+
+      <!-- India: >5kg = ₹20 -->
       <g:shipping>
         <g:country>IN</g:country>
-        <g:service>Standard Delivery</g:service>
-        <g:price>0 INR</g:price>
+        <g:service>Standard Delivery (4–10 days)</g:service>
+        <g:price>20.00 INR</g:price>
+        <g:min_handling_time>1</g:min_handling_time>
+        <g:max_handling_time>2</g:max_handling_time>
+        <g:min_transit_time>2</g:min_transit_time>
+        <g:max_transit_time>8</g:max_transit_time>
       </g:shipping>
+
+      <!-- International: flat ₹10,000 -->
+      <g:shipping><g:country>AU</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>US</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>GB</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>AE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>SA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>DE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>CA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>MY</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>PH</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>NZ</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>BH</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>OM</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>BR</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>ZA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>KE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>UG</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
+      <g:shipping><g:country>IE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
 
       <g:tax>
         <g:country>IN</g:country>
@@ -121,12 +180,13 @@
         <g:tax_ship>no</g:tax_ship>
       </g:tax>
 
-      <g:unit_pricing_measure>50kg</g:unit_pricing_measure>
-      <g:unit_pricing_base_measure>1kg</g:unit_pricing_base_measure>
+      <g:unit_pricing_measure>50 kg</g:unit_pricing_measure>
+      <g:unit_pricing_base_measure>1 kg</g:unit_pricing_base_measure>
+
+      <g:return_policy_label>no-returns</g:return_policy_label>
 
       <g:material>Calcium Nitrate Tetrahydrate</g:material>
       <g:origin>IN</g:origin>
-
       <g:additional_image_link>https://hrsuindore.com/Logo.png</g:additional_image_link>
     </item>
 
