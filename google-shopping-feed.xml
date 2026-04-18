@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ═══════════════════════════════════════════════════════════════════
+  HRSU Indore Pvt. Ltd. — Google Merchant Center Product Feed
+  Feed URL: https://hrsuindore.com/google-shopping-feed.xml
+  Last updated: 2026-04-18
+  Spec: https://support.google.com/merchants/answer/7052112
+  ═══════════════════════════════════════════════════════════════════
+-->
+<rss version="2.0"
+  xmlns:g="http://base.google.com/ns/1.0"
+  xmlns:c="http://base.google.com/cns/1.0">
+  <channel>
+    <title>HRSU Indore Pvt. Ltd. — Calcium Nitrate Manufacturer</title>
+    <link>https://hrsuindore.com</link>
+    <description>India's precision-grade Calcium Nitrate powder manufacturer. 100% water-soluble. Export-ready from Mundra Port.</description>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PRODUCT 1 — Calcium Nitrate Powder (25 kg Bag)
+    ═══════════════════════════════════════════════════════ -->
+    <item>
+      <!-- Required fields -->
+      <g:id>HRSU-CN-25KG-001</g:id>
+      <g:title>Calcium Nitrate Powder 25kg — 100% Soluble | HRSU Indore</g:title>
+      <g:description>HRSU Indore industrial-grade Calcium Nitrate in fine crystalline powder form. 100% water-soluble with zero insoluble residue. Contains 18.5–19% Calcium (Ca) and 15.5%+ Nitrogen (N). Instant dissolution — no clogging of drip emitters or spray nozzles. Suitable for drip irrigation, foliar spray, hydroponics (Part-A formulation), concrete acceleration (ASTM C494 Type C/E), and wastewater H₂S control. Certificate of Analysis issued with every batch. Made in Maksi, Madhya Pradesh, India.</g:description>
+      <g:link>https://store.hrsuindore.com/products/calcium-nitrate-powder-form</g:link>
+      <g:image_link>https://lsmedia.linker-cdn.net/1051955/2026/14878524.jpeg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in stock</g:availability>
+      <g:price>35.00 INR</g:price>
+      <g:sale_price>30.00 INR</g:sale_price>
+
+      <!-- Brand & identifiers -->
+      <g:brand>HRSU Indore</g:brand>
+      <g:mpn>HRSU-CN-25KG-001</g:mpn>
+      <g:identifier_exists>yes</g:identifier_exists>
+
+      <!-- Category — Google product taxonomy -->
+      <!-- 2934 = Home & Garden > Lawn & Garden > Gardening > Fertilizers -->
+      <g:google_product_category>2934</g:google_product_category>
+      <g:product_type>Fertilizers &gt; Water Soluble Fertilizers &gt; Calcium Nitrate</g:product_type>
+
+      <!-- Product details -->
+      <g:item_group_id>HRSU-CN-001</g:item_group_id>
+      <g:size>25 kg</g:size>
+      <g:color>White</g:color>
+
+      <!-- Custom labels for campaign segmentation -->
+      <g:custom_label_0>calcium-nitrate</g:custom_label_0>
+      <g:custom_label_1>agriculture</g:custom_label_1>
+      <g:custom_label_2>25kg</g:custom_label_2>
+      <g:custom_label_3>powder</g:custom_label_3>
+      <g:custom_label_4>in-stock</g:custom_label_4>
+
+      <!-- Shipping (India) -->
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Standard Delivery</g:service>
+        <g:price>0 INR</g:price>
+      </g:shipping>
+
+      <!-- Tax (India — inclusive) -->
+      <g:tax>
+        <g:country>IN</g:country>
+        <g:rate>18</g:rate>
+        <g:tax_ship>no</g:tax_ship>
+      </g:tax>
+
+      <!-- Unit pricing (legally required in some regions) -->
+      <g:unit_pricing_measure>25kg</g:unit_pricing_measure>
+      <g:unit_pricing_base_measure>1kg</g:unit_pricing_base_measure>
+
+      <!-- Additional attributes -->
+      <g:material>Calcium Nitrate Tetrahydrate</g:material>
+      <g:origin>IN</g:origin>
+
+      <!-- Additional images -->
+      <g:additional_image_link>https://hrsuindore.com/Logo.png</g:additional_image_link>
+    </item>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PRODUCT 2 — Calcium Nitrate Powder (50 kg Bag)
+    ═══════════════════════════════════════════════════════ -->
+    <item>
+      <g:id>HRSU-CN-50KG-001</g:id>
+      <g:title>Calcium Nitrate Powder 50kg Bulk — 100% Soluble | HRSU Indore</g:title>
+      <g:description>HRSU Indore industrial-grade Calcium Nitrate in 50kg bulk bags. Fine crystalline powder, 100% water-soluble with zero residue. 18.5–19% Calcium, 15.5%+ Nitrogen. Zero clogging in drip and fertigation systems. Suitable for large-scale agriculture, hydroponics, concrete admixtures, and industrial processing. Certificate of Analysis issued per batch. Manufactured in Madhya Pradesh, India. Export-ready with full documentation (CoA, COO, MSDS).</g:description>
+      <g:link>https://store.hrsuindore.com/products/calcium-nitrate-powder-form</g:link>
+      <g:image_link>https://lsmedia.linker-cdn.net/1051955/2026/14878524.jpeg</g:image_link>
+      <g:condition>new</g:condition>
+      <g:availability>in stock</g:availability>
+      <g:price>65.00 INR</g:price>
+      <g:sale_price>58.00 INR</g:sale_price>
+
+      <g:brand>HRSU Indore</g:brand>
+      <g:mpn>HRSU-CN-50KG-001</g:mpn>
+      <g:identifier_exists>yes</g:identifier_exists>
+
+      <g:google_product_category>2934</g:google_product_category>
+      <g:product_type>Fertilizers &gt; Water Soluble Fertilizers &gt; Calcium Nitrate</g:product_type>
+
+      <g:item_group_id>HRSU-CN-001</g:item_group_id>
+      <g:size>50 kg</g:size>
+      <g:color>White</g:color>
+
+      <g:custom_label_0>calcium-nitrate</g:custom_label_0>
+      <g:custom_label_1>agriculture</g:custom_label_1>
+      <g:custom_label_2>50kg</g:custom_label_2>
+      <g:custom_label_3>bulk</g:custom_label_3>
+      <g:custom_label_4>in-stock</g:custom_label_4>
+
+      <g:shipping>
+        <g:country>IN</g:country>
+        <g:service>Standard Delivery</g:service>
+        <g:price>0 INR</g:price>
+      </g:shipping>
+
+      <g:tax>
+        <g:country>IN</g:country>
+        <g:rate>18</g:rate>
+        <g:tax_ship>no</g:tax_ship>
+      </g:tax>
+
+      <g:unit_pricing_measure>50kg</g:unit_pricing_measure>
+      <g:unit_pricing_base_measure>1kg</g:unit_pricing_base_measure>
+
+      <g:material>Calcium Nitrate Tetrahydrate</g:material>
+      <g:origin>IN</g:origin>
+
+      <g:additional_image_link>https://hrsuindore.com/Logo.png</g:additional_image_link>
+    </item>
+
+  </channel>
+</rss>
