@@ -90,12 +90,7 @@
       <g:shipping><g:country>UG</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
       <g:shipping><g:country>IE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
 
-      <!-- ── Tax (India, 18% GST, not on shipping) ── -->
-      <g:tax>
-        <g:country>IN</g:country>
-        <g:rate>18</g:rate>
-        <g:tax_ship>no</g:tax_ship>
-      </g:tax>
+      <!-- ── Tax: MRP is inclusive of all taxes per Indian Legal Metrology Act ── -->
 
       <!-- ── Unit pricing (required in some regions) ── -->
       <g:unit_pricing_measure>25 kg</g:unit_pricing_measure>
@@ -172,11 +167,7 @@
       <g:shipping><g:country>UG</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
       <g:shipping><g:country>IE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
 
-      <g:tax>
-        <g:country>IN</g:country>
-        <g:rate>18</g:rate>
-        <g:tax_ship>no</g:tax_ship>
-      </g:tax>
+      <!-- ── Tax: MRP is inclusive of all taxes per Indian Legal Metrology Act ── -->
 
       <g:unit_pricing_measure>50 kg</g:unit_pricing_measure>
       <g:unit_pricing_base_measure>1 kg</g:unit_pricing_base_measure>
