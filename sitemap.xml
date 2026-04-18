@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-   <!-- Main Website -->
-   <url>
-      <loc>https://hrsuindore.com/</loc>
-      <lastmod>2025-01-28</lastmod>
-      <changefreq>weekly</changefreq>
-      <priority>1.0</priority>
-   </url>
-   
-   <!-- Your New Blog (Added for Indexing) -->
-   <url>
-      <loc>https://blog.hrsuindore.com/</loc>
-      <lastmod>2025-01-28</lastmod>
-      <changefreq>daily</changefreq>
-      <priority>0.9</priority>
-   </url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- ═══════════════════════════════════════════
+       HRSU Indore Pvt. Ltd. — Sitemap
+       Generated: 2026-04-18
+       Site: https://hrsuindore.com
+  ═══════════════════════════════════════════ -->
+
+  <!-- Homepage — highest priority -->
+  <url>
+    <loc>https://hrsuindore.com/</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Technical Data Sheet — PDF, high SEO value for "Calcium Nitrate TDS" queries -->
+  <url>
+    <loc>https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Safety Data Sheet — PDF, high SEO value for "Calcium Nitrate SDS / MSDS" queries -->
+  <url>
+    <loc>https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Blog — external subdomain, included for crawl signal -->
+  <url>
+    <loc>https://blog.hrsuindore.com/</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+
 </urlset>
