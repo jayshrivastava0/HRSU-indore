@@ -33,10 +33,17 @@
       "icons": [{ "src": "Logo.png", "sizes": "96x96" }]
     },
     {
+      "name": "Download SDS",
+      "short_name": "SDS",
+      "description": "Download Calcium Nitrate Safety Data Sheet (MSDS)",
+      "url": "/calcium-nitrate-sds-hrsu.pdf",
+      "icons": [{ "src": "Logo.png", "sizes": "96x96" }]
+    },
+    {
       "name": "Get a Quote",
       "short_name": "Quote",
       "description": "Request a bulk quote from HRSU Indore",
-      "url": "mailto:contact@hrsuindore.com?subject=Quote%20Request",
+      "url": "mailto:contact@hrsuindore.com?subject=Quote%20Request%20—%20Calcium%20Nitrate",
       "icons": [{ "src": "Logo.png", "sizes": "96x96" }]
     }
   ]

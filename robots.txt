@@ -1,10 +1,11 @@
 # ═══════════════════════════════════════════════════════════
 # robots.txt — HRSU Indore Pvt. Ltd.
 # https://hrsuindore.com
-# SEO + GEO MAX: All major crawlers and AI bots explicitly allowed
+# Updated: 2026-05-16
+# Policy: All crawlers and AI bots fully allowed, including PDFs
 # ═══════════════════════════════════════════════════════════
 
-# ── Standard web crawlers ──────────────────────────────────
+# ── Default: allow all ─────────────────────────────────────
 User-agent: *
 Allow: /
 Crawl-delay: 1
@@ -18,6 +19,9 @@ User-agent: Googlebot-Image
 Allow: /
 
 User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Storebot-Google
 Allow: /
 
 # Google AI (Gemini / AI Overviews / Google-Extended)
@@ -34,6 +38,9 @@ Allow: /
 
 # Microsoft Copilot / Bing AI
 User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: msnbot
 Allow: /
 
 # ── OpenAI / ChatGPT ───────────────────────────────────────
@@ -61,6 +68,9 @@ Allow: /
 User-agent: FacebookBot
 Allow: /
 
+User-agent: meta-externalagent
+Allow: /
+
 # ── Apple ──────────────────────────────────────────────────
 User-agent: Applebot
 Allow: /
@@ -68,7 +78,31 @@ Allow: /
 User-agent: Applebot-Extended
 Allow: /
 
-# ── Common SEO tools ───────────────────────────────────────
+# ── Cohere ─────────────────────────────────────────────────
+User-agent: cohere-ai
+Allow: /
+
+# ── Bytedance / TikTok ─────────────────────────────────────
+User-agent: Bytespider
+Allow: /
+
+# ── Amazon / Alexa ─────────────────────────────────────────
+User-agent: ia_archiver
+Allow: /
+
+# ── DuckDuckGo ─────────────────────────────────────────────
+User-agent: DuckDuckBot
+Allow: /
+
+# ── Yandex ─────────────────────────────────────────────────
+User-agent: YandexBot
+Allow: /
+
+# ── Baidu ──────────────────────────────────────────────────
+User-agent: Baiduspider
+Allow: /
+
+# ── Common SEO audit tools ─────────────────────────────────
 User-agent: AhrefsBot
 Allow: /
 
@@ -81,9 +115,19 @@ Allow: /
 User-agent: MJ12bot
 Allow: /
 
-# ── Disallow admin/private paths (none currently, placeholder) ──
-# User-agent: *
-# Disallow: /admin/
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+# ── Archive / research ─────────────────────────────────────
+User-agent: archive.org_bot
+Allow: /
+
+User-agent: Wget
+Allow: /
+
+# ── Explicitly allow PDFs (for all bots) ───────────────────
+Allow: /calcium-nitrate-tds-hrsu.pdf
+Allow: /calcium-nitrate-sds-hrsu.pdf
 
 # ── Sitemap ────────────────────────────────────────────────
 Sitemap: https://hrsuindore.com/sitemap.xml

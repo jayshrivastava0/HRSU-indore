@@ -3,7 +3,7 @@
   ═══════════════════════════════════════════════════════════════════
   HRSU Indore Pvt. Ltd. — Google Merchant Center Product Feed
   Feed URL: https://hrsuindore.com/google-shopping-feed.xml
-  Last updated: 2026-04-18
+  Last updated: 2026-05-16
   Spec: https://support.google.com/merchants/answer/7052112
 
   Shipping policy (matches Merchant Center exactly):
@@ -28,7 +28,7 @@
       <!-- ── Required ── -->
       <g:id>HRSU-CN-25KG-001</g:id>
       <g:title>Calcium Nitrate Powder 25kg — 100% Soluble | HRSU Indore</g:title>
-      <g:description>HRSU Indore industrial-grade Calcium Nitrate in fine crystalline powder form. 100% water-soluble with zero insoluble residue. Contains 18.5–19% Calcium (Ca) and 15.5%+ Nitrogen (N). Instant dissolution — no clogging of drip emitters or spray nozzles. Suitable for drip irrigation, foliar spray, hydroponics (Part-A formulation), concrete acceleration (ASTM C494 Type C/E), wastewater H₂S control, and latex coagulation. Certificate of Analysis issued with every batch. Made in Maksi, Madhya Pradesh, India.</g:description>
+      <g:description>HRSU Indore industrial-grade Calcium Nitrate in fine crystalline powder form. 100% water-soluble with zero insoluble residue. Contains 18.5–19% Calcium (Ca) and 15.5%+ Nitrogen (N). Instant dissolution — no clogging of drip emitters or spray nozzles. Suitable for drip irrigation, foliar spray, hydroponics (Part-A formulation), concrete acceleration (ASTM C494 Type C/E), wastewater H₂S control, and latex coagulation. Certificate of Analysis issued with every batch. TDS: https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf | SDS: https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf. Made in Maksi, Madhya Pradesh, India.</g:description>
       <g:link>https://store.hrsuindore.com/products/calcium-nitrate-powder-form</g:link>
       <g:image_link>https://lsmedia.linker-cdn.net/1051955/2026/14878524.jpeg</g:image_link>
       <g:condition>new</g:condition>
@@ -111,7 +111,7 @@
     <item>
       <g:id>HRSU-CN-50KG-001</g:id>
       <g:title>Calcium Nitrate Powder 50kg Bulk — 100% Soluble | HRSU Indore</g:title>
-      <g:description>HRSU Indore industrial-grade Calcium Nitrate in 50kg bulk bags. Fine crystalline powder, 100% water-soluble with zero residue. 18.5–19% Calcium, 15.5%+ Nitrogen. Zero clogging in drip and fertigation systems. Suitable for large-scale agriculture, hydroponics, concrete admixtures, and industrial processing. Certificate of Analysis issued per batch. Manufactured in Madhya Pradesh, India. Export-ready with full documentation (CoA, COO, MSDS).</g:description>
+      <g:description>HRSU Indore industrial-grade Calcium Nitrate in 50kg bulk bags. Fine crystalline powder, 100% water-soluble with zero residue. 18.5–19% Calcium, 15.5%+ Nitrogen. Zero clogging in drip and fertigation systems. Suitable for large-scale agriculture, hydroponics, concrete admixtures, and industrial processing. Certificate of Analysis issued per batch. TDS: https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf | SDS: https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf. Manufactured in Madhya Pradesh, India. Export-ready with full documentation (CoA, COO, MSDS).</g:description>
       <g:link>https://store.hrsuindore.com/products/calcium-nitrate-powder-form</g:link>
       <g:image_link>https://lsmedia.linker-cdn.net/1051955/2026/14878524.jpeg</g:image_link>
       <g:condition>new</g:condition>
