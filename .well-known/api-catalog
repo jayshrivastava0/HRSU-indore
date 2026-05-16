@@ -1,0 +1,35 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://hrsuindore.com/",
+      "service-doc": [
+        {
+          "href": "https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf",
+          "type": "application/pdf",
+          "title": "Calcium Nitrate Technical Data Sheet"
+        },
+        {
+          "href": "https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf",
+          "type": "application/pdf",
+          "title": "Calcium Nitrate Safety Data Sheet (MSDS)"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://hrsuindore.com/sitemap.xml",
+          "type": "application/xml"
+        }
+      ],
+      "related": [
+        {
+          "href": "https://store.hrsuindore.com/",
+          "title": "HRSU Indore Online Store"
+        },
+        {
+          "href": "https://blog.hrsuindore.com/",
+          "title": "HRSU Indore Blog"
+        }
+      ]
+    }
+  ]
+}

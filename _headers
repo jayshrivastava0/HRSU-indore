@@ -5,8 +5,9 @@
 
 # ── Homepage: agent/bot discovery link relations (RFC 8288) ─
 /
-  Link: </sitemap.xml>; rel="sitemap", </robots.txt>; rel="robots", <https://blog.hrsuindore.com/>; rel="related"
+  Link: </.well-known/api-catalog>; rel="api-catalog", </calcium-nitrate-tds-hrsu.pdf>; rel="service-doc"; type="application/pdf", </sitemap.xml>; rel="sitemap", </robots.txt>; rel="robots"
   X-Robots-Tag: all
+  Vary: Accept
 
 # ── PDFs: allow indexing and caching ────────────────────────
 /calcium-nitrate-tds-hrsu.pdf
@@ -26,6 +27,12 @@
 /google-shopping-feed.xml
   Cache-Control: public, max-age=86400
   Content-Type: application/xml
+
+# ── API catalog (RFC 9727) ────────────────────────────────
+/.well-known/api-catalog
+  Content-Type: application/linkset+json
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
 
 # ── Default security headers ───────────────────────────────
 /*
