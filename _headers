@@ -1,0 +1,34 @@
+# ═══════════════════════════════════════════════════════════
+# _headers — Cloudflare Pages custom response headers
+# https://hrsuindore.com
+# ═══════════════════════════════════════════════════════════
+
+# ── Homepage: agent/bot discovery link relations (RFC 8288) ─
+/
+  Link: </sitemap.xml>; rel="sitemap", </robots.txt>; rel="robots", <https://blog.hrsuindore.com/>; rel="related"
+  X-Robots-Tag: all
+
+# ── PDFs: allow indexing and caching ────────────────────────
+/calcium-nitrate-tds-hrsu.pdf
+  Content-Disposition: inline
+  Cache-Control: public, max-age=2592000
+  X-Robots-Tag: all
+
+/calcium-nitrate-sds-hrsu.pdf
+  Content-Disposition: inline
+  Cache-Control: public, max-age=2592000
+  X-Robots-Tag: all
+
+# ── XML feeds: no cache ────────────────────────────────────
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/google-shopping-feed.xml
+  Cache-Control: public, max-age=86400
+  Content-Type: application/xml
+
+# ── Default security headers ───────────────────────────────
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin

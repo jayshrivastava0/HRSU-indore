@@ -129,5 +129,8 @@ Allow: /
 Allow: /calcium-nitrate-tds-hrsu.pdf
 Allow: /calcium-nitrate-sds-hrsu.pdf
 
+# ── Content Signals (ai usage preferences) ────────────────
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
 # ── Sitemap ────────────────────────────────────────────────
 Sitemap: https://hrsuindore.com/sitemap.xml
