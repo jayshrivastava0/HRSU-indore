@@ -5,7 +5,7 @@
 
 # ── Homepage: agent/bot discovery link relations (RFC 8288) ─
 /
-  Link: </.well-known/api-catalog>; rel="api-catalog", </calcium-nitrate-tds-hrsu.pdf>; rel="service-doc"; type="application/pdf", </sitemap.xml>; rel="sitemap", </robots.txt>; rel="robots"
+  Link: </.well-known/api-catalog>; rel="api-catalog", </.well-known/agent-skills/index.json>; rel="https://agentskills.io/rel/skills-index", </calcium-nitrate-tds-hrsu.pdf>; rel="service-doc"; type="application/pdf", </sitemap.xml>; rel="sitemap", </robots.txt>; rel="robots"
   X-Robots-Tag: all
   Vary: Accept
 
@@ -31,6 +31,16 @@
 # ── API catalog (RFC 9727) ────────────────────────────────
 /.well-known/api-catalog
   Content-Type: application/linkset+json
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+
+# ── Agent Skills discovery (RFC v0.2.0) ───────────────────
+/.well-known/agent-skills/index.json
+  Content-Type: application/json
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+
+/.well-known/agent-skills/*
   Cache-Control: public, max-age=86400
   Access-Control-Allow-Origin: *
 
