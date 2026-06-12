@@ -44,6 +44,17 @@
   Cache-Control: public, max-age=86400
   Access-Control-Allow-Origin: *
 
+# ── Store pages: markdown negotiation + indexing ───────────
+/store/*
+  X-Robots-Tag: all
+  Vary: Accept
+
+# ── llms.txt (GEO) ─────────────────────────────────────────
+/llms.txt
+  Content-Type: text/markdown; charset=utf-8
+  Cache-Control: public, max-age=86400
+  Access-Control-Allow-Origin: *
+
 # ── Default security headers ───────────────────────────────
 /*
   X-Content-Type-Options: nosniff

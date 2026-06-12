@@ -38,7 +38,7 @@ India's precision-grade Calcium Nitrate manufacturer. 100% water-soluble powder.
 
 ## Online Store
 
-[store.hrsuindore.com](https://store.hrsuindore.com/)
+[hrsuindore.com/store](https://hrsuindore.com/store/)
 
 ## Contact
 
@@ -48,16 +48,48 @@ India's precision-grade Calcium Nitrate manufacturer. 100% water-soluble powder.
 - **Blog:** [blog.hrsuindore.com](https://blog.hrsuindore.com/)
 `;
 
+const STORE_MD = `# HRSU Indore Store — Buy Calcium Nitrate Online
+
+Direct-from-manufacturer store. Prices are MRP inclusive of all taxes.
+
+## Products
+
+### Calcium Nitrate — Fertilizer Grade
+- URL: https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/
+- 25 kg bag: ₹750 | 50 kg bag: ₹1,500 (₹30/kg)
+- 100% water-soluble powder, 18.5–19% Ca, 15.5%+ N, ≥99% purity
+- Shipping (India): ₹20 flat, 4–10 days door-to-door
+- Payment: UPI / bank transfer after phone confirmation (no card needed)
+- Returns: all sales final; damaged/incorrect shipments replaced or refunded (48h claim window)
+- TDS: https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf
+- SDS: https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf
+
+## How to order
+1. Submit the order form on the product page, or WhatsApp +91 94250 00484.
+2. HRSU confirms by phone within 1 business day.
+3. Pay via UPI or bank transfer; goods dispatch with tracking.
+
+## Contact
+contact@hrsuindore.com · +91 94250 00484 · 53 Industrial Area, Maksi, MP 465106, India
+`;
+
+const MD_ROUTES = {
+  '/': MARKDOWN,
+  '/index.html': MARKDOWN,
+  '/store': STORE_MD,
+  '/store/': STORE_MD,
+  '/store/calcium-nitrate-fertilizer-grade': STORE_MD,
+  '/store/calcium-nitrate-fertilizer-grade/': STORE_MD,
+};
+
 export async function onRequest(context) {
   const { request, next } = context;
   const accept = request.headers.get('Accept') || '';
   const url = new URL(request.url);
 
-  if (
-    accept.includes('text/markdown') &&
-    (url.pathname === '/' || url.pathname === '/index.html')
-  ) {
-    return new Response(MARKDOWN, {
+  const md = MD_ROUTES[url.pathname];
+  if (md && accept.includes('text/markdown')) {
+    return new Response(md, {
       status: 200,
       headers: {
         'Content-Type': 'text/markdown; charset=utf-8',
