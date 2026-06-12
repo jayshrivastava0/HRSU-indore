@@ -101,3 +101,9 @@ export async function onRequest(context) {
 
   return next();
 }
+
+export default {
+  async fetch(request, env, ctx) {
+    return onRequest({ request, next: () => new Response('Not Found', { status: 404 }) });
+  }
+};

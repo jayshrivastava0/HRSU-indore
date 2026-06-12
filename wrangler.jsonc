@@ -1,7 +1,9 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "hrsu-indore",
-  "compatibility_date": "2026-05-16",
+  "type": "javascript",
+  "main": "functions/_middleware.js",
+  "compatibility_date": "2025-06-12",
   "observability": {
     "enabled": true
   },
@@ -13,5 +15,12 @@
   ],
   "d1_databases": [
     { "binding": "DB", "database_name": "hrsu-store", "database_id": "PASTE-UUID-HERE" }
-  ]
+  ],
+  "env": {
+    "production": {
+      "routes": [
+        { "pattern": "hrsuindore.com/*", "zone_name": "hrsuindore.com" }
+      ]
+    }
+  }
 }

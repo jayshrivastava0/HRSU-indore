@@ -1,4 +1,4 @@
-import { HTMLRewriter } from 'html-rewriter-wasm';
+// import { HTMLRewriter } from 'html-rewriter-wasm';
 
 class ReviewInjector {
   constructor(reviews, productGroupID) {
@@ -118,28 +118,7 @@ export async function onRequest(context) {
     return response;
   }
 
-  // Fetch approved reviews from D1
-  const reviewsResult = await env.DB.prepare(
-    'SELECT id, name, city, rating, body, created_at FROM reviews WHERE product_id = ? AND approved = 1 ORDER BY created_at DESC LIMIT 10'
-  )
-    .bind(productId)
-    .all();
-
-  const reviews = reviewsResult.results || [];
-
-  // Clone response and transform with HTMLRewriter
-  const html = await response.text();
-
-  const rewriter = new HTMLRewriter();
-  rewriter
-    .on('#reviews-list', new ReviewInjector(reviews, productId))
-    .on('head', new AggregateRatingInjector(reviews, productId));
-
-  const transformedHtml = rewriter.transform(html);
-
-  return new Response(transformedHtml, {
-    status: response.status,
-    statusText: response.statusText,
-    headers: response.headers,
-  });
+  // TODO: Fetch approved reviews from D1 once database is configured
+  // For now, skip review injection and return the static page
+  return response;
 }
