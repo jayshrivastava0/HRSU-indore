@@ -38,7 +38,7 @@ India's precision-grade Calcium Nitrate manufacturer. 100% water-soluble powder.
 
 ## Online Store
 
-[store.hrsuindore.com](https://store.hrsuindore.com/)
+[HRSU Indore Online Store](https://hrsuindore.com/store/)
 
 ## Contact
 
