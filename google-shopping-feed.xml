@@ -7,9 +7,9 @@
   Spec: https://support.google.com/merchants/answer/7052112
 
   Shipping policy (matches Merchant Center exactly):
-    India      → weight-based: 0–5 kg free, >5 kg = ₹20 flat | 4–10 days
+    India      → ₹1,000 flat | 3–10 days
     All others → flat ₹10,000 | 21–30 days
-  Return policy: No returns (B2B, all sales final)
+  Return policy: Defective products only (configured at account level in GMC)
   ═══════════════════════════════════════════════════════════════════
 -->
 <rss version="2.0"
@@ -57,14 +57,13 @@
       <g:custom_label_3>powder</g:custom_label_3>
       <g:custom_label_4>in-stock</g:custom_label_4>
 
-      <!-- ── Shipping weight (25kg → above 5kg threshold = ₹20 in India) ── -->
       <g:shipping_weight>25 kg</g:shipping_weight>
 
-      <!-- India: weight-based, >5kg = ₹20, 4–10 days -->
+      <!-- India: ₹1,000 flat, 3–10 days -->
       <g:shipping>
         <g:country>IN</g:country>
-        <g:service>Standard Delivery (4–10 days)</g:service>
-        <g:price>20.00 INR</g:price>
+        <g:service>Standard Delivery (3–10 days)</g:service>
+        <g:price>1000.00 INR</g:price>
         <g:min_handling_time>1</g:min_handling_time>
         <g:max_handling_time>2</g:max_handling_time>
         <g:min_transit_time>2</g:min_transit_time>
@@ -137,11 +136,11 @@
 
       <g:shipping_weight>50 kg</g:shipping_weight>
 
-      <!-- India: >5kg = ₹20 -->
+      <!-- India: ₹1,000 flat, 3–10 days -->
       <g:shipping>
         <g:country>IN</g:country>
-        <g:service>Standard Delivery (4–10 days)</g:service>
-        <g:price>20.00 INR</g:price>
+        <g:service>Standard Delivery (3–10 days)</g:service>
+        <g:price>1000.00 INR</g:price>
         <g:min_handling_time>1</g:min_handling_time>
         <g:max_handling_time>2</g:max_handling_time>
         <g:min_transit_time>2</g:min_transit_time>
@@ -171,8 +170,6 @@
 
       <g:unit_pricing_measure>50 kg</g:unit_pricing_measure>
       <g:unit_pricing_base_measure>1 kg</g:unit_pricing_base_measure>
-
-      <g:return_policy_label>no-returns</g:return_policy_label>
 
       <g:material>Calcium Nitrate Tetrahydrate</g:material>
       <g:origin>IN</g:origin>
