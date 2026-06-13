@@ -1,3 +1,4 @@
+// Markdown content for various routes
 const MARKDOWN = `# HRSU Indore Pvt. Ltd. — Calcium Nitrate Manufacturer, India
 
 India's precision-grade Calcium Nitrate manufacturer. 100% water-soluble powder. Export-ready from Mundra Port, Gujarat.
@@ -83,7 +84,7 @@ const MD_ROUTES = {
 };
 
 export async function onRequest(context) {
-  const { request, next } = context;
+  const { request } = context;
   const accept = request.headers.get('Accept') || '';
   const url = new URL(request.url);
 
@@ -99,11 +100,5 @@ export async function onRequest(context) {
     });
   }
 
-  return next();
+  return context.next();
 }
-
-export default {
-  async fetch(request, env, ctx) {
-    return onRequest({ request, next: () => env.ASSETS.fetch(request) });
-  }
-};
