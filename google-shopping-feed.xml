@@ -22,7 +22,6 @@
 
     <!-- ═══════════════════════════════════════════════════════
          PRODUCT 1 — Calcium Nitrate Powder (25 kg Bag)
-         Both 25kg and 50kg are >5kg → India shipping = ₹20
     ═══════════════════════════════════════════════════════ -->
     <item>
       <!-- ── Required ── -->
@@ -94,9 +93,6 @@
       <!-- ── Unit pricing (required in some regions) ── -->
       <g:unit_pricing_measure>25 kg</g:unit_pricing_measure>
       <g:unit_pricing_base_measure>1 kg</g:unit_pricing_base_measure>
-
-      <!-- ── Return policy: no returns (B2B) ── -->
-      <g:return_policy_label>no-returns</g:return_policy_label>
 
       <!-- ── Additional ── -->
       <g:material>Calcium Nitrate Tetrahydrate</g:material>
