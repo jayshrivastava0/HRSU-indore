@@ -83,7 +83,7 @@ const MD_ROUTES = {
 };
 
 export async function onRequest(context) {
-  const { request, next } = context;
+  const { request, env } = context;
   const accept = request.headers.get('Accept') || '';
   const url = new URL(request.url);
 
@@ -99,11 +99,12 @@ export async function onRequest(context) {
     });
   }
 
-  return next();
+  // Serve static assets via Pages
+  return env.ASSETS.fetch(request);
 }
 
 export default {
   async fetch(request, env, ctx) {
-    return onRequest({ request, next: () => new Response('Not Found', { status: 404 }) });
+    return onRequest({ request, env });
   }
 };
