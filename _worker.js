@@ -9,10 +9,10 @@
 
 import { onRequest as handleMiddleware } from './functions/_middleware.js';
 import { onRequest as handleProducts } from './functions/api/products.js';
-import { onRequest as handleOrder } from './functions/api/order.js';
+import { onRequestOptions as handleOrderOptions, onRequestPost as handleOrderPost } from './functions/api/order.js';
 import { onRequest as handleMcp } from './functions/api/mcp.js';
 import { onRequest as handleTools } from './functions/api/tools.js';
-import { onRequestGet as handleReviewsGet } from './functions/api/reviews.js';
+import { onRequestGet as handleReviewsGet, onRequestPost as handleReviewsPost } from './functions/api/reviews.js';
 import { onRequest as handleStore } from './functions/store/[[path]].js';
 
 function makeCtx(request, env, ctx, params = {}) {
@@ -34,12 +34,18 @@ export default {
 
     // API routes
     if (pathname === '/api/products') return handleProducts(makeCtx(request, env, ctx));
-    if (pathname === '/api/order')    return handleOrder(makeCtx(request, env, ctx));
     if (pathname === '/api/mcp')      return handleMcp(makeCtx(request, env, ctx));
     if (pathname === '/api/tools')    return handleTools(makeCtx(request, env, ctx));
 
+    if (pathname === '/api/order') {
+      if (method === 'OPTIONS') return handleOrderOptions();
+      if (method === 'POST')    return handleOrderPost(makeCtx(request, env, ctx));
+      return new Response('Method Not Allowed', { status: 405 });
+    }
+
     if (pathname === '/api/reviews') {
-      if (method === 'GET') return handleReviewsGet(makeCtx(request, env, ctx));
+      if (method === 'GET')  return handleReviewsGet(makeCtx(request, env, ctx));
+      if (method === 'POST') return handleReviewsPost(makeCtx(request, env, ctx));
       return new Response('Method Not Allowed', { status: 405 });
     }
 
