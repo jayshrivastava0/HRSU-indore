@@ -1,0 +1,21 @@
+# Cloudflare Workers Assets — files to exclude from public static serving
+# Format: same as .gitignore
+
+# Worker entry point (executed server-side, must not be a public asset)
+_worker.js
+
+# Source code — functions are bundled into _worker.js, not served directly
+functions/
+
+# Build / deploy config
+wrangler.jsonc
+wrangler.toml
+package.json
+package-lock.json
+node_modules/
+
+# Dev & version control
+.git/
+.gitignore
+.env
+.env.*
