@@ -38,18 +38,18 @@ No credit/debit card required. No payment gateway. Process:
 
 ## How to Order via REST API
 
-```
+```http
 POST https://hrsuindore.com/api/order
 Content-Type: application/json
 
 {
   "product": "Calcium Nitrate Fertilizer Grade",
-  "size": "25 kg (₹750)",
-  "quantity": 6,
-  "name": "Arjun Singh",
-  "phone": "+919876543210",
-  "email": "arjun@farm.in",
-  "address": "Khasra 45, Village Pipaliya, Khandwa, MP 450001"
+  "size": "25 kg (₹750)",        // or "50 kg (₹1500)"
+  "quantity": 6,                  // number of bags
+  "name": "Customer Full Name",
+  "phone": "+919876543210",       // WhatsApp preferred
+  "email": "customer@example.com",
+  "address": "Full address with PIN code, State"
 }
 ```
 
