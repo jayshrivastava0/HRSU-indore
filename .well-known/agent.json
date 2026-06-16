@@ -1,0 +1,78 @@
+{
+  "name": "HRSU Indore Store",
+  "description": "Buy fertilizer-grade Calcium Nitrate directly from HRSU Indore Pvt. Ltd., manufacturer in Madhya Pradesh, India. 25 kg ₹750 · 50 kg ₹1,500. Free delivery on orders ₹4,500+. Pan-India 3–10 days. No card needed — pay via UPI or bank transfer after phone confirmation.",
+  "url": "https://hrsuindore.com/api/mcp",
+  "iconUrl": "https://hrsuindore.com/Logo.png",
+  "version": "1.0.0",
+  "documentationUrl": "https://hrsuindore.com/llms.txt",
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false,
+    "stateTransitionHistory": false
+  },
+  "authentication": null,
+  "defaultInputModes": ["text/plain"],
+  "defaultOutputModes": ["text/plain"],
+  "skills": [
+    {
+      "id": "list_products",
+      "name": "List Products",
+      "description": "Browse the HRSU Indore Calcium Nitrate catalog — get SKUs, sizes, prices, and availability.",
+      "tags": ["catalog", "products", "calcium-nitrate"],
+      "examples": [
+        "What calcium nitrate products do you have?",
+        "Show me your product catalog",
+        "What sizes and prices are available?"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain"]
+    },
+    {
+      "id": "calculate_order_total",
+      "name": "Calculate Order Total",
+      "description": "Calculate the exact price and shipping cost for a given quantity before placing an order.",
+      "tags": ["pricing", "shipping", "order"],
+      "examples": [
+        "How much would 6 bags of 25kg cost including shipping?",
+        "What is the total for 3 bags of 50kg?",
+        "Do I get free delivery if I order 8 bags?"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain"]
+    },
+    {
+      "id": "place_order",
+      "name": "Place Order",
+      "description": "Submit a Calcium Nitrate order. No payment now — HRSU confirms within 1 business day and the customer pays via UPI or bank transfer.",
+      "tags": ["order", "purchase", "calcium-nitrate"],
+      "examples": [
+        "Order 6 bags of 25kg calcium nitrate",
+        "I want to buy 3 bags of 50kg, deliver to Indore",
+        "Place an order for calcium nitrate for my farm"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain"]
+    },
+    {
+      "id": "get_shipping_info",
+      "name": "Get Shipping Info",
+      "description": "Get delivery rates, free-shipping threshold, and estimated delivery times for India and international.",
+      "tags": ["shipping", "delivery"],
+      "examples": [
+        "What are the shipping charges?",
+        "How long does delivery take?",
+        "Do you ship to Gujarat?"
+      ],
+      "inputModes": ["text/plain"],
+      "outputModes": ["text/plain"]
+    }
+  ],
+  "endpoints": {
+    "mcp": "https://hrsuindore.com/api/mcp",
+    "rest_catalog": "https://hrsuindore.com/api/products",
+    "rest_order": "https://hrsuindore.com/api/order",
+    "tools_openai": "https://hrsuindore.com/api/tools",
+    "openapi_spec": "https://hrsuindore.com/openapi.json",
+    "llms_txt": "https://hrsuindore.com/llms.txt"
+  }
+}

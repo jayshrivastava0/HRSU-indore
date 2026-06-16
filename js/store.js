@@ -40,10 +40,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
       .then(function (res) {
         if (!res.ok) throw new Error(res.j.error || 'failed');
-        form.hidden = true;
-        status.className = 'notice ok';
-        status.innerHTML = '<strong>Order received ✓</strong> We will call/WhatsApp you within 1 business day to confirm payment (UPI / bank transfer) and dispatch. Order ref: ' + (res.j.ref || '—');
         dataLayer.push({ event: 'purchase_intent', value: Number(d.quantity || 1), currency: 'INR' });
+        window.location.href = '/store/thank-you/';
       })
       .catch(function () {
         // API down or Resend not configured — fall back to WhatsApp

@@ -1,15 +1,140 @@
-# HRSU Indore Pvt. Ltd.
+# HRSU Indore — Calcium Nitrate Store
 
-> Manufacturer and exporter of Calcium Nitrate (Ca(NO₃)₂) powder — 100% water-soluble, fertilizer and industrial grade. Factory: Maksi, Madhya Pradesh, India. Exports via Mundra Port to 30+ countries.
+> HRSU Indore Pvt. Ltd. manufactures and sells fertilizer-grade Calcium Nitrate (Ca(NO₃)₂) directly to farmers, distributors, industrial buyers, and exporters. Based in Maksi, Madhya Pradesh, India. You can browse products, check prices, and place orders via the website, REST API, WhatsApp, or the MCP server.
 
-## Buy online
-- [Store](https://hrsuindore.com/store/): direct B2C/B2B store, India-wide delivery
-- [Calcium Nitrate Fertilizer Grade](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): 25 kg ₹750 / 50 kg ₹1,500 MRP incl. taxes
+## Products
 
-## Technical documents
-- [TDS](https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf): specifications, ≥99% purity, 18.5–19% Ca, 15.5%+ N
-- [SDS](https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf): safety and handling
+- [Calcium Nitrate Fertilizer Grade — 25 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-25KG-001. ₹750 per bag (₹30/kg). 100% water-soluble, 18.5–19% Ca, 15.5%+ N (nitrate form). Zero insoluble residue — safe for drip emitters. HDPE bag, white crystalline powder.
+- [Calcium Nitrate Fertilizer Grade — 50 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-50KG-001. ₹1,500 per bag (₹30/kg). Same specification as 25 kg variant.
+
+All prices MRP inclusive of all taxes (Indian Legal Metrology Act). Certificate of Analysis with every batch.
+
+## Pricing
+
+| SKU | Size | Price (INR) | Per kg |
+|---|---|---|---|
+| HRSU-CN-25KG-001 | 25 kg | ₹750 | ₹30 |
+| HRSU-CN-50KG-001 | 50 kg | ₹1,500 | ₹30 |
+
+## Shipping (India)
+
+- **Free delivery** on orders ₹4,500 or above — 6+ bags of 25 kg, or 3+ bags of 50 kg.
+- **₹1,000 flat** per order for orders below ₹4,500.
+- Handling 1–2 business days + Transit 2–8 days = **3–10 days total**, anywhere in India.
+- Tracking shared via WhatsApp/email at dispatch.
+
+## Shipping (International)
+
+- ₹10,000 flat per order. Delivery 22–32 days. USA, UK, EU, UAE, Saudi Arabia, Australia, and others.
+- For 1 MT+ container orders via Mundra Port: contact for FOB/CIF quotes → contact@hrsuindore.com
+
+## Payment
+
+No credit/debit card required. No payment gateway. Process:
+1. Submit order via website, API, or WhatsApp
+2. HRSU calls or WhatsApps the customer within 1 business day to confirm
+3. Customer pays via UPI or NEFT/IMPS bank transfer
+4. HRSU dispatches with tracking once payment is received
+
+## How to Order via REST API
+
+```
+POST https://hrsuindore.com/api/order
+Content-Type: application/json
+
+{
+  "product": "Calcium Nitrate Fertilizer Grade",
+  "size": "25 kg (₹750)",
+  "quantity": 6,
+  "name": "Arjun Singh",
+  "phone": "+919876543210",
+  "email": "arjun@farm.in",
+  "address": "Khasra 45, Village Pipaliya, Khandwa, MP 450001"
+}
+```
+
+Returns `{ "ok": true, "ref": "HRSU-XXXXXX" }`. HRSU confirms within 1 business day.
+
+## MCP Server (Claude, Cursor, and MCP-compatible agents)
+
+Endpoint: `POST https://hrsuindore.com/api/mcp`
+Protocol: MCP Streamable HTTP (spec 2025-03-26)
+Discovery: `GET https://hrsuindore.com/api/mcp`
+
+Tools available:
+- `list_products` — full catalog with prices and availability
+- `get_product` — detailed specs + docs by SKU
+- `get_shipping_info` — rates and delivery times
+- `get_company_info` — contact details
+- `calculate_order_total` — exact price + shipping before committing
+- `place_order` — submit an order (no payment at this step)
+
+**Claude Desktop config** — add to `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "hrsu-store": { "url": "https://hrsuindore.com/api/mcp" }
+  }
+}
+```
+
+## Machine-Readable Resources & Per-Model Integration
+
+| What | URL | Who uses it |
+|---|---|---|
+| JSON catalog | `GET /api/products` | Any HTTP agent |
+| OpenAPI 3.1 spec | `/openapi.json` | ChatGPT Actions, LangChain, AutoGen, Semantic Kernel |
+| MCP server | `POST /api/mcp` | Claude Desktop, Cursor, Cline, Continue.dev |
+| OpenAI-format tools | `GET /api/tools` | Hermes, Ollama, DeepSeek, Llama, Mistral, Qwen, Gemma, Vercel AI SDK, CrewAI, Smolagents |
+| Anthropic-format tools | `GET /api/tools?format=anthropic` | Direct Anthropic API (without MCP) |
+| Cohere-format tools | `GET /api/tools?format=cohere` | Cohere Command R / Command A |
+| A2A Agent Card | `/.well-known/agent.json` | Gemini agents (Google A2A protocol) |
+| ChatGPT plugin | `/.well-known/ai-plugin.json` | ChatGPT custom GPTs |
+| Agent skills | `/.well-known/agent-skills/index.json` | Browsing agents |
+
+### Quick integration by model
+
+**Claude Desktop (MCP):**
+```json
+{ "mcpServers": { "hrsu-store": { "url": "https://hrsuindore.com/api/mcp" } } }
+```
+
+**Ollama / Hermes / DeepSeek / Llama / Mistral / Qwen (OpenAI-compatible):**
+```python
+import requests
+meta = requests.get("https://hrsuindore.com/api/tools").json()
+# Use meta["tools"] in your completion call, meta["system_prompt"] as system message
+```
+
+**LangChain:**
+```python
+from langchain.tools import OpenAPISpec
+spec = OpenAPISpec.from_url("https://hrsuindore.com/openapi.json")
+```
+
+**Gemini (A2A):** Agent Card at `https://hrsuindore.com/.well-known/agent.json`
+
+**ChatGPT Custom GPT:** Import OpenAPI spec from `https://hrsuindore.com/openapi.json`
+
+**Any agent with web access:** Visit `https://hrsuindore.com/llms.txt` for full instructions
+
+## Store Pages
+
+- [Store Home](https://hrsuindore.com/store/)
+- [Calcium Nitrate Product Page](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/)
+- [Shipping Policy](https://hrsuindore.com/store/shipping-policy/)
+- [Returns Policy](https://hrsuindore.com/store/returns-policy/)
+- [Terms of Sale](https://hrsuindore.com/store/terms/)
+
+## Technical Documents
+
+- [Technical Data Sheet (TDS)](https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf)
+- [Safety Data Sheet (SDS)](https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf)
 
 ## Contact
-- Email: contact@hrsuindore.com · Phone/WhatsApp: +91 94250 00484
-- Bulk/export (1 MT+): T/T or LC, Mundra Port, full export documentation
+
+- Email: contact@hrsuindore.com
+- Phone & WhatsApp: +91 94250 00484 | https://wa.me/919425000484
+- Address: 53, Industrial Area, Maksi, Madhya Pradesh 465106, India
+- Website: https://hrsuindore.com
+- Blog: https://blog.hrsuindore.com/

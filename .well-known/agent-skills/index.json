@@ -2,25 +2,28 @@
   "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
   "skills": [
     {
+      "name": "place-order",
+      "type": "prompt",
+      "description": "Place a Calcium Nitrate order via REST API or MCP server — includes workflow, pricing formula, and step-by-step guide for AI agents",
+      "url": "https://hrsuindore.com/.well-known/agent-skills/place-order/SKILL.md"
+    },
+    {
       "name": "get-product-info",
       "type": "prompt",
-      "description": "Get full Calcium Nitrate specifications, pricing, applications, and export details from HRSU Indore",
-      "url": "https://hrsuindore.com/.well-known/agent-skills/get-product-info/SKILL.md",
-      "sha256": "e37e847ea385393f1e84afbf88ba6e5e12e90372b54f0c7459d15c94d776b969"
+      "description": "Get full Calcium Nitrate specifications, retail pricing (25 kg ₹750 / 50 kg ₹1,500), applications, and export details from HRSU Indore",
+      "url": "https://hrsuindore.com/.well-known/agent-skills/get-product-info/SKILL.md"
     },
     {
       "name": "request-quote",
       "type": "prompt",
-      "description": "Submit a bulk Calcium Nitrate quote request to HRSU Indore via email",
-      "url": "https://hrsuindore.com/.well-known/agent-skills/request-quote/SKILL.md",
-      "sha256": "c651896cc1c9e2688850fe1a44f147fbe6abcb98bd080eeedcefe6d8b244d741"
+      "description": "Place a retail order via API or request a bulk/export quote from HRSU Indore by email",
+      "url": "https://hrsuindore.com/.well-known/agent-skills/request-quote/SKILL.md"
     },
     {
       "name": "download-documents",
       "type": "prompt",
       "description": "Access Calcium Nitrate Technical Data Sheet (TDS), Safety Data Sheet (SDS/MSDS), and Certificate of Analysis (CoA)",
-      "url": "https://hrsuindore.com/.well-known/agent-skills/download-documents/SKILL.md",
-      "sha256": "14d9aae3baaed4d61192ae97256c90b5e370c372d8a182484cf222959cd96834"
+      "url": "https://hrsuindore.com/.well-known/agent-skills/download-documents/SKILL.md"
     }
   ]
 }

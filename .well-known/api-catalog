@@ -4,6 +4,21 @@
       "anchor": "https://hrsuindore.com/",
       "service-doc": [
         {
+          "href": "https://hrsuindore.com/openapi.json",
+          "type": "application/json",
+          "title": "HRSU Indore Store API — OpenAPI 3.1 spec"
+        },
+        {
+          "href": "https://hrsuindore.com/llms.txt",
+          "type": "text/plain",
+          "title": "AI/LLM guide — products, pricing, ordering, MCP server"
+        },
+        {
+          "href": "https://hrsuindore.com/.well-known/ai-plugin.json",
+          "type": "application/json",
+          "title": "ChatGPT / AI plugin manifest"
+        },
+        {
           "href": "https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf",
           "type": "application/pdf",
           "title": "Calcium Nitrate Technical Data Sheet"
@@ -14,6 +29,33 @@
           "title": "Calcium Nitrate Safety Data Sheet (MSDS)"
         }
       ],
+      "type": [
+        {
+          "href": "https://hrsuindore.com/api/products",
+          "type": "application/json",
+          "title": "Product catalog API — GET"
+        },
+        {
+          "href": "https://hrsuindore.com/api/order",
+          "type": "application/json",
+          "title": "Place order API — POST"
+        },
+        {
+          "href": "https://hrsuindore.com/api/mcp",
+          "type": "application/json",
+          "title": "MCP server — POST (Streamable HTTP 2025-03-26)"
+        },
+        {
+          "href": "https://hrsuindore.com/api/tools",
+          "type": "application/json",
+          "title": "OpenAI-format tool definitions — GET (Hermes, Ollama, DeepSeek, Llama, Mistral, Qwen)"
+        },
+        {
+          "href": "https://hrsuindore.com/.well-known/agent.json",
+          "type": "application/json",
+          "title": "Google A2A Agent Card (Gemini agents)"
+        }
+      ],
       "describedby": [
         {
           "href": "https://hrsuindore.com/sitemap.xml",
@@ -22,7 +64,7 @@
       ],
       "related": [
         {
-          "href": "https://store.hrsuindore.com/",
+          "href": "https://hrsuindore.com/store/",
           "title": "HRSU Indore Online Store"
         },
         {

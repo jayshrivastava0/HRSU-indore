@@ -1,49 +1,53 @@
-const MARKDOWN = `# HRSU Indore Pvt. Ltd. — Calcium Nitrate Manufacturer, India
+const MARKDOWN = `# HRSU Indore Pvt. Ltd. — Calcium Nitrate Manufacturer & Online Store
 
-India's precision-grade Calcium Nitrate manufacturer. 100% water-soluble powder. Export-ready from Mundra Port, Gujarat.
+Manufacturer and online store for fertilizer-grade Calcium Nitrate. Based in Maksi, Madhya Pradesh, India. Export-ready from Mundra Port.
 
-## Product
+## Online Store
 
-**Calcium Nitrate (Ca(NO₃)₂)** — Technical-grade, 100% water-soluble powder
+- [Store Home](https://hrsuindore.com/store/)
+- [Calcium Nitrate Fertilizer Grade — 25 kg ₹750](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/) (SKU: HRSU-CN-25KG-001)
+- [Calcium Nitrate Fertilizer Grade — 50 kg ₹1,500](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/) (SKU: HRSU-CN-50KG-001)
+
+All prices MRP inclusive of all taxes. Free delivery on orders ₹4,500+. Flat ₹1,000 below that. 3–10 days India-wide.
+
+## Product Specifications
+
+**Calcium Nitrate (Ca(NO₃)₂ · 4H₂O)** — 100% water-soluble crystalline powder
 
 | Property | Value |
 |---|---|
 | Purity | ≥ 99% |
-| Calcium (CaO) | 26.5% |
-| Nitrogen (N) | 15.5% |
-| Solubility | Fully water-soluble |
+| Calcium (Ca) | 18.5–19% |
+| Nitrogen (N) | 15.5% min (nitrate form) |
+| Water solubility | 100% — zero insoluble residue |
+| pH (1% solution) | 5.5–6.5 |
 | Pack sizes | 25 kg / 50 kg HDPE bags |
-| Export port | Mundra, Gujarat, India |
+| Origin | Maksi, Madhya Pradesh, India |
 
-## Applications
+## API & AI Agent Access
 
-- Industrial wastewater treatment (heavy metals removal)
-- Concrete curing & acceleration
-- Hydroponics & fertirrigation
-- Soil remediation
-- Cold-weather construction
+- **Product catalog (JSON):** GET https://hrsuindore.com/api/products
+- **Place order (REST):** POST https://hrsuindore.com/api/order
+- **MCP server:** POST https://hrsuindore.com/api/mcp (tools: list_products, calculate_order_total, place_order, and more)
+- **OpenAPI 3.1 spec:** https://hrsuindore.com/openapi.json
+- **llms.txt:** https://hrsuindore.com/llms.txt
+
+## Payment
+
+No card needed. Submit order → HRSU confirms within 1 business day → pay via UPI or NEFT/IMPS.
 
 ## Technical Documents
 
-- [Technical Data Sheet (TDS)](https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf)
-- [Safety Data Sheet / MSDS (SDS)](https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf)
+- [TDS](https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf) · [SDS](https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf)
 
-## Procurement & Export
+## Export (1 MT+)
 
-- Minimum order: 1 MT
-- Lead time: 7–14 days ex-factory
-- Export ready: Mundra Port (JNPT/Mumbai available on request)
-- Certifications: ISO-compliant, Indian Legal Metrology Act compliant
-- Payment: T/T, LC at sight
-
-## Online Store
-
-[HRSU Indore Online Store](https://hrsuindore.com/store/)
+Mundra Port. FOB / CIF on request. T/T or LC at sight. Lead time 7–14 days.
 
 ## Contact
 
 - **Email:** contact@hrsuindore.com
-- **Phone:** +91 94250 00484
+- **Phone / WhatsApp:** +91 94250 00484
 - **Factory:** 53, Industrial Area, Maksi, Madhya Pradesh 465106, India
 - **Blog:** [blog.hrsuindore.com](https://blog.hrsuindore.com/)
 `;

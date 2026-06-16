@@ -5,15 +5,25 @@
 const ORDER_TO = 'contact@hrsuindore.com';
 const ORDER_FROM = 'orders@hrsuindore.com'; // domain must be verified in Resend
 
+const CORS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
 function json(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', ...CORS },
   });
 }
 
 const esc = (s) =>
   String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+export async function onRequestOptions() {
+  return new Response(null, { status: 204, headers: CORS });
+}
 
 export async function onRequestPost(context) {
   const { request, env } = context;
