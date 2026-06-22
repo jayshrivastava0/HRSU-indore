@@ -37,10 +37,11 @@ export async function onRequestPost(context) {
 
   if (d.website) return json({ ok: true, ref: 'OK' }); // honeypot: pretend success to bots
 
-  for (const f of ['name', 'phone', 'product', 'size', 'quantity', 'address']) {
+  for (const f of ['name', 'phone', 'product', 'size', 'quantity', 'address', 'upi_ref']) {
     if (!d[f] || String(d[f]).length > 600) return json({ error: `Invalid field: ${f}` }, 400);
   }
   if (!/^[0-9+\-\s]{10,15}$/.test(d.phone)) return json({ error: 'Invalid phone' }, 400);
+  if (!/^[A-Za-z0-9_\-\.]{6,50}$/.test(d.upi_ref)) return json({ error: 'Invalid UPI reference' }, 400);
 
   if (!env.RESEND_API_KEY) {
     return json({ error: 'Order system not configured' }, 503);
@@ -57,8 +58,9 @@ export async function onRequestPost(context) {
       <tr><th>Phone</th><td>${esc(d.phone)}</td></tr>
       <tr><th>Email</th><td>${esc(d.email || '—')}</td></tr>
       <tr><th>Address</th><td>${esc(d.address)}</td></tr>
+      <tr><th>UPI Transaction ID</th><td><strong>${esc(d.upi_ref)}</strong></td></tr>
     </table>
-    <p>Confirm with the customer within 1 business day (commitment made on the product page).</p>`;
+    <p><strong>Payment received via UPI — verify transaction ${esc(d.upi_ref)} before dispatching.</strong></p>`;
 
   const r = await fetch('https://api.resend.com/emails', {
     method: 'POST',

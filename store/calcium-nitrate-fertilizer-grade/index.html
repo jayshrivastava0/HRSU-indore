@@ -90,7 +90,7 @@
             "transitTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 8, "unitCode": "DAY" }
           }
         },
-        "seller": { "@type": "Organization", "name": "HRSU Indore Pvt. Ltd.", "@id": "https://hrsuindore.com/#organization" }
+        "seller": { "@type": "Organization", "name": "HRSU Indore Pvt. Ltd.", "@id": "https://hrsuindore.com/#organization", "taxID": "23AAAGCH4199C1ZP", "telephone": "+919425000484", "email": "contact@hrsuindore.com" }
       }
     },
     {
@@ -127,7 +127,7 @@
             "transitTime": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 8, "unitCode": "DAY" }
           }
         },
-        "seller": { "@type": "Organization", "name": "HRSU Indore Pvt. Ltd.", "@id": "https://hrsuindore.com/#organization" }
+        "seller": { "@type": "Organization", "name": "HRSU Indore Pvt. Ltd.", "@id": "https://hrsuindore.com/#organization", "taxID": "23AAAGCH4199C1ZP", "telephone": "+919425000484", "email": "contact@hrsuindore.com" }
       }
     }
   ]
@@ -145,7 +145,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "How do I pay without a card?", "acceptedAnswer": { "@type": "Answer", "text": "Place your order using the form or WhatsApp. We confirm by phone within 1 business day, then you pay via UPI or bank transfer (NEFT/IMPS). Goods dispatch after payment confirmation." } },
+    { "@type": "Question", "name": "How do I pay?", "acceptedAnswer": { "@type": "Answer", "text": "Pay via UPI to 9425913924@ptyes (HRSU Indore Pvt. Ltd.) using PhonePe, Google Pay, Paytm, or BHIM. Then fill the order form and enter your UPI transaction ID. We dispatch within 1–2 business days after payment confirmation. GSTIN: 23AAAGCH4199C1ZP." } },
     { "@type": "Question", "name": "What is the dosage for drip irrigation?", "acceptedAnswer": { "@type": "Answer", "text": "Typical fertigation dose is 2–5 kg per acre per application depending on crop and stage. It dissolves 100% with zero residue, so it will not clog drip emitters. Refer to the TDS or consult your agronomist." } },
     { "@type": "Question", "name": "Is a Certificate of Analysis provided?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, every batch ships with a Certificate of Analysis. The TDS and SDS are available as PDFs on hrsuindore.com." } },
     { "@type": "Question", "name": "How fast is delivery in India?", "acceptedAnswer": { "@type": "Answer", "text": "Orders are handed to the courier within 1–2 business days and delivered in 2–8 days — 3–10 days door-to-door, anywhere in India. Free delivery on orders ₹4,500 and above; flat ₹1,000 for orders below ₹4,500." } },
@@ -210,7 +210,23 @@
   <p>Drip irrigation and fertigation (no emitter clogging), foliar spray for blossom-end-rot and tip-burn prevention, hydroponics Part-A formulations, and soil application for calcium-deficient crops — tomato, capsicum, banana, grapes, pomegranate, apple, leafy greens.</p>
 
   <h2 id="order">Place Your Order</h2>
-  <div class="notice">No card needed. Submit the form → we confirm by phone/WhatsApp within 1 business day → pay by <strong>UPI or bank transfer</strong> → we dispatch with tracking. <!-- REPLACE BEFORE DEPLOY: UPI: hrsuindore@PLACEHOLDER --></div>
+
+  <div class="notice" style="background:#f0fdf4;border-color:#16a34a;padding:18px 20px;margin-bottom:20px">
+    <strong>How to order:</strong><br>
+    1. Select size &amp; quantity below and fill your details.<br>
+    2. Pay via UPI to <strong style="font-size:1.05em;letter-spacing:.02em">9425913924@ptyes</strong>
+       &nbsp;<button type="button" onclick="navigator.clipboard.writeText('9425913924@ptyes');this.textContent='Copied ✓';setTimeout(()=>this.textContent='Copy',2000)" style="font-size:.8rem;padding:2px 8px;border:1px solid #16a34a;border-radius:4px;background:#fff;cursor:pointer;color:#16a34a">Copy</button><br>
+    3. Enter your UPI transaction ID in the form and submit.<br>
+    4. We dispatch within 1–2 business days. You get tracking on WhatsApp.
+  </div>
+
+  <div style="background:#fff;border:1px solid var(--line);border-radius:10px;padding:16px 20px;max-width:340px;margin-bottom:24px">
+    <p style="margin:0 0 8px;font-weight:600">Pay via UPI</p>
+    <p style="margin:0 0 4px;font-size:1.1rem;font-weight:700;letter-spacing:.03em">9425913924@ptyes</p>
+    <p style="margin:0;font-size:.85rem;color:#5b6573">HRSU Indore Pvt. Ltd. &mdash; PhonePe / GPay / Paytm / BHIM</p>
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=upi%3A%2F%2Fpay%3Fpa%3D9425913924%40ptyes%26pn%3DHRSU%2520Indore%26cu%3DINR" alt="UPI QR code — 9425913924@ptyes" width="160" height="160" style="margin-top:12px;display:block;border-radius:6px">
+  </div>
+
   <div id="order-status" hidden></div>
   <form class="order" id="order-form" style="max-width:560px">
     <input type="hidden" name="product" value="Calcium Nitrate Fertilizer Grade">
@@ -230,7 +246,9 @@
     <input id="of-email" name="email" type="email" maxlength="100">
     <label for="of-address">Delivery address with PIN code</label>
     <textarea id="of-address" name="address" rows="3" required maxlength="500"></textarea>
-    <p style="margin-top:16px"><button class="btn" type="submit">Place Order</button></p>
+    <label for="of-upi-ref">UPI Transaction ID / Reference number</label>
+    <input id="of-upi-ref" name="upi_ref" type="text" required maxlength="50" placeholder="e.g. 402312345678">
+    <p style="margin-top:16px"><button class="btn" type="submit">Confirm Order</button></p>
   </form>
 
   <h2>Customer Reviews</h2>
@@ -262,7 +280,7 @@
   </form>
 
   <h2>Frequently Asked Questions</h2>
-  <details><summary>How do I pay without a card?</summary><p>Place your order using the form or WhatsApp. We confirm by phone within 1 business day, then you pay via UPI or bank transfer (NEFT/IMPS). Goods dispatch after payment confirmation.</p></details>
+  <details><summary>How do I pay?</summary><p>Pay directly via UPI to <strong>9425913924@ptyes</strong> (HRSU Indore Pvt. Ltd.) using PhonePe, Google Pay, Paytm, or BHIM. After payment, fill the order form above and enter your UPI transaction ID. We dispatch within 1–2 business days. No card or bank transfer needed.</p></details>
   <details><summary>What is the dosage for drip irrigation?</summary><p>Typical fertigation dose is 2–5 kg per acre per application depending on crop and stage. Zero residue means no drip emitter clogging. See the TDS or consult your agronomist.</p></details>
   <details><summary>Is a Certificate of Analysis provided?</summary><p>Yes — every batch ships with a CoA. TDS and SDS PDFs are linked above.</p></details>
   <details><summary>How fast is delivery in India?</summary><p>Dispatch in 1–2 business days, delivery in 2–8 days — 3–10 days door-to-door. Free delivery on orders ₹4,500 and above; ₹1,000 flat for orders below ₹4,500.</p></details>
@@ -273,6 +291,7 @@
   <div class="wrap" style="padding:0 0">
     <p><strong>HRSU Indore Pvt. Ltd.</strong> · 53, Industrial Area, Maksi, Madhya Pradesh 465106, India</p>
     <p><a href="mailto:contact@hrsuindore.com">contact@hrsuindore.com</a> · <a href="tel:+919425000484">+91 94250 00484</a></p>
+    <p style="margin-top:6px;font-size:.82rem;opacity:.75">GSTIN: 23AAAGCH4199C1ZP &nbsp;·&nbsp; All prices MRP incl. taxes (Indian Legal Metrology Act)</p>
     <p class="policy-links" style="margin-top:10px">
       <a href="/store/shipping-policy/">Shipping Policy</a>
       <a href="/store/returns-policy/">Returns Policy</a>

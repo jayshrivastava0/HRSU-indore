@@ -14,7 +14,8 @@ function waOrderLink(d) {
     '\nSize: ' + d.size + '\nQty (bags): ' + d.quantity +
     '\nName: ' + d.name + '\nPhone: ' + d.phone +
     (d.email ? '\nEmail: ' + d.email : '') +
-    (d.address ? '\nAddress: ' + d.address : '');
+    (d.address ? '\nAddress: ' + d.address : '') +
+    (d.upi_ref ? '\nUPI Ref: ' + d.upi_ref : '');
   return 'https://wa.me/919425000484?text=' + encodeURIComponent(msg);
 }
 
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
         // API down or Resend not configured — fall back to WhatsApp
         status.className = 'notice';
         status.innerHTML = 'Our order system is busy — tap below to place the same order on WhatsApp:<br><br><a class="btn btn-wa" target="_blank" rel="noopener" href="' + waOrderLink(d) + '">Order on WhatsApp →</a>';
-        btn.disabled = false; btn.textContent = 'Place Order';
+        btn.disabled = false; btn.textContent = 'Confirm Order';
       });
   });
 });
