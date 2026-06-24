@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "HRSU Indore Store API",
-    "version": "1.0.0",
-    "description": "REST API for the HRSU Indore online store. Browse the Calcium Nitrate product catalog and place orders. No payment gateway — orders are confirmed by phone within 1 business day, then paid via UPI or bank transfer.\n\nFor AI agents: also see the MCP server at POST /api/mcp (MCP Streamable HTTP 2025-03-26), which exposes higher-level tools including calculate_order_total.",
+    "version": "1.1.0",
+    "description": "REST API for the HRSU Indore online store. Browse the Calcium Nitrate product catalog and place orders. No payment gateway — orders are confirmed by phone within 1 business day, then paid via UPI or bank transfer.\n\n## For AI Agents\nAlso see the MCP server at `POST /api/mcp` (MCP Streamable HTTP 2025-03-26), which exposes higher-level tools including `calculate_order_total`. See `GET /api/mcp` for tool discovery.\n\n## Rate Limits\n- Browse endpoints (`GET /api/products`): **100 requests / hour** per IP\n- Order endpoint (`POST /api/order`): **10 requests / hour** per IP\n- MCP endpoint (`POST /api/mcp`): **60 requests / hour** per IP\n- Rate limit headers are included in every response (see `X-RateLimit-*` headers)\n- Exceeded limit returns HTTP **429** with `Retry-After` header\n\n## Authentication\nAll endpoints are **public** — no API key required. Rate limiting is enforced by IP address.\n\n## Recommended Agent Workflow\n1. `GET /api/products` → fetch current prices and inventory\n2. `POST /api/mcp` (calculate_order_total) → confirm total cost with customer\n3. `POST /api/order` → submit after customer confirms",
     "contact": {
       "name": "HRSU Indore Pvt. Ltd.",
       "email": "contact@hrsuindore.com",
@@ -12,6 +12,10 @@
     "license": {
       "name": "Proprietary",
       "url": "https://hrsuindore.com/store/terms/"
+    },
+    "x-logo": {
+      "url": "https://hrsuindore.com/Logo.png",
+      "altText": "HRSU Indore"
     }
   },
   "servers": [
@@ -20,12 +24,27 @@
       "description": "Production"
     }
   ],
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Browse the Calcium Nitrate product catalog — prices, specs, availability, documents"
+    },
+    {
+      "name": "Orders",
+      "description": "Place and manage orders. No payment at this step — HRSU confirms by phone, then collects via UPI/bank transfer."
+    },
+    {
+      "name": "MCP",
+      "description": "Model Context Protocol (MCP) Streamable HTTP interface for AI agents. Exposes higher-level tools: list_products, get_product, calculate_order_total, place_order, get_shipping_info, get_company_info."
+    }
+  ],
   "paths": {
     "/api/products": {
       "get": {
+        "tags": ["Products"],
         "operationId": "listProducts",
         "summary": "List all products",
-        "description": "Returns the complete product catalog including prices, specifications, shipping information, payment details, and company contact. Use `?sku=` to fetch a single product.",
+        "description": "Returns the complete product catalog including prices, specifications, shipping information, payment details, and company contact. Use `?sku=` to fetch a single product by SKU.",
         "parameters": [
           {
             "name": "sku",
@@ -41,6 +60,20 @@
         "responses": {
           "200": {
             "description": "Product catalog (or single product if ?sku= supplied)",
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Maximum requests allowed per hour",
+                "schema": { "type": "integer", "example": 100 }
+              },
+              "X-RateLimit-Remaining": {
+                "description": "Requests remaining in the current window",
+                "schema": { "type": "integer", "example": 95 }
+              },
+              "X-RateLimit-Reset": {
+                "description": "Unix timestamp when the rate limit window resets",
+                "schema": { "type": "integer", "example": 1750000000 }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": {
@@ -64,8 +97,35 @@
                           "size": "25 kg",
                           "price_inr": 750,
                           "availability": "in_stock"
+                        },
+                        {
+                          "sku": "HRSU-CN-50KG-001",
+                          "name": "Calcium Nitrate Fertilizer Grade — 50 kg Bag",
+                          "size": "50 kg",
+                          "price_inr": 1500,
+                          "availability": "in_stock"
                         }
                       ]
+                    }
+                  },
+                  "single_sku": {
+                    "summary": "Single product by SKU",
+                    "value": {
+                      "sku": "HRSU-CN-25KG-001",
+                      "name": "Calcium Nitrate Fertilizer Grade — 25 kg Bag",
+                      "size": "25 kg",
+                      "price_inr": 750,
+                      "price_per_kg_inr": 30,
+                      "currency": "INR",
+                      "availability": "in_stock",
+                      "specs": {
+                        "formula": "Ca(NO3)2",
+                        "calcium_ca": "18.5–19%",
+                        "nitrogen_n": "15.5%+",
+                        "water_solubility": "100%",
+                        "ph_1pct_solution": "5.5–6.5",
+                        "form": "Crystalline powder"
+                      }
                     }
                   }
                 }
@@ -76,18 +136,22 @@
             "description": "SKU not found",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+                "example": { "error": "SKU not found: HRSU-CN-99KG-999" }
               }
             }
-          }
+          },
+          "429": { "$ref": "#/components/responses/TooManyRequests" },
+          "500": { "$ref": "#/components/responses/InternalError" }
         }
       }
     },
     "/api/order": {
       "post": {
+        "tags": ["Orders"],
         "operationId": "placeOrder",
         "summary": "Place an order",
-        "description": "Submit an order for Calcium Nitrate. No payment is taken at this step.\n\n**Flow after submission:**\n1. HRSU calls or WhatsApps the customer within 1 business day to confirm\n2. Customer pays via UPI or NEFT/IMPS bank transfer\n3. HRSU dispatches with tracking after payment\n\n**For AI agents:** call `GET /api/products` first to get current prices and confirm the order total with the customer before submitting. Alternatively, use the MCP server (`POST /api/mcp`) which provides a `calculate_order_total` tool.",
+        "description": "Submit an order for Calcium Nitrate. **No payment is taken at this step.**\n\n**Order flow:**\n1. Submit order via this endpoint\n2. HRSU calls or WhatsApps the customer within 1 business day to confirm\n3. Customer pays via UPI or NEFT/IMPS bank transfer\n4. HRSU dispatches with tracking after payment received\n\n**For AI agents:** Always call `GET /api/products` first to get current prices, then confirm the total with the customer before submitting. Use `POST /api/mcp` with `calculate_order_total` for accurate totals including shipping.",
         "requestBody": {
           "required": true,
           "content": {
@@ -95,7 +159,7 @@
               "schema": { "$ref": "#/components/schemas/OrderRequest" },
               "examples": {
                 "retail_25kg": {
-                  "summary": "6 bags of 25 kg (free shipping)",
+                  "summary": "6 bags of 25 kg (qualifies for free shipping)",
                   "value": {
                     "product": "Calcium Nitrate Fertilizer Grade",
                     "size": "25 kg (₹750)",
@@ -116,6 +180,18 @@
                     "phone": "9876543210",
                     "address": "Plot 12, Sector 5, Indore, MP 452001"
                   }
+                },
+                "bulk_export": {
+                  "summary": "Bulk / export inquiry",
+                  "value": {
+                    "product": "Calcium Nitrate Fertilizer Grade",
+                    "size": "50 kg (₹1500)",
+                    "quantity": 400,
+                    "name": "David Chen",
+                    "phone": "+6591234567",
+                    "email": "procurement@agroco.sg",
+                    "address": "10 Tuas South Avenue 14, Singapore 637237"
+                  }
                 }
               }
             }
@@ -123,7 +199,19 @@
         },
         "responses": {
           "200": {
-            "description": "Order recorded successfully",
+            "description": "Order recorded successfully. HRSU will contact the customer within 1 business day.",
+            "headers": {
+              "X-RateLimit-Limit": {
+                "description": "Maximum order requests allowed per hour",
+                "schema": { "type": "integer", "example": 10 }
+              },
+              "X-RateLimit-Remaining": {
+                "schema": { "type": "integer" }
+              },
+              "X-RateLimit-Reset": {
+                "schema": { "type": "integer" }
+              }
+            },
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/OrderResponse" },
@@ -139,15 +227,28 @@
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/ErrorResponse" },
-                "example": { "error": "Invalid field: phone" }
+                "examples": {
+                  "missing_phone": {
+                    "value": { "error": "Invalid field: phone" }
+                  },
+                  "missing_address": {
+                    "value": { "error": "Missing required field: address" }
+                  },
+                  "invalid_quantity": {
+                    "value": { "error": "quantity must be between 1 and 500" }
+                  }
+                }
               }
             }
           },
+          "429": { "$ref": "#/components/responses/TooManyRequests" },
+          "500": { "$ref": "#/components/responses/InternalError" },
           "503": {
-            "description": "Email system not configured — fall back to WhatsApp ordering at https://wa.me/919425000484",
+            "description": "Email system temporarily unavailable. Fall back to WhatsApp ordering at https://wa.me/919425000484",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorResponse" }
+                "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+                "example": { "error": "Service temporarily unavailable. Please use WhatsApp: +919425000484" }
               }
             }
           }
@@ -156,24 +257,27 @@
     },
     "/api/mcp": {
       "get": {
+        "tags": ["MCP"],
         "operationId": "mcpDiscovery",
         "summary": "MCP server discovery",
-        "description": "Returns MCP server metadata, available tools, and connection instructions. The MCP server implements the MCP Streamable HTTP transport (spec 2025-03-26).",
+        "description": "Returns MCP server metadata, available tools, and connection instructions. Use this to discover what tools the MCP server exposes before connecting.\n\n**Available MCP tools:**\n- `list_products` — full catalog with prices and specs\n- `get_product` — single product by SKU\n- `get_shipping_info` — shipping rates and delivery timelines\n- `get_company_info` — company details, contact, bank info\n- `calculate_order_total` — accurate total including shipping\n- `place_order` — submit order (requires customer confirmation first)",
         "responses": {
           "200": {
-            "description": "Server info",
+            "description": "MCP server metadata and tool list",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/McpServerInfo" }
               }
             }
-          }
+          },
+          "429": { "$ref": "#/components/responses/TooManyRequests" }
         }
       },
       "post": {
+        "tags": ["MCP"],
         "operationId": "mcpRequest",
         "summary": "MCP Streamable HTTP endpoint",
-        "description": "Accepts JSON-RPC 2.0 messages (single or batch array). Implements the MCP Streamable HTTP transport (spec 2025-03-26).\n\n**Available tools:** list_products, get_product, get_shipping_info, get_company_info, calculate_order_total, place_order\n\nSend an `initialize` request first, then `tools/list` to discover tools.",
+        "description": "Accepts JSON-RPC 2.0 messages (single or batch array). Implements the MCP Streamable HTTP transport (spec 2025-03-26).\n\n**Connection sequence:**\n1. Send `initialize` request\n2. Send `tools/list` to discover available tools\n3. Call tools with `tools/call`\n\n**Rate limit:** 60 requests/hour per IP",
         "requestBody": {
           "required": true,
           "content": {
@@ -184,13 +288,13 @@
                   {
                     "type": "array",
                     "items": { "$ref": "#/components/schemas/JsonRpcRequest" },
-                    "description": "Batch request"
+                    "description": "Batch of JSON-RPC 2.0 requests"
                   }
                 ]
               },
               "examples": {
                 "initialize": {
-                  "summary": "Initialize session",
+                  "summary": "1. Initialize session",
                   "value": {
                     "jsonrpc": "2.0",
                     "id": 1,
@@ -203,7 +307,7 @@
                   }
                 },
                 "tools_list": {
-                  "summary": "List available tools",
+                  "summary": "2. List available tools",
                   "value": {
                     "jsonrpc": "2.0",
                     "id": 2,
@@ -211,7 +315,7 @@
                   }
                 },
                 "list_products": {
-                  "summary": "Call list_products tool",
+                  "summary": "3a. Call list_products tool",
                   "value": {
                     "jsonrpc": "2.0",
                     "id": 3,
@@ -223,7 +327,7 @@
                   }
                 },
                 "calculate_total": {
-                  "summary": "Calculate order total",
+                  "summary": "3b. Calculate order total (incl. shipping)",
                   "value": {
                     "jsonrpc": "2.0",
                     "id": 4,
@@ -233,6 +337,18 @@
                       "arguments": { "sku": "HRSU-CN-25KG-001", "quantity": 6 }
                     }
                   }
+                },
+                "get_company": {
+                  "summary": "3c. Get company contact and bank details",
+                  "value": {
+                    "jsonrpc": "2.0",
+                    "id": 5,
+                    "method": "tools/call",
+                    "params": {
+                      "name": "get_company_info",
+                      "arguments": {}
+                    }
+                  }
                 }
               }
             }
@@ -240,7 +356,7 @@
         },
         "responses": {
           "200": {
-            "description": "JSON-RPC response",
+            "description": "JSON-RPC 2.0 response object",
             "content": {
               "application/json": {
                 "schema": { "$ref": "#/components/schemas/JsonRpcResponse" }
@@ -248,175 +364,315 @@
             }
           },
           "204": {
-            "description": "Notification received (no response body)"
-          }
+            "description": "Notification accepted (no response body for notifications)"
+          },
+          "429": { "$ref": "#/components/responses/TooManyRequests" },
+          "500": { "$ref": "#/components/responses/InternalError" }
         }
       }
     }
   },
   "components": {
+    "responses": {
+      "TooManyRequests": {
+        "description": "Rate limit exceeded. Check the `Retry-After` header for how many seconds to wait before retrying.",
+        "headers": {
+          "Retry-After": {
+            "description": "Seconds to wait before retrying",
+            "schema": { "type": "integer", "example": 60 }
+          },
+          "X-RateLimit-Limit": {
+            "schema": { "type": "integer" }
+          },
+          "X-RateLimit-Remaining": {
+            "schema": { "type": "integer", "example": 0 }
+          },
+          "X-RateLimit-Reset": {
+            "schema": { "type": "integer" }
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+            "example": { "error": "Rate limit exceeded. Try again in 60 seconds." }
+          }
+        }
+      },
+      "InternalError": {
+        "description": "Internal server error. If persistent, contact contact@hrsuindore.com or use WhatsApp +919425000484.",
+        "content": {
+          "application/json": {
+            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+            "example": { "error": "Internal server error" }
+          }
+        }
+      }
+    },
     "schemas": {
       "Product": {
         "type": "object",
+        "description": "A single Calcium Nitrate product variant",
         "properties": {
-          "sku": { "type": "string", "example": "HRSU-CN-25KG-001" },
-          "name": { "type": "string", "example": "Calcium Nitrate Fertilizer Grade — 25 kg Bag" },
-          "product_group_name": { "type": "string" },
-          "size": { "type": "string", "example": "25 kg" },
-          "size_select_value": { "type": "string", "example": "25 kg (₹750)", "description": "Value to pass in the 'size' field when placing an order" },
-          "price_inr": { "type": "number", "example": 750 },
-          "price_per_kg_inr": { "type": "number", "example": 30 },
-          "currency": { "type": "string", "example": "INR" },
-          "availability": { "type": "string", "enum": ["in_stock", "out_of_stock"], "example": "in_stock" },
-          "url": { "type": "string", "format": "uri" },
-          "image": { "type": "string", "format": "uri" },
-          "brand": { "type": "string", "example": "HRSU Indore" },
+          "sku": {
+            "type": "string",
+            "description": "Unique product identifier",
+            "example": "HRSU-CN-25KG-001"
+          },
+          "name": {
+            "type": "string",
+            "description": "Full product name",
+            "example": "Calcium Nitrate Fertilizer Grade — 25 kg Bag"
+          },
+          "product_group_name": {
+            "type": "string",
+            "description": "Parent product group name",
+            "example": "Calcium Nitrate — Fertilizer Grade"
+          },
+          "size": {
+            "type": "string",
+            "description": "Bag weight",
+            "example": "25 kg"
+          },
+          "size_select_value": {
+            "type": "string",
+            "description": "Exact value to pass in the 'size' field when placing an order via POST /api/order",
+            "example": "25 kg (₹750)"
+          },
+          "price_inr": {
+            "type": "number",
+            "description": "Price in Indian Rupees (INR), MRP inclusive of all taxes",
+            "example": 750
+          },
+          "price_per_kg_inr": {
+            "type": "number",
+            "description": "Per-kg price for cost comparison",
+            "example": 30
+          },
+          "currency": {
+            "type": "string",
+            "enum": ["INR"],
+            "example": "INR"
+          },
+          "availability": {
+            "type": "string",
+            "enum": ["in_stock", "out_of_stock"],
+            "description": "Current stock status",
+            "example": "in_stock"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "Product page URL",
+            "example": "https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/"
+          },
+          "image": {
+            "type": "string",
+            "format": "uri",
+            "description": "Product image URL",
+            "example": "https://hrsuindore.com/images/calcium-nitrate-granules.jpg"
+          },
+          "brand": {
+            "type": "string",
+            "example": "HRSU Indore"
+          },
           "specs": {
             "type": "object",
+            "description": "Technical specifications",
             "properties": {
-              "formula": { "type": "string" },
-              "form": { "type": "string" },
-              "purity": { "type": "string" },
-              "calcium_ca": { "type": "string" },
-              "nitrogen_n": { "type": "string" },
-              "water_solubility": { "type": "string" },
-              "ph_1pct_solution": { "type": "string" },
-              "origin": { "type": "string" }
+              "formula": { "type": "string", "description": "Chemical formula", "example": "Ca(NO3)2" },
+              "form": { "type": "string", "description": "Physical form", "example": "Crystalline powder" },
+              "purity": { "type": "string", "example": "Technical grade" },
+              "calcium_ca": { "type": "string", "description": "Calcium content by weight", "example": "18.5–19%" },
+              "nitrogen_n": { "type": "string", "description": "Nitrogen content by weight", "example": "15.5%+" },
+              "water_solubility": { "type": "string", "description": "Solubility in water", "example": "100%" },
+              "ph_1pct_solution": { "type": "string", "description": "pH of 1% aqueous solution", "example": "5.5–6.5" },
+              "origin": { "type": "string", "description": "Country of manufacture", "example": "India" }
             }
           },
-          "applications": { "type": "array", "items": { "type": "string" } },
+          "applications": {
+            "type": "array",
+            "description": "Common use cases and industries",
+            "items": { "type": "string" },
+            "example": ["Drip irrigation", "Hydroponics", "Fertigation", "Concrete acceleration", "Wastewater treatment"]
+          },
           "documents": {
             "type": "object",
+            "description": "Technical documentation PDFs",
             "properties": {
-              "tds": { "type": "string", "format": "uri" },
-              "sds": { "type": "string", "format": "uri" }
+              "tds": { "type": "string", "format": "uri", "description": "Technical Data Sheet", "example": "https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf" },
+              "sds": { "type": "string", "format": "uri", "description": "Safety Data Sheet (MSDS)", "example": "https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf" }
             }
           },
-          "tax_note": { "type": "string" }
+          "tax_note": {
+            "type": "string",
+            "description": "Tax inclusion note for display",
+            "example": "MRP inclusive of all taxes (Indian Legal Metrology Act)"
+          }
         }
       },
       "ShippingIndia": {
         "type": "object",
+        "description": "Domestic India shipping details",
         "properties": {
-          "free_threshold_inr": { "type": "number", "example": 4500 },
-          "free_threshold_note": { "type": "string" },
-          "flat_rate_inr": { "type": "number", "example": 1000 },
-          "total_display": { "type": "string", "example": "3–10 business days" },
-          "coverage": { "type": "string", "example": "Anywhere in India" }
+          "free_threshold_inr": { "type": "number", "description": "Order value above which shipping is free", "example": 4500 },
+          "free_threshold_note": { "type": "string", "description": "Human-readable free shipping condition", "example": "Free on orders ₹4,500+ (6+ bags of 25 kg or 3+ bags of 50 kg)" },
+          "flat_rate_inr": { "type": "number", "description": "Flat shipping fee for orders below threshold", "example": 1000 },
+          "total_display": { "type": "string", "description": "Total estimated delivery time", "example": "3–10 business days" },
+          "coverage": { "type": "string", "description": "Geographic coverage", "example": "Anywhere in India" }
         }
       },
       "CatalogResponse": {
         "type": "object",
+        "description": "Full product catalog response",
         "properties": {
-          "store": { "type": "string" },
-          "store_url": { "type": "string", "format": "uri" },
-          "currency": { "type": "string" },
+          "store": { "type": "string", "example": "HRSU Indore Online Store" },
+          "store_url": { "type": "string", "format": "uri", "example": "https://hrsuindore.com/store/" },
+          "currency": { "type": "string", "example": "INR" },
           "tax_note": { "type": "string" },
-          "products": { "type": "array", "items": { "$ref": "#/components/schemas/Product" } },
+          "products": {
+            "type": "array",
+            "items": { "$ref": "#/components/schemas/Product" }
+          },
           "shipping": {
             "type": "object",
             "properties": {
               "india": { "$ref": "#/components/schemas/ShippingIndia" }
             }
           },
-          "last_updated": { "type": "string", "format": "date" }
+          "last_updated": {
+            "type": "string",
+            "format": "date",
+            "description": "Date when the catalog was last updated",
+            "example": "2026-06-25"
+          }
         }
       },
       "OrderRequest": {
         "type": "object",
         "required": ["product", "size", "quantity", "name", "phone", "address"],
+        "description": "Order submission payload",
         "properties": {
           "product": {
             "type": "string",
-            "description": "Product name",
+            "description": "Product name — must match catalog",
             "example": "Calcium Nitrate Fertilizer Grade"
           },
           "size": {
             "type": "string",
             "enum": ["25 kg (₹750)", "50 kg (₹1500)"],
-            "description": "Bag size — must match exactly"
+            "description": "Bag size — must match exactly (use size_select_value from catalog)"
           },
           "quantity": {
             "type": "integer",
             "minimum": 1,
             "maximum": 500,
-            "description": "Number of bags"
+            "description": "Number of bags to order"
           },
           "name": {
             "type": "string",
             "maxLength": 100,
-            "description": "Customer full name"
+            "description": "Customer full name",
+            "example": "Arjun Singh"
           },
           "phone": {
             "type": "string",
             "pattern": "^[0-9+\\-\\s]{10,15}$",
-            "description": "Phone number. WhatsApp preferred.",
+            "description": "Phone number with country code. WhatsApp-capable number preferred for order confirmations.",
             "example": "+919876543210"
           },
           "email": {
             "type": "string",
             "format": "email",
-            "description": "Email address (optional)"
+            "description": "Email address (optional but recommended for order confirmation)",
+            "example": "customer@example.com"
           },
           "address": {
             "type": "string",
             "maxLength": 500,
-            "description": "Full delivery address including PIN code"
+            "description": "Full delivery address including PIN code / postal code",
+            "example": "Khasra 45, Village Pipaliya, Khandwa, Madhya Pradesh 450001, India"
           }
         }
       },
       "OrderResponse": {
         "type": "object",
+        "description": "Successful order submission response",
         "properties": {
-          "ok": { "type": "boolean", "example": true },
-          "ref": { "type": "string", "description": "Order reference number", "example": "HRSU-M8X3K1" }
+          "ok": {
+            "type": "boolean",
+            "description": "Always true on success",
+            "example": true
+          },
+          "ref": {
+            "type": "string",
+            "description": "Order reference number. Share this with the customer for tracking.",
+            "example": "HRSU-M8X3K1"
+          }
         }
       },
       "ErrorResponse": {
         "type": "object",
+        "description": "Standard error response",
         "properties": {
-          "error": { "type": "string" }
+          "error": {
+            "type": "string",
+            "description": "Human-readable error message"
+          }
         }
       },
       "JsonRpcRequest": {
         "type": "object",
         "required": ["jsonrpc", "method"],
+        "description": "JSON-RPC 2.0 request object",
         "properties": {
-          "jsonrpc": { "type": "string", "enum": ["2.0"] },
-          "id": { "type": ["integer", "string", "null"] },
-          "method": { "type": "string" },
-          "params": { "type": "object" }
+          "jsonrpc": { "type": "string", "enum": ["2.0"], "description": "Must be exactly '2.0'" },
+          "id": {
+            "type": ["integer", "string", "null"],
+            "description": "Request ID. Omit for notifications (fire-and-forget). Must be unique within a batch."
+          },
+          "method": {
+            "type": "string",
+            "description": "RPC method name",
+            "example": "tools/call"
+          },
+          "params": {
+            "type": "object",
+            "description": "Method parameters"
+          }
         }
       },
       "JsonRpcResponse": {
         "type": "object",
+        "description": "JSON-RPC 2.0 response object",
         "properties": {
           "jsonrpc": { "type": "string", "enum": ["2.0"] },
-          "id": { "type": ["integer", "string", "null"] },
-          "result": { "type": "object" },
+          "id": { "type": ["integer", "string", "null"], "description": "Mirrors the request ID" },
+          "result": { "type": "object", "description": "Success result (present when no error)" },
           "error": {
             "type": "object",
+            "description": "Error object (present when request failed)",
             "properties": {
-              "code": { "type": "integer" },
-              "message": { "type": "string" }
+              "code": { "type": "integer", "description": "JSON-RPC error code" },
+              "message": { "type": "string", "description": "Human-readable error description" }
             }
           }
         }
       },
       "McpServerInfo": {
         "type": "object",
+        "description": "MCP server metadata and available tools",
         "properties": {
-          "name": { "type": "string" },
-          "version": { "type": "string" },
-          "protocol": { "type": "string" },
-          "protocol_version": { "type": "string" },
+          "name": { "type": "string", "example": "hrsu-store" },
+          "version": { "type": "string", "example": "1.0.0" },
+          "protocol": { "type": "string", "example": "MCP Streamable HTTP" },
+          "protocol_version": { "type": "string", "example": "2025-03-26" },
           "tools": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "name": { "type": "string" },
-                "description": { "type": "string" }
+                "name": { "type": "string", "example": "list_products" },
+                "description": { "type": "string", "example": "Returns the full Calcium Nitrate product catalog" }
               }
             }
           }

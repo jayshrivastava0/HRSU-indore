@@ -127,6 +127,48 @@
       {"@type": "ListItem","position": 3,"name": "Specifications","item": "https://hrsuindore.com/#specs"},
       {"@type": "ListItem","position": 4,"name": "Contact","item": "https://hrsuindore.com/#contact"}
     ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": "https://hrsuindore.com/#api",
+    "name": "HRSU Indore Store API",
+    "description": "REST API and MCP server for programmatic access to the HRSU Indore Calcium Nitrate catalog. Browse products, calculate order totals, and place orders. Public access, no API key required.",
+    "url": "https://hrsuindore.com/api/docs/",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "INR" },
+    "featureList": [
+      "Browse Calcium Nitrate product catalog",
+      "Real-time price and availability",
+      "Order calculation including shipping",
+      "Order placement via REST and MCP",
+      "MCP Streamable HTTP (2025-03-26) compatible",
+      "Claude, Cursor, and AI agent compatible"
+    ],
+    "documentationUrl": "https://hrsuindore.com/api/docs/",
+    "provider": { "@type": "Organization", "name": "HRSU Indore Pvt. Ltd.", "@id": "https://hrsuindore.com/#organization" }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "DataCatalog",
+    "@id": "https://hrsuindore.com/#datacatalog",
+    "name": "HRSU Indore Product Data Catalog",
+    "description": "Machine-readable catalog of Calcium Nitrate products manufactured by HRSU Indore. Includes technical specifications, pricing, availability, and shipping information.",
+    "url": "https://hrsuindore.com/api/products",
+    "keywords": ["calcium nitrate", "fertilizer", "chemical", "API", "product catalog"],
+    "license": "https://hrsuindore.com/store/terms/",
+    "creator": { "@type": "Organization", "name": "HRSU Indore Pvt. Ltd.", "@id": "https://hrsuindore.com/#organization" },
+    "dataset": [
+      {
+        "@type": "Dataset",
+        "name": "Calcium Nitrate Product Catalog",
+        "description": "Product variants, prices, specs, availability, and shipping rates",
+        "url": "https://hrsuindore.com/api/products",
+        "encodingFormat": "application/json",
+        "license": "https://hrsuindore.com/store/terms/"
+      }
+    ]
   }
 ]
 </script>

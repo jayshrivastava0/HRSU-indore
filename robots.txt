@@ -134,8 +134,10 @@ Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # ── AI / Agent resource discovery ──────────────────────────
 # Human-readable AI guide:    https://hrsuindore.com/llms.txt
+# AI agent guidelines:        https://hrsuindore.com/ai-guidelines.txt
 # Machine-readable catalog:   https://hrsuindore.com/api/products
 # REST API (OpenAPI 3.1):     https://hrsuindore.com/openapi.json
+# API docs (human + AI):      https://hrsuindore.com/api/docs/
 # MCP server (2025-03-26):    https://hrsuindore.com/api/mcp
 # OpenAI-format tools:        https://hrsuindore.com/api/tools
 # Anthropic-format tools:     https://hrsuindore.com/api/tools?format=anthropic
