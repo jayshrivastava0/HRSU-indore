@@ -117,4 +117,29 @@
     <priority>0.3</priority>
   </url>
 
+  <url>
+    <loc>https://hrsuindore.com/learn/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/learn/calcium-nitrate-drip-irrigation/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/learn/powder-vs-granular-calcium-nitrate/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/learn/bulk-calcium-nitrate-export-india/</loc>
+    <lastmod>2026-07-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
 </urlset>
