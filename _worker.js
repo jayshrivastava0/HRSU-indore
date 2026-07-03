@@ -29,38 +29,46 @@ function makeCtx(request, env, ctx, params = {}) {
 
 export default {
   async fetch(request, env, ctx) {
-    const url = new URL(request.url);
-    const { pathname, method } = url;
+    try {
+      const url = new URL(request.url);
+      const { pathname, method } = url;
 
-    // API routes
-    if (pathname === '/api/products') return handleProducts(makeCtx(request, env, ctx));
-    if (pathname === '/api/mcp')      return handleMcp(makeCtx(request, env, ctx));
-    if (pathname === '/api/tools')    return handleTools(makeCtx(request, env, ctx));
+      // API routes
+      if (pathname === '/api/products') return handleProducts(makeCtx(request, env, ctx));
+      if (pathname === '/api/mcp')      return handleMcp(makeCtx(request, env, ctx));
+      if (pathname === '/api/tools')    return handleTools(makeCtx(request, env, ctx));
 
-    if (pathname === '/api/order') {
-      if (method === 'OPTIONS') return handleOrderOptions();
-      if (method === 'POST')    return handleOrderPost(makeCtx(request, env, ctx));
-      return new Response('Method Not Allowed', { status: 405 });
+      if (pathname === '/api/order') {
+        if (method === 'OPTIONS') return handleOrderOptions();
+        if (method === 'POST')    return handleOrderPost(makeCtx(request, env, ctx));
+        return new Response('Method Not Allowed', { status: 405 });
+      }
+
+      if (pathname === '/api/reviews') {
+        if (method === 'GET')  return handleReviewsGet(makeCtx(request, env, ctx));
+        if (method === 'POST') return handleReviewsPost(makeCtx(request, env, ctx));
+        return new Response('Method Not Allowed', { status: 405 });
+      }
+
+      // Store routes — review injection via HTMLRewriter
+      if (pathname.startsWith('/store/')) {
+        const pathParts = pathname.replace(/^\/store\//, '').replace(/\/$/, '').split('/').filter(Boolean);
+        return handleStore(makeCtx(request, env, ctx, { path: pathParts }));
+      }
+
+      // Root — handle Accept: text/markdown for AI crawlers (middleware checks this)
+      if (pathname === '/' || pathname === '/index.html') {
+        return handleMiddleware(makeCtx(request, env, ctx));
+      }
+
+      // Everything else: serve from static assets
+      if (!env.ASSETS) {
+        return new Response('Internal Server Error: ASSETS not configured', { status: 500 });
+      }
+      return env.ASSETS.fetch(request);
+    } catch (error) {
+      console.error('Worker error:', error);
+      return new Response(`Internal Server Error: ${error.message}`, { status: 500 });
     }
-
-    if (pathname === '/api/reviews') {
-      if (method === 'GET')  return handleReviewsGet(makeCtx(request, env, ctx));
-      if (method === 'POST') return handleReviewsPost(makeCtx(request, env, ctx));
-      return new Response('Method Not Allowed', { status: 405 });
-    }
-
-    // Store routes — review injection via HTMLRewriter
-    if (pathname.startsWith('/store/')) {
-      const pathParts = pathname.replace(/^\/store\//, '').replace(/\/$/, '').split('/').filter(Boolean);
-      return handleStore(makeCtx(request, env, ctx, { path: pathParts }));
-    }
-
-    // Root — handle Accept: text/markdown for AI crawlers (middleware checks this)
-    if (pathname === '/' || pathname === '/index.html') {
-      return handleMiddleware(makeCtx(request, env, ctx));
-    }
-
-    // Everything else: serve from static assets
-    return env.ASSETS.fetch(request);
   },
 };
