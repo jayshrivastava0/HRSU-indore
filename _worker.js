@@ -63,9 +63,16 @@ export default {
 
       // Everything else: serve from static assets
       if (!env.ASSETS) {
+        console.error('ASSETS binding not available');
         return new Response('Internal Server Error: ASSETS not configured', { status: 500 });
       }
-      return env.ASSETS.fetch(request);
+      try {
+        const response = await env.ASSETS.fetch(request);
+        return response;
+      } catch (assetError) {
+        console.error('ASSETS fetch error:', assetError);
+        return new Response(`Internal Server Error: ${assetError.message}`, { status: 500 });
+      }
     } catch (error) {
       console.error('Worker error:', error);
       return new Response(`Internal Server Error: ${error.message}`, { status: 500 });
