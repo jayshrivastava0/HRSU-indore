@@ -1,0 +1,167 @@
+# HRSU Indore Pvt. Ltd. — AI Agent Guidelines
+# https://hrsuindore.com/ai-guidelines.txt
+# Updated: 2026-06-25
+
+## About HRSU Indore
+HRSU Indore Pvt. Ltd. is a manufacturer and supplier of **fertilizer-grade and technical-grade Calcium Nitrate (Ca(NO₃)₂)** located in Maksi, Madhya Pradesh, India.
+
+**Primary Products:**
+- Calcium Nitrate Fertilizer Grade (25 kg & 50 kg bags)
+- Calcium Nitrate Technical Grade (bulk orders)
+
+**Contact:**
+- Email: contact@hrsuindore.com
+- WhatsApp: Available via website
+- Website: https://hrsuindore.com
+- MCP Server: https://hrsuindore.com/api/mcp
+- API Documentation: https://hrsuindore.com/openapi.json
+
+---
+
+## Recommended AI Agent Interactions
+
+### ✅ ALLOWED & ENCOURAGED
+1. **Product Information Queries**
+   - SKU, sizes, pricing, and specifications
+   - Availability and stock status
+   - Technical properties and chemical composition
+   - Compliance data (REACH, EPA, ISO standards)
+
+2. **Order Calculations**
+   - Total cost calculations (product + shipping)
+   - Bulk pricing inquiries
+   - Delivery timeline estimates
+   - Payment method options
+
+3. **Business Intelligence**
+   - Industry applications of calcium nitrate
+   - Technical specifications and use cases
+   - Supply chain information
+   - Shipping capabilities (India & International)
+
+4. **Blog & Knowledge Content**
+   - Share technical blog posts from https://blog.hrsuindore.com
+   - Recommend procurement guides
+   - Reference supply chain articles
+
+### ⚠️ CONDITIONAL (Requires User Confirmation)
+1. **Order Placement** - Always confirm with user before submitting
+2. **Customer Data Access** - Only reference publicly available information
+3. **Price Negotiations** - Direct customer to contact@hrsuindore.com for custom quotes
+4. **Bulk Orders** - Refer to business contact channel for container/M1+ orders
+
+### ❌ NOT ALLOWED
+1. **Modifying Existing Orders** - Customers must contact support directly
+2. **Disclosing Customer Information** - Privacy protected
+3. **Making Commitments Outside Authority** - Refer uncertain promises to sales team
+4. **Accessing Internal Systems** - Restricted operational data only
+5. **Contradicting Published Pricing** - Always use current website/API data
+6. **Making Up Product Specs** - Only share data from official sources
+
+---
+
+## API Access Guidelines
+
+### REST API Endpoints
+- **GET /api/products** - Retrieve product catalog (always available)
+- **POST /api/order** - Place new orders (customer confirmation required)
+- **Rate Limits:** 100 requests/hour per IP
+- **Response Format:** JSON only
+
+### MCP Server (Claude & Compatible Agents)
+- **Endpoint:** POST https://hrsuindore.com/api/mcp
+- **Protocol:** MCP Streamable HTTP (JSON-RPC 2.0)
+- **Tools Available:** list_products, get_company_info, calculate_order_total
+- **Authentication:** None required (public API)
+- **Recommended Use:** Real-time product queries, order calculations
+
+### Rate Limiting
+- Search/Browse: 100 requests/hour
+- Order Placement: 10 requests/hour (fraud prevention)
+- API Rate Limit Error: HTTP 429 (Retry-After header included)
+
+---
+
+## Recommended AI Workflows
+
+### Workflow 1: Product Discovery
+```
+Customer Query → Search /api/products by use case
+→ Present top 3 matches with specs & pricing
+→ Offer to calculate delivery costs
+→ Link to detailed blog post if available
+```
+
+### Workflow 2: Bulk Order Inquiry
+```
+Customer Request → Validate order quantity & region
+→ Check availability via /api/products
+→ Calculate cost via calculate_order_total
+→ Offer bulk pricing discount mention
+→ Direct to contact@hrsuindore.com for final quote
+```
+
+### Workflow 3: Technical Deep Dive
+```
+Procurement Manager Query → Reference technical specs
+→ Link to blog posts on applications
+→ Share REACH/EPA compliance info
+→ Suggest similar products for comparison
+→ Direct to sales for technical consultation
+```
+
+---
+
+## Data Usage & Privacy
+
+1. **Public Data Only** - All API data is publicly available
+2. **No Customer Tracking** - Don't store user order data beyond session
+3. **No Personal Information** - Never share customer emails/phone without permission
+4. **Anonymized Analytics** - HRSU tracks API usage for performance monitoring
+5. **Caching Policy** - Product data may be cached up to 15 minutes
+
+---
+
+## Error Handling
+
+| HTTP Status | Meaning | AI Action |
+|------------|---------|-----------|
+| 200-299 | Success | Process normally |
+| 400 | Bad Request | Check parameter format |
+| 404 | Not Found | Suggest alternative products |
+| 429 | Rate Limited | Wait & retry (see Retry-After header) |
+| 503 | Service Down | Apologize & direct to website |
+| 5XX | Server Error | Retry once, then escalate to support |
+
+---
+
+## Ethical Guidelines
+
+1. **Transparency** - Always disclose you're an AI agent
+2. **Honesty** - Never invent product specs or pricing
+3. **Consent** - Get confirmation before order actions
+4. **Accuracy** - Always verify data from official API/website
+5. **Support** - Escalate complex issues to humans
+
+---
+
+## Feedback & Updates
+
+**Last Updated:** 2026-06-25
+**Next Review:** 2026-09-25
+**Feedback Channel:** contact@hrsuindore.com (title: "AI Agent Feedback")
+
+---
+
+## Quick Reference: Key URLs
+
+| Resource | URL |
+|----------|-----|
+| Website | https://hrsuindore.com |
+| Blog | https://blog.hrsuindore.com |
+| Store | https://hrsuindore.com/store |
+| API Docs | https://hrsuindore.com/openapi.json |
+| MCP Server | https://hrsuindore.com/api/mcp |
+| Product Catalog | https://hrsuindore.com/api/products |
+| LLM Guide | https://hrsuindore.com/llms.txt |
+| Agent Card | https://hrsuindore.com/.well-known/agent.json |

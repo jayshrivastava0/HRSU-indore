@@ -1,0 +1,150 @@
+# ═══════════════════════════════════════════════════════════
+# robots.txt — HRSU Indore Pvt. Ltd.
+# https://hrsuindore.com
+# Updated: 2026-05-16
+# Policy: All crawlers and AI bots fully allowed, including PDFs
+# ═══════════════════════════════════════════════════════════
+
+# ── Default: allow all ─────────────────────────────────────
+User-agent: *
+Allow: /
+Crawl-delay: 1
+
+# ── Google ─────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Storebot-Google
+Allow: /
+
+# Google AI (Gemini / AI Overviews / Google-Extended)
+User-agent: Google-Extended
+Allow: /
+
+# ── Bing / Microsoft ───────────────────────────────────────
+User-agent: bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: BingPreview
+Allow: /
+
+# Microsoft Copilot / Bing AI
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: msnbot
+Allow: /
+
+# ── OpenAI / ChatGPT ───────────────────────────────────────
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# ── Anthropic / Claude ─────────────────────────────────────
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+# ── Perplexity ─────────────────────────────────────────────
+User-agent: PerplexityBot
+Allow: /
+
+# ── Meta / Llama ───────────────────────────────────────────
+User-agent: FacebookBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+# ── Apple ──────────────────────────────────────────────────
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ── Cohere ─────────────────────────────────────────────────
+User-agent: cohere-ai
+Allow: /
+
+# ── Bytedance / TikTok ─────────────────────────────────────
+User-agent: Bytespider
+Allow: /
+
+# ── Amazon / Alexa ─────────────────────────────────────────
+User-agent: ia_archiver
+Allow: /
+
+# ── DuckDuckGo ─────────────────────────────────────────────
+User-agent: DuckDuckBot
+Allow: /
+
+# ── Yandex ─────────────────────────────────────────────────
+User-agent: YandexBot
+Allow: /
+
+# ── Baidu ──────────────────────────────────────────────────
+User-agent: Baiduspider
+Allow: /
+
+# ── Common SEO audit tools ─────────────────────────────────
+User-agent: AhrefsBot
+Allow: /
+
+User-agent: SemrushBot
+Allow: /
+
+User-agent: DotBot
+Allow: /
+
+User-agent: MJ12bot
+Allow: /
+
+User-agent: Screaming Frog SEO Spider
+Allow: /
+
+# ── Archive / research ─────────────────────────────────────
+User-agent: archive.org_bot
+Allow: /
+
+User-agent: Wget
+Allow: /
+
+# ── Explicitly allow PDFs (for all bots) ───────────────────
+Allow: /calcium-nitrate-tds-hrsu.pdf
+Allow: /calcium-nitrate-sds-hrsu.pdf
+
+# ── Content Signals (ai usage preferences) ────────────────
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
+# ── AI / Agent resource discovery ──────────────────────────
+# Human-readable AI guide:    https://hrsuindore.com/llms.txt
+# AI agent guidelines:        https://hrsuindore.com/ai-guidelines.txt
+# Machine-readable catalog:   https://hrsuindore.com/api/products
+# REST API (OpenAPI 3.1):     https://hrsuindore.com/openapi.json
+# API docs (human + AI):      https://hrsuindore.com/api/docs/
+# MCP server (2025-03-26):    https://hrsuindore.com/api/mcp
+# OpenAI-format tools:        https://hrsuindore.com/api/tools
+# Anthropic-format tools:     https://hrsuindore.com/api/tools?format=anthropic
+# Cohere-format tools:        https://hrsuindore.com/api/tools?format=cohere
+# Google A2A Agent Card:      https://hrsuindore.com/.well-known/agent.json
+# ChatGPT plugin manifest:    https://hrsuindore.com/.well-known/ai-plugin.json
+# Agent skills:               https://hrsuindore.com/.well-known/agent-skills/index.json
+
+# ── Sitemap ────────────────────────────────────────────────
+Sitemap: https://hrsuindore.com/sitemap.xml
