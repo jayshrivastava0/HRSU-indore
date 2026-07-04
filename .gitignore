@@ -8,5 +8,5 @@
 # local settings
 settings.local.json
 
-# superpowers agent working docs (specs/plans) - internal only, never publish
-docs/superpowers/
+# internal working docs (audits, specs, plans, fix notes) - never publish
+docs/
