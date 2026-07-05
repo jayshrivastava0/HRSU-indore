@@ -19,14 +19,14 @@ export async function onRequest(context) {
     });
   }
 
-  // Read sitemap.xml straight from the assets binding rather than an HTTP
-  // subrequest back to our own zone, which is unreliable from inside a Worker.
+  // A plain self-fetch back to hrsuindore.com deadlocks (522) because this Worker
+  // *is* the zone's origin. Read sitemap.xml via the assets binding instead.
   const sitemapRes = await env.ASSETS.fetch(new Request(`https://${HOST}/sitemap.xml`));
   const sitemapXml = await sitemapRes.text();
 
   if (!sitemapRes.ok) {
     return new Response(JSON.stringify({
-      error: 'Failed to read sitemap.xml from assets',
+      error: 'Failed to fetch sitemap.xml',
       status: sitemapRes.status,
       preview: sitemapXml.slice(0, 300),
     }), {
