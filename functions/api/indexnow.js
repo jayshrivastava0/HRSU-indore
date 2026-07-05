@@ -10,7 +10,7 @@ const HOST = 'hrsuindore.com';
 const KEY_LOCATION = `https://${HOST}/${INDEXNOW_KEY}.txt`;
 
 export async function onRequest(context) {
-  const { request } = context;
+  const { request, env } = context;
 
   if (request.method !== 'GET' && request.method !== 'POST') {
     return new Response(JSON.stringify({ error: 'GET or POST only' }), {
@@ -19,14 +19,31 @@ export async function onRequest(context) {
     });
   }
 
-  const sitemapRes = await fetch(`https://${HOST}/sitemap.xml`);
+  // Read sitemap.xml straight from the assets binding rather than an HTTP
+  // subrequest back to our own zone, which is unreliable from inside a Worker.
+  const sitemapRes = await env.ASSETS.fetch(new Request(`https://${HOST}/sitemap.xml`));
   const sitemapXml = await sitemapRes.text();
+
+  if (!sitemapRes.ok) {
+    return new Response(JSON.stringify({
+      error: 'Failed to read sitemap.xml from assets',
+      status: sitemapRes.status,
+      preview: sitemapXml.slice(0, 300),
+    }), {
+      status: 502,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
+
   const urls = [...sitemapXml.matchAll(/<loc>(.*?)<\/loc>/g)]
     .map(m => m[1])
     .filter(u => u.startsWith(`https://${HOST}/`)); // on-domain only — excludes blog.hrsuindore.com
 
   if (!urls.length) {
-    return new Response(JSON.stringify({ error: 'No on-domain URLs found in sitemap.xml' }), {
+    return new Response(JSON.stringify({
+      error: 'No on-domain URLs found in sitemap.xml',
+      preview: sitemapXml.slice(0, 300),
+    }), {
       status: 502,
       headers: { 'Content-Type': 'application/json' },
     });
