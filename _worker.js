@@ -12,6 +12,7 @@ import { onRequest as handleProducts } from './functions/api/products.js';
 import { onRequestOptions as handleOrderOptions, onRequestPost as handleOrderPost } from './functions/api/order.js';
 import { onRequest as handleMcp } from './functions/api/mcp.js';
 import { onRequest as handleTools } from './functions/api/tools.js';
+import { onRequest as handleIndexNow } from './functions/api/indexnow.js';
 import { onRequestGet as handleReviewsGet, onRequestPost as handleReviewsPost } from './functions/api/reviews.js';
 import { onRequest as handleStore } from './functions/store/[[path]].js';
 
@@ -37,6 +38,7 @@ export default {
       if (pathname === '/api/products') return handleProducts(makeCtx(request, env, ctx));
       if (pathname === '/api/mcp')      return handleMcp(makeCtx(request, env, ctx));
       if (pathname === '/api/tools')    return handleTools(makeCtx(request, env, ctx));
+      if (pathname === '/api/indexnow') return handleIndexNow(makeCtx(request, env, ctx));
 
       if (pathname === '/api/order') {
         if (method === 'OPTIONS') return handleOrderOptions();
