@@ -1,0 +1,61 @@
+/* Blog hub filter + pagination controls — /learn/'s learn.css covers everything else
+   (header, footer, .lrn-* classes) that /blog/ pages reuse as-is. */
+
+.blg-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.blg-filter-btn {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #0a192f;
+  border-radius: 999px;
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.blg-filter-btn.is-active {
+  background: #0a192f;
+  color: #fff;
+  border-color: #0a192f;
+}
+
+.blg-hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  margin: 1.5rem 0;
+}
+
+.blg-card {
+  display: block;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 1.25rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.blg-card-cat {
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
+.blg-card h3 {
+  margin: 0.4rem 0;
+  font-size: 1.05rem;
+}
+
+.blg-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 2rem 0;
+  font-size: 0.9rem;
+}

@@ -134,6 +134,34 @@ Returns an order reference (HRSU-XXXXXX) and next steps for the customer.`,
       required: ['name', 'phone', 'size', 'quantity', 'address'],
     },
   },
+  {
+    name: 'list_blog_posts',
+    description: 'List HRSU Indore blog posts — technical guides and market insights on calcium nitrate. Optionally filter by category. Call this to discover what content exists before get_blog_post.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        category: {
+          type: 'string',
+          description: 'Optional category filter, e.g. "mining", "wastewater_treatment", "agriculture_fertilizer". Omit to list all posts.',
+        },
+      },
+      required: [],
+    },
+  },
+  {
+    name: 'get_blog_post',
+    description: 'Get the full content and metadata for one blog post by its URL. Use list_blog_posts first to find the URL.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        url: {
+          type: 'string',
+          description: 'Full post URL, e.g. https://hrsuindore.com/blog/<slug>/',
+        },
+      },
+      required: ['url'],
+    },
+  },
 ];
 
 // ── Tool implementations ─────────────────────────────────────────────────────
@@ -185,6 +213,37 @@ function tool_get_shipping_info() {
 
 function tool_get_company_info() {
   return { content: [{ type: 'text', text: JSON.stringify(COMPANY, null, 2) }] };
+}
+
+async function tool_list_blog_posts({ category }, env) {
+  const res = await env.ASSETS.fetch(new Request('https://hrsuindore.com/blog/posts-index.json'));
+  if (!res.ok) {
+    return { content: [{ type: 'text', text: 'Blog index unavailable.' }], isError: true };
+  }
+  const posts = await res.json();
+  const filtered = category ? posts.filter(p => p.category === category) : posts;
+  return {
+    content: [{
+      type: 'text',
+      text: JSON.stringify({
+        count: filtered.length,
+        posts: filtered.map(p => ({ title: p.title, url: p.url, category: p.category, published: p.published, excerpt: p.excerpt })),
+        blog_hub: 'https://hrsuindore.com/blog/',
+      }, null, 2),
+    }],
+  };
+}
+
+async function tool_get_blog_post({ url }, env) {
+  if (!url || !url.startsWith('https://hrsuindore.com/blog/')) {
+    return { content: [{ type: 'text', text: 'url must be a https://hrsuindore.com/blog/... URL.' }], isError: true };
+  }
+  const pageRes = await env.ASSETS.fetch(new Request(url));
+  if (!pageRes.ok) {
+    return { content: [{ type: 'text', text: `Post not found: ${url}` }], isError: true };
+  }
+  const html = await pageRes.text();
+  return { content: [{ type: 'text', text: html }] };
 }
 
 function tool_calculate_order_total({ sku, quantity }) {
@@ -380,6 +439,8 @@ Never place_order without explicit customer confirmation of the total.`,
           case 'get_company_info':        result = tool_get_company_info(); break;
           case 'calculate_order_total':   result = tool_calculate_order_total(args); break;
           case 'place_order':             result = await tool_place_order(args, env); break;
+          case 'list_blog_posts':         result = await tool_list_blog_posts(args, env); break;
+          case 'get_blog_post':           result = await tool_get_blog_post(args, env); break;
           default:
             return fail(-32601, `Unknown tool: ${name}`);
         }

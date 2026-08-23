@@ -145,10 +145,19 @@ Practical, manufacturer-written guides on using and sourcing calcium nitrate:
 - Calcium Nitrate Price in India (2026) — per-kg, bag and bulk/export rates: https://hrsuindore.com/learn/calcium-nitrate-price-india/
 - Knowledge Base hub: https://hrsuindore.com/learn/
 
+## Blog
+
+Technical guides and market insights on calcium nitrate for procurement, mining, agriculture,
+construction and wastewater treatment professionals:
+
+- Blog hub (full post directory): https://hrsuindore.com/blog/
+- Machine-readable post index: https://hrsuindore.com/blog/posts-index.json
+- MCP tools: `list_blog_posts`, `get_blog_post` (see MCP Server section above)
+
 ## Contact
 
 - Email: contact@hrsuindore.com
 - Phone & WhatsApp: +91 94250 00484 | https://wa.me/919425000484
 - Address: 53, Industrial Area, Maksi, Madhya Pradesh 465106, India
 - Website: https://hrsuindore.com
-- Blog: https://blog.hrsuindore.com/
+- Blog: https://hrsuindore.com/blog/ (full post directory: https://hrsuindore.com/blog/posts-index.json)

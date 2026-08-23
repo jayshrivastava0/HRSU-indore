@@ -49,7 +49,7 @@ Mundra Port. FOB / CIF on request. T/T or LC at sight. Lead time 7–14 days.
 - **Email:** contact@hrsuindore.com
 - **Phone / WhatsApp:** +91 94250 00484
 - **Factory:** 53, Industrial Area, Maksi, Madhya Pradesh 465106, India
-- **Blog:** [blog.hrsuindore.com](https://blog.hrsuindore.com/)
+- **Blog:** [hrsuindore.com/blog](https://hrsuindore.com/blog/) — technical guides & market insights, full directory at /blog/posts-index.json
 `;
 
 export async function onRequest(context) {

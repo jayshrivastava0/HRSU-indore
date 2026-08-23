@@ -14,4 +14,3 @@
 /shop               /store/                                   301
 /contact            /#contact                                 301
 /learn/calcium-nitrate  /learn/                               301
-/blog/*             https://blog.hrsuindore.com/:splat        301
