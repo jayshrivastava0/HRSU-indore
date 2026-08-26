@@ -42,6 +42,19 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(function (res) {
         if (!res.ok) throw new Error(res.j.error || 'failed');
         dataLayer.push({ event: 'purchase_intent', value: Number(d.quantity || 1), currency: 'INR' });
+        // qualify_lead: business-domain email or an above-sample quantity is
+        // the best available proxy for procurement (not casual) intent —
+        // see the lead-signal diagnostic for why this needed a definition.
+        var FREE_EMAIL_DOMAINS = ['gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com', 'icloud.com', 'rediffmail.com'];
+        var emailDomain = (d.email || '').split('@')[1] || '';
+        var isBusinessEmail = emailDomain && FREE_EMAIL_DOMAINS.indexOf(emailDomain.toLowerCase()) === -1;
+        var isBulkQuantity = Number(d.quantity || 1) > 1;
+        if (typeof gtag === 'function' && (isBusinessEmail || isBulkQuantity)) {
+          gtag('event', 'qualify_lead', {
+            qualify_reason: isBusinessEmail ? 'business_email' : 'bulk_quantity',
+            quantity: Number(d.quantity || 1)
+          });
+        }
         window.location.href = '/store/thank-you/';
       })
       .catch(function () {
