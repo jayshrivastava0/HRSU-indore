@@ -57,20 +57,27 @@
 
   var attribution = captureAttribution();
 
-  // Tag every static WhatsApp/mailto CTA on the page with the current page's
-  // title so a raw inquiry self-identifies its source in the very first
-  // message — the only way to attribute a lead that messages directly
-  // instead of using the order form. Links that already carry a custom
-  // message (e.g. the order-form WhatsApp fallback) are left untouched.
+  // Tag every static WhatsApp/mailto CTA with the current page AND the
+  // ORIGINAL landing source (from stored attribution, not the live URL —
+  // internal navigation drops query params, so reading location.href here
+  // would silently lose the source the moment someone browses past the page
+  // they first landed on). This is the only way to answer "where did this
+  // lead actually come from" for an inquiry that skips the order form
+  // entirely — the answer ends up sitting in the email/WhatsApp message
+  // itself. Links that already carry a custom message (e.g. the order-form
+  // WhatsApp fallback) are left untouched.
   document.querySelectorAll('a[href^="https://wa.me/"], a[href^="mailto:"]').forEach(function (a) {
     var href = a.getAttribute('href');
     if (/[?&]text=|[?&]body=/.test(href)) return;
     var pageRef = (document.title || location.pathname).slice(0, 80);
+    var sourceLine = attribution
+      ? 'Source: ' + attribution.source + '/' + attribution.medium +
+        (attribution.campaign ? ' (campaign: ' + attribution.campaign + ')' : '') +
+        ' — landed on: ' + attribution.landing_page
+      : 'Source: unknown';
     var isMailto = href.indexOf('mailto:') === 0;
     var param = isMailto ? 'body' : 'text';
-    var msg = isMailto
-      ? 'Hi, I have a question about: ' + pageRef
-      : 'Hi, I have a question about: ' + pageRef + ' (' + location.href + ')';
+    var msg = 'Hi, I have a question about: ' + pageRef + '\n\n[' + sourceLine + ']';
     var sep = href.indexOf('?') === -1 ? '?' : '&';
     a.setAttribute('href', href + sep + param + '=' + encodeURIComponent(msg));
   });
