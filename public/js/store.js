@@ -15,7 +15,8 @@ function waOrderLink(d) {
     '\nName: ' + d.name + '\nPhone: ' + d.phone +
     (d.email ? '\nEmail: ' + d.email : '') +
     (d.address ? '\nAddress: ' + d.address : '') +
-    (d.upi_ref ? '\nUPI Ref: ' + d.upi_ref : '');
+    (d.upi_ref ? '\nUPI Ref: ' + d.upi_ref : '') +
+    (d.lead_source ? '\nSource: ' + d.lead_source + (d.lead_medium ? '/' + d.lead_medium : '') : '');
   return 'https://wa.me/919425000484?text=' + encodeURIComponent(msg);
 }
 
@@ -25,6 +26,19 @@ document.addEventListener('DOMContentLoaded', function () {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var d = Object.fromEntries(new FormData(form).entries());
+    // Thread through the first-touch attribution captured by tracking.js on
+    // landing — this is the only record of "which post/channel" led here,
+    // since most orders confirm and pay over UPI/WhatsApp with no further
+    // site interaction for GA4 to observe.
+    try {
+      var attribution = JSON.parse(localStorage.getItem('hrsu_attribution') || 'null');
+      if (attribution) {
+        d.lead_source = attribution.source || '';
+        d.lead_medium = attribution.medium || '';
+        d.lead_campaign = attribution.campaign || '';
+        d.landing_page = attribution.landing_page || '';
+      }
+    } catch (e) { /* best-effort */ }
     var status = document.getElementById('order-status');
     var btn = form.querySelector('button[type=submit]');
     btn.disabled = true; btn.textContent = 'Placing order…';

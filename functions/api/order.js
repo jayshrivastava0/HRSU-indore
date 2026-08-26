@@ -59,6 +59,8 @@ export async function onRequestPost(context) {
       <tr><th>Email</th><td>${esc(d.email || '—')}</td></tr>
       <tr><th>Address</th><td>${esc(d.address)}</td></tr>
       <tr><th>UPI Transaction ID</th><td><strong>${esc(d.upi_ref)}</strong></td></tr>
+      <tr><th>Lead source</th><td>${esc(d.lead_source || 'unknown')}${d.lead_medium ? ' / ' + esc(d.lead_medium) : ''}</td></tr>
+      <tr><th>Landing page</th><td>${esc(d.landing_page || '—')}</td></tr>
     </table>
     <p><strong>Payment received via UPI — verify transaction ${esc(d.upi_ref)} before dispatching.</strong></p>`;
 

@@ -12,6 +12,69 @@
     if (typeof gtag === 'function') gtag('event', name, params || {});
   }
 
+  // ── Attribution capture ──────────────────────────────────────────────────
+  // GA4 only sees what happens on-site. A lot of real orders close over
+  // email/UPI/WhatsApp with zero further site interaction, so "which post
+  // produced this lead" has to be captured HERE, at landing, and carried
+  // forward — GA4 can't reconstruct it after the fact. First-touch, 30-day
+  // window, first-party localStorage only (no cookie banner needed).
+  var ATTR_KEY = 'hrsu_attribution';
+  var ATTR_MAX_AGE_MS = 30 * 24 * 60 * 60 * 1000;
+
+  function captureAttribution() {
+    try {
+      var existing = JSON.parse(localStorage.getItem(ATTR_KEY) || 'null');
+      if (existing && (Date.now() - existing.captured_at) < ATTR_MAX_AGE_MS) return existing;
+
+      var params = new URLSearchParams(location.search);
+      var source = params.get('utm_source') || '';
+      var medium = params.get('utm_medium') || '';
+      var campaign = params.get('utm_campaign') || '';
+
+      if (!source && document.referrer) {
+        var refHost = '';
+        try { refHost = new URL(document.referrer).hostname.replace(/^www\./, ''); } catch (e) {}
+        if (/(^|\.)facebook\.com$/.test(refHost)) { source = 'facebook'; medium = medium || 'referral'; }
+        else if (/(^|\.)linkedin\.com$/.test(refHost)) { source = 'linkedin'; medium = medium || 'referral'; }
+        else if (/(^|\.)google\./.test(refHost)) { source = 'google'; medium = medium || 'organic'; }
+        else if (/(^|\.)bing\.com$/.test(refHost)) { source = 'bing'; medium = medium || 'organic'; }
+        else if (/blog\.hrsuindore\.com$/.test(refHost)) { source = 'legacy-blog'; medium = medium || 'referral'; }
+        else if (refHost) { source = refHost; medium = medium || 'referral'; }
+      }
+      if (!source) { source = '(direct)'; medium = medium || '(none)'; }
+
+      var attribution = {
+        source: source, medium: medium, campaign: campaign,
+        landing_page: location.pathname, landing_title: document.title,
+        captured_at: Date.now()
+      };
+      localStorage.setItem(ATTR_KEY, JSON.stringify(attribution));
+      return attribution;
+    } catch (e) {
+      return null; // localStorage unavailable (private mode etc.) — best-effort only
+    }
+  }
+
+  var attribution = captureAttribution();
+
+  // Tag every static WhatsApp/mailto CTA on the page with the current page's
+  // title so a raw inquiry self-identifies its source in the very first
+  // message — the only way to attribute a lead that messages directly
+  // instead of using the order form. Links that already carry a custom
+  // message (e.g. the order-form WhatsApp fallback) are left untouched.
+  document.querySelectorAll('a[href^="https://wa.me/"], a[href^="mailto:"]').forEach(function (a) {
+    var href = a.getAttribute('href');
+    if (/[?&]text=|[?&]body=/.test(href)) return;
+    var pageRef = (document.title || location.pathname).slice(0, 80);
+    var isMailto = href.indexOf('mailto:') === 0;
+    var param = isMailto ? 'body' : 'text';
+    var msg = isMailto
+      ? 'Hi, I have a question about: ' + pageRef
+      : 'Hi, I have a question about: ' + pageRef + ' (' + location.href + ')';
+    var sep = href.indexOf('?') === -1 ? '?' : '&';
+    a.setAttribute('href', href + sep + param + '=' + encodeURIComponent(msg));
+  });
+
   // technical_dwell — fires once a visitor has spent 30s of *visible* time on
   // the page (paused while the tab is hidden/backgrounded), the strongest
   // single signal that a real reader, not a crawler, is here.
