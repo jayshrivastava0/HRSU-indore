@@ -15,6 +15,15 @@ import { onRequest as handleTools } from './functions/api/tools.js';
 import { onRequest as handleIndexNow } from './functions/api/indexnow.js';
 import { onRequestGet as handleReviewsGet, onRequestPost as handleReviewsPost } from './functions/api/reviews.js';
 import { onRequest as handleStore } from './functions/store/[[path]].js';
+import blogRedirectMap from './blog_redirect_map.json';
+
+// Old blog.hrsuindore.com (Blogger) permalinks -> new on-site /blog/<slug>/ paths.
+// Built once from ./blog_redirect_map.json so a request path like
+// "/2026/08/betonbeschleuniger-reducing-cold.html" (the part after the
+// blog.hrsuindore.com host) 301s to the migrated page instead of 404ing.
+const BLOG_REDIRECTS = new Map(
+  blogRedirectMap.map(({ old_url, new_path }) => [new URL(old_url).pathname, new_path])
+);
 
 function makeCtx(request, env, ctx, params = {}) {
   return {
@@ -33,6 +42,12 @@ export default {
     try {
       const url = new URL(request.url);
       const { pathname, method } = url;
+
+      // Old blog.hrsuindore.com (Blogger) posts — 301 to the migrated page.
+      // Only fires if DNS for that host is ever routed to this Worker; harmless otherwise.
+      if (url.hostname === 'blog.hrsuindore.com' && BLOG_REDIRECTS.has(pathname)) {
+        return Response.redirect(`https://hrsuindore.com${BLOG_REDIRECTS.get(pathname)}`, 301);
+      }
 
       // API routes
       if (pathname === '/api/products') return handleProducts(makeCtx(request, env, ctx));
