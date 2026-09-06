@@ -10,6 +10,7 @@
 import { onRequest as handleMiddleware } from './functions/_middleware.js';
 import { onRequest as handleProducts } from './functions/api/products.js';
 import { onRequestOptions as handleOrderOptions, onRequestPost as handleOrderPost } from './functions/api/order.js';
+import { onRequestOptions as handleQuoteOptions, onRequestPost as handleQuotePost } from './functions/api/quote.js';
 import { onRequest as handleMcp } from './functions/api/mcp.js';
 import { onRequest as handleTools } from './functions/api/tools.js';
 import { onRequest as handleIndexNow } from './functions/api/indexnow.js';
@@ -58,6 +59,12 @@ export default {
       if (pathname === '/api/order') {
         if (method === 'OPTIONS') return handleOrderOptions();
         if (method === 'POST')    return handleOrderPost(makeCtx(request, env, ctx));
+        return new Response('Method Not Allowed', { status: 405 });
+      }
+
+      if (pathname === '/api/quote') {
+        if (method === 'OPTIONS') return handleQuoteOptions();
+        if (method === 'POST')    return handleQuotePost(makeCtx(request, env, ctx));
         return new Response('Method Not Allowed', { status: 405 });
       }
 

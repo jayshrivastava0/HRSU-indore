@@ -191,6 +191,7 @@
         <a class="btn" href="#order">Place Order ↓</a>
         <a class="btn btn-wa" style="margin-left:8px" target="_blank" rel="noopener" href="https://wa.me/919425000484?text=Hello%20HRSU%20Indore%2C%20I%20want%20to%20order%20Calcium%20Nitrate%20Fertilizer%20Grade.">Order on WhatsApp</a>
       </p>
+      <p style="margin-top:10px;font-size:.92rem">Ordering outside India, or need container quantities? <a href="#export-quote"><strong>Request an export quote →</strong></a></p>
       <p style="margin-top:14px;font-size:.9rem">
         <a href="/calcium-nitrate-tds-hrsu.pdf">Technical Data Sheet (TDS)</a> ·
         <a href="/calcium-nitrate-sds-hrsu.pdf">Safety Data Sheet (SDS)</a>
@@ -214,7 +215,37 @@
   <h2>Applications</h2>
   <p>Drip irrigation and fertigation (no emitter clogging), foliar spray for blossom-end-rot and tip-burn prevention, hydroponics Part-A formulations, and soil application for calcium-deficient crops — tomato, capsicum, banana, grapes, pomegranate, apple, leafy greens.</p>
 
-  <h2 id="order">Place Your Order</h2>
+  <h2 id="export-quote">Export &amp; Bulk Orders (FCL / LCL)</h2>
+  <p>For container-scale quantities (1 MT and above), we quote ex-factory or FOB/CIF pricing individually based on destination, Incoterm, and payment terms (bank wire or LC) — the ₹750/₹1,500 retail bag pricing above is for domestic India orders only. Typical lead time from confirmed order is 2–4 weeks depending on destination port.</p>
+  <div id="quote-status" hidden></div>
+  <form class="order" id="quote-form" style="max-width:560px">
+    <input type="hidden" name="product" value="Calcium Nitrate Fertilizer Grade — Export/Bulk">
+    <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label for="qf-company">Company name</label>
+    <input id="qf-company" name="company" type="text" required maxlength="150">
+    <label for="qf-country">Destination country</label>
+    <input id="qf-country" name="country" type="text" required maxlength="80">
+    <label for="qf-name">Contact name</label>
+    <input id="qf-name" name="name" type="text" required maxlength="100">
+    <label for="qf-email">Business email</label>
+    <input id="qf-email" name="email" type="email" required maxlength="150">
+    <label for="qf-phone">Phone (optional, incl. country code)</label>
+    <input id="qf-phone" name="phone" type="tel" maxlength="20">
+    <label for="qf-qty">Quantity required</label>
+    <input id="qf-qty" name="quantity" type="text" required maxlength="100" placeholder="e.g. 1 x 20ft FCL (~20 MT)">
+    <label for="qf-incoterm">Preferred Incoterm</label>
+    <select id="qf-incoterm" name="incoterm">
+      <option value="">No preference / advise</option>
+      <option value="EXW">EXW — Ex Works</option>
+      <option value="FOB">FOB — Free on Board</option>
+      <option value="CIF">CIF — Cost, Insurance &amp; Freight</option>
+    </select>
+    <label for="qf-message">Additional details (optional)</label>
+    <textarea id="qf-message" name="message" rows="3" maxlength="800"></textarea>
+    <p style="margin-top:16px"><button class="btn" type="submit">Request Quote</button></p>
+  </form>
+
+  <h2 id="order">Place Your Order (India, retail bags)</h2>
 
   <div class="notice" style="background:#f0fdf4;border-color:#16a34a;padding:18px 20px;margin-bottom:20px">
     <strong>How to order:</strong><br>
@@ -289,7 +320,7 @@
   <details><summary>What is the dosage for drip irrigation?</summary><p>Typical fertigation dose is 2–5 kg per acre per application depending on crop and stage. Zero residue means no drip emitter clogging. See the TDS or consult your agronomist.</p></details>
   <details><summary>Is a Certificate of Analysis provided?</summary><p>Yes — every batch ships with a CoA. TDS and SDS PDFs are linked above.</p></details>
   <details><summary>How fast is delivery in India?</summary><p>Dispatch in 1–2 business days, delivery in 2–8 days — 3–10 days door-to-door. Free delivery on orders ₹4,500 and above; ₹1,000 flat for orders below ₹4,500.</p></details>
-  <details><summary>Can I order in bulk (1 MT+)?</summary><p>Yes — email contact@hrsuindore.com or call +91 94250 00484 for ex-factory bulk and export pricing.</p></details>
+  <details><summary>Can I order in bulk or export (1 MT+)?</summary><p>Yes — use the <a href="#export-quote">export/bulk quote form</a> above with your destination country and quantity, or email contact@hrsuindore.com. We quote ex-factory, FOB, or CIF pricing individually and accept payment by bank wire or LC (the UPI checkout is for domestic India retail bags only).</p></details>
 </main>
 
 <footer class="store-footer">

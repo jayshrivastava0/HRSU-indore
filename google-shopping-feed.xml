@@ -7,8 +7,9 @@
   Spec: https://support.google.com/merchants/answer/7052112
 
   Shipping policy (matches Merchant Center exactly):
-    India      → ₹1,000 flat | 3–10 days
-    All others → flat ₹10,000 | 21–30 days
+    India only — ₹1,000 flat | 3–10 days. Bags are not sold/shipped
+    internationally as single units; export is container-scale (FCL/LCL),
+    quoted individually via /store/calcium-nitrate-fertilizer-grade/#export-quote.
   Return policy: Defective products only (configured at account level in GMC)
   ═══════════════════════════════════════════════════════════════════
 -->
@@ -70,23 +71,6 @@
       </g:shipping>
 
       <!-- International: flat ₹10,000 — all 17 export countries, 21–30 days -->
-      <g:shipping><g:country>AU</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>US</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>GB</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>AE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>SA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>DE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>CA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>MY</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>PH</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>NZ</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>BH</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>OM</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>BR</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>ZA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>KE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>UG</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>IE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
 
       <!-- ── Tax: MRP is inclusive of all taxes per Indian Legal Metrology Act ── -->
 
@@ -144,23 +128,6 @@
       </g:shipping>
 
       <!-- International: flat ₹10,000 -->
-      <g:shipping><g:country>AU</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>US</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>GB</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>AE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>SA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>DE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>CA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>MY</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>PH</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>NZ</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>BH</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>OM</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>BR</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>ZA</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>KE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>UG</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
-      <g:shipping><g:country>IE</g:country><g:service>International B2B Export (21–30 days)</g:service><g:price>10000.00 INR</g:price><g:min_handling_time>1</g:min_handling_time><g:max_handling_time>3</g:max_handling_time><g:min_transit_time>21</g:min_transit_time><g:max_transit_time>30</g:max_transit_time></g:shipping>
 
       <!-- ── Tax: MRP is inclusive of all taxes per Indian Legal Metrology Act ── -->
 

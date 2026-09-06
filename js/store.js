@@ -80,6 +80,49 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// Export/bulk quote form — POST to /api/quote (no UPI; wire/LC, individually quoted)
+document.addEventListener('DOMContentLoaded', function () {
+  var qform = document.getElementById('quote-form');
+  if (!qform) return;
+  qform.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var d = Object.fromEntries(new FormData(qform).entries());
+    try {
+      var attribution = JSON.parse(localStorage.getItem('hrsu_attribution') || 'null');
+      if (attribution) {
+        d.lead_source = attribution.source || '';
+        d.lead_medium = attribution.medium || '';
+        d.landing_page = attribution.landing_page || '';
+      }
+    } catch (e) { /* best-effort */ }
+    var status = document.getElementById('quote-status');
+    var btn = qform.querySelector('button[type=submit]');
+    btn.disabled = true; btn.textContent = 'Sending…';
+
+    fetch('/api/quote', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(d)
+    }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+      .then(function (res) {
+        if (!res.ok) throw new Error(res.j.error || 'failed');
+        if (typeof gtag === 'function') {
+          gtag('event', 'qualify_lead', { qualify_reason: 'export_rfq', quantity: d.quantity });
+        }
+        qform.hidden = true;
+        status.hidden = false;
+        status.className = 'notice ok';
+        status.textContent = "Thank you — we'll email a quote (price, MOQ, lead time, payment terms) within 1 business day.";
+      })
+      .catch(function () {
+        status.hidden = false;
+        status.className = 'notice err';
+        status.innerHTML = 'Could not send your request right now. Please email <a href="mailto:contact@hrsuindore.com">contact@hrsuindore.com</a> directly with your quantity and destination country.';
+        btn.disabled = false; btn.textContent = 'Request Quote';
+      });
+  });
+});
+
 // Review form — POST to /api/reviews, goes to moderation queue
 document.addEventListener('DOMContentLoaded', function () {
   var rform = document.getElementById('review-form');
