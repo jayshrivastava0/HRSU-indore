@@ -42,7 +42,8 @@ export default {
   async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
-      const { pathname, method } = url;
+      const { pathname } = url;
+      const { method } = request; // NOT url — URL objects have no .method
 
       // Old blog.hrsuindore.com (Blogger) posts — 301 to the migrated page.
       // Only fires if DNS for that host is ever routed to this Worker; harmless otherwise.
