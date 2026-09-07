@@ -52,7 +52,7 @@ function applyReplacements(file, replacements) {
 applyReplacements('store/calcium-nitrate-fertilizer-grade/index.html', [
   {
     label: 'title tag',
-    find: `<title>Calcium Nitrate Fertilizer Grade 25kg ₹750 / 50kg ₹1500 | Buy Online — HRSU Indore</title>`,
+    find: `<title>Calcium Nitrate Fertilizer Grade 25kg ₹750 / 50kg ₹1,500 | Buy Online — HRSU Indore</title>`,
     replace: `<title>Calcium Nitrate Fertilizer Grade 25kg ${fmtRupee(p25.price)} / 50kg ${fmtRupee(p50.price)} | Buy Online — HRSU Indore</title>`,
   },
   {
@@ -120,7 +120,7 @@ applyReplacements('store/calcium-nitrate-fertilizer-grade/index.html', [
   },
   {
     label: 'order form 50kg option',
-    find: `<option value="50 kg (₹1500)">50 kg — ₹1,500</option>`,
+    find: `<option value="50 kg (₹1,500)">50 kg — ₹1,500</option>`,
     replace: `<option value="50 kg (${fmtRupee(p50.price)})">50 kg — ${fmtRupee(p50.price)}</option>`,
   },
   {

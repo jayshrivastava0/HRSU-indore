@@ -3,8 +3,8 @@
   "currency": "INR",
   "priceValidUntil": "2026-12-31",
   "products": {
-    "HRSU-CN-25KG-001": { "size": "25 kg", "sizeShort": "25kg", "price": 750.00 },
-    "HRSU-CN-50KG-001": { "size": "50 kg", "sizeShort": "50kg", "price": 1500.00 }
+    "HRSU-CN-25KG-001": { "size": "25 kg", "sizeShort": "25kg", "price": 785.00 },
+    "HRSU-CN-50KG-001": { "size": "50 kg", "sizeShort": "50kg", "price": 1535.00 }
   },
   "shipping": {
     "indiaFlatRate": 1000.00,
