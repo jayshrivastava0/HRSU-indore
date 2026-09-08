@@ -1,0 +1,9 @@
+{
+  "prices": {
+    "HRSU-CN-25KG-001": 750,
+    "HRSU-CN-50KG-001": 1500
+  },
+  "priceValidUntil": "2026-12-31",
+  "indiaFlatRate": 1000,
+  "freeShippingThreshold": 4500
+}
