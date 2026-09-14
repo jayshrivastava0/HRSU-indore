@@ -4,6 +4,7 @@
 # Hallucinated/mistyped URLs from AI referrals — catch likely LLM-invented paths
 # and route them to a real page instead of a 404. Review Cloudflare analytics
 # periodically for real AI-referred 404s and extend this list.
+/products          /store/calcium-nitrate-fertilizer-grade/  301
 /products/*        /store/calcium-nitrate-fertilizer-grade/  301
 /product/*         /store/calcium-nitrate-fertilizer-grade/  301
 /calcium-nitrate    /store/calcium-nitrate-fertilizer-grade/  301

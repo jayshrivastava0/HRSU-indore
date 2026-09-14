@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API Documentation — HRSU Indore</title>
+<meta name="description" content="REST API and MCP server documentation for the HRSU Indore Calcium Nitrate store. Browse products, calculate order totals, and place orders programmatically.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://hrsuindore.com/api/docs/">
+<link rel="icon" type="image/png" href="/Logo.png">
+<meta name="theme-color" content="#0a192f">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "HRSU Indore API Documentation",
+  "description": "REST API and MCP server documentation for the HRSU Indore Calcium Nitrate store.",
+  "url": "https://hrsuindore.com/api/docs/",
+  "author": { "@type": "Organization", "name": "HRSU Indore Pvt. Ltd." },
+  "publisher": { "@type": "Organization", "name": "HRSU Indore Pvt. Ltd.", "url": "https://hrsuindore.com" },
+  "dateModified": "2026-06-25"
+}
+</script>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0a192f;color:#ccd6f6;line-height:1.6}
+  a{color:#64ffda;text-decoration:none}a:hover{text-decoration:underline}
+  header{background:#112240;border-bottom:1px solid #1e3a5f;padding:1.5rem 2rem;display:flex;align-items:center;gap:1rem}
+  header img{width:40px;height:40px;border-radius:6px}
+  header h1{font-size:1.2rem;color:#e6f1ff;font-weight:600}
+  header span{font-size:0.75rem;background:#1e3a5f;color:#64ffda;padding:2px 8px;border-radius:12px;margin-left:8px}
+  .container{max-width:960px;margin:0 auto;padding:2rem}
+  .card{background:#112240;border:1px solid #1e3a5f;border-radius:10px;padding:1.5rem;margin-bottom:1.5rem}
+  .card h2{color:#ccd6f6;font-size:1.1rem;margin-bottom:0.75rem;display:flex;align-items:center;gap:0.5rem}
+  .badge{font-size:0.7rem;padding:2px 8px;border-radius:10px;font-weight:600;text-transform:uppercase}
+  .get{background:#1d4ed820;color:#60a5fa;border:1px solid #1d4ed8}
+  .post{background:#16a34a20;color:#4ade80;border:1px solid #16a34a}
+  .endpoint{background:#0d1b2a;border:1px solid #1e3a5f;border-radius:6px;padding:1rem;margin:0.75rem 0;font-family:'Courier New',monospace;font-size:0.85rem}
+  .endpoint .method{display:inline-block;margin-right:0.75rem}
+  .endpoint .path{color:#64ffda}
+  pre{background:#0d1b2a;border:1px solid #1e3a5f;border-radius:6px;padding:1rem;overflow-x:auto;font-size:0.8rem;margin:0.75rem 0}
+  code{font-family:'Courier New',monospace;color:#64ffda;font-size:0.85rem}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:0.75rem}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+  .pill{display:inline-block;background:#1e3a5f;color:#8892b0;font-size:0.75rem;padding:2px 10px;border-radius:12px;margin:2px}
+  .note{background:#16a34a15;border-left:3px solid #16a34a;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin:0.75rem 0;font-size:0.9rem}
+  .warn{background:#f5a62315;border-left:3px solid #f5a623;padding:0.75rem 1rem;border-radius:0 6px 6px 0;margin:0.75rem 0;font-size:0.9rem}
+  table{width:100%;border-collapse:collapse;font-size:0.85rem}
+  th{background:#0d1b2a;color:#ccd6f6;padding:0.6rem 0.75rem;text-align:left;border-bottom:1px solid #1e3a5f}
+  td{padding:0.5rem 0.75rem;border-bottom:1px solid #1e3a5f15;color:#8892b0}
+  td code{font-size:0.8rem}
+  h3{color:#a8b2d8;margin:1rem 0 0.5rem}
+  footer{text-align:center;padding:2rem;color:#495670;font-size:0.85rem}
+</style>
+</head>
+<body>
+
+<header>
+  <img src="/Logo.png" alt="HRSU Indore">
+  <div>
+    <h1>HRSU Indore API <span>v1.1.0</span></h1>
+    <div style="font-size:0.8rem;color:#8892b0;margin-top:2px">Calcium Nitrate Store — REST + MCP</div>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Quick Links -->
+  <div class="card">
+    <h2>📋 Quick Reference</h2>
+    <div class="grid">
+      <div>
+        <div style="color:#8892b0;font-size:0.8rem;margin-bottom:0.5rem">MACHINE READABLE</div>
+        <div style="margin-bottom:0.4rem"><a href="/openapi.json">openapi.json</a> — OpenAPI 3.1 spec</div>
+        <div style="margin-bottom:0.4rem"><a href="/api/products">api/products</a> — Live catalog</div>
+        <div style="margin-bottom:0.4rem"><a href="/api/mcp">api/mcp</a> — MCP discovery</div>
+        <div><a href="/.well-known/agent.json">.well-known/agent.json</a> — A2A card</div>
+      </div>
+      <div>
+        <div style="color:#8892b0;font-size:0.8rem;margin-bottom:0.5rem">HUMAN READABLE</div>
+        <div style="margin-bottom:0.4rem"><a href="/llms.txt">llms.txt</a> — AI guide</div>
+        <div style="margin-bottom:0.4rem"><a href="/ai-guidelines.txt">ai-guidelines.txt</a> — Agent guidelines</div>
+        <div style="margin-bottom:0.4rem"><a href="/.well-known/ai-plugin.json">ai-plugin.json</a> — ChatGPT plugin</div>
+        <div><a href="/store/">Store</a> — Browse as human</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Authentication & Rate Limits -->
+  <div class="card">
+    <h2>🔐 Authentication & Rate Limits</h2>
+    <div class="note">All endpoints are <strong>public</strong> — no API key required. Rate limiting is enforced per IP address.</div>
+    <table>
+      <thead><tr><th>Endpoint</th><th>Rate Limit</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td><code>GET /api/products</code></td><td>100 / hour</td><td>Browse freely</td></tr>
+        <tr><td><code>POST /api/order</code></td><td>10 / hour</td><td>Fraud prevention</td></tr>
+        <tr><td><code>POST /api/mcp</code></td><td>60 / hour</td><td>Batch requests count once</td></tr>
+      </tbody>
+    </table>
+    <h3>Rate Limit Headers</h3>
+    <pre><code>X-RateLimit-Limit: 100
+X-RateLimit-Remaining: 95
+X-RateLimit-Reset: 1750000000   ← Unix timestamp
+Retry-After: 60                 ← Seconds (on 429 only)</code></pre>
+  </div>
+
+  <!-- Products Endpoint -->
+  <div class="card">
+    <h2>📦 Products</h2>
+    <div class="endpoint">
+      <span class="badge get method">GET</span>
+      <span class="path">/api/products</span>
+    </div>
+    <p style="color:#8892b0;font-size:0.9rem">Returns the full catalog. Pass <code>?sku=</code> to get a single product.</p>
+
+    <h3>Query Parameters</h3>
+    <table>
+      <thead><tr><th>Parameter</th><th>Type</th><th>Required</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td><code>sku</code></td><td>string</td><td>No</td><td><code>HRSU-CN-25KG-001</code> or <code>HRSU-CN-50KG-001</code></td></tr>
+      </tbody>
+    </table>
+
+    <h3>Response Example</h3>
+    <pre><code>{
+  "store": "HRSU Indore Online Store",
+  "currency": "INR",
+  "tax_note": "All prices are MRP inclusive of all taxes",
+  "products": [
+    {
+      "sku": "HRSU-CN-25KG-001",
+      "name": "Calcium Nitrate Fertilizer Grade — 25 kg Bag",
+      "size": "25 kg",
+      "size_select_value": "25 kg (₹750)",
+      "price_inr": 750,
+      "price_per_kg_inr": 30,
+      "availability": "in_stock",
+      "specs": {
+        "formula": "Ca(NO3)2",
+        "calcium_ca": "18.5–19%",
+        "nitrogen_n": "15.5%+",
+        "water_solubility": "100%"
+      }
+    }
+  ],
+  "shipping": {
+    "india": {
+      "free_threshold_inr": 4500,
+      "flat_rate_inr": 1000,
+      "total_display": "3–10 business days"
+    }
+  }
+}</code></pre>
+  </div>
+
+  <!-- Orders Endpoint -->
+  <div class="card">
+    <h2>🛒 Orders</h2>
+    <div class="endpoint">
+      <span class="badge post method">POST</span>
+      <span class="path">/api/order</span>
+    </div>
+    <div class="warn">⚠️ <strong>No payment at this step.</strong> HRSU confirms the order by phone/WhatsApp within 1 business day, then collects via UPI or bank transfer.</div>
+
+    <h3>Request Body</h3>
+    <pre><code>{
+  "product": "Calcium Nitrate Fertilizer Grade",
+  "size": "25 kg (₹750)",         ← use size_select_value from catalog
+  "quantity": 6,
+  "name": "Arjun Singh",
+  "phone": "+919876543210",        ← WhatsApp-capable preferred
+  "email": "arjun@farm.in",        ← optional
+  "address": "Khasra 45, Village Pipaliya, Khandwa, MP 450001"
+}</code></pre>
+
+    <h3>Success Response</h3>
+    <pre><code>{ "ok": true, "ref": "HRSU-M8X3K1" }</code></pre>
+
+    <h3>For AI Agents</h3>
+    <div class="note">Always call <code>GET /api/products</code> first, then use <code>calculate_order_total</code> via MCP to confirm the exact total with the customer <em>before</em> submitting an order.</div>
+  </div>
+
+  <!-- MCP Server -->
+  <div class="card">
+    <h2>🤖 MCP Server (AI Agents)</h2>
+    <div class="endpoint">
+      <span class="badge get method">GET</span>
+      <span class="path">/api/mcp</span>
+      <span style="color:#8892b0;margin-left:1rem;font-size:0.8rem">Discovery</span>
+    </div>
+    <div class="endpoint">
+      <span class="badge post method">POST</span>
+      <span class="path">/api/mcp</span>
+      <span style="color:#8892b0;margin-left:1rem;font-size:0.8rem">JSON-RPC 2.0</span>
+    </div>
+
+    <p style="color:#8892b0;font-size:0.9rem;margin:0.75rem 0">The MCP server implements <strong>MCP Streamable HTTP (2025-03-26)</strong> and is compatible with Claude, Cursor, and other MCP clients.</p>
+
+    <h3>Available Tools</h3>
+    <div style="margin-bottom:0.75rem">
+      <span class="pill">list_products</span>
+      <span class="pill">get_product</span>
+      <span class="pill">get_shipping_info</span>
+      <span class="pill">get_company_info</span>
+      <span class="pill">calculate_order_total</span>
+      <span class="pill">place_order</span>
+    </div>
+
+    <h3>Connection Sequence</h3>
+    <pre><code>// 1. Initialize
+POST /api/mcp
+{ "jsonrpc": "2.0", "id": 1, "method": "initialize",
+  "params": { "protocolVersion": "2025-03-26",
+              "clientInfo": { "name": "my-agent", "version": "1.0" },
+              "capabilities": {} } }
+
+// 2. Discover tools
+POST /api/mcp
+{ "jsonrpc": "2.0", "id": 2, "method": "tools/list" }
+
+// 3. Calculate order total (always do this before placing)
+POST /api/mcp
+{ "jsonrpc": "2.0", "id": 3, "method": "tools/call",
+  "params": { "name": "calculate_order_total",
+              "arguments": { "sku": "HRSU-CN-25KG-001", "quantity": 6 } } }</code></pre>
+
+    <h3>Claude / Cursor Config</h3>
+    <pre><code>{
+  "mcpServers": {
+    "hrsu-store": {
+      "url": "https://hrsuindore.com/api/mcp",
+      "type": "http"
+    }
+  }
+}</code></pre>
+  </div>
+
+  <!-- Error Reference -->
+  <div class="card">
+    <h2>⚠️ Error Reference</h2>
+    <table>
+      <thead><tr><th>Status</th><th>Meaning</th><th>AI Action</th></tr></thead>
+      <tbody>
+        <tr><td><code>400</code></td><td>Bad request / validation error</td><td>Check field format and retry</td></tr>
+        <tr><td><code>404</code></td><td>SKU or resource not found</td><td>Suggest alternative products</td></tr>
+        <tr><td><code>429</code></td><td>Rate limit exceeded</td><td>Wait for <code>Retry-After</code> seconds</td></tr>
+        <tr><td><code>500</code></td><td>Internal server error</td><td>Retry once; escalate to support</td></tr>
+        <tr><td><code>503</code></td><td>Email system down</td><td>Direct to WhatsApp: +919425000484</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Contact -->
+  <div class="card">
+    <h2>📞 Support & Contact</h2>
+    <div class="grid">
+      <div>
+        <div style="color:#8892b0;font-size:0.8rem;margin-bottom:0.5rem">TECHNICAL SUPPORT</div>
+        <div>Email: <a href="mailto:contact@hrsuindore.com">contact@hrsuindore.com</a></div>
+        <div style="margin-top:0.25rem">Subject: "API Support"</div>
+      </div>
+      <div>
+        <div style="color:#8892b0;font-size:0.8rem;margin-bottom:0.5rem">ORDER ISSUES</div>
+        <div>WhatsApp: <a href="https://wa.me/919425000484">+91 9425000484</a></div>
+        <div style="margin-top:0.25rem">Available 9am–6pm IST, Mon–Sat</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>HRSU Indore Pvt. Ltd. · 53 Industrial Area, Maksi, MP 465106, India</p>
+  <p style="margin-top:0.5rem"><a href="/">Home</a> · <a href="/store/">Store</a> · <a href="/openapi.json">OpenAPI Spec</a> · <a href="/llms.txt">llms.txt</a> · <a href="/ai-guidelines.txt">AI Guidelines</a></p>
+</footer>
+
+</body>
+</html>

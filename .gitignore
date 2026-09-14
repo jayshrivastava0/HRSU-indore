@@ -9,4 +9,4 @@
 settings.local.json
 
 # internal working docs (audits, specs, plans, fix notes) - never publish
-docs/
+/docs/
