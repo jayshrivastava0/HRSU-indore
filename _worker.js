@@ -45,10 +45,14 @@ export default {
       const { pathname } = url;
       const { method } = request; // NOT url — URL objects have no .method
 
-      // Old blog.hrsuindore.com (Blogger) posts — 301 to the migrated page.
-      // Only fires if DNS for that host is ever routed to this Worker; harmless otherwise.
-      if (url.hostname === 'blog.hrsuindore.com' && BLOG_REDIRECTS.has(pathname)) {
-        return Response.redirect(`https://hrsuindore.com${BLOG_REDIRECTS.get(pathname)}`, 301);
+      // Old blog.hrsuindore.com (Blogger) — 301 everything to the on-site blog.
+      // Known permalinks map to their migrated page; anything else (search/label,
+      // feeds, images, unmapped posts) falls back to the blog homepage so nobody
+      // visiting the legacy host ever sees Blogger. Only fires once DNS/Worker
+      // Routes actually send this hostname's traffic here.
+      if (url.hostname === 'blog.hrsuindore.com') {
+        const target = BLOG_REDIRECTS.get(pathname) || '/blog/';
+        return Response.redirect(`https://hrsuindore.com${target}`, 301);
       }
 
       // API routes
