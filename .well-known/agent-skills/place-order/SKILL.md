@@ -31,7 +31,7 @@ POST https://hrsuindore.com/api/order
 Content-Type: application/json
 
 {
-  "product": "Calcium Nitrate Fertilizer Grade",
+  "product": "Calcium Nitrate Tetrahydrate",
   "size": "25 kg (₹1200)",
   "quantity": 6,
   "name": "Arjun Singh",

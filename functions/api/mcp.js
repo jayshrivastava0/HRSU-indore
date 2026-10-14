@@ -334,7 +334,7 @@ async function tool_place_order(args, env) {
   const emailHtml = `
     <h2>New Order ${ref} <span style="color:#666;font-size:0.85em">(via AI Agent / MCP)</span></h2>
     <table border="1" cellpadding="6" cellspacing="0" style="border-collapse:collapse">
-      <tr><th align="left">Product</th><td>Calcium Nitrate Fertilizer Grade</td></tr>
+      <tr><th align="left">Product</th><td>Calcium Nitrate Tetrahydrate</td></tr>
       <tr><th align="left">Size</th><td>${esc(args.size)}</td></tr>
       <tr><th align="left">Quantity (bags)</th><td>${esc(args.quantity)}</td></tr>
       <tr><th align="left">Name</th><td>${esc(args.name)}</td></tr>
@@ -406,7 +406,7 @@ async function dispatch(msg, env) {
         serverInfo: { name: SERVER_NAME, version: SERVER_VERSION },
         instructions: `You are connected to the HRSU Indore online store (hrsuindore.com/store/).
 
-PRODUCTS: Fertilizer-grade Calcium Nitrate. ${CATALOG.map(p => `${p.size} ${rupee(p.price_inr)} (SKU: ${p.sku})`).join(', ')}.
+PRODUCTS: Calcium nitrate tetrahydrate. ${CATALOG.map(p => `${p.size} ${rupee(p.price_inr)} (SKU: ${p.sku})`).join(', ')}.
 SHIPPING: Free delivery on orders ${rupee(SHIPPING.india.free_threshold_inr)}+. Flat ${rupee(SHIPPING.india.flat_rate_inr)} below that. 3–10 days anywhere in India.
 PAYMENT: No card needed. UPI or bank transfer after phone confirmation from HRSU.
 

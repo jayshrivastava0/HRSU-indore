@@ -93,14 +93,14 @@
                       "products": [
                         {
                           "sku": "HRSU-CN-25KG-001",
-                          "name": "Calcium Nitrate Fertilizer Grade — 25 kg Bag",
+                          "name": "Calcium Nitrate Tetrahydrate — 25 kg Bag",
                           "size": "25 kg",
                           "price_inr": 1200,
                           "availability": "in_stock"
                         },
                         {
                           "sku": "HRSU-CN-50KG-001",
-                          "name": "Calcium Nitrate Fertilizer Grade — 50 kg Bag",
+                          "name": "Calcium Nitrate Tetrahydrate — 50 kg Bag",
                           "size": "50 kg",
                           "price_inr": 2400,
                           "availability": "in_stock"
@@ -112,19 +112,19 @@
                     "summary": "Single product by SKU",
                     "value": {
                       "sku": "HRSU-CN-25KG-001",
-                      "name": "Calcium Nitrate Fertilizer Grade — 25 kg Bag",
+                      "name": "Calcium Nitrate Tetrahydrate — 25 kg Bag",
                       "size": "25 kg",
                       "price_inr": 1200,
                       "price_per_kg_inr": 48,
                       "currency": "INR",
                       "availability": "in_stock",
                       "specs": {
-                        "formula": "Ca(NO3)2",
-                        "calcium_ca": "18.5–19%",
-                        "nitrogen_n": "15.5%+",
-                        "water_solubility": "100%",
-                        "ph_1pct_solution": "5.5–6.5",
-                        "form": "Crystalline powder"
+                        "formula": "Ca(NO3)2·4H2O",
+                        "calcium_ca": "16.4% min (soluble)",
+                        "nitrogen_n": "11.7% min (nitrate)",
+                        "water_solubility": "121 g per 100 g water (typical)",
+                        "ph_5pct_solution": "5.0–7.0",
+                        "form": "Colourless to white crystals"
                       }
                     }
                   }
@@ -161,7 +161,7 @@
                 "retail_25kg": {
                   "summary": "6 bags of 25 kg (qualifies for free shipping)",
                   "value": {
-                    "product": "Calcium Nitrate Fertilizer Grade",
+                    "product": "Calcium Nitrate Tetrahydrate",
                     "size": "25 kg (₹1200)",
                     "quantity": 6,
                     "name": "Arjun Singh",
@@ -173,7 +173,7 @@
                 "retail_50kg": {
                   "summary": "2 bags of 50 kg",
                   "value": {
-                    "product": "Calcium Nitrate Fertilizer Grade",
+                    "product": "Calcium Nitrate Tetrahydrate",
                     "size": "50 kg (₹2400)",
                     "quantity": 2,
                     "name": "Priya Sharma",
@@ -184,7 +184,7 @@
                 "bulk_export": {
                   "summary": "Bulk / export inquiry",
                   "value": {
-                    "product": "Calcium Nitrate Fertilizer Grade",
+                    "product": "Calcium Nitrate Tetrahydrate",
                     "size": "50 kg (₹2400)",
                     "quantity": 400,
                     "name": "David Chen",
@@ -421,12 +421,12 @@
           "name": {
             "type": "string",
             "description": "Full product name",
-            "example": "Calcium Nitrate Fertilizer Grade — 25 kg Bag"
+            "example": "Calcium Nitrate Tetrahydrate — 25 kg Bag"
           },
           "product_group_name": {
             "type": "string",
             "description": "Parent product group name",
-            "example": "Calcium Nitrate — Fertilizer Grade"
+            "example": "Calcium Nitrate Tetrahydrate"
           },
           "size": {
             "type": "string",
@@ -479,13 +479,13 @@
             "type": "object",
             "description": "Technical specifications",
             "properties": {
-              "formula": { "type": "string", "description": "Chemical formula", "example": "Ca(NO3)2" },
-              "form": { "type": "string", "description": "Physical form", "example": "Crystalline powder" },
-              "purity": { "type": "string", "example": "Technical grade" },
-              "calcium_ca": { "type": "string", "description": "Calcium content by weight", "example": "18.5–19%" },
-              "nitrogen_n": { "type": "string", "description": "Nitrogen content by weight", "example": "15.5%+" },
-              "water_solubility": { "type": "string", "description": "Solubility in water", "example": "100%" },
-              "ph_1pct_solution": { "type": "string", "description": "pH of 1% aqueous solution", "example": "5.5–6.5" },
+              "formula": { "type": "string", "description": "Chemical formula", "example": "Ca(NO3)2·4H2O" },
+              "form": { "type": "string", "description": "Physical form", "example": "Colourless to white crystals" },
+              "assay": { "type": "string", "example": "99–103% as Ca(NO3)2·4H2O" },
+              "calcium_ca": { "type": "string", "description": "Calcium content by weight", "example": "16.4% min (soluble)" },
+              "nitrogen_n": { "type": "string", "description": "Nitrogen content by weight", "example": "11.7% min (nitrate)" },
+              "water_solubility": { "type": "string", "description": "Solubility in water", "example": "121 g per 100 g water (typical)" },
+              "ph_5pct_solution": { "type": "string", "description": "pH of 5% aqueous solution", "example": "5.0–7.0" },
               "origin": { "type": "string", "description": "Country of manufacture", "example": "India" }
             }
           },
@@ -555,7 +555,7 @@
           "product": {
             "type": "string",
             "description": "Product name — must match catalog",
-            "example": "Calcium Nitrate Fertilizer Grade"
+            "example": "Calcium Nitrate Tetrahydrate"
           },
           "size": {
             "type": "string",

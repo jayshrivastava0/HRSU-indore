@@ -130,16 +130,16 @@ Retry-After: 60                 ← Seconds (on 429 only)</code></pre>
   "products": [
     {
       "sku": "HRSU-CN-25KG-001",
-      "name": "Calcium Nitrate Fertilizer Grade — 25 kg Bag",
+      "name": "Calcium Nitrate Tetrahydrate — 25 kg Bag",
       "size": "25 kg",
       "size_select_value": "25 kg (₹1200)",
       "price_inr": 1200,
       "price_per_kg_inr": 48,
       "availability": "in_stock",
       "specs": {
-        "formula": "Ca(NO3)2",
-        "calcium_ca": "18.5–19%",
-        "nitrogen_n": "15.5%+",
+        "formula": "Ca(NO3)2·4H2O",
+        "calcium_ca": "16.4% min (soluble)",
+        "nitrogen_n": "11.7% min (nitrate)",
         "water_solubility": "100%"
       }
     }
@@ -165,7 +165,7 @@ Retry-After: 60                 ← Seconds (on 429 only)</code></pre>
 
     <h3>Request Body</h3>
     <pre><code>{
-  "product": "Calcium Nitrate Fertilizer Grade",
+  "product": "Calcium Nitrate Tetrahydrate",
   "size": "25 kg (₹1200)",         ← use size_select_value from catalog
   "quantity": 6,
   "name": "Arjun Singh",

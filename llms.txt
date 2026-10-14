@@ -1,11 +1,11 @@
 # HRSU Indore — Calcium Nitrate Store
 
-> HRSU Indore Pvt. Ltd. manufactures and sells fertilizer-grade Calcium Nitrate (Ca(NO₃)₂) directly to farmers, distributors, industrial buyers, and exporters. Based in Maksi, Madhya Pradesh, India. You can browse products, check prices, and place orders via the website, REST API, WhatsApp, or the MCP server.
+> HRSU Indore Pvt. Ltd. manufactures and sells calcium nitrate tetrahydrate (Ca(NO₃)₂) directly to farmers, distributors, industrial buyers, and exporters. Based in Maksi, Madhya Pradesh, India. You can browse products, check prices, and place orders via the website, REST API, WhatsApp, or the MCP server.
 
 ## Products
 
-- [Calcium Nitrate Fertilizer Grade — 25 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-25KG-001. ₹1,200 per bag (₹48/kg). 100% water-soluble, 18.5–19% Ca, 15.5%+ N (nitrate form). Zero insoluble residue — safe for drip emitters. HDPE bag, white crystalline powder.
-- [Calcium Nitrate Fertilizer Grade — 50 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-50KG-001. ₹2,400 per bag (₹48/kg). Same specification as 25 kg variant.
+- [Calcium Nitrate Tetrahydrate — 25 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-25KG-001. ₹1,200 per bag (₹48/kg). Calcium nitrate tetrahydrate, assay 99–103%, Ca 16.4% min (soluble), N 11.7% min (nitrate form). Insoluble matter 0.005% max. Woven bag with inner liner, colourless to white crystals.
+- [Calcium Nitrate Tetrahydrate — 50 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-50KG-001. ₹2,400 per bag (₹48/kg). Same specification as 25 kg variant.
 
 All prices MRP inclusive of all taxes (Indian Legal Metrology Act). Certificate of Analysis with every batch.
 
@@ -43,7 +43,7 @@ POST https://hrsuindore.com/api/order
 Content-Type: application/json
 
 {
-  "product": "Calcium Nitrate Fertilizer Grade",
+  "product": "Calcium Nitrate Tetrahydrate",
   "size": "25 kg (₹1200)",        // or "50 kg (₹2400)"
   "quantity": 6,                  // number of bags
   "name": "Customer Full Name",

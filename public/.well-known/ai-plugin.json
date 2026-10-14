@@ -3,7 +3,7 @@
   "name_for_human": "HRSU Indore Store",
   "name_for_model": "hrsu_store",
   "description_for_human": "Buy Calcium Nitrate directly from HRSU Indore — India's manufacturer. 25 kg ₹1,200 · 50 kg ₹2,400. Free delivery ₹14,400+. No card needed.",
-  "description_for_model": "Tool for browsing and ordering Calcium Nitrate from HRSU Indore Pvt. Ltd., a manufacturer in Madhya Pradesh, India. Products: fertilizer-grade Calcium Nitrate in 25 kg (₹1200 SKU HRSU-CN-25KG-001) and 50 kg (₹2400 SKU HRSU-CN-50KG-001). Free delivery on orders ₹14,400+, flat ₹1,000 below that, 3–10 days India-wide. Payment via UPI or bank transfer AFTER phone confirmation — no card, no payment gateway. Use GET /api/products to browse, POST /api/order to place an order. Always confirm the total cost with the user before placing the order.",
+  "description_for_model": "Tool for browsing and ordering Calcium Nitrate from HRSU Indore Pvt. Ltd., a manufacturer in Madhya Pradesh, India. Products: calcium nitrate tetrahydrate in 25 kg (₹1200 SKU HRSU-CN-25KG-001) and 50 kg (₹2400 SKU HRSU-CN-50KG-001). Free delivery on orders ₹14,400+, flat ₹1,000 below that, 3–10 days India-wide. Payment via UPI or bank transfer AFTER phone confirmation — no card, no payment gateway. Use GET /api/products to browse, POST /api/order to place an order. Always confirm the total cost with the user before placing the order.",
   "auth": {
     "type": "none"
   },

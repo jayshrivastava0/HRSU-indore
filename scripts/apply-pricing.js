@@ -77,8 +77,8 @@ function applyReplacements(file, replacements) {
 applyReplacements('store/calcium-nitrate-fertilizer-grade/index.html', [
   {
     label: 'title tag',
-    find: `<title>Calcium Nitrate Fertilizer Grade 25kg ${fmtRupee(oldP25)} / 50kg ${fmtRupee(oldP50)} | Buy Online — HRSU Indore</title>`,
-    replace: `<title>Calcium Nitrate Fertilizer Grade 25kg ${fmtRupee(p25.price)} / 50kg ${fmtRupee(p50.price)} | Buy Online — HRSU Indore</title>`,
+    find: `<title>Calcium Nitrate Tetrahydrate 25kg ${fmtRupee(oldP25)} / 50kg ${fmtRupee(oldP50)} | Buy Online — HRSU Indore</title>`,
+    replace: `<title>Calcium Nitrate Tetrahydrate 25kg ${fmtRupee(p25.price)} / 50kg ${fmtRupee(p50.price)} | Buy Online — HRSU Indore</title>`,
   },
   {
     label: 'meta description',
@@ -155,8 +155,8 @@ applyReplacements('store/calcium-nitrate-fertilizer-grade/index.html', [
   },
   {
     label: 'GA4 item price',
-    find: `window.HRSU_PRODUCT = { item_id: 'HRSU-CN-25KG-001', item_name: 'Calcium Nitrate Fertilizer Grade', item_brand: 'HRSU Indore', price: ${oldP25}, quantity: 1 };`,
-    replace: `window.HRSU_PRODUCT = { item_id: 'HRSU-CN-25KG-001', item_name: 'Calcium Nitrate Fertilizer Grade', item_brand: 'HRSU Indore', price: ${p25.price}, quantity: 1 };`,
+    find: `window.HRSU_PRODUCT = { item_id: 'HRSU-CN-25KG-001', item_name: 'Calcium Nitrate Tetrahydrate', item_brand: 'HRSU Indore', price: ${oldP25}, quantity: 1 };`,
+    replace: `window.HRSU_PRODUCT = { item_id: 'HRSU-CN-25KG-001', item_name: 'Calcium Nitrate Tetrahydrate', item_brand: 'HRSU Indore', price: ${p25.price}, quantity: 1 };`,
   },
 ]);
 

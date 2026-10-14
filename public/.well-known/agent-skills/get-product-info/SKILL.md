@@ -4,18 +4,18 @@ Retrieve full specifications, pricing, and availability for HRSU Indore's Calciu
 
 ## Product
 
-**Calcium Nitrate** — Ca(NO₃)₂ · 4H₂O — Fertilizer grade, 100% water-soluble crystalline powder
+**Calcium Nitrate** — Ca(NO₃)₂ · 4H₂O — Fertilizer grade, freely water-soluble crystalline powder
 
 | Property | Value |
 |---|---|
-| Purity | ≥ 99% |
-| Calcium (Ca) | 18.5–19% |
-| Nitrogen (N) | 15.5% min (nitrate form only) |
-| Water solubility | 100% — zero insoluble residue |
-| pH (1% solution) | 5.5–6.5 |
-| Appearance | White crystalline powder |
+| Assay | 99–103% (as Ca(NO₃)₂·4H₂O) |
+| Calcium (Ca) | 16.4% min (soluble) |
+| Nitrogen (N) | 11.7% min (nitrate nitrogen) |
+| Water solubility | 121 g per 100 g water (typical); insoluble matter 0.005% max |
+| pH (5% solution) | 5.0–7.0 |
+| Appearance | Colourless to white crystals |
 | CAS Number | 13477-34-4 |
-| Pack material | HDPE woven bag |
+| Pack material | Woven bag with inner plastic liner |
 | Origin | Maksi, Madhya Pradesh, India |
 
 ## Pack Sizes & Pricing (Retail — no minimum)
@@ -35,7 +35,7 @@ All prices MRP inclusive of all taxes. Certificate of Analysis with every batch.
 
 ## Applications
 
-- Drip irrigation and fertigation (zero residue — no emitter clogging)
+- Drip irrigation and fertigation (very low insoluble residue (0.005% max) — no emitter clogging)
 - Foliar spray for blossom-end-rot and tip-burn prevention
 - Hydroponics Part-A formulations
 - Soil application for calcium-deficient crops: tomato, capsicum, banana, grapes, pomegranate, apple, leafy greens
@@ -45,7 +45,7 @@ All prices MRP inclusive of all taxes. Certificate of Analysis with every batch.
 ## Bulk / Export (1 MT+)
 
 - Export port: Mundra, Gujarat (JNPT/Mumbai on request)
-- Lead time: 7–14 days ex-factory
+- Lead time: confirmed in your quote
 - Incoterms: FOB Mundra / CIF on request
 - Payment: T/T or LC at sight
 

@@ -221,7 +221,7 @@ const ENDPOINT_MAP = {
     url: 'https://hrsuindore.com/api/order',
     content_type: 'application/json',
     body_template: {
-      product: 'Calcium Nitrate Fertilizer Grade',
+      product: 'Calcium Nitrate Tetrahydrate',
       size: '{size}',
       quantity: '{quantity}',
       name: '{name}',
@@ -236,7 +236,7 @@ const SYSTEM_PROMPT = `You are a helpful shopping assistant for HRSU Indore's Ca
 
 PRODUCTS:
 ${CATALOG.map(p => `- ${p.size} bag: ${rupee(p.price_inr)} (SKU: ${p.sku}) — ${rupee(p.price_per_kg_inr)}/kg`).join('\n')}
-Both:100% water-soluble crystalline powder, 18.5–19% Ca, 15.5%+ N. For drip irrigation, foliar spray, hydroponics, fertigation. Certificate of Analysis with every batch.
+Both:Crystalline calcium nitrate tetrahydrate, Ca 16.4% min (soluble), N 11.7% min. For drip irrigation, foliar spray, hydroponics, fertigation. Certificate of Analysis with every batch.
 
 SHIPPING (India):
 - FREE delivery on orders ≥ ${rupee(SHIPPING.india.free_threshold_inr)} (${SHIPPING.india.free_threshold_note})
