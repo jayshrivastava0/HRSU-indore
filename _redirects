@@ -15,3 +15,7 @@
 /shop               /store/                                   301
 /contact            /#contact                                 301
 /learn/calcium-nitrate  /learn/                               301
+
+# Interim document URLs (briefly live 2026-10-14) -> canonical names
+/calcium-nitrate-industrial-sds-hrsu.pdf  /calcium-nitrate-sds-hrsu.pdf  301
+/calcium-nitrate-industrial-coa-hrsu.pdf  /calcium-nitrate-coa-hrsu.pdf  301
