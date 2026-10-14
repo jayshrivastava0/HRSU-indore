@@ -15,7 +15,7 @@ Manufacturer and exporter of industrial-grade calcium nitrate tetrahydrate (CAS 
 - [Industrial grade: specifications, documents and quote form](https://hrsuindore.com/industrial/)
 - Calcium nitrate tetrahydrate, Ca(NO₃)₂·4H₂O, assay 99–103%, soluble calcium 16.4% min, nitrate nitrogen 11.7% min, white crystals.
 - Certificate of analysis with every lot. UN1454, Class 5.1, PG III. HS code 28342990.
-- Uses: concrete admixtures, wastewater H₂S control, mining and tailings, oil and gas fluids, process industries.
+- Uses: concrete admixtures, wastewater H₂S control, cold-weather concrete for mining sites, oil and gas fluids, process industries.
 - Calcium nitrate melt (liquid) planned for early 2027.
 - Export: Mundra Port, EXW / FOB / CIF / DDP quoted per order, T/T or LC. Container-scale supply.
 - Quote form: https://hrsuindore.com/industrial/#quote
