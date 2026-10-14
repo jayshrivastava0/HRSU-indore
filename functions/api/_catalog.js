@@ -1,5 +1,16 @@
 // _catalog.js — single source of truth for product data, shipping, and company info.
 // Imported by products.js and mcp.js. Underscore prefix = not a Cloudflare route.
+//
+// Prices and shipping thresholds are NOT written here: they come from
+// ../../pricing.json (the single source of truth for retail pricing; see
+// scripts/apply-pricing.js for the static files that mirror it).
+
+import PRICING from '../../pricing.json';
+
+const price = (sku) => PRICING.products[sku].price;
+const perKg = (sku, kg) => Math.round(price(sku) / kg);
+export const rupee = (n) => '₹' + Number(n).toLocaleString('en-IN', { maximumFractionDigits: 0 });
+const bagsToQualify = (sku) => Math.ceil(PRICING.shipping.freeShippingThreshold / price(sku));
 
 export const CATALOG = [
   {
@@ -10,9 +21,9 @@ export const CATALOG = [
     name: 'Calcium Nitrate Fertilizer Grade — 25 kg Bag',
     product_group_name: 'Calcium Nitrate — Fertilizer Grade',
     size: '25 kg',
-    size_select_value: '25 kg (₹750)',
-    price_inr: 750,
-    price_per_kg_inr: 30,
+    size_select_value: `25 kg (₹${price('HRSU-CN-25KG-001')})`,
+    price_inr: price('HRSU-CN-25KG-001'),
+    price_per_kg_inr: perKg('HRSU-CN-25KG-001', 25),
     currency: 'INR',
     availability: 'in_stock',
     condition: 'new',
@@ -54,9 +65,9 @@ export const CATALOG = [
     name: 'Calcium Nitrate Fertilizer Grade — 50 kg Bag',
     product_group_name: 'Calcium Nitrate — Fertilizer Grade',
     size: '50 kg',
-    size_select_value: '50 kg (₹1500)',
-    price_inr: 1500,
-    price_per_kg_inr: 30,
+    size_select_value: `50 kg (₹${price('HRSU-CN-50KG-001')})`,
+    price_inr: price('HRSU-CN-50KG-001'),
+    price_per_kg_inr: perKg('HRSU-CN-50KG-001', 50),
     currency: 'INR',
     availability: 'in_stock',
     condition: 'new',
@@ -95,9 +106,9 @@ export const CATALOG = [
 export const SHIPPING = {
   india: {
     currency: 'INR',
-    free_threshold_inr: 4500,
-    free_threshold_note: '6+ bags of 25 kg, or 3+ bags of 50 kg',
-    flat_rate_inr: 1000,
+    free_threshold_inr: PRICING.shipping.freeShippingThreshold,
+    free_threshold_note: `${bagsToQualify('HRSU-CN-25KG-001')}+ bags of 25 kg, or ${bagsToQualify('HRSU-CN-50KG-001')}+ bags of 50 kg`,
+    flat_rate_inr: PRICING.shipping.indiaFlatRate,
     handling_min_days: 1,
     handling_max_days: 2,
     transit_min_days: 2,
@@ -110,7 +121,7 @@ export const SHIPPING = {
   },
   international: {
     currency: 'INR',
-    flat_rate_inr: 10000,
+    flat_rate_inr: PRICING.shipping.internationalFlatRate,
     delivery_min_days: 22,
     delivery_max_days: 32,
     delivery_display: '22–32 days',

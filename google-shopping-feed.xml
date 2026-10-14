@@ -9,7 +9,7 @@
   Shipping policy (matches Merchant Center exactly):
     India only — ₹1,000 flat | 3–10 days. Bags are not sold/shipped
     internationally as single units; export is container-scale (FCL/LCL),
-    quoted individually via /store/calcium-nitrate-fertilizer-grade/#export-quote.
+    quoted individually via /industrial/#quote.
   Return policy: Defective products only (configured at account level in GMC)
   ═══════════════════════════════════════════════════════════════════
 -->
@@ -33,7 +33,7 @@
       <g:image_link>https://hrsuindore.com/images/calcium-nitrate-granules.jpg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in stock</g:availability>
-      <g:price>750.00 INR</g:price>
+      <g:price>1200.00 INR</g:price>
 
       <!-- ── Brand & identifiers ── -->
       <g:brand>HRSU Indore</g:brand>
@@ -95,7 +95,7 @@
       <g:image_link>https://hrsuindore.com/images/calcium-nitrate-granules.jpg</g:image_link>
       <g:condition>new</g:condition>
       <g:availability>in stock</g:availability>
-      <g:price>1500.00 INR</g:price>
+      <g:price>2400.00 INR</g:price>
 
       <g:brand>HRSU Indore</g:brand>
       <g:mpn>HRSU-CN-50KG-001</g:mpn>

@@ -11,7 +11,7 @@
 //     }
 //   }
 
-import { CATALOG, SHIPPING, COMPANY, PAYMENT_INFO } from './_catalog.js';
+import { CATALOG, SHIPPING, COMPANY, PAYMENT_INFO, rupee } from './_catalog.js';
 
 const PROTOCOL_VERSION = '2025-03-26';
 const SERVER_NAME = 'hrsu-store';
@@ -116,7 +116,7 @@ Returns an order reference (HRSU-XXXXXX) and next steps for the customer.`,
         },
         size: {
           type: 'string',
-          enum: ['25 kg (₹750)', '50 kg (₹1500)'],
+          enum: CATALOG.map(p => p.size_select_value),
           description: 'Bag size selection',
         },
         quantity: {
@@ -406,8 +406,8 @@ async function dispatch(msg, env) {
         serverInfo: { name: SERVER_NAME, version: SERVER_VERSION },
         instructions: `You are connected to the HRSU Indore online store (hrsuindore.com/store/).
 
-PRODUCTS: Fertilizer-grade Calcium Nitrate. 25 kg ₹750 (SKU: HRSU-CN-25KG-001), 50 kg ₹1,500 (SKU: HRSU-CN-50KG-001).
-SHIPPING: Free delivery on orders ₹4,500+. Flat ₹1,000 below that. 3–10 days anywhere in India.
+PRODUCTS: Fertilizer-grade Calcium Nitrate. ${CATALOG.map(p => `${p.size} ${rupee(p.price_inr)} (SKU: ${p.sku})`).join(', ')}.
+SHIPPING: Free delivery on orders ${rupee(SHIPPING.india.free_threshold_inr)}+. Flat ${rupee(SHIPPING.india.flat_rate_inr)} below that. 3–10 days anywhere in India.
 PAYMENT: No card needed. UPI or bank transfer after phone confirmation from HRSU.
 
 ALWAYS follow this order when helping a customer buy:

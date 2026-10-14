@@ -15,12 +15,12 @@ Step-by-step guide for AI agents placing a Calcium Nitrate order on behalf of a 
 
 | SKU | Size | Unit price |
 |---|---|---|
-| HRSU-CN-25KG-001 | 25 kg | ₹750 |
-| HRSU-CN-50KG-001 | 50 kg | ₹1,500 |
+| HRSU-CN-25KG-001 | 25 kg | ₹1,200 |
+| HRSU-CN-50KG-001 | 50 kg | ₹2,400 |
 
 **Shipping (India):**
-- Order total ≥ ₹4,500 → Free delivery
-- Order total < ₹4,500 → ₹1,000 flat
+- Order total ≥ ₹14,400 → Free delivery
+- Order total < ₹14,400 → ₹1,000 flat
 
 Grand total = (unit_price × quantity) + shipping
 
@@ -32,7 +32,7 @@ Content-Type: application/json
 
 {
   "product": "Calcium Nitrate Fertilizer Grade",
-  "size": "25 kg (₹750)",
+  "size": "25 kg (₹1200)",
   "quantity": 6,
   "name": "Arjun Singh",
   "phone": "+919876543210",
@@ -41,7 +41,7 @@ Content-Type: application/json
 }
 ```
 
-`size` must be exactly `"25 kg (₹750)"` or `"50 kg (₹1500)"`.
+`size` must be exactly `"25 kg (₹1200)"` or `"50 kg (₹2400)"`.
 `phone` must match `^[0-9+\-\s]{10,15}$`.
 
 **Success response:** `{ "ok": true, "ref": "HRSU-M8X3K1" }`
@@ -59,7 +59,7 @@ Discovery: `GET https://hrsuindore.com/api/mcp`
     "arguments": {
       "name": "Arjun Singh",
       "phone": "+919876543210",
-      "size": "25 kg (₹750)",
+      "size": "25 kg (₹1200)",
       "quantity": 6,
       "address": "Khasra 45, Village Pipaliya, Khandwa, MP 450001"
     }

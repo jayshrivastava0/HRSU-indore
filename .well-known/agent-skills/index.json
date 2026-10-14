@@ -10,7 +10,7 @@
     {
       "name": "get-product-info",
       "type": "prompt",
-      "description": "Get full Calcium Nitrate specifications, retail pricing (25 kg ₹750 / 50 kg ₹1,500), applications, and export details from HRSU Indore",
+      "description": "Get full Calcium Nitrate specifications, retail pricing (25 kg ₹1,200 / 50 kg ₹2,400), applications, and export details from HRSU Indore",
       "url": "https://hrsuindore.com/.well-known/agent-skills/get-product-info/SKILL.md"
     },
     {

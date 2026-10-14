@@ -22,15 +22,15 @@ Retrieve full specifications, pricing, and availability for HRSU Indore's Calciu
 
 | SKU | Size | Price (INR) | Per kg |
 |---|---|---|---|
-| HRSU-CN-25KG-001 | 25 kg | ₹750 | ₹30 |
-| HRSU-CN-50KG-001 | 50 kg | ₹1,500 | ₹30 |
+| HRSU-CN-25KG-001 | 25 kg | ₹1,200 | ₹48 |
+| HRSU-CN-50KG-001 | 50 kg | ₹2,400 | ₹48 |
 
 All prices MRP inclusive of all taxes. Certificate of Analysis with every batch.
 
 ## Shipping (India)
 
-- Free delivery on orders ₹4,500+ (6+ bags × 25 kg, or 3+ bags × 50 kg)
-- Flat ₹1,000 for orders below ₹4,500
+- Free delivery on orders ₹14,400+ (12+ bags × 25 kg, or 6+ bags × 50 kg)
+- Flat ₹1,000 for orders below ₹14,400
 - 3–10 business days anywhere in India
 
 ## Applications

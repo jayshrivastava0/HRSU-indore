@@ -1,13 +1,14 @@
 {
-  "_comment": "Single source of truth for retail bag pricing. Edit this file, then run `node scripts/apply-pricing.js` and redeploy (npx wrangler deploy) to propagate to: the product page (display text + meta tags + JSON-LD), the store index card, and the Merchant Center feed. Google Business Profile has no API wired up here — update it manually when this changes.",
+  "_comment": "Single source of truth for ALL retail prices and shipping amounts (bags, India shipping, free-shipping threshold, international shipping). Edit this file, then run `node scripts/apply-pricing.js` and redeploy (npx wrangler deploy). The API/MCP/agent text (functions/) reads this file directly at runtime; the script rewrites the static copies: product page, store pages, shipping policy, Merchant Center feed, llms.txt, openapi.json, .well-known and Learn pages. Run `node scripts/apply-pricing.js --check` to fail on any stray price. Google Business Profile has no API wired up here — update it manually when this changes.",
   "currency": "INR",
   "priceValidUntil": "2026-12-31",
   "products": {
-    "HRSU-CN-25KG-001": { "size": "25 kg", "sizeShort": "25kg", "price": 750.00 },
-    "HRSU-CN-50KG-001": { "size": "50 kg", "sizeShort": "50kg", "price": 1500.00 }
+    "HRSU-CN-25KG-001": { "size": "25 kg", "sizeShort": "25kg", "price": 1200.00 },
+    "HRSU-CN-50KG-001": { "size": "50 kg", "sizeShort": "50kg", "price": 2400.00 }
   },
   "shipping": {
     "indiaFlatRate": 1000.00,
-    "freeShippingThreshold": 4500.00
+    "freeShippingThreshold": 14400.00,
+    "internationalFlatRate": 10000.00
   }
 }

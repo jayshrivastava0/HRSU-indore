@@ -12,12 +12,17 @@
 # ── PDFs: allow indexing and caching ────────────────────────
 /calcium-nitrate-tds-hrsu.pdf
   Content-Disposition: inline
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=86400
   X-Robots-Tag: all
 
 /calcium-nitrate-sds-hrsu.pdf
   Content-Disposition: inline
-  Cache-Control: public, max-age=2592000
+  Cache-Control: public, max-age=86400
+  X-Robots-Tag: all
+
+/calcium-nitrate-coa-hrsu.pdf
+  Content-Disposition: inline
+  Cache-Control: public, max-age=86400
   X-Robots-Tag: all
 
 # ── XML feeds: no cache ────────────────────────────────────

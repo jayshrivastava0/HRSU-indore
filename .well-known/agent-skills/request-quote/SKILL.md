@@ -12,7 +12,7 @@ Content-Type: application/json
 
 {
   "product": "Calcium Nitrate Fertilizer Grade",
-  "size": "25 kg (₹750)",
+  "size": "25 kg (₹1200)",
   "quantity": 6,
   "name": "Customer Name",
   "phone": "+919876543210",
@@ -25,7 +25,7 @@ Or use the MCP server at `POST https://hrsuindore.com/api/mcp` (tools: `calculat
 
 **No payment at submission.** HRSU confirms by phone/WhatsApp within 1 business day, then customer pays via UPI or bank transfer.
 
-Prices: 25 kg ₹750 · 50 kg ₹1,500. Free delivery on orders ₹4,500+.
+Prices: 25 kg ₹1,200 · 50 kg ₹2,400. Free delivery on orders ₹14,400+.
 
 ## Bulk / Export Quote (1 MT+)
 

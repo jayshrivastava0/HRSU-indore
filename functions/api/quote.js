@@ -4,7 +4,7 @@
 // export needs an individually quoted price/Incoterm, not a cart.
 // Secrets: RESEND_API_KEY (npx wrangler secret put RESEND_API_KEY).
 
-const QUOTE_TO = 'contact@hrsuindore.com';
+const QUOTE_TO_DEFAULT = 'contact@hrsuindore.com'; // override with the QUOTE_TO env var once quotes@ receives mail
 const QUOTE_FROM = 'quotes@hrsuindore.com'; // domain must be verified in Resend
 
 const CORS = {
@@ -59,11 +59,13 @@ export async function onRequestPost(context) {
       <tr><th>Email</th><td>${esc(d.email)}</td></tr>
       <tr><th>Phone</th><td>${esc(d.phone || '—')}</td></tr>
       <tr><th>Product</th><td>${esc(d.product || 'Calcium Nitrate')}</td></tr>
+      <tr><th>Application</th><td>${esc(d.application || '—')}</td></tr>
       <tr><th>Quantity</th><td>${esc(d.quantity)}</td></tr>
       <tr><th>Preferred Incoterm</th><td>${esc(d.incoterm || '—')}</td></tr>
       <tr><th>Message</th><td>${esc(d.message || '—')}</td></tr>
       <tr><th>Lead source</th><td>${esc(d.lead_source || 'unknown')}${d.lead_medium ? ' / ' + esc(d.lead_medium) : ''}</td></tr>
       <tr><th>Landing page</th><td>${esc(d.landing_page || '—')}</td></tr>
+      <tr><th>Submitted from</th><td>${esc(d.page || '—')}</td></tr>
     </table>
     <p><strong>Export/bulk RFQ — respond with a quoted price, MOQ, lead time, and payment terms (wire/LC).</strong></p>`;
 
@@ -75,7 +77,7 @@ export async function onRequestPost(context) {
     },
     body: JSON.stringify({
       from: `HRSU Export RFQ <${QUOTE_FROM}>`,
-      to: [QUOTE_TO],
+      to: [env.QUOTE_TO || QUOTE_TO_DEFAULT],
       reply_to: d.email,
       subject: `Export/bulk quote request ${ref} — ${esc(d.company)} (${esc(d.country)})`,
       html,

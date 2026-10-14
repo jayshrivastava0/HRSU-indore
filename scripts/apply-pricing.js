@@ -41,12 +41,14 @@ const p50 = pricing.products['HRSU-CN-50KG-001'];
 const priceValidUntil = pricing.priceValidUntil;
 const indiaFlatRate = pricing.shipping.indiaFlatRate;
 const freeThreshold = pricing.shipping.freeShippingThreshold;
+const intlFlatRate = pricing.shipping.internationalFlatRate;
 
 const oldP25 = prev.prices['HRSU-CN-25KG-001'];
 const oldP50 = prev.prices['HRSU-CN-50KG-001'];
 const oldPriceValidUntil = prev.priceValidUntil;
 const oldIndiaFlatRate = prev.indiaFlatRate;
 const oldFreeThreshold = prev.freeShippingThreshold;
+const oldIntlFlatRate = prev.internationalFlatRate ?? 10000.00; // not tracked in the lock before 2026-10-14
 
 const fmtRupee = (n) => '₹' + n.toLocaleString('en-IN', { maximumFractionDigits: 0 });
 const fmt2 = (n) => n.toFixed(2);
@@ -132,11 +134,6 @@ applyReplacements('store/calcium-nitrate-fertilizer-grade/index.html', [
     replace: `<p><strong>Shipping:</strong> Free on orders ${fmtRupee(freeThreshold)}+ · ${fmtRupee(indiaFlatRate)} flat below that · anywhere in India · 3–10 days. <a href="/store/shipping-policy/">Details</a></p>`,
   },
   {
-    label: 'export-quote intro retail-price reference',
-    find: `the ${fmtRupee(oldP25)}/${fmtRupee(oldP50)} retail bag pricing above is for domestic India orders only.`,
-    replace: `the ${fmtRupee(p25.price)}/${fmtRupee(p50.price)} retail bag pricing above is for domestic India orders only.`,
-  },
-  {
     label: 'order form 25kg option',
     find: `<option value="25 kg (${fmtRupee(oldP25)})">25 kg — ${fmtRupee(oldP25)}</option>`,
     replace: `<option value="25 kg (${fmtRupee(p25.price)})">25 kg — ${fmtRupee(p25.price)}</option>`,
@@ -189,11 +186,113 @@ applyReplacements('google-shopping-feed.xml', [
   },
 ]);
 
+// ---- every other static file that quotes a retail price ------------------
+// Amount-based rewrite: any "₹<amount>" whose value equals a PREVIOUS bag price or
+// per-kg price becomes the matching NEW value (decided from the old value only, so
+// there are no collisions if a new price equals another old price). Both the live
+// copy under public/ and the root mirror (if present) are rewritten independently.
+const GLOBAL_FILES = [
+  'api/docs/index.html',
+  'store/index.html',
+  'google-shopping-feed.xml',
+  'store/shipping-policy/index.html',
+  'llms.txt',
+  'openapi.json',
+  '.well-known/ai-plugin.json',
+  '.well-known/agent.json',
+  '.well-known/agent-skills/index.json',
+  '.well-known/agent-skills/get-product-info/SKILL.md',
+  '.well-known/agent-skills/place-order/SKILL.md',
+  '.well-known/agent-skills/request-quote/SKILL.md',
+  'learn/bulk-calcium-nitrate-export-india/index.html',
+  'learn/calcium-nitrate-price-india/index.html',
+  'learn/calcium-nitrate-vs-calcium-chloride/index.html',
+  'learn/calcium-nitrate-vs-can/index.html',
+];
+
+const oldPerKg = perKgOf(oldP25);
+const newPerKg = perKgOf(p25.price);
+const amountMap = new Map([
+  [oldP25, p25.price], [oldP50, p50.price], [oldPerKg, newPerKg],
+  [oldIndiaFlatRate, indiaFlatRate], [oldFreeThreshold, freeThreshold], [oldIntlFlatRate, intlFlatRate],
+]);
+const bagsToQualify = (price) => Math.ceil(freeThreshold / price);
+const swapAmount = (v) => (amountMap.has(v) ? amountMap.get(v) : v);
+const fmtIN = (n) => n.toLocaleString('en-IN', { maximumFractionDigits: 0 });
+
+function rewriteAmounts(text) {
+  let hits = 0;
+  // "₹1,500" / "₹1500" / "₹30" — keep the comma style the original used
+  // Indian grouping everywhere ("₹1,200") EXCEPT inside API size labels like "25 kg (₹1200)",
+  // which must stay comma-free because they are exact enum values clients send back.
+  text = text.replace(/₹(\d[\d,]*)(?![\d,])/g, (m, digits, offset, whole) => {
+    const v = Number(digits.replace(/,/g, ''));
+    const nv = swapAmount(v);
+    const inSizeLabel = whole.slice(offset - 4, offset) === 'kg (';
+    const out = '₹' + (inSizeLabel ? String(nv) : fmtIN(nv));
+    if (out === m) return m;
+    hits++;
+    return out;
+  });
+  // free-shipping bag counts ("6+ bags of 25 kg, or 3+ bags of 50 kg") follow from price vs threshold
+  text = text.replace(/(\d+)\+( bags (?:of|×) 25 ?kg,? (?:or )?)(\d+)\+( bags (?:of|×) 50 ?kg)/g, (m, a, mid, b, tail) => {
+    const out = `${bagsToQualify(p25.price)}+${mid}${bagsToQualify(p50.price)}+${tail}`;
+    if (out === m) return m;
+    hits++;
+    return out;
+  });
+  // JSON price fields (openapi.json examples, catalog-style snippets)
+  text = text.replace(/("price_inr"\s*:\s*)(\d+)/g, (m, k, d) => { const nv = swapAmount(Number(d)); if (nv === Number(d)) return m; hits++; return k + nv; });
+  text = text.replace(/("price_per_kg_inr"\s*:\s*)(\d+)/g, (m, k, d) => { const nv = swapAmount(Number(d)); if (nv === Number(d)) return m; hits++; return k + nv; });
+  text = text.replace(/("price_inr"\s*:\s*\{[^{}]*?"example"\s*:\s*)(\d+)/g, (m, k, d) => { const nv = swapAmount(Number(d)); if (nv === Number(d)) return m; hits++; return k + nv; });
+  text = text.replace(/("price_per_kg_inr"\s*:\s*\{[^{}]*?"example"\s*:\s*)(\d+)/g, (m, k, d) => { const nv = swapAmount(Number(d)); if (nv === Number(d)) return m; hits++; return k + nv; });
+  // shipping amounts in JSON docs/examples (direct value or schema "example")
+  for (const key of ['free_threshold_inr', 'flat_rate_inr']) {
+    for (const re of [new RegExp(`("${key}"\\s*:\\s*)(\\d+)`, 'g'), new RegExp(`("${key}"\\s*:\\s*\\{[^{}]*?"example"\\s*:\\s*)(\\d+)`, 'g')]) {
+      text = text.replace(re, (m, k, d) => { const nv = swapAmount(Number(d)); if (nv === Number(d)) return m; hits++; return k + nv; });
+    }
+  }
+  return { text, hits };
+}
+
+for (const file of GLOBAL_FILES) {
+  for (const base of ['public', '.']) {
+    const full = path.join(ROOT, base, file);
+    if (!fs.existsSync(full)) continue;
+    const { text, hits } = rewriteAmounts(fs.readFileSync(full, 'utf8'));
+    if (hits) fs.writeFileSync(full, text, 'utf8');
+    console.log(`${hits ? 'updated' : 'no change'} ${base === '.' ? '' : base + '/'}${file}${hits ? ` (${hits} price reference(s))` : ''}`);
+  }
+}
+
+// ---- --check: fail if any file still shows a price that isn't current -------
+if (process.argv.includes('--check')) {
+  const allowed = new Set([0, p25.price, p50.price, newPerKg, indiaFlatRate, freeThreshold, intlFlatRate]); // 0 = "free shipping"
+  const scan = [
+    'public/store/index.html', 'public/store/calcium-nitrate-fertilizer-grade/index.html',
+    'functions/_middleware.js', 'functions/api/_catalog.js', 'functions/api/tools.js', 'functions/api/mcp.js',
+    ...GLOBAL_FILES.map((f) => 'public/' + f),
+  ];
+  let bad = 0;
+  for (const f of scan) {
+    const lines = fs.readFileSync(path.join(ROOT, f), 'utf8').split('\n');
+    lines.forEach((line, i) => {
+      for (const m of line.matchAll(/₹\s?(\d[\d,]*)(?![\d,])/g)) {
+        const v = Number(m[1].replace(/,/g, ''));
+        if (!allowed.has(v)) { bad++; console.log(`CHECK  ${f}:${i + 1}  ${m[0]}   (not a current price/shipping value)`); }
+      }
+    });
+  }
+  console.log(bad ? `\n${bad} unrecognised ₹ amount(s) — review above.` : '\nCheck passed: every ₹ amount matches pricing.json.');
+  process.exit(bad ? 1 : 0);
+}
+
 fs.writeFileSync(LOCK_PATH, JSON.stringify({
   prices: { 'HRSU-CN-25KG-001': p25.price, 'HRSU-CN-50KG-001': p50.price },
   priceValidUntil,
   indiaFlatRate,
   freeShippingThreshold: freeThreshold,
+  internationalFlatRate: intlFlatRate,
 }, null, 2) + '\n', 'utf8');
 
 console.log('\npricing.json applied and pricing.lock.json updated. Review the diff, commit, push, and `npx wrangler deploy` to go live.');

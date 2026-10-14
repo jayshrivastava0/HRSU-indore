@@ -21,7 +21,7 @@
 //                 {"role":"user","content":"Order 6 bags of 25kg calcium nitrate"}]
 //   )
 
-import { CATALOG, SHIPPING, COMPANY } from './_catalog.js';
+import { CATALOG, SHIPPING, COMPANY, rupee } from './_catalog.js';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -64,7 +64,7 @@ const TOOLS = [
     type: 'function',
     function: {
       name: 'get_shipping_info',
-      description: 'Get shipping rates, free-delivery threshold (₹4,500), and delivery times for India and international.',
+      description: `Get shipping rates, free-delivery threshold (${rupee(SHIPPING.india.free_threshold_inr)}), and delivery times for India and international.`,
       parameters: {
         type: 'object',
         properties: {},
@@ -78,7 +78,7 @@ const TOOLS = [
       name: 'calculate_order_total',
       description: `Calculate exact price and shipping cost for an order before placing it.
 Always call this and show the customer the total BEFORE calling place_order.
-Returns: product total, shipping cost (₹0 if order ≥ ₹4,500, else ₹1,000 flat), grand total, delivery estimate.`,
+Returns: product total, shipping cost (₹0 if order ≥ ${rupee(SHIPPING.india.free_threshold_inr)}, else ${rupee(SHIPPING.india.flat_rate_inr)} flat), grand total, delivery estimate.`,
       parameters: {
         type: 'object',
         properties: {
@@ -131,7 +131,7 @@ NO PAYMENT at this step. After submission:
           },
           size: {
             type: 'string',
-            enum: ['25 kg (₹750)', '50 kg (₹1500)'],
+            enum: CATALOG.map(p => p.size_select_value),
             description: 'Bag size',
           },
           quantity: {
@@ -208,10 +208,10 @@ const ENDPOINT_MAP = {
   },
   calculate_order_total: {
     method: 'COMPUTE',
-    note: 'Compute locally: total = qty * price; shipping = total >= 4500 ? 0 : 1000',
+    note: `Compute locally: total = qty * price; shipping = total >= ${SHIPPING.india.free_threshold_inr} ? 0 : ${SHIPPING.india.flat_rate_inr}`,
     formula: {
       product_total: 'quantity * unit_price_inr',
-      shipping: 'product_total >= 4500 ? 0 : 1000',
+      shipping: `product_total >= ${SHIPPING.india.free_threshold_inr} ? 0 : ${SHIPPING.india.flat_rate_inr}`,
       grand_total: 'product_total + shipping',
     },
     skus: Object.fromEntries(CATALOG.map(p => [p.sku, p.price_inr])),
@@ -235,13 +235,12 @@ const ENDPOINT_MAP = {
 const SYSTEM_PROMPT = `You are a helpful shopping assistant for HRSU Indore's Calcium Nitrate store (https://hrsuindore.com/store/).
 
 PRODUCTS:
-- 25 kg bag: ₹750 (SKU: HRSU-CN-25KG-001) — ₹30/kg
-- 50 kg bag: ₹1,500 (SKU: HRSU-CN-50KG-001) — ₹30/kg
-Both: 100% water-soluble crystalline powder, 18.5–19% Ca, 15.5%+ N. For drip irrigation, foliar spray, hydroponics, fertigation. Certificate of Analysis with every batch.
+${CATALOG.map(p => `- ${p.size} bag: ${rupee(p.price_inr)} (SKU: ${p.sku}) — ${rupee(p.price_per_kg_inr)}/kg`).join('\n')}
+Both:100% water-soluble crystalline powder, 18.5–19% Ca, 15.5%+ N. For drip irrigation, foliar spray, hydroponics, fertigation. Certificate of Analysis with every batch.
 
 SHIPPING (India):
-- FREE delivery on orders ≥ ₹4,500 (6+ bags × 25 kg, or 3+ bags × 50 kg)
-- ₹1,000 flat for orders < ₹4,500
+- FREE delivery on orders ≥ ${rupee(SHIPPING.india.free_threshold_inr)} (${SHIPPING.india.free_threshold_note})
+- ${rupee(SHIPPING.india.flat_rate_inr)} flat for orders < ${rupee(SHIPPING.india.free_threshold_inr)}
 - 3–10 business days anywhere in India
 
 PAYMENT: No card needed. Submit order → HRSU confirms by phone/WhatsApp within 1 business day → customer pays via UPI or bank transfer → dispatch with tracking.
