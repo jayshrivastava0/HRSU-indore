@@ -14,6 +14,7 @@ import { onRequestOptions as handleQuoteOptions, onRequestPost as handleQuotePos
 import { onRequest as handleMcp } from './functions/api/mcp.js';
 import { onRequest as handleTools } from './functions/api/tools.js';
 import { onRequest as handleIndexNow } from './functions/api/indexnow.js';
+import { onRequest as handleGeo } from './functions/api/geo.js';
 import { onRequestGet as handleReviewsGet, onRequestPost as handleReviewsPost } from './functions/api/reviews.js';
 import { onRequest as handleStore } from './functions/store/[[path]].js';
 import blogRedirectMap from './blog_redirect_map.json';
@@ -60,6 +61,7 @@ export default {
       if (pathname === '/api/mcp')      return handleMcp(makeCtx(request, env, ctx));
       if (pathname === '/api/tools')    return handleTools(makeCtx(request, env, ctx));
       if (pathname === '/api/indexnow') return handleIndexNow(makeCtx(request, env, ctx));
+      if (pathname === '/api/geo')      return handleGeo(makeCtx(request, env, ctx));
 
       if (pathname === '/api/order') {
         if (method === 'OPTIONS') return handleOrderOptions();
