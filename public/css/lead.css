@@ -65,3 +65,7 @@
 .qk-west .qk-wa{grid-column:auto;background:#fff;color:#1a7f43;border:1.5px solid #25d366;}
 .qk-west .qk-cal{grid-column:auto;}
 @media (max-width:420px){ .qk-west .qk-wa,.qk-west .qk-cal{grid-column:1/-1;} }
+.qk-sms{background:#fff;color:#0a192f;border:1.5px solid #0a192f;}
+.qk-note a{color:#0a58ca;text-decoration:underline;}
+.qk-bar-alt{font-size:.9rem;}
+.qk-west .qk-cal:last-child{grid-column:1/-1;}

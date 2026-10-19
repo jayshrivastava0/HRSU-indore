@@ -13,6 +13,9 @@
   var MAIL = 'contact@hrsuindore.com';
   var CAL = 'https://calendar.app.google/aQ8ioyAbckEuVqZe6';
   var PRODUCT = 'industrial grade calcium nitrate';
+  var SMS = '+919425000484';
+  var LINKEDIN = 'https://www.linkedin.com/company/hrsu-indore';
+  var TOUCH = (window.matchMedia && matchMedia('(pointer:coarse)').matches);
   var USES = ['Concrete', 'Wastewater', 'Mining', 'Oil & gas', 'Other'];
   var QTYS = ['1 container (about 20 MT)', 'More than 1 container', 'Not sure yet'];
 
@@ -21,11 +24,12 @@
   var EU = ('AT BE BG HR CY CZ DK EE FI FR DE GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE').split(' ');
 
   function regionNote(c) {
-    if (c === 'US') return 'Importing into the US? We quote CIF or DDP to your port. For TSCA documentation, ask us for the current status before you order.';
-    if (c === 'AU') return 'Importing into Australia? We quote CIF or DDP to your port. For AICIS documentation, ask us for the current status before you order.';
-    if (c === 'GB') return 'Importing into the UK? We quote CIF or DDP to your port. For UK REACH documentation, ask us for the current status before you order.';
-    if (EU.indexOf(c) !== -1) return 'Importing into the EU? We quote CIF or DDP to your port. For REACH documentation, ask us for the current status before you order.';
-    if (c === 'CA' || c === 'NZ') return 'Importing into ' + (c === 'CA' ? 'Canada' : 'New Zealand') + '? We quote CIF or DDP to your port. Ask us for regulatory documentation for your market.';
+    var need = 'Need REACH, TSCA or AICIS documentation? Contact us with your destination country and we will go through the requirements with you.';
+    if (c === 'US') return 'Importing into the US? We quote CIF or DDP to your port. Need TSCA documentation? Contact us and we will go through the requirements with you.';
+    if (c === 'AU') return 'Importing into Australia? We quote CIF or DDP to your port. Need AICIS documentation? Contact us and we will go through the requirements with you.';
+    if (c === 'GB') return 'Importing into the UK? We quote CIF or DDP to your port. Need UK REACH documentation? Contact us and we will go through the requirements with you.';
+    if (EU.indexOf(c) !== -1) return 'Importing into the EU? We quote CIF or DDP to your port. Need REACH documentation? Contact us and we will go through the requirements with you.';
+    if (c === 'CA' || c === 'NZ') return 'Importing into ' + (c === 'CA' ? 'Canada' : 'New Zealand') + '? We quote CIF or DDP to your port. Need regulatory documentation for your country? Contact us.';
     return '';
   }
 
@@ -73,10 +77,11 @@
 
   function render(host, country, layout) {
     var west = layout === 'mail';
-    var btnWa = '<a class="qk-btn qk-wa" data-wa target="_blank" rel="noopener">' + (west ? 'WhatsApp' : 'Message us on WhatsApp') + '</a>';
+    var btnWa = west ? '' : '<a class="qk-btn qk-wa" data-wa target="_blank" rel="noopener">Message us on WhatsApp</a>';
+    var btnSms = (west && TOUCH) ? '<a class="qk-btn qk-sms" data-sms>Text us</a>' : '';
     var btnMail = '<a class="qk-btn qk-mail" data-mail>' + (west ? 'Email us your request' : 'Email us') + '</a>';
     var btnCal = '<a class="qk-btn qk-cal" data-cal href="' + CAL + '" target="_blank" rel="noopener">Book a call</a>';
-    var actions = west ? btnMail + btnCal + btnWa : btnWa + btnMail + btnCal;
+    var actions = west ? btnMail + btnCal + btnSms : btnWa + btnMail + btnCal;
     var note = regionNote(country);
     host.innerHTML =
       '<div class="qk ' + (west ? 'qk-west' : 'qk-wa-first') + '">' +
@@ -87,7 +92,7 @@
         '<div class="qk-chips">' + chips('qty', QTYS) + '</div>' +
         (note ? '<p class="qk-region">' + note + '</p>' : '') +
         '<div class="qk-actions">' + actions + '</div>' +
-        '<p class="qk-note">Your message is already written. Just press send.</p>' +
+        '<p class="qk-note">Your message is already written. Just press send.' + (west ? ' <a href="' + LINKEDIN + '" target="_blank" rel="noopener">Find us on LinkedIn</a>' : '') + '</p>' +
         '<div class="qk-or"><span>or leave one contact and we will reach out</span></div>' +
         '<form class="qk-form" data-qk-form novalidate>' +
           '<input class="qk-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
@@ -99,10 +104,12 @@
 
     var state = { use: '', qty: '' };
     var wa = host.querySelector('[data-wa]');
+    var sms = host.querySelector('[data-sms]');
     var mail = host.querySelector('[data-mail]');
     function refresh() {
       var msg = message(state);
-      wa.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+      if (wa) wa.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
+      if (sms) sms.href = 'sms:' + SMS + '?&body=' + encodeURIComponent(msg.split('\n\n[Source')[0]);
       var subj = 'Quote request: calcium nitrate' + (state.use ? ' (' + state.use + ')' : '');
       mail.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(msg + '\n\nCompany:\nDestination country:');
     }
@@ -120,6 +127,7 @@
         return;
       }
       if (e.target.closest && e.target.closest('[data-cal]')) fire('book_call_click', { page: location.pathname, layout: layout });
+      if (e.target.closest && e.target.closest('[data-sms]')) fire('sms_click', { page: location.pathname, visitor_country: country || 'unknown' });
     });
 
     var form = host.querySelector('[data-qk-form]');
@@ -189,11 +197,12 @@
     bar.setAttribute('aria-label', 'Contact');
     var waHref = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(message({ use: '', qty: '' }));
     var mailHref = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Quote request: calcium nitrate') + '&body=' + encodeURIComponent(message({ use: '', qty: '' }) + '\n\nCompany:\nDestination country:');
+    var smsHref = 'sms:' + SMS + '?&body=' + encodeURIComponent('Hello HRSU Indore, I would like a quote for ' + PRODUCT + '.');
     bar.innerHTML = west
-      ? '<a class="qk-bar-main" href="' + mailHref + '">Email us for a quote</a><a class="qk-bar-alt" target="_blank" rel="noopener" href="' + CAL + '">Book a call</a>'
-      : '<a class="qk-bar-main qk-bar-green" target="_blank" rel="noopener" href="' + waHref + '">Get a quote on WhatsApp</a><a class="qk-bar-alt" target="_blank" rel="noopener" href="' + CAL + '">Book a call</a>';
+      ? '<a class="qk-bar-main" href="' + mailHref + '">Email us for a quote</a>' + (TOUCH ? '<a class="qk-bar-alt qk-bar-sms" href="' + smsHref + '">Text us</a>' : '') + '<a class="qk-bar-alt qk-bar-book" target="_blank" rel="noopener" href="' + CAL + '">Book a call</a>'
+      : '<a class="qk-bar-main qk-bar-green" target="_blank" rel="noopener" href="' + waHref + '">Get a quote on WhatsApp</a><a class="qk-bar-alt qk-bar-book" target="_blank" rel="noopener" href="' + CAL + '">Book a call</a>';
     document.body.appendChild(bar);
-    bar.querySelector('.qk-bar-alt').addEventListener('click', function () { fire('book_call_click', { page: location.pathname, where: 'sticky_bar', layout: layout }); });
+    (bar.querySelector('.qk-bar-book') || bar.querySelector('.qk-bar-alt')).addEventListener('click', function () { fire('book_call_click', { page: location.pathname, where: 'sticky_bar', layout: layout }); });
     var visible = false;
     function update() { bar.classList.toggle('show', window.scrollY > 260 && !visible); }
     if ('IntersectionObserver' in window) {
