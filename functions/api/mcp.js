@@ -12,6 +12,7 @@
 //   }
 
 import { CATALOG, SHIPPING, COMPANY, PAYMENT_INFO, rupee } from './_catalog.js';
+import { onRequestPost as quotePost } from './quote.js';
 
 const PROTOCOL_VERSION = '2025-03-26';
 const SERVER_NAME = 'hrsu-store';
@@ -132,6 +133,24 @@ Returns an order reference (HRSU-XXXXXX) and next steps for the customer.`,
         },
       },
       required: ['name', 'phone', 'size', 'quantity', 'address'],
+    },
+  },
+  {
+    name: 'request_export_quote',
+    description: 'Request an export / bulk quote for INDUSTRIAL GRADE calcium nitrate tetrahydrate (container scale; the TDS lists a 10 MT minimum). Use this for businesses importing into the US, EU, UK, Australia, Middle East and elsewhere; the retail place_order tool is only for small bags in India. Only `contact` is required. No payment or commitment is taken; HRSU replies within one business day with price, lead time and terms. Do not state any certification or REACH/TSCA/AICIS registration; tell the buyer to ask HRSU about regulatory documentation for their country.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        contact: { type: 'string', description: 'Buyer email address or phone / WhatsApp number (required).' },
+        name: { type: 'string', description: 'Buyer name (optional).' },
+        company: { type: 'string', description: 'Company (optional).' },
+        country: { type: 'string', description: 'Destination country (optional).' },
+        application: { type: 'string', description: 'Use: concrete, wastewater, mining, oil and gas, process industry, or other (optional).' },
+        quantity: { type: 'string', description: 'Quantity, e.g. "1 x 20ft container" (optional).' },
+        incoterm: { type: 'string', description: 'EXW, FOB, CIF or DDP (optional).' },
+        message: { type: 'string', description: 'Anything else (optional).' },
+      },
+      required: ['contact'],
     },
   },
   {
@@ -291,6 +310,23 @@ function tool_calculate_order_total({ sku, quantity }) {
   };
 }
 
+async function tool_request_export_quote(args, env, request) {
+  const body = Object.assign({}, args, {
+    product: 'Calcium Nitrate Tetrahydrate - Industrial Grade',
+    page: 'mcp', lead_source: 'ai-agent', lead_medium: 'mcp',
+  });
+  const req = new Request('https://hrsuindore.com/api/quote', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  try { Object.defineProperty(req, 'cf', { value: request && request.cf }); } catch (e) { /* cf is optional */ }
+  const res = await quotePost({ request: req, env });
+  const j = await res.json().catch(() => ({}));
+  if (!res.ok) return { content: [{ type: 'text', text: (j && j.error) || 'Quote request failed' }], isError: true };
+  return { content: [{ type: 'text', text: JSON.stringify({ ok: true, ref: j.ref, message: 'Quote request received. HRSU Indore replies within one business day with price, lead time and terms.', book_a_call: 'https://calendar.app.google/aQ8ioyAbckEuVqZe6', contact: { email: COMPANY.email } }, null, 2) }] };
+}
+
 async function tool_place_order(args, env) {
   const required = ['name', 'phone', 'size', 'quantity', 'address'];
   for (const f of required) {
@@ -385,7 +421,7 @@ async function tool_place_order(args, env) {
 
 // ── JSON-RPC dispatcher ──────────────────────────────────────────────────────
 
-async function dispatch(msg, env) {
+async function dispatch(msg, env, request) {
   const { jsonrpc, method, id, params } = msg;
 
   if (jsonrpc !== '2.0') {
@@ -404,7 +440,11 @@ async function dispatch(msg, env) {
         protocolVersion: PROTOCOL_VERSION,
         capabilities: { tools: {} },
         serverInfo: { name: SERVER_NAME, version: SERVER_VERSION },
-        instructions: `You are connected to the HRSU Indore online store (hrsuindore.com/store/).
+        instructions: `You are connected to HRSU Indore Pvt. Ltd. (hrsuindore.com), a calcium nitrate manufacturer in India.
+
+EXPORT / INDUSTRIAL BUYERS (US, EU, UK, Australia, Middle East and others): the product is industrial grade calcium nitrate tetrahydrate, container scale (TDS minimum 10 MT), quoted EXW, FOB (Mundra or Nhava Sheva), CIF or DDP, payment T/T or LC. Use request_export_quote (only contact is required). Documents: TDS, SDS and sample COA at hrsuindore.com. Do not claim any certification or REACH/TSCA/AICIS registration; direct such questions to contact@hrsuindore.com.
+
+INDIA RETAIL STORE (hrsuindore.com/store/):
 
 PRODUCTS: Calcium nitrate tetrahydrate. ${CATALOG.map(p => `${p.size} ${rupee(p.price_inr)} (SKU: ${p.sku})`).join(', ')}.
 SHIPPING: Free delivery on orders ${rupee(SHIPPING.india.free_threshold_inr)}+. Flat ${rupee(SHIPPING.india.flat_rate_inr)} below that. 3–10 days anywhere in India.
@@ -439,6 +479,7 @@ Never place_order without explicit customer confirmation of the total.`,
           case 'get_company_info':        result = tool_get_company_info(); break;
           case 'calculate_order_total':   result = tool_calculate_order_total(args); break;
           case 'place_order':             result = await tool_place_order(args, env); break;
+          case 'request_export_quote':    result = await tool_request_export_quote(args, env, request); break;
           case 'list_blog_posts':         result = await tool_list_blog_posts(args, env); break;
           case 'get_blog_post':           result = await tool_get_blog_post(args, env); break;
           default:
@@ -509,13 +550,13 @@ export async function onRequest(context) {
 
   // Batch requests
   if (Array.isArray(body)) {
-    const results = (await Promise.all(body.map(msg => dispatch(msg, env)))).filter(Boolean);
+    const results = (await Promise.all(body.map(msg => dispatch(msg, env, request)))).filter(Boolean);
     return new Response(JSON.stringify(results), {
       headers: { 'Content-Type': 'application/json', ...CORS },
     });
   }
 
-  const result = await dispatch(body, env);
+  const result = await dispatch(body, env, request);
 
   // Notification (no id) — 204
   if (result === null) {

@@ -93,7 +93,8 @@ Tools available:
 - `get_shipping_info` — rates and delivery times
 - `get_company_info` — contact details
 - `calculate_order_total` — exact price + shipping before committing
-- `place_order` — submit an order (no payment at this step)
+- `place_order` — submit an India retail order (no payment at this step)
+- `request_export_quote` — industrial / export quote request (only `contact` is required)
 
 **Claude Desktop config** — add to `claude_desktop_config.json`:
 ```json
@@ -114,6 +115,7 @@ Tools available:
 | OpenAI-format tools | `GET /api/tools` | Hermes, Ollama, DeepSeek, Llama, Mistral, Qwen, Gemma, Vercel AI SDK, CrewAI, Smolagents |
 | Anthropic-format tools | `GET /api/tools?format=anthropic` | Direct Anthropic API (without MCP) |
 | Cohere-format tools | `GET /api/tools?format=cohere` | Cohere Command R / Command A |
+| Gemini-format tools | `GET /api/tools?format=gemini` | Google Gemini API / Vertex AI function calling |
 | A2A Agent Card | `/.well-known/agent.json` | Gemini agents (Google A2A protocol) |
 | ChatGPT plugin | `/.well-known/ai-plugin.json` | ChatGPT custom GPTs |
 | Agent skills | `/.well-known/agent-skills/index.json` | Browsing agents |

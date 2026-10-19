@@ -23,6 +23,7 @@
 
 import { CATALOG, SHIPPING, COMPANY, rupee } from './_catalog.js';
 
+
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, OPTIONS',
@@ -152,6 +153,27 @@ NO PAYMENT at this step. After submission:
   {
     type: 'function',
     function: {
+      name: 'request_export_quote',
+      description: 'Request an export / bulk quote for INDUSTRIAL GRADE calcium nitrate tetrahydrate (container scale; the TDS lists a 10 MT minimum). Use this for businesses importing into the US, EU, UK, Australia, Middle East and elsewhere; the retail place_order tool is only for small bags in India. Only `contact` is required. No payment or commitment is taken; HRSU replies within one business day with price, lead time and terms. Do not state any certification or REACH/TSCA/AICIS registration; tell the buyer to ask HRSU about regulatory documentation for their country.',
+      parameters: {
+        type: 'object',
+        properties: {
+          contact: { type: 'string', description: 'Buyer email address or phone / WhatsApp number (required).' },
+          name: { type: 'string', description: 'Buyer name (optional).' },
+          company: { type: 'string', description: 'Company (optional).' },
+          country: { type: 'string', description: 'Destination country (optional).' },
+          application: { type: 'string', description: 'Use: concrete, wastewater, mining, oil and gas, process industry, or other (optional).' },
+          quantity: { type: 'string', description: 'Quantity, e.g. "1 x 20ft container" (optional).' },
+          incoterm: { type: 'string', description: 'EXW, FOB, CIF or DDP (optional).' },
+          message: { type: 'string', description: 'Anything else (optional).' },
+        },
+        required: ['contact'],
+      },
+    },
+  },
+  {
+    type: 'function',
+    function: {
       name: 'get_company_info',
       description: 'Get HRSU Indore contact details, address, WhatsApp, and website URLs.',
       parameters: {
@@ -216,6 +238,13 @@ const ENDPOINT_MAP = {
     },
     skus: Object.fromEntries(CATALOG.map(p => [p.sku, p.price_inr])),
   },
+  request_export_quote: {
+    method: 'POST',
+    url: 'https://hrsuindore.com/api/quote',
+    content_type: 'application/json',
+    body_template: { contact: '{contact}', company: '{company}', country: '{country}', application: '{application}', quantity: '{quantity}', incoterm: '{incoterm}', message: '{message}' },
+    note: 'Only contact is required. For industrial / export buyers; place_order is India retail only.',
+  },
   place_order: {
     method: 'POST',
     url: 'https://hrsuindore.com/api/order',
@@ -232,7 +261,11 @@ const ENDPOINT_MAP = {
   },
 };
 
-const SYSTEM_PROMPT = `You are a helpful shopping assistant for HRSU Indore's Calcium Nitrate store (https://hrsuindore.com/store/).
+const SYSTEM_PROMPT = `You are an assistant for HRSU Indore Pvt. Ltd. (https://hrsuindore.com), a calcium nitrate manufacturer in India.
+
+INDUSTRIAL / EXPORT BUYERS (US, EU, UK, Australia, Middle East and elsewhere): industrial grade calcium nitrate tetrahydrate, assay 99-103%, container scale (the TDS lists a 10 MT minimum), 50 kg woven bags, quoted EXW, FOB (Mundra or Nhava Sheva), CIF or DDP, payment T/T or LC. Use request_export_quote (only contact is required). TDS, SDS and sample COA are public at https://hrsuindore.com/industrial/. Do not claim any certification or REACH/TSCA/AICIS registration; tell buyers to contact contact@hrsuindore.com about documentation for their country.
+
+INDIA RETAIL STORE (https://hrsuindore.com/store/) - small bags only:
 
 PRODUCTS:
 ${CATALOG.map(p => `- ${p.size} bag: ${rupee(p.price_inr)} (SKU: ${p.sku}) — ${rupee(p.price_per_kg_inr)}/kg`).join('\n')}
@@ -290,6 +323,24 @@ export async function onRequest(context) {
     });
   }
 
+  // Google Gemini function-calling format (also fine for Vertex AI)
+  if (format === 'gemini') {
+    const strip = (s) => {
+      const o = JSON.parse(JSON.stringify(s));
+      const walk = (n) => { if (n && typeof n === 'object') { delete n.minimum; delete n.maximum; Object.values(n).forEach(walk); } };
+      walk(o);
+      return o;
+    };
+    return new Response(JSON.stringify({
+      tools: [{ function_declarations: TOOLS.map(t => ({ name: t.function.name, description: t.function.description, parameters: strip(t.function.parameters) })) }],
+      system_instruction: SYSTEM_PROMPT,
+      endpoint_map: ENDPOINT_MAP,
+      note: 'Use with the Gemini API `tools` parameter. Gemini agents can also read https://hrsuindore.com/.well-known/agent.json (A2A) and https://hrsuindore.com/openapi.json.',
+    }, null, 2), {
+      headers: { 'Content-Type': 'application/json', 'Cache-Control': 'public, max-age=3600', ...CORS },
+    });
+  }
+
   // Cohere Command R format
   if (format === 'cohere') {
     const cohere_tools = TOOLS.map(t => ({
@@ -328,6 +379,7 @@ export async function onRequest(context) {
       openai: 'GET /api/tools',
       anthropic: 'GET /api/tools?format=anthropic',
       cohere: 'GET /api/tools?format=cohere',
+      gemini: 'GET /api/tools?format=gemini',
     },
     mcp_server: 'POST https://hrsuindore.com/api/mcp',
     openapi_spec: 'https://hrsuindore.com/openapi.json',
