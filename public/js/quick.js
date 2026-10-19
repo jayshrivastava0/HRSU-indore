@@ -202,6 +202,7 @@
       ? '<a class="qk-bar-main" href="' + mailHref + '">Email us for a quote</a>' + (TOUCH ? '<a class="qk-bar-alt qk-bar-sms" href="' + smsHref + '">Text us</a>' : '') + '<a class="qk-bar-alt qk-bar-book" target="_blank" rel="noopener" href="' + CAL + '">Book a call</a>'
       : '<a class="qk-bar-main qk-bar-green" target="_blank" rel="noopener" href="' + waHref + '">Get a quote on WhatsApp</a><a class="qk-bar-alt qk-bar-book" target="_blank" rel="noopener" href="' + CAL + '">Book a call</a>';
     document.body.appendChild(bar);
+    document.body.classList.add('has-qk-bar');
     (bar.querySelector('.qk-bar-book') || bar.querySelector('.qk-bar-alt')).addEventListener('click', function () { fire('book_call_click', { page: location.pathname, where: 'sticky_bar', layout: layout }); });
     var visible = false;
     function update() { bar.classList.toggle('show', window.scrollY > 260 && !visible); }

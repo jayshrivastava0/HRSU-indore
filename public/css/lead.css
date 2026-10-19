@@ -56,7 +56,7 @@
 @media (max-width:768px){
   .qk-bar{display:flex;}
   .fab-wa{display:none !important;}
-  body{padding-bottom:0;}
+  body.has-qk-bar{padding-bottom:80px;}
 }
 @media (max-width:420px){ .qk-actions{grid-template-columns:1fr;} .qk-form{flex-direction:column;} .qk-send{min-height:50px;} }
 
