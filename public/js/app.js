@@ -4,9 +4,11 @@
 
 /* ── Preloader ── */
 window.addEventListener('load', () => {
+  const pre = document.getElementById('preloader');
+  if (!pre) return; // preloader removed from the homepage; kept for any page that still has it
   setTimeout(() => {
-    document.getElementById('preloader').classList.add('exit');
-    setTimeout(() => { document.getElementById('preloader').style.display = 'none'; }, 900);
+    pre.classList.add('exit');
+    setTimeout(() => { pre.style.display = 'none'; }, 900);
   }, 2000);
 });
 

@@ -2,6 +2,13 @@
 
 > HRSU Indore Pvt. Ltd. manufactures and sells calcium nitrate tetrahydrate (Ca(NO₃)₂) directly to farmers, distributors, industrial buyers, and exporters. Based in Maksi, Madhya Pradesh, India. You can browse products, check prices, and place orders via the website, REST API, WhatsApp, or the MCP server.
 
+## Industrial and export buyers (primary offer)
+
+- [Industrial grade calcium nitrate tetrahydrate](https://hrsuindore.com/industrial/): Ca(NO3)2·4H2O, CAS 13477-34-4, assay 99–103%, soluble Ca 16.4% min, nitrate N 11.7% min. Container-scale orders (TDS lists a 10 MT minimum), 50 kg woven bags, EXW / FOB Mundra / CIF / DDP, T/T or LC. COA with every lot; TDS, SDS and sample COA are public PDFs. Quote requests: https://hrsuindore.com/industrial/#quote or contact@hrsuindore.com.
+- For EU, US or Australian destinations, REACH / TSCA / AICIS status is confirmed by sales on request; no compliance is claimed on the site.
+
+The sections below describe the separate India-only retail store.
+
 ## Products
 
 - [Calcium Nitrate Tetrahydrate — 25 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-25KG-001. ₹1,200 per bag (₹48/kg). Calcium nitrate tetrahydrate, assay 99–103%, Ca 16.4% min (soluble), N 11.7% min (nitrate form). Insoluble matter 0.005% max. Woven bag with inner liner, colourless to white crystals.

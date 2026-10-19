@@ -77,3 +77,9 @@ sup.cite a:hover{text-decoration:underline;}
 .lrn-refs li:target{background:#fff3cd;}
 .ref-type{display:inline-block;font-size:.72rem;color:var(--mid);border:1px solid var(--border);border-radius:4px;padding:0 6px;margin-left:4px;}
 .ref-note{font-size:.88rem;color:var(--mid);}
+
+/* Buyer box near the top of high-traffic articles */
+.lrn-buy{margin:0 0 30px;padding:16px 20px;background:var(--navy);color:rgba(255,255,255,.88);border-left:4px solid var(--gold);border-radius:0 8px 8px 0;font-size:.92rem;line-height:1.6;}
+.lrn-buy strong{color:#fff;display:block;margin-bottom:4px;}
+.lrn-main .lrn-buy a{color:var(--gold);font-weight:600;margin-right:14px;}
+.lrn-main .lrn-buy a.lrn-buy-cta{display:inline-block;margin-top:8px;padding:8px 16px;background:var(--gold);color:var(--navy);border-radius:6px;text-decoration:none;}
