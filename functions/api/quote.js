@@ -98,5 +98,19 @@ export async function onRequestPost(context) {
   if (!r.ok) {
     return json({ error: 'Failed to record quote request' }, 502);
   }
+
+  // Optional instant phone alert (free ntfy.sh push). Dormant unless NTFY_TOPIC is set as a secret:
+  //   npx wrangler secret put NTFY_TOPIC   (use a long random topic name, then subscribe to it in the ntfy app)
+  if (env.NTFY_TOPIC) {
+    try {
+      const line = [d.application, d.quantity, d.country || (request.cf && request.cf.country), d.email || d.phone]
+        .filter(Boolean).join(' | ');
+      await fetch('https://ntfy.sh/' + encodeURIComponent(env.NTFY_TOPIC), {
+        method: 'POST',
+        headers: { Title: 'New HRSU quote request ' + ref, Priority: 'high', Tags: 'incoming_envelope' },
+        body: line || ref,
+      });
+    } catch (e) { /* alert is best-effort; the email already went out */ }
+  }
   return json({ ok: true, ref });
 }

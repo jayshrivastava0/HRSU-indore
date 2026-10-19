@@ -64,4 +64,4 @@ All prices MRP inclusive of all taxes. Certificate of Analysis with every batch.
 
 - Email: contact@hrsuindore.com
 - Phone / WhatsApp: +91 94250 00484
-- Factory: 53, Industrial Area, Maksi, Madhya Pradesh 465106, India
+- Factory: Plot No. 62, MPIDC Industrial Area, Maksi, Madhya Pradesh 465106, India

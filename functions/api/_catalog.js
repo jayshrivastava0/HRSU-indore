@@ -133,7 +133,7 @@ export const SHIPPING = {
 
 export const COMPANY = {
   name: 'HRSU Indore Pvt. Ltd.',
-  address: '53, Industrial Area, Maksi, Madhya Pradesh 465106, India',
+  address: 'Plot No. 62, MPIDC Industrial Area, Maksi, Madhya Pradesh 465106, India',
   email: 'contact@hrsuindore.com',
   phone: '+91 94250 00484',
   whatsapp_link: 'https://wa.me/919425000484',

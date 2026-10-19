@@ -43,7 +43,7 @@ All retail prices MRP inclusive of all taxes. Free delivery on orders ${rupee(SH
 
 - **Email:** contact@hrsuindore.com
 - **Phone / WhatsApp:** +91 94250 00484
-- **Factory:** 53, Industrial Area, Maksi, Madhya Pradesh 465106, India
+- **Factory:** Plot No. 62, MPIDC Industrial Area, Maksi, Madhya Pradesh 465106, India
 - **Blog:** [hrsuindore.com/blog](https://hrsuindore.com/blog/) — technical guides & market insights, full directory at /blog/posts-index.json
 `;
 
