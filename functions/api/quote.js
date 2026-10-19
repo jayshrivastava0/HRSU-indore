@@ -39,11 +39,21 @@ export async function onRequestPost(context) {
 
   if (d.website) return json({ ok: true, ref: 'OK' }); // honeypot: pretend success to bots
 
-  for (const f of ['company', 'country', 'name', 'email', 'quantity']) {
-    if (!d[f] || String(d[f]).length > 300) return json({ error: `Invalid field: ${f}` }, 400);
+  // One-field quick form sends `contact` (an email or a phone/WhatsApp number);
+  // the long form still sends email/phone separately. Everything else is optional.
+  const contact = String(d.contact || '').trim();
+  if (contact) {
+    if (contact.includes('@')) d.email = d.email || contact;
+    else d.phone = d.phone || contact;
   }
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return json({ error: 'Invalid email' }, 400);
-  if (d.phone && !/^[0-9+\-\s()]{6,20}$/.test(d.phone)) return json({ error: 'Invalid phone' }, 400);
+  for (const k of Object.keys(d)) {
+    if (typeof d[k] === 'string' && d[k].length > 800) return json({ error: `Invalid field: ${k}` }, 400);
+  }
+  const hasEmail = d.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email);
+  const hasPhone = d.phone && /^[0-9+\-\s()]{6,20}$/.test(d.phone);
+  if (d.email && !hasEmail) return json({ error: 'Invalid email' }, 400);
+  if (d.phone && !hasPhone) return json({ error: 'Invalid phone' }, 400);
+  if (!hasEmail && !hasPhone) return json({ error: 'Please give an email or a phone number' }, 400);
 
   if (!env.RESEND_API_KEY) {
     return json({ error: 'Quote system not configured' }, 503);
@@ -53,14 +63,15 @@ export async function onRequestPost(context) {
   const html = `
     <h2>New export/bulk quote request ${ref}</h2>
     <table border="1" cellpadding="6" cellspacing="0">
-      <tr><th>Company</th><td>${esc(d.company)}</td></tr>
-      <tr><th>Country</th><td>${esc(d.country)}</td></tr>
-      <tr><th>Contact name</th><td>${esc(d.name)}</td></tr>
-      <tr><th>Email</th><td>${esc(d.email)}</td></tr>
+      <tr><th>Company</th><td>${esc(d.company || '—')}</td></tr>
+      <tr><th>Country (typed)</th><td>${esc(d.country || '—')}</td></tr>
+      <tr><th>Country (from network)</th><td>${esc((request.cf && request.cf.country) || '—')}</td></tr>
+      <tr><th>Contact name</th><td>${esc(d.name || '—')}</td></tr>
+      <tr><th>Email</th><td>${esc(d.email || '—')}</td></tr>
       <tr><th>Phone</th><td>${esc(d.phone || '—')}</td></tr>
       <tr><th>Product</th><td>${esc(d.product || 'Calcium Nitrate')}</td></tr>
       <tr><th>Application</th><td>${esc(d.application || '—')}</td></tr>
-      <tr><th>Quantity</th><td>${esc(d.quantity)}</td></tr>
+      <tr><th>Quantity</th><td>${esc(d.quantity || '—')}</td></tr>
       <tr><th>Preferred Incoterm</th><td>${esc(d.incoterm || '—')}</td></tr>
       <tr><th>Message</th><td>${esc(d.message || '—')}</td></tr>
       <tr><th>Lead source</th><td>${esc(d.lead_source || 'unknown')}${d.lead_medium ? ' / ' + esc(d.lead_medium) : ''}</td></tr>
@@ -78,8 +89,8 @@ export async function onRequestPost(context) {
     body: JSON.stringify({
       from: `HRSU Export RFQ <${QUOTE_FROM}>`,
       to: [env.QUOTE_TO || QUOTE_TO_DEFAULT],
-      reply_to: d.email,
-      subject: `Export/bulk quote request ${ref} — ${esc(d.company)} (${esc(d.country)})`,
+      ...(hasEmail ? { reply_to: d.email } : {}),
+      subject: `Export/bulk quote request ${ref} — ${esc(d.company || d.email || d.phone)}${d.country ? ' (' + esc(d.country) + ')' : ''}`,
       html,
     }),
   });

@@ -218,15 +218,18 @@
       <h2 class="sh2">Get price, lead time <em>and a sample COA.</em></h2>
       <p class="lede">Tell us what you need. We reply within one business day.</p>
       <div class="lead-box">
-        <div data-lead-status hidden></div>
+        <div data-quick></div>
+        <details class="lead-more">
+          <summary>Prefer to send full details instead?</summary>
+          <div data-lead-status hidden></div>
         <form data-lead-form>
           <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="lead-grid">
-            <div><label for="lf-name">Your name</label><input id="lf-name" name="name" type="text" required maxlength="100" autocomplete="name"></div>
-            <div><label for="lf-company">Company</label><input id="lf-company" name="company" type="text" required maxlength="150" autocomplete="organization"></div>
+            <div><label for="lf-name">Your name</label><input id="lf-name" name="name" type="text" maxlength="100" autocomplete="name"></div>
+            <div><label for="lf-company">Company</label><input id="lf-company" name="company" type="text" maxlength="150" autocomplete="organization"></div>
             <div><label for="lf-email">Business email</label><input id="lf-email" name="email" type="email" required maxlength="150" autocomplete="email"></div>
             <div><label for="lf-phone">Phone (optional, with country code)</label><input id="lf-phone" name="phone" type="tel" maxlength="20" autocomplete="tel"></div>
-            <div><label for="lf-country">Destination country</label><input id="lf-country" name="country" type="text" required maxlength="80" autocomplete="country-name"></div>
+            <div><label for="lf-country">Destination country</label><input id="lf-country" name="country" type="text" maxlength="80" autocomplete="country-name"></div>
             <div><label for="lf-app">Application</label>
               <select id="lf-app" name="application">
                 <option value="">Select…</option>
@@ -244,7 +247,7 @@
                 <option>Calcium Nitrate Melt (liquid) — early access</option>
                 <option>Both / not sure</option>
               </select></div>
-            <div><label for="lf-qty">Quantity required</label><input id="lf-qty" name="quantity" type="text" required maxlength="100" placeholder="e.g. 1 x 20ft FCL (~20 MT)"></div>
+            <div><label for="lf-qty">Quantity required</label><input id="lf-qty" name="quantity" type="text" maxlength="100" placeholder="e.g. 1 x 20ft FCL (~20 MT)"></div>
             <div class="full"><label for="lf-incoterm">Preferred Incoterm</label>
               <select id="lf-incoterm" name="incoterm">
                 <option value="">No preference / advise</option>
@@ -253,8 +256,9 @@
             <div class="full"><label for="lf-msg">Anything else (optional)</label><textarea id="lf-msg" name="message" rows="3" maxlength="800" placeholder="Target port, documents you need, specifications to meet…"></textarea></div>
           </div>
           <p style="margin-top:16px"><button class="btn" type="submit">Request quote &amp; sample COA</button></p>
-          <p class="lead-note">Or reach us directly: <a href="mailto:contact@hrsuindore.com">contact@hrsuindore.com</a> · <a href="tel:+919425000484">+91 94250 00484</a> · <a href="mailto:sujay@hrsuindore.com?subject=Call%20request%20-%20calcium%20nitrate&body=Hello%2C%20I%27d%20like%20a%20call.%0A%0AMy%20time%20zone%3A%0AProposed%20times%3A%0ACompany%3A%0AProduct%20and%20quantity%3A">Request a call</a> · <a href="https://wa.me/919425000484" target="_blank" rel="noopener">WhatsApp</a></p>
+          <p class="lead-note">Or reach us directly: <a href="mailto:contact@hrsuindore.com">contact@hrsuindore.com</a> · <a href="tel:+919425000484">+91 94250 00484</a> · <a href="https://calendar.app.google/aQ8ioyAbckEuVqZe6" target="_blank" rel="noopener">Book a call</a> · <a href="https://wa.me/919425000484" target="_blank" rel="noopener">WhatsApp</a></p>
         </form>
+        </details>
       </div>
     </div>
   </section>
@@ -292,5 +296,6 @@
 </script>
 <script src="/js/tracking.js" defer></script>
 <script src="/js/lead.js" defer></script>
+<script src="/js/quick.js" defer></script>
 </body>
 </html>
