@@ -185,6 +185,7 @@
       hero.addEventListener('click', function () { fire('book_call_click', { page: location.pathname, where: 'hero', layout: layout }); });
     }
     document.querySelectorAll('.nav-wa, .fab-wa').forEach(function (el) { el.style.display = 'none'; });
+    document.querySelectorAll('.menu-foot a[href*="wa.me"]').forEach(function (el) { el.style.display = 'none'; });
   }
 
   function addBar(layout) {

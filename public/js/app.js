@@ -23,8 +23,8 @@ const ham = document.querySelector('.ham');
 const menu = document.getElementById('menu');
 const menuLinks = menu.querySelectorAll('a');
 
-function openMenu() { ham.classList.add('open'); menu.classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeMenu() { ham.classList.remove('open'); menu.classList.remove('open'); document.body.style.overflow = ''; }
+function openMenu() { ham.classList.add('open'); menu.classList.add('open'); nav.classList.add('menu-open'); document.body.style.overflow = 'hidden'; }
+function closeMenu() { ham.classList.remove('open'); menu.classList.remove('open'); nav.classList.remove('menu-open'); document.body.style.overflow = ''; }
 ham.addEventListener('click', () => menu.classList.contains('open') ? closeMenu() : openMenu());
 menuLinks.forEach(l => l.addEventListener('click', closeMenu));
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMenu(); });

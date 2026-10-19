@@ -515,3 +515,7 @@ footer{background:var(--navy-deep);padding:72px 40px 32px;}
 
 [data-contact-layout="mail"] .hero-btns .btn-wa{border-color:rgba(201,168,76,.55);color:var(--gold);}
 [data-contact-layout="mail"] .hero-btns .btn-wa:hover{background:rgba(201,168,76,.1);}
+/* Fullscreen menu open: the bar's own logo/actions sit above the overlay (z-index 1001 vs 999) and
+   showed through next to the menu's brand while the page was still at the top. Hide them; keep the close button. */
+#navbar.menu-open .nav-logo,#navbar.menu-open .nav-actions{opacity:0;visibility:hidden;transition:none;}
+#navbar.menu-open{background:transparent;box-shadow:none;backdrop-filter:none;}
