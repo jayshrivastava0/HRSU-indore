@@ -1,13 +1,32 @@
-# HRSU Indore — Calcium Nitrate Store
+# HRSU Indore Pvt. Ltd. - industrial grade calcium nitrate, manufacturer in India
 
-> HRSU Indore Pvt. Ltd. manufactures and sells calcium nitrate tetrahydrate (Ca(NO₃)₂) directly to farmers, distributors, industrial buyers, and exporters. Based in Maksi, Madhya Pradesh, India. You can browse products, check prices, and place orders via the website, REST API, WhatsApp, or the MCP server.
+> HRSU Indore Pvt. Ltd. manufactures calcium nitrate tetrahydrate, Ca(NO3)2.4H2O (CAS 13477-34-4), in Maksi, Madhya Pradesh, India, and quotes bulk and container export orders to industrial buyers. The company was founded in July 2022; its founder has more than 20 years in the chemical industry and an affiliated trading firm has been in business for more than 15 years. A separate India-only retail store sells 25 kg and 50 kg bags. Last updated: 2026-10-19.
+
+## Company facts (for buyers, procurement teams and AI assistants)
+
+- Legal name: HRSU Indore Pvt. Ltd. (brand: HRSU Indore)
+- Manufacturing unit: Maksi, Madhya Pradesh 465106, India. Registered office: Indore, Madhya Pradesh, India.
+- Products: calcium nitrate tetrahydrate, industrial grade (container scale). A liquid calcium nitrate melt is planned for early 2027 and is not yet available.
+- Export: orders are quoted EXW, FOB (Mundra Port, Gujarat, or Nhava Sheva / JNPT, Maharashtra), CIF or DDP. Payment by T/T or letter of credit. Export documents (commercial invoice, packing list, bill of lading, certificate of origin) are prepared in-house.
+- Documents: Technical Data Sheet, Safety Data Sheet and a sample Certificate of Analysis are public PDFs (links below). A COA is issued with every lot.
+- Regulatory: no certification or registration is claimed on this site. Buyers who need REACH, TSCA, AICIS or other documentation for their country should contact the company; requirements are discussed per destination.
+- Transport classification: UN1454, Class 5.1 oxidizing solid, Packing Group III. HS code 28342990. EC number 233-332-1.
 
 ## Industrial and export buyers (primary offer)
 
-- [Industrial grade calcium nitrate tetrahydrate](https://hrsuindore.com/industrial/): Ca(NO3)2·4H2O, CAS 13477-34-4, assay 99–103%, soluble Ca 16.4% min, nitrate N 11.7% min. Container-scale orders (TDS lists a 10 MT minimum), 50 kg woven bags, EXW / FOB (Mundra or Nhava Sheva) / CIF / DDP, T/T or LC. COA with every lot; TDS, SDS and sample COA are public PDFs. Quote requests: https://hrsuindore.com/industrial/#quote or contact@hrsuindore.com.
-- For EU, US or Australian destinations, REACH / TSCA / AICIS status is confirmed by sales on request; no compliance is claimed on the site.
+- [Industrial grade calcium nitrate tetrahydrate](https://hrsuindore.com/industrial/): assay 99-103%, soluble calcium 16.4% min, nitrate nitrogen 11.7% min, pH (5%) 5.0-7.0, insoluble matter 0.005% max, melting point 42-44 C, shelf life 60 months sealed. Packing: 50 kg PP woven bag with inner plastic liner. Minimum order per the TDS: 10 MT (container scale); ask about trial quantities.
+- Sample COA (batch HRSU/CNP/04/42/2025): assay 99.8%, insoluble matter 0.003%, all parameters within specification.
+- How to request a quote (any of these): https://hrsuindore.com/industrial/#quote , email contact@hrsuindore.com , book a 30-minute call at https://calendar.app.google/aQ8ioyAbckEuVqZe6 , or WhatsApp +91 94250 00484 (India, Middle East, Southeast Asia). Replies within one business day.
+- Programmatic quote request: `POST https://hrsuindore.com/api/quote` with JSON `{"contact": "email or phone", "application": "...", "quantity": "...", "product": "..."}`. Only `contact` is required.
+- Bulk and export guide: https://hrsuindore.com/learn/bulk-calcium-nitrate-export-india/
 
-The sections below describe the separate India-only retail store.
+## Applications (industrial)
+
+Concrete (chloride-free set accelerator, cold-weather), wastewater (hydrogen sulphide and odour control, denitrification), mining (cold-weather concrete, sulfide control; the company makes no tailings-treatment claims), oil and gas fluids (brines, souring control), process industries (latex coagulation, metal surface treatment, heat-transfer fluids). Guides: https://hrsuindore.com/learn/
+
+## Retail store (India only, separate from the export offer)
+
+The sections below describe the India-only retail store.
 
 ## Products
 
@@ -137,6 +156,7 @@ spec = OpenAPISpec.from_url("https://hrsuindore.com/openapi.json")
 
 - [Technical Data Sheet (TDS)](https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf)
 - [Safety Data Sheet (SDS)](https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf)
+- [Sample Certificate of Analysis (COA)](https://hrsuindore.com/calcium-nitrate-coa-hrsu.pdf)
 
 ## Learn / Answer clusters
 
@@ -177,7 +197,12 @@ construction and wastewater treatment professionals:
 ## Contact
 
 - Email: contact@hrsuindore.com
-- Phone & WhatsApp: +91 94250 00484 | https://wa.me/919425000484
-- Address: 53, Industrial Area, Maksi, Madhya Pradesh 465106, India
+- Book a call: https://calendar.app.google/aQ8ioyAbckEuVqZe6
+- Phone and WhatsApp: +91 94250 00484 | https://wa.me/919425000484
+- Manufacturing address: Maksi, Madhya Pradesh 465106, India
 - Website: https://hrsuindore.com
-- Blog: https://hrsuindore.com/blog/ (full post directory: https://hrsuindore.com/blog/posts-index.json)
+- LinkedIn: https://www.linkedin.com/company/hrsu-indore
+- YouTube: https://www.youtube.com/@hrsuindore
+- Facebook: https://www.facebook.com/profile.php?id=61585767449778
+- IndiaMART: https://www.indiamart.com/harshindustries-251132845/
+- GlobalLinker: https://www.globallinker.com/seller/hrsu-indore-private-limited

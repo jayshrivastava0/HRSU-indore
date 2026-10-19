@@ -41,7 +41,9 @@
   "paths": {
     "/api/products": {
       "get": {
-        "tags": ["Products"],
+        "tags": [
+          "Products"
+        ],
         "operationId": "listProducts",
         "summary": "List all products",
         "description": "Returns the complete product catalog including prices, specifications, shipping information, payment details, and company contact. Use `?sku=` to fetch a single product by SKU.",
@@ -53,7 +55,10 @@
             "description": "Filter to a single product by SKU (e.g. HRSU-CN-25KG-001)",
             "schema": {
               "type": "string",
-              "enum": ["HRSU-CN-25KG-001", "HRSU-CN-50KG-001"]
+              "enum": [
+                "HRSU-CN-25KG-001",
+                "HRSU-CN-50KG-001"
+              ]
             }
           }
         ],
@@ -63,23 +68,36 @@
             "headers": {
               "X-RateLimit-Limit": {
                 "description": "Maximum requests allowed per hour",
-                "schema": { "type": "integer", "example": 100 }
+                "schema": {
+                  "type": "integer",
+                  "example": 100
+                }
               },
               "X-RateLimit-Remaining": {
                 "description": "Requests remaining in the current window",
-                "schema": { "type": "integer", "example": 95 }
+                "schema": {
+                  "type": "integer",
+                  "example": 95
+                }
               },
               "X-RateLimit-Reset": {
                 "description": "Unix timestamp when the rate limit window resets",
-                "schema": { "type": "integer", "example": 1750000000 }
+                "schema": {
+                  "type": "integer",
+                  "example": 1750000000
+                }
               }
             },
             "content": {
               "application/json": {
                 "schema": {
                   "oneOf": [
-                    { "$ref": "#/components/schemas/CatalogResponse" },
-                    { "$ref": "#/components/schemas/Product" }
+                    {
+                      "$ref": "#/components/schemas/CatalogResponse"
+                    },
+                    {
+                      "$ref": "#/components/schemas/Product"
+                    }
                   ]
                 },
                 "examples": {
@@ -136,19 +154,29 @@
             "description": "SKU not found",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorResponse" },
-                "example": { "error": "SKU not found: HRSU-CN-99KG-999" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "SKU not found: HRSU-CN-99KG-999"
+                }
               }
             }
           },
-          "429": { "$ref": "#/components/responses/TooManyRequests" },
-          "500": { "$ref": "#/components/responses/InternalError" }
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
         }
       }
     },
     "/api/order": {
       "post": {
-        "tags": ["Orders"],
+        "tags": [
+          "Orders"
+        ],
         "operationId": "placeOrder",
         "summary": "Place an order",
         "description": "Submit an order for Calcium Nitrate. **No payment is taken at this step.**\n\n**Order flow:**\n1. Submit order via this endpoint\n2. HRSU calls or WhatsApps the customer within 1 business day to confirm\n3. Customer pays via UPI or NEFT/IMPS bank transfer\n4. HRSU dispatches with tracking after payment received\n\n**For AI agents:** Always call `GET /api/products` first to get current prices, then confirm the total with the customer before submitting. Use `POST /api/mcp` with `calculate_order_total` for accurate totals including shipping.",
@@ -156,7 +184,9 @@
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/OrderRequest" },
+              "schema": {
+                "$ref": "#/components/schemas/OrderRequest"
+              },
               "examples": {
                 "retail_25kg": {
                   "summary": "6 bags of 25 kg (qualifies for free shipping)",
@@ -203,18 +233,27 @@
             "headers": {
               "X-RateLimit-Limit": {
                 "description": "Maximum order requests allowed per hour",
-                "schema": { "type": "integer", "example": 10 }
+                "schema": {
+                  "type": "integer",
+                  "example": 10
+                }
               },
               "X-RateLimit-Remaining": {
-                "schema": { "type": "integer" }
+                "schema": {
+                  "type": "integer"
+                }
               },
               "X-RateLimit-Reset": {
-                "schema": { "type": "integer" }
+                "schema": {
+                  "type": "integer"
+                }
               }
             },
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/OrderResponse" },
+                "schema": {
+                  "$ref": "#/components/schemas/OrderResponse"
+                },
                 "example": {
                   "ok": true,
                   "ref": "HRSU-M8X3K1"
@@ -226,29 +265,45 @@
             "description": "Validation error — missing or invalid field",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorResponse" },
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
                 "examples": {
                   "missing_phone": {
-                    "value": { "error": "Invalid field: phone" }
+                    "value": {
+                      "error": "Invalid field: phone"
+                    }
                   },
                   "missing_address": {
-                    "value": { "error": "Missing required field: address" }
+                    "value": {
+                      "error": "Missing required field: address"
+                    }
                   },
                   "invalid_quantity": {
-                    "value": { "error": "quantity must be between 1 and 500" }
+                    "value": {
+                      "error": "quantity must be between 1 and 500"
+                    }
                   }
                 }
               }
             }
           },
-          "429": { "$ref": "#/components/responses/TooManyRequests" },
-          "500": { "$ref": "#/components/responses/InternalError" },
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          },
           "503": {
             "description": "Email system temporarily unavailable. Fall back to WhatsApp ordering at https://wa.me/919425000484",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/ErrorResponse" },
-                "example": { "error": "Service temporarily unavailable. Please use WhatsApp: +919425000484" }
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                },
+                "example": {
+                  "error": "Service temporarily unavailable. Please use WhatsApp: +919425000484"
+                }
               }
             }
           }
@@ -257,7 +312,9 @@
     },
     "/api/mcp": {
       "get": {
-        "tags": ["MCP"],
+        "tags": [
+          "MCP"
+        ],
         "operationId": "mcpDiscovery",
         "summary": "MCP server discovery",
         "description": "Returns MCP server metadata, available tools, and connection instructions. Use this to discover what tools the MCP server exposes before connecting.\n\n**Available MCP tools:**\n- `list_products` — full catalog with prices and specs\n- `get_product` — single product by SKU\n- `get_shipping_info` — shipping rates and delivery timelines\n- `get_company_info` — company details, contact, bank info\n- `calculate_order_total` — accurate total including shipping\n- `place_order` — submit order (requires customer confirmation first)",
@@ -266,15 +323,21 @@
             "description": "MCP server metadata and tool list",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/McpServerInfo" }
+                "schema": {
+                  "$ref": "#/components/schemas/McpServerInfo"
+                }
               }
             }
           },
-          "429": { "$ref": "#/components/responses/TooManyRequests" }
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          }
         }
       },
       "post": {
-        "tags": ["MCP"],
+        "tags": [
+          "MCP"
+        ],
         "operationId": "mcpRequest",
         "summary": "MCP Streamable HTTP endpoint",
         "description": "Accepts JSON-RPC 2.0 messages (single or batch array). Implements the MCP Streamable HTTP transport (spec 2025-03-26).\n\n**Connection sequence:**\n1. Send `initialize` request\n2. Send `tools/list` to discover available tools\n3. Call tools with `tools/call`\n\n**Rate limit:** 60 requests/hour per IP",
@@ -284,10 +347,14 @@
             "application/json": {
               "schema": {
                 "oneOf": [
-                  { "$ref": "#/components/schemas/JsonRpcRequest" },
+                  {
+                    "$ref": "#/components/schemas/JsonRpcRequest"
+                  },
                   {
                     "type": "array",
-                    "items": { "$ref": "#/components/schemas/JsonRpcRequest" },
+                    "items": {
+                      "$ref": "#/components/schemas/JsonRpcRequest"
+                    },
                     "description": "Batch of JSON-RPC 2.0 requests"
                   }
                 ]
@@ -301,7 +368,10 @@
                     "method": "initialize",
                     "params": {
                       "protocolVersion": "2025-03-26",
-                      "clientInfo": { "name": "my-agent", "version": "1.0" },
+                      "clientInfo": {
+                        "name": "my-agent",
+                        "version": "1.0"
+                      },
                       "capabilities": {}
                     }
                   }
@@ -334,7 +404,10 @@
                     "method": "tools/call",
                     "params": {
                       "name": "calculate_order_total",
-                      "arguments": { "sku": "HRSU-CN-25KG-001", "quantity": 6 }
+                      "arguments": {
+                        "sku": "HRSU-CN-25KG-001",
+                        "quantity": 6
+                      }
                     }
                   }
                 },
@@ -359,15 +432,99 @@
             "description": "JSON-RPC 2.0 response object",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/JsonRpcResponse" }
+                "schema": {
+                  "$ref": "#/components/schemas/JsonRpcResponse"
+                }
               }
             }
           },
           "204": {
             "description": "Notification accepted (no response body for notifications)"
           },
-          "429": { "$ref": "#/components/responses/TooManyRequests" },
-          "500": { "$ref": "#/components/responses/InternalError" }
+          "429": {
+            "$ref": "#/components/responses/TooManyRequests"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalError"
+          }
+        }
+      }
+    },
+    "/api/quote": {
+      "post": {
+        "summary": "Request an export / bulk quote",
+        "description": "Container-scale industrial calcium nitrate quote request. Only `contact` (an email address or a phone number) is required; everything else is optional. HRSU replies within one business day.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "contact"
+                ],
+                "properties": {
+                  "contact": {
+                    "type": "string",
+                    "description": "Buyer email address or phone / WhatsApp number",
+                    "example": "buyer@example.com"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "company": {
+                    "type": "string"
+                  },
+                  "country": {
+                    "type": "string",
+                    "description": "Destination country"
+                  },
+                  "application": {
+                    "type": "string",
+                    "example": "Concrete"
+                  },
+                  "quantity": {
+                    "type": "string",
+                    "example": "1 x 20ft container"
+                  },
+                  "product": {
+                    "type": "string",
+                    "example": "Calcium Nitrate Tetrahydrate - Industrial Grade"
+                  },
+                  "incoterm": {
+                    "type": "string",
+                    "example": "CIF"
+                  },
+                  "message": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Quote request recorded",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "ref": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid or missing contact"
+          }
         }
       }
     }
@@ -379,22 +536,36 @@
         "headers": {
           "Retry-After": {
             "description": "Seconds to wait before retrying",
-            "schema": { "type": "integer", "example": 60 }
+            "schema": {
+              "type": "integer",
+              "example": 60
+            }
           },
           "X-RateLimit-Limit": {
-            "schema": { "type": "integer" }
+            "schema": {
+              "type": "integer"
+            }
           },
           "X-RateLimit-Remaining": {
-            "schema": { "type": "integer", "example": 0 }
+            "schema": {
+              "type": "integer",
+              "example": 0
+            }
           },
           "X-RateLimit-Reset": {
-            "schema": { "type": "integer" }
+            "schema": {
+              "type": "integer"
+            }
           }
         },
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
-            "example": { "error": "Rate limit exceeded. Try again in 60 seconds." }
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "Rate limit exceeded. Try again in 60 seconds."
+            }
           }
         }
       },
@@ -402,8 +573,12 @@
         "description": "Internal server error. If persistent, contact contact@hrsuindore.com or use WhatsApp +919425000484.",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/ErrorResponse" },
-            "example": { "error": "Internal server error" }
+            "schema": {
+              "$ref": "#/components/schemas/ErrorResponse"
+            },
+            "example": {
+              "error": "Internal server error"
+            }
           }
         }
       }
@@ -450,12 +625,17 @@
           },
           "currency": {
             "type": "string",
-            "enum": ["INR"],
+            "enum": [
+              "INR"
+            ],
             "example": "INR"
           },
           "availability": {
             "type": "string",
-            "enum": ["in_stock", "out_of_stock"],
+            "enum": [
+              "in_stock",
+              "out_of_stock"
+            ],
             "description": "Current stock status",
             "example": "in_stock"
           },
@@ -479,28 +659,77 @@
             "type": "object",
             "description": "Technical specifications",
             "properties": {
-              "formula": { "type": "string", "description": "Chemical formula", "example": "Ca(NO3)2·4H2O" },
-              "form": { "type": "string", "description": "Physical form", "example": "Colourless to white crystals" },
-              "assay": { "type": "string", "example": "99–103% as Ca(NO3)2·4H2O" },
-              "calcium_ca": { "type": "string", "description": "Calcium content by weight", "example": "16.4% min (soluble)" },
-              "nitrogen_n": { "type": "string", "description": "Nitrogen content by weight", "example": "11.7% min (nitrate)" },
-              "water_solubility": { "type": "string", "description": "Solubility in water", "example": "121 g per 100 g water (typical)" },
-              "ph_5pct_solution": { "type": "string", "description": "pH of 5% aqueous solution", "example": "5.0–7.0" },
-              "origin": { "type": "string", "description": "Country of manufacture", "example": "India" }
+              "formula": {
+                "type": "string",
+                "description": "Chemical formula",
+                "example": "Ca(NO3)2·4H2O"
+              },
+              "form": {
+                "type": "string",
+                "description": "Physical form",
+                "example": "Colourless to white crystals"
+              },
+              "assay": {
+                "type": "string",
+                "example": "99–103% as Ca(NO3)2·4H2O"
+              },
+              "calcium_ca": {
+                "type": "string",
+                "description": "Calcium content by weight",
+                "example": "16.4% min (soluble)"
+              },
+              "nitrogen_n": {
+                "type": "string",
+                "description": "Nitrogen content by weight",
+                "example": "11.7% min (nitrate)"
+              },
+              "water_solubility": {
+                "type": "string",
+                "description": "Solubility in water",
+                "example": "121 g per 100 g water (typical)"
+              },
+              "ph_5pct_solution": {
+                "type": "string",
+                "description": "pH of 5% aqueous solution",
+                "example": "5.0–7.0"
+              },
+              "origin": {
+                "type": "string",
+                "description": "Country of manufacture",
+                "example": "India"
+              }
             }
           },
           "applications": {
             "type": "array",
             "description": "Common use cases and industries",
-            "items": { "type": "string" },
-            "example": ["Drip irrigation", "Hydroponics", "Fertigation", "Concrete acceleration", "Wastewater treatment"]
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Drip irrigation",
+              "Hydroponics",
+              "Fertigation",
+              "Concrete acceleration",
+              "Wastewater treatment"
+            ]
           },
           "documents": {
             "type": "object",
             "description": "Technical documentation PDFs",
             "properties": {
-              "tds": { "type": "string", "format": "uri", "description": "Technical Data Sheet", "example": "https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf" },
-              "sds": { "type": "string", "format": "uri", "description": "Safety Data Sheet (MSDS)", "example": "https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf" }
+              "tds": {
+                "type": "string",
+                "format": "uri",
+                "description": "Technical Data Sheet",
+                "example": "https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf"
+              },
+              "sds": {
+                "type": "string",
+                "format": "uri",
+                "description": "Safety Data Sheet (MSDS)",
+                "example": "https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf"
+              }
             }
           },
           "tax_note": {
@@ -514,29 +743,65 @@
         "type": "object",
         "description": "Domestic India shipping details",
         "properties": {
-          "free_threshold_inr": { "type": "number", "description": "Order value above which shipping is free", "example": 14400 },
-          "free_threshold_note": { "type": "string", "description": "Human-readable free shipping condition", "example": "Free on orders ₹14,400+ (12+ bags of 25 kg or 6+ bags of 50 kg)" },
-          "flat_rate_inr": { "type": "number", "description": "Flat shipping fee for orders below threshold", "example": 1000 },
-          "total_display": { "type": "string", "description": "Total estimated delivery time", "example": "3–10 business days" },
-          "coverage": { "type": "string", "description": "Geographic coverage", "example": "Anywhere in India" }
+          "free_threshold_inr": {
+            "type": "number",
+            "description": "Order value above which shipping is free",
+            "example": 14400
+          },
+          "free_threshold_note": {
+            "type": "string",
+            "description": "Human-readable free shipping condition",
+            "example": "Free on orders ₹14,400+ (12+ bags of 25 kg or 6+ bags of 50 kg)"
+          },
+          "flat_rate_inr": {
+            "type": "number",
+            "description": "Flat shipping fee for orders below threshold",
+            "example": 1000
+          },
+          "total_display": {
+            "type": "string",
+            "description": "Total estimated delivery time",
+            "example": "3–10 business days"
+          },
+          "coverage": {
+            "type": "string",
+            "description": "Geographic coverage",
+            "example": "Anywhere in India"
+          }
         }
       },
       "CatalogResponse": {
         "type": "object",
         "description": "Full product catalog response",
         "properties": {
-          "store": { "type": "string", "example": "HRSU Indore Online Store" },
-          "store_url": { "type": "string", "format": "uri", "example": "https://hrsuindore.com/store/" },
-          "currency": { "type": "string", "example": "INR" },
-          "tax_note": { "type": "string" },
+          "store": {
+            "type": "string",
+            "example": "HRSU Indore Online Store"
+          },
+          "store_url": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://hrsuindore.com/store/"
+          },
+          "currency": {
+            "type": "string",
+            "example": "INR"
+          },
+          "tax_note": {
+            "type": "string"
+          },
           "products": {
             "type": "array",
-            "items": { "$ref": "#/components/schemas/Product" }
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            }
           },
           "shipping": {
             "type": "object",
             "properties": {
-              "india": { "$ref": "#/components/schemas/ShippingIndia" }
+              "india": {
+                "$ref": "#/components/schemas/ShippingIndia"
+              }
             }
           },
           "last_updated": {
@@ -549,7 +814,14 @@
       },
       "OrderRequest": {
         "type": "object",
-        "required": ["product", "size", "quantity", "name", "phone", "address"],
+        "required": [
+          "product",
+          "size",
+          "quantity",
+          "name",
+          "phone",
+          "address"
+        ],
         "description": "Order submission payload",
         "properties": {
           "product": {
@@ -559,7 +831,10 @@
           },
           "size": {
             "type": "string",
-            "enum": ["25 kg (₹1200)", "50 kg (₹2400)"],
+            "enum": [
+              "25 kg (₹1200)",
+              "50 kg (₹2400)"
+            ],
             "description": "Bag size — must match exactly (use size_select_value from catalog)"
           },
           "quantity": {
@@ -622,12 +897,25 @@
       },
       "JsonRpcRequest": {
         "type": "object",
-        "required": ["jsonrpc", "method"],
+        "required": [
+          "jsonrpc",
+          "method"
+        ],
         "description": "JSON-RPC 2.0 request object",
         "properties": {
-          "jsonrpc": { "type": "string", "enum": ["2.0"], "description": "Must be exactly '2.0'" },
+          "jsonrpc": {
+            "type": "string",
+            "enum": [
+              "2.0"
+            ],
+            "description": "Must be exactly '2.0'"
+          },
           "id": {
-            "type": ["integer", "string", "null"],
+            "type": [
+              "integer",
+              "string",
+              "null"
+            ],
             "description": "Request ID. Omit for notifications (fire-and-forget). Must be unique within a batch."
           },
           "method": {
@@ -645,15 +933,36 @@
         "type": "object",
         "description": "JSON-RPC 2.0 response object",
         "properties": {
-          "jsonrpc": { "type": "string", "enum": ["2.0"] },
-          "id": { "type": ["integer", "string", "null"], "description": "Mirrors the request ID" },
-          "result": { "type": "object", "description": "Success result (present when no error)" },
+          "jsonrpc": {
+            "type": "string",
+            "enum": [
+              "2.0"
+            ]
+          },
+          "id": {
+            "type": [
+              "integer",
+              "string",
+              "null"
+            ],
+            "description": "Mirrors the request ID"
+          },
+          "result": {
+            "type": "object",
+            "description": "Success result (present when no error)"
+          },
           "error": {
             "type": "object",
             "description": "Error object (present when request failed)",
             "properties": {
-              "code": { "type": "integer", "description": "JSON-RPC error code" },
-              "message": { "type": "string", "description": "Human-readable error description" }
+              "code": {
+                "type": "integer",
+                "description": "JSON-RPC error code"
+              },
+              "message": {
+                "type": "string",
+                "description": "Human-readable error description"
+              }
             }
           }
         }
@@ -662,17 +971,35 @@
         "type": "object",
         "description": "MCP server metadata and available tools",
         "properties": {
-          "name": { "type": "string", "example": "hrsu-store" },
-          "version": { "type": "string", "example": "1.0.0" },
-          "protocol": { "type": "string", "example": "MCP Streamable HTTP" },
-          "protocol_version": { "type": "string", "example": "2025-03-26" },
+          "name": {
+            "type": "string",
+            "example": "hrsu-store"
+          },
+          "version": {
+            "type": "string",
+            "example": "1.0.0"
+          },
+          "protocol": {
+            "type": "string",
+            "example": "MCP Streamable HTTP"
+          },
+          "protocol_version": {
+            "type": "string",
+            "example": "2025-03-26"
+          },
           "tools": {
             "type": "array",
             "items": {
               "type": "object",
               "properties": {
-                "name": { "type": "string", "example": "list_products" },
-                "description": { "type": "string", "example": "Returns the full Calcium Nitrate product catalog" }
+                "name": {
+                  "type": "string",
+                  "example": "list_products"
+                },
+                "description": {
+                  "type": "string",
+                  "example": "Returns the full Calcium Nitrate product catalog"
+                }
               }
             }
           }

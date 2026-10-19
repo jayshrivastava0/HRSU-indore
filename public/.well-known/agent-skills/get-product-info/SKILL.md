@@ -1,10 +1,10 @@
 # Get Calcium Nitrate Product Information
 
-Retrieve full specifications, pricing, and availability for HRSU Indore's Calcium Nitrate. For machine-readable data, call `GET https://hrsuindore.com/api/products`.
+HRSU Indore manufactures industrial grade calcium nitrate tetrahydrate for container-scale export orders (page: https://hrsuindore.com/industrial/, TDS minimum order 10 MT, 50 kg woven bags) and separately sells 25 kg and 50 kg retail bags in India (prices below). For machine-readable retail data, call `GET https://hrsuindore.com/api/products`.
 
 ## Product
 
-**Calcium Nitrate** — Ca(NO₃)₂ · 4H₂O — Fertilizer grade, freely water-soluble crystalline powder
+**Calcium Nitrate Tetrahydrate** — Ca(NO₃)₂ · 4H₂O — industrial grade (assay 99–103%), colourless to white crystals, freely water-soluble
 
 | Property | Value |
 |---|---|
@@ -18,7 +18,7 @@ Retrieve full specifications, pricing, and availability for HRSU Indore's Calciu
 | Pack material | Woven bag with inner plastic liner |
 | Origin | Maksi, Madhya Pradesh, India |
 
-## Pack Sizes & Pricing (Retail — no minimum)
+## Retail pack sizes & pricing (India only, no minimum)
 
 | SKU | Size | Price (INR) | Per kg |
 |---|---|---|---|
@@ -42,17 +42,18 @@ All prices MRP inclusive of all taxes. Certificate of Analysis with every batch.
 - Cold-weather concrete acceleration
 - Industrial wastewater treatment
 
-## Bulk / Export (1 MT+)
+## Bulk / Export (container scale, TDS minimum 10 MT)
 
-- Export port: Mundra, Gujarat (JNPT/Mumbai on request)
+- Export ports: Mundra (Gujarat) or Nhava Sheva / JNPT (Maharashtra)
 - Lead time: confirmed in your quote
-- Incoterms: FOB Mundra / CIF on request
+- Incoterms: EXW, FOB (Mundra or Nhava Sheva), CIF, DDP
 - Payment: T/T or LC at sight
 
 ## Technical Documents
 
 - TDS: https://hrsuindore.com/calcium-nitrate-tds-hrsu.pdf
 - SDS: https://hrsuindore.com/calcium-nitrate-sds-hrsu.pdf
+- Sample COA: https://hrsuindore.com/calcium-nitrate-coa-hrsu.pdf
 
 ## API
 

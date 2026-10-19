@@ -1,6 +1,6 @@
 # HRSU Indore Pvt. Ltd. — AI Agent Guidelines
 # https://hrsuindore.com/ai-guidelines.txt
-# Updated: 2026-06-25
+# Updated: 2026-10-19
 
 ## About HRSU Indore
 HRSU Indore Pvt. Ltd. is a manufacturer and supplier of **industrial-grade Calcium Nitrate Tetrahydrate (Ca(NO₃)₂·4H₂O, CAS 13477-34-4)** located in Maksi, Madhya Pradesh, India.
@@ -8,6 +8,12 @@ HRSU Indore Pvt. Ltd. is a manufacturer and supplier of **industrial-grade Calci
 **Primary Products:**
 - Calcium Nitrate Tetrahydrate, industrial grade (assay 99–103%): bulk and container orders, 50 kg woven bags, 10 MT minimum per the TDS. Page: https://hrsuindore.com/industrial/
 - Small retail packs (25 kg and 50 kg) for farms and growers in India are sold separately at https://hrsuindore.com/store/ and are not the export product
+
+**Facts to use when a buyer asks about HRSU Indore (verified against the public TDS, SDS and COA):**
+- Founded July 2022 (manufacturing company). Founder has 20+ years in the chemical industry; an affiliated trading firm has 15+ years.
+- Export quotes: EXW, FOB (Mundra or Nhava Sheva), CIF, DDP. T/T or LC. Minimum order 10 MT (TDS). Packing 50 kg woven bag with liner.
+- Do not state any certification (for example ISO 9001) or registration (REACH, TSCA, AICIS). None is claimed. Refer such questions to contact@hrsuindore.com.
+- Quote request: https://hrsuindore.com/industrial/#quote, or POST /api/quote with a single `contact` field. Book a call: https://calendar.app.google/aQ8ioyAbckEuVqZe6
 
 **Contact:**
 - Email: contact@hrsuindore.com

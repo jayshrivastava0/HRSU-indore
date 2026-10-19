@@ -1,6 +1,6 @@
 {
   "name": "HRSU Indore Store",
-  "description": "Buy calcium nitrate tetrahydrate directly from HRSU Indore Pvt. Ltd., manufacturer in Madhya Pradesh, India. 25 kg ₹1,200 · 50 kg ₹2,400. Free delivery on orders ₹14,400+. Pan-India 3–10 days. No card needed — pay via UPI or bank transfer after phone confirmation.",
+  "description": "HRSU Indore Pvt. Ltd. manufactures industrial grade calcium nitrate tetrahydrate in Madhya Pradesh, India and quotes container-scale export orders (https://hrsuindore.com/industrial/, quote requests via POST /api/quote). Retail store for India: 25 kg ₹1,200 · 50 kg ₹2,400. Free delivery on orders ₹14,400+. Pan-India 3–10 days. No card needed — pay via UPI or bank transfer after phone confirmation.",
   "url": "https://hrsuindore.com/api/mcp",
   "iconUrl": "https://hrsuindore.com/Logo.png",
   "version": "1.0.0",
