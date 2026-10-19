@@ -510,3 +510,5 @@ footer{background:var(--navy-deep);padding:72px 40px 32px;}
 
 #product .prod-img img{max-height:440px;width:100%;object-fit:cover;}
 #product{padding-top:70px;padding-bottom:70px;}
+
+.adv-note{margin-top:30px;font-size:.92rem;line-height:1.7;color:var(--mid);max-width:820px;}
