@@ -8,7 +8,7 @@ const RETAIL_LINES = CATALOG
 
 const MARKDOWN = `# HRSU Indore Pvt. Ltd. — Industrial Grade Calcium Nitrate Manufacturer & Exporter
 
-Manufacturer and exporter of industrial-grade calcium nitrate tetrahydrate (CAS 13477-34-4). Based in Maksi, Madhya Pradesh, India. Export-ready from Mundra Port. Industrial buyers: request a quote and sample COA at https://hrsuindore.com/industrial/ .
+Manufacturer and exporter of industrial-grade calcium nitrate tetrahydrate (CAS 13477-34-4). Plant at Maksi, Madhya Pradesh (Indore region), India; registered office in Indore. Export-ready from Mundra Port or Nhava Sheva. About the company and plant: https://hrsuindore.com/calcium-nitrate-manufacturer-india/ .  Industrial buyers: request a quote and sample COA at https://hrsuindore.com/industrial/ .
 
 ## Industrial grade (core business)
 
@@ -17,7 +17,8 @@ Manufacturer and exporter of industrial-grade calcium nitrate tetrahydrate (CAS 
 - Certificate of analysis with every lot. UN1454, Class 5.1, PG III. HS code 28342990.
 - Uses: concrete admixtures, wastewater H₂S control, cold-weather concrete for mining sites, oil and gas fluids, process industries.
 - Calcium nitrate melt (liquid) planned for early 2027.
-- Export: Mundra Port, EXW / FOB / CIF / DDP quoted per order, T/T or LC. Container-scale supply.
+- Export: Mundra Port or Nhava Sheva, EXW / FOB / CIF / DDP quoted per order, T/T or LC. Container-scale supply (TDS minimum 10 MT).
+- India vs China sourcing guide: https://hrsuindore.com/calcium-nitrate-india-vs-china/
 - Quote form: https://hrsuindore.com/industrial/#quote
 
 ## Technical Documents

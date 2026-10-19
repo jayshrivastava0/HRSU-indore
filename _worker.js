@@ -46,6 +46,11 @@ export default {
       const { pathname } = url;
       const { method } = request; // NOT url — URL objects have no .method
 
+      // www.hrsuindore.com served a second copy of every page; send it to the apex so Google sees one site.
+      if (url.hostname === 'www.hrsuindore.com') {
+        return Response.redirect(`https://hrsuindore.com${pathname}${url.search}`, 301);
+      }
+
       // Old blog.hrsuindore.com (Blogger) — 301 everything to the on-site blog.
       // Known permalinks map to their migrated page; anything else (search/label,
       // feeds, images, unmapped posts) falls back to the blog homepage so nobody

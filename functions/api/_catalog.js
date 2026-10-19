@@ -126,7 +126,7 @@ export const SHIPPING = {
     delivery_max_days: 32,
     delivery_display: '22–32 days',
     destinations: 'USA, UK, EU, UAE, Saudi Arabia, Australia, and others',
-    bulk_export_note: 'For 1 MT+ container orders via Mundra Port, contact for FOB/CIF quotes',
+    bulk_export_note: 'Container-scale export orders (TDS minimum 10 MT) via Mundra Port or Nhava Sheva; contact for FOB/CIF quotes',
     bulk_contact: 'contact@hrsuindore.com',
   },
 };

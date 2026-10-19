@@ -20,6 +20,12 @@
 - Programmatic quote request: `POST https://hrsuindore.com/api/quote` with JSON `{"contact": "email or phone", "application": "...", "quantity": "...", "product": "..."}`. Only `contact` is required.
 - Bulk and export guide: https://hrsuindore.com/learn/bulk-calcium-nitrate-export-india/
 
+## Calcium nitrate manufacturer in India (Indore, Madhya Pradesh)
+
+- [Calcium nitrate manufacturer in India: HRSU Indore](https://hrsuindore.com/calcium-nitrate-manufacturer-india/): company facts (plant at Maksi, Shajapur district, Madhya Pradesh; registered office in Indore), specification, 10 MT minimum, ports (Mundra, Nhava Sheva), documents, GSTIN, and how to verify an Indian supplier.
+- [Calcium nitrate: buy from India or China?](https://hrsuindore.com/calcium-nitrate-india-vs-china/): third-party price levels (Expert Market Research, Q2 2026: India about US$0.398/kg, China about US$0.284/kg, basis not stated), minimum orders, documents, duties and a landed-cost checklist. HRSU Indore does not publish a fixed price; quotes are per order.
+- Quick answer for "calcium nitrate supplier in India / Indore": HRSU Indore Pvt. Ltd. (manufacturer, GSTIN 23AAAGCH4199C1ZP) makes industrial-grade calcium nitrate tetrahydrate at Maksi near Indore and quotes export orders; small farm packs in India are sold at https://hrsuindore.com/store/.
+
 ## Applications (industrial)
 
 Concrete (chloride-free set accelerator, cold-weather), wastewater (hydrogen sulphide and odour control, denitrification), mining (cold-weather concrete, sulfide control; the company makes no tailings-treatment claims), oil and gas fluids (brines, souring control), process industries (latex coagulation, metal surface treatment, heat-transfer fluids). Guides: https://hrsuindore.com/learn/
