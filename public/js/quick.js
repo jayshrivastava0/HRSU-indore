@@ -64,13 +64,17 @@
     var wa = west ? '' : '<a class="qk-btn qk-wa" data-wa target="_blank" rel="noopener" href="https://wa.me/' + WA + '?text=' + encodeURIComponent(MSG) + '">Message us on WhatsApp</a><div class="qk-or"><span>or</span></div>';
     host.innerHTML =
       '<div class="qk ' + (west ? 'qk-west' : 'qk-wa-first') + '">' +
-        '<p class="qk-h">Get a quote. Just your ' + (west ? 'email' : 'email or WhatsApp') + '.</p>' +
-        '<p class="qk-sub">We reply within one business day with price, lead time and a sample COA.</p>' +
+        '<p class="qk-h">Request a price quote</p>' +
+        '<p class="qk-sub">A real person on our team replies within one business day with price, lead time and a sample COA.</p>' +
         wa +
         '<form class="qk-form" data-qk-form novalidate>' +
           '<input class="qk-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
-          '<input type="text" name="contact" inputmode="email" autocomplete="email" placeholder="' + inputLabel + '" aria-label="' + inputLabel + '" maxlength="120">' +
-          '<button type="submit" class="qk-send">Get my quote</button>' +
+          '<label class="qk-fl" for="qk-msg">What do you need? <span>(optional)</span></label>' +
+          '<textarea id="qk-msg" name="message" rows="2" maxlength="600" placeholder="e.g. 1 container for concrete, delivered to Houston"></textarea>' +
+          '<label class="qk-fl" for="qk-contact">' + (west ? 'Where should we send the quote?' : 'Where should we reply?') + '</label>' +
+          '<input id="qk-contact" type="text" name="contact" inputmode="email" autocomplete="email" placeholder="' + inputLabel + '" maxlength="120">' +
+          '<button type="submit" class="qk-send">Send quote request</button>' +
+          '<p class="qk-priv">Used only to reply to this request. No newsletters, no marketing emails.</p>' +
         '</form>' +
         '<div class="qk-status" data-qk-status hidden></div>' +
         '<p class="qk-alt">Rather write or talk? <a data-mail href="' + MAILTO + '">Email us</a> &middot; <a data-cal href="' + CAL + '" target="_blank" rel="noopener">Book a call</a>' + (west && TOUCH ? ' &middot; <a data-sms href="sms:' + SMS + '?&body=' + encodeURIComponent(MSG) + '">Text us</a>' : '') + '</p>' +
@@ -104,6 +108,7 @@
         body: JSON.stringify({
           website: form.website.value,
           contact: v,
+          message: (form.message.value || '').trim(),
           product: 'Calcium Nitrate Tetrahydrate — Industrial Grade',
           lead_source: a.source || '', lead_medium: a.medium || '', landing_page: a.landing_page || '', page: location.pathname
         })
@@ -114,10 +119,10 @@
           fire('qualify_lead', { qualify_reason: 'quick_contact' });
           form.hidden = true;
           status.hidden = false; status.className = 'qk-status ok';
-          status.textContent = 'Thank you. We will reply within one business day.';
+          status.textContent = 'Request received. We will reply to ' + v + ' within one business day.';
         })
         .catch(function () {
-          btn.disabled = false; btn.textContent = 'Get my quote';
+          btn.disabled = false; btn.textContent = 'Send quote request';
           status.hidden = false; status.className = 'qk-status err';
           status.innerHTML = 'That did not go through. Please use the Email link below instead.';
         });
