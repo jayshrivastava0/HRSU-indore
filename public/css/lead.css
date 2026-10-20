@@ -53,11 +53,9 @@
 .qk-bar-main{flex:1.6;background:#c9a227;color:#0a192f;}
 .qk-bar-main.qk-bar-green{background:#25d366;color:#fff;}
 .qk-bar-alt{flex:1;border:1.5px solid rgba(255,255,255,.55);color:#fff;}
-@media (max-width:768px){
-  .qk-bar{display:flex;}
-  .fab-wa{display:none !important;}
-  body.has-qk-bar{padding-bottom:80px;}
-}
+.qk-bar{display:flex;padding-left:max(12px,calc((100% - 880px)/2));padding-right:max(12px,calc((100% - 880px)/2));}
+.fab-wa{display:none !important;}
+body.has-qk-bar{padding-bottom:80px;}
 @media (max-width:420px){ .qk-actions{grid-template-columns:1fr;} .qk-form{flex-direction:column;} .qk-send{min-height:50px;} }
 
 .qk-region{font-size:.85rem;line-height:1.5;color:#36506f;background:#f2f5fa;border-left:3px solid #c9a227;padding:10px 12px;margin:16px 0 0;border-radius:0 6px 6px 0;}
