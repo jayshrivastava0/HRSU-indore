@@ -4,9 +4,8 @@
 //    with email + a booked call (US, Canada, UK, EU, Australia/NZ, East Asia), where
 //    WhatsApp is not how a business first contacts a supplier. The static page and
 //    all indexed text stay identical for everyone; only the contact buttons reorder.
-// 2) Tap-to-chat block: optional chips build a pre-written WhatsApp / email message.
-// 3) One-field form: an email or a phone number -> /api/quote (Resend).
-// 4) Sticky bottom bar on phones, hidden while the quote block is on screen.
+// 2) One-field form: an email or a phone number -> /api/quote (Resend).
+// 3) Sticky bottom bar on phones, hidden while the quote block is on screen.
 // Test any country with ?geo=US (or DE, AU, AE, IN ...).
 (function () {
   var WA = '919425000484';
@@ -16,8 +15,6 @@
   var SMS = '+919425000484';
   var LINKEDIN = 'https://www.linkedin.com/company/hrsu-indore';
   var TOUCH = (window.matchMedia && matchMedia('(pointer:coarse)').matches);
-  var USES = ['Concrete', 'Wastewater', 'Mining', 'Oil & gas', 'Other'];
-  var QTYS = ['1 container (about 20 MT)', 'More than 1 container', 'Not sure yet'];
 
   // Countries where email / a scheduled call is the normal first B2B contact.
   var EMAIL_FIRST = ('US CA GB IE AU NZ DE FR NL BE LU AT CH SE NO DK FI IS PL CZ SK HU RO BG HR SI EE LV LT MT CY GR IT ES PT JP KR CN TW HK').split(' ');
@@ -54,78 +51,34 @@
     try { return JSON.parse(localStorage.getItem('hrsu_attribution') || 'null') || {}; }
     catch (e) { return {}; }
   }
-  function sourceLine() {
-    var a = attribution();
-    return a.source ? '[Source: ' + a.source + '/' + (a.medium || '') + ' - landed on: ' + (a.landing_page || location.pathname) + ']' : '';
-  }
   function fire(name, params) { if (typeof gtag === 'function') gtag('event', name, params || {}); }
 
-  function message(state) {
-    var lines = ['Hello HRSU Indore, I would like a quote for ' + PRODUCT + '.'];
-    if (state.use) lines.push('Use: ' + state.use);
-    if (state.qty) lines.push('Quantity: ' + state.qty);
-    var s = sourceLine();
-    if (s) lines.push('', s);
-    return lines.join('\n');
-  }
-
-  function chips(group, items) {
-    return items.map(function (t) {
-      return '<button type="button" class="qk-chip" data-group="' + group + '" data-v="' + t.replace(/"/g, '&quot;') + '">' + t.replace(/&/g, '&amp;') + '</button>';
-    }).join('');
-  }
+  // Pre-written message: just the greeting. No source line, no blank fields to fill in.
+  var MSG = 'Hello HRSU Indore, I would like a quote for ' + PRODUCT + '.';
+  var MAILTO = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Quote request: calcium nitrate') + '&body=' + encodeURIComponent(MSG);
 
   function render(host, country, layout) {
     var west = layout === 'mail';
-    var btnWa = west ? '' : '<a class="qk-btn qk-wa" data-wa target="_blank" rel="noopener">Message us on WhatsApp</a>';
-    var btnSms = (west && TOUCH) ? '<a class="qk-btn qk-sms" data-sms>Text us</a>' : '';
-    var btnMail = '<a class="qk-btn qk-mail" data-mail>' + (west ? 'Email us your request' : 'Email us') + '</a>';
-    var btnCal = '<a class="qk-btn qk-cal" data-cal href="' + CAL + '" target="_blank" rel="noopener">Book a call</a>';
-    var actions = west ? btnMail + btnCal + btnSms : btnWa + btnMail + btnCal;
     var note = regionNote(country);
+    var inputLabel = west ? 'Your work email' : 'Your email or WhatsApp number';
+    var wa = west ? '' : '<a class="qk-btn qk-wa" data-wa target="_blank" rel="noopener" href="https://wa.me/' + WA + '?text=' + encodeURIComponent(MSG) + '">Message us on WhatsApp</a><div class="qk-or"><span>or</span></div>';
     host.innerHTML =
       '<div class="qk ' + (west ? 'qk-west' : 'qk-wa-first') + '">' +
-        '<p class="qk-h">' + (west ? 'Request a quote in 30 seconds.' : 'Get a quote in 30 seconds. No form needed.') + '</p>' +
-        '<p class="qk-l">What will you use it for? <span>(optional, tap one)</span></p>' +
-        '<div class="qk-chips">' + chips('use', USES) + '</div>' +
-        '<p class="qk-l">How much do you need?</p>' +
-        '<div class="qk-chips">' + chips('qty', QTYS) + '</div>' +
-        (note ? '<p class="qk-region">' + note + '</p>' : '') +
-        '<div class="qk-actions">' + actions + '</div>' +
-        '<p class="qk-note">Your message is already written. Just press send.' + (west ? ' <a href="' + LINKEDIN + '" target="_blank" rel="noopener">Find us on LinkedIn</a>' : '') + '</p>' +
-        '<div class="qk-or"><span>or leave one contact and we will reach out</span></div>' +
+        '<p class="qk-h">Get a quote. Just your ' + (west ? 'email' : 'email or WhatsApp') + '.</p>' +
+        '<p class="qk-sub">We reply within one business day with price, lead time and a sample COA.</p>' +
+        wa +
         '<form class="qk-form" data-qk-form novalidate>' +
           '<input class="qk-hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">' +
-          '<input type="text" name="contact" inputmode="email" autocomplete="email" placeholder="' + (west ? 'Your work email' : 'Your email or WhatsApp number') + '" aria-label="' + (west ? 'Your work email' : 'Your email or WhatsApp number') + '" maxlength="120">' +
-          '<button type="submit" class="qk-send">Send</button>' +
+          '<input type="text" name="contact" inputmode="email" autocomplete="email" placeholder="' + inputLabel + '" aria-label="' + inputLabel + '" maxlength="120">' +
+          '<button type="submit" class="qk-send">Get my quote</button>' +
         '</form>' +
         '<div class="qk-status" data-qk-status hidden></div>' +
+        '<p class="qk-alt">Rather write or talk? <a data-mail href="' + MAILTO + '">Email us</a> &middot; <a data-cal href="' + CAL + '" target="_blank" rel="noopener">Book a call</a>' + (west && TOUCH ? ' &middot; <a data-sms href="sms:' + SMS + '?&body=' + encodeURIComponent(MSG) + '">Text us</a>' : '') + '</p>' +
+        (note ? '<p class="qk-region">' + note + '</p>' : '') +
+        '<a class="qk-li" href="' + LINKEDIN + '" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>Find us on LinkedIn</a>' +
       '</div>';
 
-    var state = { use: '', qty: '' };
-    var wa = host.querySelector('[data-wa]');
-    var sms = host.querySelector('[data-sms]');
-    var mail = host.querySelector('[data-mail]');
-    function refresh() {
-      var msg = message(state);
-      if (wa) wa.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(msg);
-      if (sms) sms.href = 'sms:' + SMS + '?&body=' + encodeURIComponent(msg.split('\n\n[Source')[0]);
-      var subj = 'Quote request: calcium nitrate' + (state.use ? ' (' + state.use + ')' : '');
-      mail.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(subj) + '&body=' + encodeURIComponent(msg + '\n\nCompany:\nDestination country:');
-    }
-    refresh();
-
     host.addEventListener('click', function (e) {
-      var c = e.target.closest && e.target.closest('.qk-chip');
-      if (c) {
-        var g = c.getAttribute('data-group');
-        var on = c.classList.contains('on');
-        host.querySelectorAll('.qk-chip[data-group="' + g + '"]').forEach(function (x) { x.classList.remove('on'); });
-        state[g] = on ? '' : c.getAttribute('data-v');
-        if (!on) c.classList.add('on');
-        refresh();
-        return;
-      }
       if (e.target.closest && e.target.closest('[data-cal]')) fire('book_call_click', { page: location.pathname, layout: layout });
       if (e.target.closest && e.target.closest('[data-sms]')) fire('sms_click', { page: location.pathname, visitor_country: country || 'unknown' });
     });
@@ -152,7 +105,6 @@
           website: form.website.value,
           contact: v,
           product: 'Calcium Nitrate Tetrahydrate — Industrial Grade',
-          application: state.use, quantity: state.qty,
           lead_source: a.source || '', lead_medium: a.medium || '', landing_page: a.landing_page || '', page: location.pathname
         })
       }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
@@ -165,9 +117,9 @@
           status.textContent = 'Thank you. We will reply within one business day.';
         })
         .catch(function () {
-          btn.disabled = false; btn.textContent = 'Send';
+          btn.disabled = false; btn.textContent = 'Get my quote';
           status.hidden = false; status.className = 'qk-status err';
-          status.innerHTML = 'That did not go through. Please use the ' + (west ? 'Email' : 'WhatsApp or Email') + ' button above instead.';
+          status.innerHTML = 'That did not go through. Please use the Email link below instead.';
         });
     });
   }
@@ -196,9 +148,9 @@
     bar.className = 'qk-bar';
     bar.setAttribute('role', 'region');
     bar.setAttribute('aria-label', 'Contact');
-    var waHref = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(message({ use: '', qty: '' }));
-    var mailHref = 'mailto:' + MAIL + '?subject=' + encodeURIComponent('Quote request: calcium nitrate') + '&body=' + encodeURIComponent(message({ use: '', qty: '' }) + '\n\nCompany:\nDestination country:');
-    var smsHref = 'sms:' + SMS + '?&body=' + encodeURIComponent('Hello HRSU Indore, I would like a quote for ' + PRODUCT + '.');
+    var waHref = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(MSG);
+    var mailHref = MAILTO;
+    var smsHref = 'sms:' + SMS + '?&body=' + encodeURIComponent(MSG);
     bar.innerHTML = west
       ? '<a class="qk-bar-main" href="' + mailHref + '">Email us for a quote</a>' + (TOUCH ? '<a class="qk-bar-alt qk-bar-sms" href="' + smsHref + '">Text us</a>' : '') + '<a class="qk-bar-alt qk-bar-book" target="_blank" rel="noopener" href="' + CAL + '">Book a call</a>'
       : '<a class="qk-bar-main qk-bar-green" target="_blank" rel="noopener" href="' + waHref + '">Get a quote on WhatsApp</a><a class="qk-bar-alt qk-bar-book" target="_blank" rel="noopener" href="' + CAL + '">Book a call</a>';

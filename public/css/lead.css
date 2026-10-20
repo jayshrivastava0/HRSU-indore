@@ -69,3 +69,12 @@
 .qk-note a{color:#0a58ca;text-decoration:underline;}
 .qk-bar-alt{font-size:.9rem;}
 .qk-west .qk-cal:last-child{grid-column:1/-1;}
+
+/* simplified quick contact: one field, quiet alternatives, visible LinkedIn */
+.qk-sub{font-size:.9rem;color:#5b6573;margin:0 0 14px;}
+.qk-wa-first .qk-or{margin:14px 0;}
+.qk-alt{font-size:.9rem;color:#36506f;margin:14px 0 0;text-align:center;}
+.qk-alt a{color:#0a58ca;text-decoration:underline;font-weight:600;}
+.qk-li{display:flex;align-items:center;justify-content:center;gap:8px;margin:16px 0 0;padding:11px 16px;border-radius:8px;background:#0a66c2;color:#fff;font-weight:700;font-size:.95rem;text-decoration:none;}
+.qk-li:hover{background:#004182;}
+.lead-more summary{color:#0a192f;font-size:.95rem;}

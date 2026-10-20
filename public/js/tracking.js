@@ -66,7 +66,7 @@
   // entirely — the answer ends up sitting in the email/WhatsApp message
   // itself. Links that already carry a custom message (e.g. the order-form
   // WhatsApp fallback) are left untouched.
-  document.querySelectorAll('a[href^="https://wa.me/"], a[href^="mailto:"]').forEach(function (a) {
+  document.querySelectorAll('a[href^="https://wa.me/"]').forEach(function (a) {
     var href = a.getAttribute('href');
     if (/[?&]text=|[?&]body=/.test(href)) return;
     var pageRef = (document.title || location.pathname).slice(0, 80);
