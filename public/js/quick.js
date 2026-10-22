@@ -143,6 +143,7 @@
     }
     document.querySelectorAll('.nav-wa, .fab-wa').forEach(function (el) { el.style.display = 'none'; });
     document.querySelectorAll('.menu-foot a[href*="wa.me"]').forEach(function (el) { el.style.display = 'none'; });
+    document.querySelectorAll('.wa-link, a[href*="wa.me"]:not([data-wa])').forEach(function (el) { if (!el.closest('[data-quick]')) el.style.display = 'none'; });
   }
 
   function addBar(layout) {

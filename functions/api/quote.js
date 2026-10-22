@@ -99,6 +99,36 @@ export async function onRequestPost(context) {
     return json({ error: 'Failed to record quote request' }, 502);
   }
 
+  // Acknowledgement to the buyer: a reference number, the documents and a reply address in their inbox.
+  // Best-effort; the internal notification above has already gone out. Nothing typed by the visitor is echoed.
+  if (hasEmail) {
+    try {
+      const base = 'https://hrsuindore.com';
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: { Authorization: `Bearer ${env.RESEND_API_KEY}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          from: 'HRSU Indore <contact@hrsuindore.com>',
+          to: [d.email],
+          reply_to: 'contact@hrsuindore.com',
+          subject: `We received your request ${ref} | HRSU Indore`,
+          html: `<p>Thank you for your enquiry about industrial-grade calcium nitrate.</p>
+            <p>Your reference is <strong>${ref}</strong>. We will reply to this address within one business day with price, lead time and payment terms for your quantity and destination.</p>
+            <p>In the meantime, the documents we supply are here:</p>
+            <ul>
+              <li><a href="${base}/calcium-nitrate-tds-hrsu.pdf">Technical data sheet (TDS)</a></li>
+              <li><a href="${base}/calcium-nitrate-sds-hrsu.pdf">Safety data sheet (SDS)</a></li>
+              <li><a href="${base}/calcium-nitrate-coa-hrsu.pdf">Sample certificate of analysis (COA)</a></li>
+            </ul>
+            <p>You can reply to this email with your specification, quantity and destination port.</p>
+            <p>HRSU Indore Pvt. Ltd.<br>Plot No. 62, MPIDC Industrial Area, Maksi, Madhya Pradesh 465106, India<br>
+            <a href="mailto:contact@hrsuindore.com">contact@hrsuindore.com</a> | +91 94250 00484 | <a href="${base}">hrsuindore.com</a></p>
+            <p style="color:#666;font-size:12px">You are receiving this one message because a quote request was submitted with this email address. If that was not you, ignore it; nothing further will be sent.</p>`,
+        }),
+      });
+    } catch (e) { /* acknowledgement is best-effort */ }
+  }
+
   // Optional instant phone alert (free ntfy.sh push). Dormant unless NTFY_TOPIC is set as a secret:
   //   npx wrangler secret put NTFY_TOPIC   (use a long random topic name, then subscribe to it in the ntfy app)
   if (env.NTFY_TOPIC) {
