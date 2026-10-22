@@ -22,3 +22,6 @@
 
 # Common misspelling of the AI instructions file
 /llm.txt  /llms.txt  301
+
+/first-order  /industrial/#ordering  301
+/first-order/  /industrial/#ordering  301
