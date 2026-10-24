@@ -1,13 +1,18 @@
 # ═══════════════════════════════════════════════════════════
 # robots.txt — HRSU Indore Pvt. Ltd.
 # https://hrsuindore.com
-# Updated: 2026-05-16
+# Updated: 2026-10-24
 # Policy: All crawlers and AI bots fully allowed, including PDFs
 # ═══════════════════════════════════════════════════════════
 
 # ── Default: allow all ─────────────────────────────────────
+# Content-Signal and the PDF Allow lines must sit inside a group; they
+# belong here so they apply to every bot, not just the last group in the file.
 User-agent: *
 Allow: /
+Allow: /calcium-nitrate-tds-hrsu.pdf
+Allow: /calcium-nitrate-sds-hrsu.pdf
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
 Crawl-delay: 1
 
 # ── Google ─────────────────────────────────────────────────
@@ -21,10 +26,28 @@ Allow: /
 User-agent: Googlebot-Video
 Allow: /
 
+User-agent: Googlebot-News
+Allow: /
+
 User-agent: Storebot-Google
 Allow: /
 
-# Google AI (Gemini / AI Overviews / Google-Extended)
+User-agent: Google-InspectionTool
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+User-agent: GoogleOther-Image
+Allow: /
+
+User-agent: GoogleOther-Video
+Allow: /
+
+User-agent: Google-CloudVertexBot
+Allow: /
+
+# Gemini training/grounding control token (not a crawler; no effect on Search)
 User-agent: Google-Extended
 Allow: /
 
@@ -36,14 +59,13 @@ Crawl-delay: 0
 User-agent: BingPreview
 Allow: /
 
-# Microsoft Copilot / Bing AI
-User-agent: OAI-SearchBot
-Allow: /
-
 User-agent: msnbot
 Allow: /
 
 # ── OpenAI / ChatGPT ───────────────────────────────────────
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: GPTBot
 Allow: /
 
@@ -52,6 +74,12 @@ Allow: /
 
 # ── Anthropic / Claude ─────────────────────────────────────
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: anthropic-ai
@@ -64,11 +92,51 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
+# ── Other AI search / assistants / agents ──────────────────
+User-agent: Amazonbot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: PetalBot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+User-agent: ImagesiftBot
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Kangaroo Bot
+Allow: /
+
 # ── Meta / Llama ───────────────────────────────────────────
 User-agent: FacebookBot
 Allow: /
 
 User-agent: meta-externalagent
+Allow: /
+
+User-agent: meta-externalfetcher
+Allow: /
+
+User-agent: Meta-ExternalAgent
 Allow: /
 
 # ── Apple ──────────────────────────────────────────────────
@@ -86,7 +154,7 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-# ── Amazon / Alexa ─────────────────────────────────────────
+# ── Internet Archive (ia_archiver) ─────────────────────────
 User-agent: ia_archiver
 Allow: /
 
@@ -124,13 +192,6 @@ Allow: /
 
 User-agent: Wget
 Allow: /
-
-# ── Explicitly allow PDFs (for all bots) ───────────────────
-Allow: /calcium-nitrate-tds-hrsu.pdf
-Allow: /calcium-nitrate-sds-hrsu.pdf
-
-# ── Content Signals (ai usage preferences) ────────────────
-Content-Signal: ai-train=yes, search=yes, ai-input=yes
 
 # ── AI / Agent resource discovery ──────────────────────────
 # Human-readable AI guide:    https://hrsuindore.com/llms.txt
