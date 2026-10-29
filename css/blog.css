@@ -73,3 +73,6 @@
 .lrn-main .lrn-meta a.lrn-cat { text-decoration: none; background: rgba(212, 175, 55, .16); color: #7a5f00; border-radius: 999px; padding: .1rem .65rem; font-weight: 600; }
 .lrn-main .lrn-meta a.lrn-cat:hover { background: #d4af37; color: #0a192f; }
 
+
+/* FAQ <details> answers: override the accordion max-height:0 from style.css */
+details > .faq-a{max-height:none;overflow:visible;}
