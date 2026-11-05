@@ -1231,4 +1231,66 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+<!-- I18N START -->
+  <url>
+    <loc>https://hrsuindore.com/fr/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/de/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/pt/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/es/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/zh/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/ja/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/sw/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/af/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/my/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://hrsuindore.com/ar/learn/calcium-nitrate-h2s-wastewater/</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<!-- I18N END -->
 </urlset>

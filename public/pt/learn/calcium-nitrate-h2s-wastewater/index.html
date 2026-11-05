@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="pt">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nitrato de Cálcio para Controle de Odor de H2S em Águas Residuais: Mecanismo, Faixas de Dose e Dimensionamento | HRSU Indore</title>
+<meta content="Como a dosagem de nitrato controla o sulfeto de hidrogênio em coletores e linhas de recalque: bactérias oxidadoras de sulfeto, faixas de dose por mg de sulfeto, pontos de dosagem, um exemplo resolvido de dimensionamento e comparação com ferro, peróxido, Mg(OH)2 e oxigênio." name="description"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1" name="robots"/>
+<link href="https://hrsuindore.com/pt/learn/calcium-nitrate-h2s-wastewater/" rel="canonical"/>
+<meta content="article" property="og:type"/>
+<meta content="HRSU Indore Pvt. Ltd." property="og:site_name"/>
+<meta content="Nitrato de Cálcio para Controle de Odor de H2S em Águas Residuais" property="og:title"/>
+<meta content="Como a dosagem de nitrato controla o sulfeto de hidrogênio em coletores e linhas de recalque: bactérias oxidadoras de sulfeto, faixas de dose por mg de sulfeto, pontos de dosagem, um exemplo resolvido de dimensionamento e comparação com ferro, peróxido, Mg(OH)2 e oxigênio." property="og:description"/>
+<meta content="https://hrsuindore.com/pt/learn/calcium-nitrate-h2s-wastewater/" property="og:url"/>
+<meta content="https://hrsuindore.com/images/calcium-nitrate-granules.jpg" property="og:image"/>
+<link href="/Logo.png" rel="icon" type="image/png"/>
+<meta content="#0a192f" name="theme-color"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;0,800;1,600;1,700&amp;family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&amp;display=swap" rel="stylesheet"/>
+<link href="/css/style.css" rel="stylesheet"/>
+<link href="/css/learn.css" rel="stylesheet"/>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-T6KQK7BW');</script>
+<!-- End Google Tag Manager -->
+<!-- Google Analytics 4 -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DE3MCY5045"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DE3MCY5045');</script>
+<!-- End Google Analytics 4 -->
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://hrsuindore.com/pt/learn/calcium-nitrate-h2s-wastewater/"
+  },
+  "headline": "Como o nitrato de cálcio é usado para controlar o odor e a corrosão causados por H&#8322;S em águas residuais municipais?",
+  "description": "Como a dosagem de nitrato controla o sulfeto de hidrogênio em coletores e linhas de recalque: bactérias oxidadoras de sulfeto, faixas de dose por mg de sulfeto, pontos de dosagem, um exemplo resolvido de dimensionamento e comparação com ferro, peróxido, Mg(OH)2 e oxigênio.",
+  "datePublished": "2026-10-07T00:00:00+05:30",
+  "dateModified": "2026-10-07T00:00:00+05:30",
+  "author": {
+    "@type": "Organization",
+    "name": "HRSU Indore Pvt. Ltd.",
+    "url": "https://hrsuindore.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "HRSU Indore Pvt. Ltd.",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://hrsuindore.com/Logo.png"
+    }
+  },
+  "image": "https://hrsuindore.com/images/calcium-nitrate-granules.jpg",
+  "about": {
+    "@type": "Thing",
+    "name": "Calcium nitrate",
+    "sameAs": "https://en.wikipedia.org/wiki/Calcium_nitrate"
+  },
+  "keywords": "calcium nitrate hydrogen sulfide, nitrate dosing sewer, H2S odor control wastewater, force main sulfide control, nitrate vs ferric chloride, calcium nitrate odor control dose, sulfate-reducing bacteria nitrate",
+  "citation": [
+    {
+      "@type": "CreativeWork",
+      "name": "Odor and corrosion control in sanitary sewerage systems and treatment plants: design manual (EPA/625/1-85/018)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "U.S. Environmental Protection Agency, 1985 (NEPIS)"
+      },
+      "url": "http://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=300045C6.txt"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Design Guidelines for Sewage Works, Chapter 4: Odour control and design of sewers",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Ontario Ministry of the Environment, Conservation and Parks"
+      },
+      "url": "https://www.ontario.ca/document/design-guidelines-sewage-works/odour-control-and-design-sewer"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Kinetics of indigenous nitrate reducing sulfide oxidizing activity in microaerophilic wastewater biofilms (Villahermosa et al.)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "PLoS ONE 11(2):e0149096, 2016 (PMC)"
+      },
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4752510/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Sulfur transformation in rising main sewers receiving nitrate dosage (Jiang, Sharma, Guisasola, Keller, Yuan)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Water Research 43(17):4430-4440, 2009 (PubMed record)"
+      },
+      "url": "https://busqueda.bvsalud.org/portal/resource/es/mdl-19625067"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Effects of nitrate dosing on sulfidogenic and methanogenic activities in sewer sediment (Liu et al.)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Water Research 74:155-165, 2015"
+      },
+      "url": "https://opus.lib.uts.edu.au/handle/10453/119145"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Hydrogen sulfide generation and control in sewer systems with drop structures and pump stations (Yang, PhD thesis)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "University of Alberta, 2021"
+      },
+      "url": "https://era.library.ualberta.ca/items/972cef6a-792d-460e-80eb-211f57258384"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Odor control in sewers using calcium nitrate (Kalakuntla, MS thesis)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "University of Nevada, Las Vegas, 1994"
+      },
+      "url": "https://oasis.library.unlv.edu/rtds/382"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Assessment of limited downstream nitrate dosing for sulphide control in pressure sewers: case study in Germany (Despot, Reinhold, Barjenbruch)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Water Practice and Technology, IWA, 2022 (TU Berlin repository)"
+      },
+      "url": "https://depositonce.tu-berlin.de/items/d6f4b9d0-9135-4b3c-b1b0-f265f2f97e02"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Hydrogen sulfide: hazards",
+      "publisher": {
+        "@type": "Organization",
+        "name": "U.S. Occupational Safety and Health Administration (OSHA)"
+      },
+      "url": "https://www.osha.gov/hydrogen-sulfide/hazards"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Toxicological profile for hydrogen sulfide (Chapter 3)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Agency for Toxic Substances and Disease Registry (ATSDR), CDC"
+      },
+      "url": "https://www.atsdr.cdc.gov/toxprofiles/tp114-c3.pdf"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Multifaceted benefits of magnesium hydroxide dosing in sewer systems: impacts on downstream wastewater treatment processes (Cen et al.)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Water Research, 2023"
+      },
+      "url": "https://scholars.cityu.edu.hk/en/publications/multifaceted-benefits-of-magnesium-hydroxide-dosing-in-sewer-syst/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Mitigation of hydrogen sulfide production in sewer systems by inhibiting sulfate-reducing bacteria: a review (Qi et al.)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Frontiers of Environmental Science & Engineering 19(3):39, 2025"
+      },
+      "url": "https://journal.hep.com.cn/fese/EN/1159762548893474875"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "US 4,911,843 A - Process for removal of dissolved hydrogen sulfide and reduction of sewage BOD in sewer or other waste systems (Hunniford, Davis)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "U.S. Patent and Trademark Office, via Google Patents, 1990"
+      },
+      "url": "https://patents.google.com/patent/US4911843A/en"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Succession of sulfur-oxidizing bacteria in the microbial community on corroding concrete in sewer systems (Okabe et al.)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Applied and Environmental Microbiology 73(3):971-980, 2007 (PMC)"
+      },
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC1800771"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Simultaneous use of nitrate and calcium peroxide to control sulfide and greenhouse gas emission in sewers (Zhang et al.)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Science of the Total Environment, 2023"
+      },
+      "url": "https://hit.globalimpact.cn/en/publications/simultaneous-use-of-nitrate-and-calcium-peroxide-to-control-sulfi/"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Addition of nitrate for odor control in sewer networks: laboratory and field experiments (Mathioudakis, Vaiopoulou, Aivasidis)",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Global NEST Journal 8(1), 2006"
+      },
+      "url": "https://cosmos.gnest.org/publication/370"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Sulfide generation in force mains and its control using nitrate dosing",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Journal of Environmental Engineering, ASCE"
+      },
+      "url": "https://ascelibrary.com/doi/10.1061/%28ASCE%29EE.1943-7870.0002016"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Implications of downstream nitrate dosage in anaerobic sewers to control sulfide and methane emissions",
+      "publisher": {
+        "@type": "Organization",
+        "name": "University of Girona repository (recercat)"
+      },
+      "url": "https://www.recercat.cat/handle/10256/12604?show=full"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "US 5,833,864 - Method for the reduction and control of the release of gas and odors from sewage and waste water",
+      "publisher": {
+        "@type": "Organization",
+        "name": "U.S. Patent and Trademark Office"
+      },
+      "url": "https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/5833864"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Bakersfield odor control breakthrough: SulFeLox saves money, improves performance",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Water Environment Federation proceedings (utility/vendor paper)"
+      },
+      "url": "https://www.accesswater.org/publications/proceedings/-10091932/bakersfield-s-odor-control-breakthrough-sulfelox-saves-money-improves-performance"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Hydrogen sulfide",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Wikipedia"
+      },
+      "url": "https://en.wikipedia.org/wiki/Hydrogen_sulfide"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Calcium nitrate",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Wikipedia"
+      },
+      "url": "https://en.wikipedia.org/wiki/Calcium_nitrate"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "OC San strategies and pilot testing to optimize collection system odor control",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Water Environment Federation proceedings"
+      },
+      "url": "https://www.accesswater.org/publications/proceedings/-10091920/oc-san-strategies-and-pilot-testing-to-optimize-collection-system-odor-control"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "Enhanced mechanistic insights and performance optimization: controlling methane and sulfide in sewers using nitrate dosing strategies",
+      "publisher": {
+        "@type": "Organization",
+        "name": "University of Wollongong research online"
+      },
+      "url": "https://ro.uow.edu.au/articles/journal_contribution/Enhanced_mechanistic_insights_and_performance_optimization_Controlling_methane_and_sulfide_in_sewers_using_nitrate_dosing_strategies/27819870"
+    }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Início",
+      "item": "https://hrsuindore.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Aprender",
+      "item": "https://hrsuindore.com/learn/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Controle de Odor de H2S em Águas Residuais",
+      "item": "https://hrsuindore.com/pt/learn/calcium-nitrate-h2s-wastewater/"
+    }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Como o nitrato de cálcio controla o sulfeto de hidrogênio em coletores?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O nitrato estimula bactérias nativas que oxidam o sulfeto dissolvido a enxofre e sulfato, e a redução de sulfato fica suspensa enquanto houver nitrato. Estudos de biofilme mostram que o efeito vem principalmente da oxidação do sulfeto, e não da morte das bactérias redutoras de sulfato.[1][3][4]"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Quanto de nitrato por mg de sulfeto?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Uma patente indica 2,4 g de oxigênio do nitrato por g de sulfeto de forma estequiométrica (cerca de 0,7 g de NO3-N por g de S, pela nossa conversão), e o manual da EPA informa que, na prática, foram necessárias cerca de 10 partes de nitrato por parte de sulfeto. Recomenda-se ensaio piloto.[1][2][13]"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Qual concentração de nitrato é dosada em linhas de recalque?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Exemplos relatados: 27 mg/L de nitrato reduziram a descarga de uma linha de recalque em Los Angeles para cerca de 2 mg/L de sulfeto, e 50 mg/L ou mais resultaram em cerca de 1 mg/L; uma estação elevatória em Alberta usou 85 mg/L de forma contínua.[1][6]"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O nitrato de cálcio é melhor que o cloreto férrico para odor em coletores?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Não universalmente. O ferro precipita o sulfeto rapidamente e costuma ser mais barato, mas aumenta o lodo; o nitrato não é perigoso, tem baixo teor de sólidos e também impede a formação de novo sulfeto. Um artigo de concessionária constatou que um produto de ferro de baixa periculosidade superou o nitrato de cálcio em custo.[2][20]"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O nitrato de cálcio funciona tão bem quanto o nitrato de sódio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ambas as soluções já foram usadas com sucesso para sulfeto dissolvido, já que o íon nitrato faz o trabalho. O nitrato de amônio acrescenta carga de amônia.[13][16]"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Por que o sulfeto retorna após a dosagem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "O nitrato é consumido à medida que a água percorre o trajeto. Em uma rede de recalque alemã de 9 km, o sulfeto se regenerou após cerca de 3 horas de detenção no trecho dosado, por isso a localização e a continuidade da dosagem são importantes.[8]"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "A dosagem de nitrato cria um problema de nitrogênio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Ela acrescenta N-nitrato (e N-amônio, se nitrato de amônio for usado) à corrente, portanto as estações a jusante com limites de nitrogênio devem ser consultadas; a dosagem de nitrato de amônio foi limitada em Corfu por motivos de amônia.[16]"
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "O nitrato de cálcio da HRSU pode ser usado no controle de odor de águas residuais?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A HRSU fornece nitrato de cálcio tetra-hidratado de grau industrial com COA por lote. Ele não é vendido como produto certificado para controle de odor; portanto, confirme o teor de N-nitrato e os limites de impurezas e faça um ensaio antes."
+      }
+    }
+  ]
+}</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "How to trial calcium nitrate dosing for H2S control in a sewer or force main",
+  "description": "A stepwise plan for setting a nitrate dose from sulfide load and retention time.",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "position": 1,
+      "name": "Profile the line",
+      "text": "Measure dissolved sulfide, gas-phase H2S, pH, temperature and retention time at several points."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 2,
+      "name": "Estimate sulfide load",
+      "text": "Multiply flow by the sulfide to be controlled to get kg S per day."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 3,
+      "name": "Set the dose range",
+      "text": "Apply about 0.7 g NO3-N per g S (stoichiometric) to roughly 2.3 g NO3-N per g S (EPA practical ratio) and convert to product mass using the COA nitrate-N."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Dose near the head of the section",
+      "text": "Start mid-range and add a second point downstream if sulfide regenerates."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "Monitor and tune",
+      "text": "Track end-of-section sulfide and residual nitrate, and adjust for temperature and flow."
+    }
+  ]
+}</script>
+<link href="/css/lead.css" rel="stylesheet"/>
+<!--i18n:start-->
+<link rel="alternate" hreflang="en" href="https://hrsuindore.com/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="fr" href="https://hrsuindore.com/fr/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="de" href="https://hrsuindore.com/de/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="pt" href="https://hrsuindore.com/pt/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="es" href="https://hrsuindore.com/es/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="zh-Hans" href="https://hrsuindore.com/zh/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="ja" href="https://hrsuindore.com/ja/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="sw" href="https://hrsuindore.com/sw/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="af" href="https://hrsuindore.com/af/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="my" href="https://hrsuindore.com/my/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="ar" href="https://hrsuindore.com/ar/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="alternate" hreflang="x-default" href="https://hrsuindore.com/learn/calcium-nitrate-h2s-wastewater/">
+<link rel="stylesheet" href="/css/i18n.css">
+<!--i18n:end-->
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe height="0" src="https://www.googletagmanager.com/ns.html?id=GTM-T6KQK7BW" style="display:none;visibility:hidden" width="0"></iframe></noscript>
+<header class="lrn-head">
+<div class="lrn-head-in">
+<a class="lrn-logo" href="/"><span class="lrn-logo-mark">HRSU</span><span class="lrn-logo-sub">Indore</span></a>
+<nav class="lrn-nav"><a href="/learn/">Aprender</a>
+<a href="/#product">Produto</a>
+<a href="/blog/">Blog</a>
+<a class="lrn-cta" href="/industrial/#quote">Solicitar cotação</a><!--i18n:start--><div class="lang-sw" data-i18n-sw><details><summary aria-label="Language"><span aria-hidden="true">&#127760;</span> Português</summary><ul><li><a href="/learn/calcium-nitrate-h2s-wastewater/" hreflang="en" lang="en" data-lang="en">English</a></li><li><a href="/fr/learn/calcium-nitrate-h2s-wastewater/" hreflang="fr" lang="fr" data-lang="fr">Français</a></li><li><a href="/de/learn/calcium-nitrate-h2s-wastewater/" hreflang="de" lang="de" data-lang="de">Deutsch</a></li><li><a href="/pt/learn/calcium-nitrate-h2s-wastewater/" hreflang="pt" lang="pt" data-lang="pt" aria-current="true">Português</a></li><li><a href="/es/learn/calcium-nitrate-h2s-wastewater/" hreflang="es" lang="es" data-lang="es">Español</a></li><li><a href="/zh/learn/calcium-nitrate-h2s-wastewater/" hreflang="zh-Hans" lang="zh-Hans" data-lang="zh">中文</a></li><li><a href="/ja/learn/calcium-nitrate-h2s-wastewater/" hreflang="ja" lang="ja" data-lang="ja">日本語</a></li><li><a href="/sw/learn/calcium-nitrate-h2s-wastewater/" hreflang="sw" lang="sw" data-lang="sw">Kiswahili</a></li><li><a href="/af/learn/calcium-nitrate-h2s-wastewater/" hreflang="af" lang="af" data-lang="af">Afrikaans</a></li><li><a href="/my/learn/calcium-nitrate-h2s-wastewater/" hreflang="my" lang="my" data-lang="my">မြန်မာ</a></li><li><a href="/ar/learn/calcium-nitrate-h2s-wastewater/" hreflang="ar" lang="ar" data-lang="ar">العربية</a></li></ul></details></div><!--i18n:end--></nav>
+</div>
+</header>
+<main class="lrn-main">
+<div class="lrn-crumbs"><a href="/">Início</a> › <a href="/learn/">Aprender</a> › Controle de odor de H2S em águas residuais</div>
+<h1>Como o nitrato de cálcio é usado para controlar o odor e a corrosão causados por H₂S em águas residuais municipais?</h1>
+<div class="lrn-meta"><b>Última atualização:</b> 7 de outubro de 2026  ·  Editor responsável: Sujay Shrivastava, HRSU Indore Pvt. Ltd.</div>
+<aside class="lrn-buy"><strong>Está comprando nitrato de cálcio em quantidades de contêiner?</strong> A HRSU Indore é a fabricante: grau industrial, COA em todos os lotes, TDS e SDS para download gratuito, embarque pelo porto de Mundra ou Nhava Sheva. <a class="lrn-buy-cta lrn-cta" href="/industrial/#quote">Solicitar cotação &amp; COA de amostra</a> <a href="/industrial/">Página do produto</a></aside>
+<div class="lrn-summary">
+<span class="lbl">Em resumo</span>
+<p>A dosagem de nitrato controla o sulfeto de hidrogênio (H₂S) em coletores principalmente <strong>ativando bactérias que oxidam o sulfeto a enxofre e sulfato</strong>, e dando ao biofilme um aceptor de elétrons preferencial, para que a redução de sulfato não tome conta enquanto o nitrato estiver presente.<sup class="cite"><a href="#r1">[1]</a><a href="#r3">[3]</a><a href="#r4">[4]</a></sup> A estequiometria publicada é de cerca de <strong>2,4 g de oxigênio do nitrato por g de sulfeto</strong> em uma patente,<sup class="cite"><a href="#r13">[13]</a></sup> enquanto o manual de projeto da EPA dos EUA relata que, na prática, foram necessárias <strong>cerca de 10 partes de nitrato por parte de sulfeto</strong>.<sup class="cite"><a href="#r1">[1]</a></sup> As dosagens de campo relatadas vão de dezenas de mg/L de nitrato em uma linha de recalque de Los Angeles (27 mg/L reduziram o sulfeto para cerca de 2 mg/L) até 85 mg/L em uma estação elevatória no Canadá.<sup class="cite"><a href="#r1">[1]</a><a href="#r6">[6]</a></sup> Nitrato de cálcio e nitrato de sódio já foram ambos utilizados; a dose deve ser definida a partir da sua carga de sulfeto e do tempo de detenção, idealmente por meio de ensaio piloto.<sup class="cite"><a href="#r2">[2]</a><a href="#r13">[13]</a></sup></p>
+</div>
+<h2>Principais dados em resumo</h2>
+<table class="lrn-table">
+<thead><tr><th>Item</th><th>Valor / resposta</th></tr></thead>
+<tbody>
+<tr><td>Gás problemático</td><td>H₂S: limite teto da OSHA para indústria em geral de 20 ppm, IDLH do NIOSH de 100 ppm; a fadiga olfativa começa em cerca de 100–150 ppm, portanto o cheiro não serve como alerta<sup class="cite"><a href="#r9">[9]</a></sup></td></tr>
+<tr><td>Onde o H₂S é formado</td><td>Bactérias redutoras de sulfato em condições anaeróbias, no biofilme e no sedimento abaixo da linha d'água<sup class="cite"><a href="#r1">[1]</a><a href="#r14">[14]</a></sup></td></tr>
+<tr><td>Rota da corrosão</td><td>O H₂S se desprende para a atmosfera e é oxidado a ácido sulfúrico por bactérias na geratriz superior do coletor; um estudo de campo registrou perda de concreto de 3–4 mm/ano<sup class="cite"><a href="#r14">[14]</a></sup></td></tr>
+<tr><td>Principal mecanismo do nitrato</td><td>Ativação de bactérias nativas redutoras de nitrato e oxidadoras de sulfeto; supressão do sulfeto em cerca de 2 horas em um estudo de biofilme<sup class="cite"><a href="#r3">[3]</a></sup></td></tr>
+<tr><td>Ordem dos aceptores de elétrons</td><td>O₂ primeiro, depois nitrato, depois sulfato; não há redução de sulfato enquanto o nitrato estiver sendo consumido (manual da EPA)<sup class="cite"><a href="#r1">[1]</a></sup></td></tr>
+<tr><td>Produtos da oxidação do sulfeto</td><td>O sulfeto é convertido a enxofre elementar e depois a sulfato, em duas etapas<sup class="cite"><a href="#r4">[4]</a></sup></td></tr>
+<tr><td>Demanda teórica (patente)</td><td>2,4 partes de oxigênio do nitrato por parte de sulfeto<sup class="cite"><a href="#r13">[13]</a></sup></td></tr>
+<tr><td>Demanda prática (EPA)</td><td>Cerca de 10 partes de nitrato por parte de sulfeto eliminado<sup class="cite"><a href="#r1">[1]</a></sup></td></tr>
+<tr><td>Exemplo da linha de recalque de Los Angeles (EPA)</td><td>27 mg/L de nitrato resultaram em cerca de 2 mg/L de sulfeto; 50 mg/L ou mais resultaram em cerca de 1 mg/L<sup class="cite"><a href="#r1">[1]</a></sup></td></tr>
+<tr><td>Exemplo da linha de recalque de Alberta</td><td>85 mg/L de nitrato contínuos suprimiram a geração de sulfeto em uma estação elevatória; taxas de geração de sulfeto na linha de recalque de 0,08–0,15 g S/m²·h<sup class="cite"><a href="#r6">[6]</a></sup></td></tr>
+<tr><td>Ensaio no Condado de Clark, Nevada</td><td>Nove linhas de coletor tratadas com nitrato de cálcio, com sulfeto geralmente abaixo de 0,1 ppm<sup class="cite"><a href="#r7">[7]</a></sup></td></tr>
+<tr><td>Reaparecimento do sulfeto</td><td>Em uma rede de recalque alemã de 9 km, o sulfeto voltou a se formar após cerca de 3 horas de detenção a jusante do ponto de dosagem<sup class="cite"><a href="#r8">[8]</a></sup></td></tr>
+<tr><td>Cátions utilizados</td><td>Soluções de nitrato de sódio e de nitrato de cálcio já foram usadas com sucesso<sup class="cite"><a href="#r13">[13]</a></sup>; o nitrato de amônio aumenta a carga de amônia<sup class="cite"><a href="#r16">[16]</a></sup></td></tr>
+<tr><td>Ressalva sobre o sedimento</td><td>Em sedimento espesso de coletor, o nitrato não suprimiu a produção de sulfeto, mas reduziu seu acúmulo por oxidação<sup class="cite"><a href="#r5">[5]</a></sup></td></tr>
+</tbody>
+</table>
+<h2>Por que o sulfeto de hidrogênio se forma em águas residuais?</h2>
+<p>O esgoto bruto contém sulfato e matéria orgânica. Quando o oxigênio se esgota, por exemplo em uma longa linha de recalque pressurizada, em um poço de bombeamento ou em uma camada de sedimento, <strong>bactérias redutoras de sulfato (SRB)</strong> no biofilme da parede do tubo usam o sulfato como aceptor de elétrons e liberam sulfeto dissolvido.<sup class="cite"><a href="#r1">[1]</a><a href="#r14">[14]</a></sup> Trabalhos de campo em linhas de recalque de estações elevatórias em Alberta estimaram a geração de sulfeto no biofilme em 0,08–0,15 g S/m²·h.<sup class="cite"><a href="#r6">[6]</a></sup> Temperaturas elevadas, alta carga orgânica e longo tempo de detenção aumentam o sulfeto que chega ao próximo poço de visita ou à estação de tratamento.<sup class="cite"><a href="#r1">[1]</a></sup></p>
+<h2>Como o pH determina se o sulfeto se torna um problema de odor?</h2>
+<p>O sulfeto dissolvido existe como gás H₂S ou como o íon bissulfeto HS<sup>−</sup>, e a proporção entre eles depende do pH. O sulfeto de hidrogênio é um ácido fraco cuja fração gasosa aumenta à medida que o pH cai.<sup class="cite"><a href="#r21">[21]</a></sup> O manual de projeto da EPA ilustra isso: em pH 6,0, 4,0 mg/L de sulfeto dissolvido total equivalem a cerca de 3,6 mg/L de H₂S e 0,4 mg/L de HS<sup>−</sup>.<sup class="cite"><a href="#r1">[1]</a></sup> Somente a fração de H₂S pode escapar para o ar do coletor; assim, elevar o pH mantém o sulfeto em solução, que é o princípio por trás da dosagem de hidróxido de magnésio e de soda cáustica.<sup class="cite"><a href="#r2">[2]</a><a href="#r19">[19]</a></sup> O nitrato funciona de forma diferente e não depende do pH.</p>
+<p>Depois que o H₂S atinge a atmosfera do tubo, ele se dissolve no condensado da geratriz superior e é oxidado a ácido sulfúrico por bactérias oxidadoras de enxofre. Em cupons de concreto em um poço de visita no Japão, a espécie produtora de ácido <em>Acidithiobacillus thiooxidans</em> passou a representar cerca de 70% das células, com corrosão de 3–4 mm/ano.<sup class="cite"><a href="#r14">[14]</a></sup> O H₂S também é um risco ocupacional: a OSHA estabelece um limite teto de 20 ppm para a indústria em geral e 100 ppm como imediatamente perigoso, e observa que o sentido do olfato se perde em altas concentrações.<sup class="cite"><a href="#r9">[9]</a></sup> A ATSDR publica o perfil toxicológico completo.<sup class="cite"><a href="#r10">[10]</a></sup></p>
+<h2>Como a dosagem de nitrato realmente interrompe o H₂S?</h2>
+<p>A explicação comumente repetida, de que o nitrato “mata” ou supera as SRB na competição, é apenas parte da história. As evidências atuais apontam três mecanismos que atuam em conjunto:</p>
+<ol>
+<li><strong>Oxidação anóxica do sulfeto (o efeito dominante para o sulfeto já existente).</strong> Em biofilme de águas residuais, o nitrato reduziu a produção líquida de sulfeto “causada por um aumento nas taxas de oxidação do sulfeto … em vez de uma inibição das bactérias redutoras de sulfato”, pois as bactérias nativas redutoras de nitrato e oxidadoras de sulfeto (NR-SOB) respondem em horas.<sup class="cite"><a href="#r3">[3]</a></sup> Em uma linha de recalque em laboratório, o sulfeto foi oxidado a enxofre elementar e depois a sulfato.<sup class="cite"><a href="#r4">[4]</a></sup></li>
+<li><strong>Aceptor de elétrons preferencial (prevenção).</strong> As bactérias usam os aceptores na ordem oxigênio, nitrato, sulfato, de modo que a redução de sulfato fica suspensa enquanto houver nitrato.<sup class="cite"><a href="#r1">[1]</a></sup> Ensaios de laboratório com águas residuais não sépticas mostraram que o nitrato inibiu a produção de sulfeto até a desnitrificação ser concluída.<sup class="cite"><a href="#r16">[16]</a></sup></li>
+<li><strong>Efeitos de competição e inibição dos produtos da redução do nitrato.</strong> Uma revisão de 2025 sobre a inibição de SRB em coletores considera a dosagem química eficaz, mas aponta desvantagens: dosagens repetidas, curta duração do efeito, possível resistência bacteriana e carga extra nas estações de tratamento a jusante.<sup class="cite"><a href="#r12">[12]</a></sup></li>
+</ol>
+<p>A consequência prática: o nitrato precisa estar <em>presente na água ou no biofilme</em> para funcionar. Quando ele é consumido, a redução de sulfato é retomada, por isso a localização e a continuidade da dosagem são importantes.<sup class="cite"><a href="#r1">[1]</a><a href="#r8">[8]</a></sup> Em sedimento espesso, um estudo constatou que o nitrato <em>não</em> suprimiu a produção de sulfeto em si; ele limitou o acúmulo por oxidação e deslocou a produção de metano para mais fundo no sedimento.<sup class="cite"><a href="#r5">[5]</a></sup></p>
+<h2>Qual é a dose de nitrato necessária por mg de sulfeto?</h2>
+<table class="lrn-table">
+<thead><tr><th>Base</th><th>Valor</th><th>Fonte</th></tr></thead>
+<tbody>
+<tr><td>Estequiométrica (sulfeto a sulfato)</td><td>2,4 g de oxigênio do nitrato por g de S²−; equivale a cerca de 0,7 g de NO<sub>3</sub>-N por g de S (nossa conversão)</td><td>Patente US4911843<sup class="cite"><a href="#r13">[13]</a></sup></td></tr>
+<tr><td>Prática, geral</td><td>~10 partes de nitrato por parte de sulfeto removido (base NO<sub>3</sub> vs. NO<sub>3</sub>-N não informada no trecho lido)</td><td>Manual da EPA dos EUA<sup class="cite"><a href="#r1">[1]</a></sup></td></tr>
+<tr><td>Linha de recalque, Los Angeles</td><td>27 mg/L de nitrato: sulfeto a ~2 mg/L; ≥50 mg/L: ~1 mg/L</td><td>Manual da EPA dos EUA<sup class="cite"><a href="#r1">[1]</a></sup></td></tr>
+<tr><td>Linha de recalque, região de Edmonton</td><td>85 mg/L de nitrato contínuos (sulfeto de ~20 mg/L relatado); estratégia otimizada poderia economizar até 75% do nitrato</td><td>Tese da Univ. de Alberta<sup class="cite"><a href="#r6">[6]</a></sup></td></tr>
+<tr><td>Coletor combinado, Corfu</td><td>6,9, 15 e 27,7 kg NH<sub>4</sub>NO<sub>3</sub>/h resultaram em remoção de sulfeto de 84%, 98% e 99% (3–27 mg S/L)</td><td>Mathioudakis et al. 2006<sup class="cite"><a href="#r16">[16]</a></sup></td></tr>
+<tr><td>Linhas de coletor, Condado de Clark, NV</td><td>Nitrato de cálcio; sulfeto geralmente abaixo de 0,1 ppm</td><td>Tese da UNLV<sup class="cite"><a href="#r7">[7]</a></sup></td></tr>
+</tbody>
+</table>
+<p>Trate a faixa entre cerca de 0,7 e uma razão prática no estilo da EPA como uma <em>faixa de planejamento</em>, não como uma especificação. O excedente sobre a estequiometria cobre o nitrato consumido por heterotróficos comuns na matéria orgânica, a regeneração de sulfeto no biofilme e o residual que deve permanecer para proteção. As diretrizes de Ontário para obras de esgoto orientam os projetistas a usar “um fator de segurança generoso” para reações secundárias e a considerar ensaios piloto para definir as dosagens.<sup class="cite"><a href="#r2">[2]</a></sup></p>
+<h2>Onde o nitrato de cálcio é dosado?</h2>
+<table class="lrn-table">
+<thead><tr><th>Ponto de dosagem</th><th>Finalidade e observações</th></tr></thead>
+<tbody>
+<tr><td>Extremidade a montante de uma linha de recalque / poço de bombeamento de estação elevatória</td><td>Ponto clássico; toda a tubulação a jusante fica protegida enquanto houver nitrato. A dosagem sincronizada com o ciclo de bombeamento e a dosagem mais próxima do ponto de controle podem reduzir o consumo de nitrato.<sup class="cite"><a href="#r6">[6]</a></sup></td></tr>
+<tr><td>A jusante da fonte, em um trecho ao longo de uma linha de recalque longa</td><td>Uma rede de recalque alemã de 9 km mostrou o sulfeto retornando após cerca de 3 h de detenção, então um segundo ponto de dosagem, ou um ponto realocado, atinge a zona de recrescimento.<sup class="cite"><a href="#r8">[8]</a><a href="#r18">[18]</a></sup></td></tr>
+<tr><td>Trechos de coletor por gravidade e estações elevatórias</td><td>Usado no ensaio do Condado de Clark, Nevada, em nove linhas de coletor.<sup class="cite"><a href="#r7">[7]</a></sup></td></tr>
+<tr><td>Entrada de estação de tratamento, águas residuais industriais, lagoas</td><td>Patentes e literatura técnica descrevem o uso de nitrato para correntes de estações de tratamento e industriais,<sup class="cite"><a href="#r13">[13]</a></sup> mas dados de dosagem em lagoas revisados por pares são escassos; trate o uso em lagoas como uma aplicação a ser validada em ensaio de campo.</td></tr>
+</tbody>
+</table>
+<p>O tempo de detenção determina quanto sulfeto se forma e por quanto tempo o nitrato é necessário. A dose deve ser proporcional ao tempo de detenção hidráulico do trecho protegido,<sup class="cite"><a href="#r6">[6]</a></sup> e o grupo de Wollongong publicou sobre a otimização de estratégias de dosagem de nitrato para sulfeto e metano em coletores.<sup class="cite"><a href="#r24">[24]</a></sup> Trabalho recente da ASCE aborda a geração de sulfeto em linhas de recalque e seu controle por nitrato.<sup class="cite"><a href="#r17">[17]</a></sup></p>
+<h2>Exemplo resolvido: dimensionamento de alimentação de nitrato de cálcio para uma linha de recalque</h2>
+<p>Este é um <strong>cálculo ilustrativo com premissas declaradas</strong>, não um projeto.</p>
+<ul>
+<li>Vazão: 2.000 m³/dia. Sulfeto a controlar: 5 mg S/L, ou seja, 5 g/m³, portanto 2.000 × 5 = <strong>10 kg S/dia</strong>.</li>
+<li>Caso de baixa demanda (estequiométrico, ~0,7 g NO<sub>3</sub>-N por g de S): 7 kg NO<sub>3</sub>-N/dia, equivalentes a 3,5 mg NO<sub>3</sub>-N/L.</li>
+<li>Caso de alta demanda (EPA: ~10 g de nitrato por g de S, tomado como íon nitrato, equivalente a ~2,26 g NO<sub>3</sub>-N por g de S): 22,6 kg NO<sub>3</sub>-N/dia, ou 11,3 mg NO<sub>3</sub>-N/L.</li>
+<li>Produto: assume-se um pó de nitrato de cálcio com 14% de nitrogênio na forma de nitrato (valor de referência; use o teor de N-nitrato do seu COA, pois o N total inclui qualquer amônio). A quantidade necessária é de cerca de <strong>50 kg/dia (baixa) a 160 kg/dia (alta)</strong>.</li>
+<li>Próximo passo: escolha uma dose inicial nessa faixa, faça um ensaio e ajuste com base no sulfeto medido e no nitrato residual na extremidade final da linha.</li>
+</ul>
+<h2>Como o nitrato se compara com sais férricos/ferrosos, Mg(OH)<sub>2</sub>, peróxido, cloro e oxigênio?</h2>
+<table class="lrn-table">
+<thead><tr><th>Opção</th><th>Como funciona</th><th>Dose ou comportamento relatado</th><th>Compensações</th></tr></thead>
+<tbody>
+<tr><td>Nitrato de cálcio / sódio</td><td>Oxidação do sulfeto por NR-SOB; mantém a redução de sulfato suspensa<sup class="cite"><a href="#r1">[1]</a><a href="#r3">[3]</a></sup></td><td>Veja a tabela de dosagem; faixa de planejamento de ~0,7 a ~2+ g N/g S</td><td>Não inflamável, não perigoso, baixo teor de sólidos; consumido mais lentamente que o oxigênio dissolvido<sup class="cite"><a href="#r2">[2]</a></sup>; aumenta a carga de nitrogênio</td></tr>
+<tr><td>Sais ferrosos / férricos</td><td>Precipita o sulfeto como sulfeto de ferro<sup class="cite"><a href="#r2">[2]</a></sup></td><td>~4,5 g de FeSO<sub>4</sub> (1,6 g de Fe) por g de H₂S; uma mistura 1:2 ferroso:férrico foi relatada como superior<sup class="cite"><a href="#r1">[1]</a></sup></td><td>Mais lodo e possível acúmulo de contaminantes<sup class="cite"><a href="#r2">[2]</a></sup>; costuma ser mais barato; um artigo de concessionária constatou que um produto de ferro de baixa periculosidade superou o nitrato de cálcio em custo e desempenho<sup class="cite"><a href="#r20">[20]</a></sup></td></tr>
+<tr><td>Hidróxido de magnésio</td><td>Eleva o pH para que o sulfeto permaneça como HS<sup>−</sup><sup class="cite"><a href="#r19">[19]</a></sup></td><td>Estudo de laboratório: pH 8,8 contra controle em pH 7,1, sulfeto reduzido em 35%<sup class="cite"><a href="#r11">[11]</a></sup></td><td>Não perigoso; benefícios a jusante para remoção de nitrogênio e decantação<sup class="cite"><a href="#r11">[11]</a></sup>; o ganho em laboratório na remoção de sulfeto foi modesto (35%)</td></tr>
+<tr><td>Peróxido de hidrogênio</td><td>Oxida o sulfeto<sup class="cite"><a href="#r2">[2]</a></sup></td><td>Estequiométrico de 1 g de H₂O₂ por g de H₂S em pH &lt;8,5; prático de 0,9 a mais de 3 : 1<sup class="cite"><a href="#r1">[1]</a></sup></td><td>Rápido, mas de curta duração; exige manuseio de oxidante</td></tr>
+<tr><td>Cloro / hipoclorito, permanganato</td><td>Oxidam o sulfeto e inibem a produção<sup class="cite"><a href="#r2">[2]</a></sup></td><td>Tabela de desempenho de Sacramento no manual da EPA<sup class="cite"><a href="#r1">[1]</a></sup></td><td>Oxidante perigoso; dose e manuseio do produto dependem do local</td></tr>
+<tr><td>Injeção de oxigênio puro / ar</td><td>Eleva o oxigênio dissolvido<sup class="cite"><a href="#r2">[2]</a></sup></td><td>O manual da EPA tabela resultados de injeção de oxigênio em linhas de recalque<sup class="cite"><a href="#r1">[1]</a></sup></td><td>Requer equipamento e energia; o oxigênio é consumido mais rapidamente que o nitrato<sup class="cite"><a href="#r2">[2]</a></sup></td></tr>
+<tr><td>Dosagem em pulso de soda cáustica</td><td>Eleva o pH e inativa a camada de limo<sup class="cite"><a href="#r2">[2]</a></sup></td><td>Eficaz por dias a semanas, até o recrescimento<sup class="cite"><a href="#r2">[2]</a></sup></td><td>Intermitente, não controle contínuo</td></tr>
+</tbody>
+</table>
+<p>Combinações podem reduzir o custo: nitrato intermitente com peróxido de cálcio reduziu o custo químico em 85% em comparação com nitrato contínuo isolado, em um estudo de laboratório,<sup class="cite"><a href="#r15">[15]</a></sup> e concessionárias como o Orange County Sanitation District relatam o uso de cloreto ferroso, hidróxido de magnésio e nitrato de cálcio como seus principais produtos químicos para controle de odor.<sup class="cite"><a href="#r23">[23]</a></sup></p>
+<h2>Nitrato de cálcio vs. nitrato de sódio vs. nitrato de amônio: o cátion faz diferença?</h2>
+<p>Para a química do sulfeto, a espécie ativa é o íon nitrato, e tanto as soluções de nitrato de sódio quanto as de nitrato de cálcio são documentadas como bem-sucedidas.<sup class="cite"><a href="#r13">[13]</a></sup> As diferenças são secundárias: o nitrato de cálcio já foi objeto de ensaios municipais formais,<sup class="cite"><a href="#r7">[7]</a></sup> o nitrato de sódio acrescenta sódio à corrente, e <strong>o nitrato de amônio acrescenta carga de amônia</strong>; o estudo de Corfu recomendou uma dose de cerca de 10 kg NH<sub>4</sub>NO<sub>3</sub>/h para equilibrar o controle com os aumentos de amônia.<sup class="cite"><a href="#r16">[16]</a></sup> O nitrato de cálcio, Ca(NO<sub>3</sub>)<sub>2</sub>, é um sal altamente solúvel.<sup class="cite"><a href="#r22">[22]</a></sup> Ele acrescenta cálcio (dureza) às águas residuais; trata-se de uma consideração de engenharia para incrustação e não é abordada pelas fontes acima. Observe que o nitrato de cálcio tetra-hidratado normalmente contém algum nitrogênio amoniacal, portanto solicite a divisão entre N-nitrato e N-amônio.</p>
+<h2>O que acontece com o nitrogênio e o que deve ser monitorado?</h2>
+<p>O excesso de nitrato que não é consumido segue a jusante como N-nitrato e chega à estação de tratamento, onde pode ser desnitrificado; Ontário observa que o nitrato gera apenas uma quantidade pequena de sólidos.<sup class="cite"><a href="#r2">[2]</a></sup> A superdosagem desperdiça produto químico e aumenta a carga de nitrogênio; a subdosagem permite o retorno do sulfeto.<sup class="cite"><a href="#r8">[8]</a></sup> Um conjunto prático de monitoramento:</p>
+<ul>
+<li><strong>Sulfeto dissolvido</strong> no fim do trecho tratado (meta definida pelos seus critérios de odor e corrosão; o ensaio de Nevada relatou abaixo de 0,1 ppm).<sup class="cite"><a href="#r7">[7]</a></sup></li>
+<li><strong>Registradores de H₂S na fase gasosa</strong> no poço de visita receptor ou no poço de bombeamento; o estudo alemão usou medição online de H₂S para identificar um padrão diário de picos de sulfeto.<sup class="cite"><a href="#r8">[8]</a></sup></li>
+<li><strong>Nitrato residual</strong>, além de pH e temperatura, conforme medidos no ensaio de Nevada.<sup class="cite"><a href="#r7">[7]</a></sup></li>
+<li><strong>Nitrogênio no efluente da estação</strong>, onde a unidade receptora tem limites de nitrogênio.</li>
+<li><strong>Detecção de gases pelo trabalhador</strong>, e não o olfato, em espaços confinados.<sup class="cite"><a href="#r9">[9]</a></sup></li>
+</ul>
+<h2>Como fazer um ensaio?</h2>
+<ol>
+<li>Mapeie o tempo de detenção e o perfil de sulfeto ao longo da linha (amostras pontuais em vários pontos, além de registro de gases).<sup class="cite"><a href="#r8">[8]</a></sup></li>
+<li>Calcule a faixa de dosagem com as razões estequiométrica e prática acima.<sup class="cite"><a href="#r1">[1]</a><a href="#r13">[13]</a></sup></li>
+<li>Comece na faixa intermediária, dosando próximo à cabeceira do trecho, e depois teste um segundo ponto de dosagem se o sulfeto voltar a jusante.<sup class="cite"><a href="#r6">[6]</a><a href="#r8">[8]</a></sup></li>
+<li>Ajuste até que o sulfeto no fim do trecho atinja a meta enquanto permanece um pequeno residual de nitrato.</li>
+<li>Registre o consumo de produto químico em relação à vazão e à temperatura para construir uma regra de controle de dosagem, já que a demanda muda com as estações do ano.<sup class="cite"><a href="#r1">[1]</a><a href="#r6">[6]</a></sup></li>
+</ol>
+<h2>Quando o nitrato de cálcio NÃO é a escolha certa</h2>
+<ul>
+<li><strong>Cargas de sulfeto muito altas com tempo de detenção curto.</strong> Sais de ferro ou oxidantes agem mais rápido que a oxidação biológica do sulfeto, e o nitrato é consumido primeiro por outras bactérias.<sup class="cite"><a href="#r1">[1]</a><a href="#r2">[2]</a></sup></li>
+<li><strong>Sistemas com limites rígidos de nitrogênio no efluente</strong>, a menos que a capacidade de desnitrificação a jusante seja confirmada; nitrato e amônio adicionam nitrogênio.<sup class="cite"><a href="#r16">[16]</a></sup></li>
+<li><strong>Sedimento espesso ou lagoas estagnadas sem ensaio.</strong> O nitrato limitou o acúmulo de sulfeto no sedimento, mas não interrompeu a atividade das SRB, e os dados publicados sobre lagoas são limitados.<sup class="cite"><a href="#r5">[5]</a></sup></li>
+<li><strong>Como substituto da segurança em espaços confinados.</strong> O tratamento reduz o H₂S, mas não elimina a necessidade de detecção de gases.<sup class="cite"><a href="#r9">[9]</a></sup></li>
+</ul>
+<h2>O que a HRSU fornece — e o que não fornece</h2>
+<p>A HRSU Indore fornece <strong>nitrato de cálcio tetra-hidratado de grau industrial: teor 99–103%, cálcio solúvel mínimo de 16,4%, nitrogênio nítrico mínimo de 11,7%, matérias insolúveis máximo de 0,005%</strong>, em sacos de ráfia tecida de 50 kg com forro plástico interno, com COA por lote e TDS/SDS sob solicitação. Programas municipais de controle de odor costumam comprar nitrato como líquido pronto; a HRSU <strong>não</strong> afirma que seu produto seja um produto certificado ou formulado especificamente para controle de odor, e ele não é de grau NSF/água potável. Um comprador que dissolve o pó no local deve especificar limites de N-nitrato versus N-amônio, cálcio, cloreto e metais pesados, e fazer um ensaio antes do uso. Solicite uma amostra e o COA.</p>
+<div class="lrn-cta-box">
+<h2>Solicite uma amostra e o COA para um ensaio de dosagem de nitrato</h2>
+<p>Nitrato de cálcio tetra-hidratado de grau industrial · COA em todo lote · matéria insolúvel 0,005% máx. · disponível a granel e para exportação.</p>
+<a href="/industrial/#quote">Solicitar cotação</a>
+<a href="/calcium-nitrate-tds-hrsu.pdf">Baixar TDS</a>
+</div>
+<h2>Perguntas frequentes</h2>
+<div class="lrn-faq">
+<details><summary>Como o nitrato de cálcio controla o sulfeto de hidrogênio em coletores?</summary><div class="faq-a"><p>O nitrato estimula bactérias nativas que oxidam o sulfeto dissolvido a enxofre e sulfato, e a redução de sulfato fica suspensa enquanto houver nitrato. Estudos de biofilme mostram que o efeito vem principalmente da oxidação do sulfeto, e não da morte das bactérias redutoras de sulfato.<sup class="cite"><a href="#r1">[1]</a><a href="#r3">[3]</a><a href="#r4">[4]</a></sup></p></div></details>
+<details><summary>Quanto de nitrato por mg de sulfeto?</summary><div class="faq-a"><p>Uma patente indica 2,4 g de oxigênio do nitrato por g de sulfeto de forma estequiométrica (cerca de 0,7 g de NO3-N por g de S, pela nossa conversão), e o manual da EPA informa que, na prática, foram necessárias cerca de 10 partes de nitrato por parte de sulfeto. Recomenda-se ensaio piloto.<sup class="cite"><a href="#r1">[1]</a><a href="#r2">[2]</a><a href="#r13">[13]</a></sup></p></div></details>
+<details><summary>Qual concentração de nitrato é dosada em linhas de recalque?</summary><div class="faq-a"><p>Exemplos relatados: 27 mg/L de nitrato reduziram a descarga de uma linha de recalque em Los Angeles para cerca de 2 mg/L de sulfeto, e 50 mg/L ou mais resultaram em cerca de 1 mg/L; uma estação elevatória em Alberta usou 85 mg/L de forma contínua.<sup class="cite"><a href="#r1">[1]</a><a href="#r6">[6]</a></sup></p></div></details>
+<details><summary>O nitrato de cálcio é melhor que o cloreto férrico para odor em coletores?</summary><div class="faq-a"><p>Não universalmente. O ferro precipita o sulfeto rapidamente e costuma ser mais barato, mas aumenta o lodo; o nitrato não é perigoso, tem baixo teor de sólidos e também impede a formação de novo sulfeto. Um artigo de concessionária constatou que um produto de ferro de baixa periculosidade superou o nitrato de cálcio em custo.<sup class="cite"><a href="#r2">[2]</a><a href="#r20">[20]</a></sup></p></div></details>
+<details><summary>O nitrato de cálcio funciona tão bem quanto o nitrato de sódio?</summary><div class="faq-a"><p>Ambas as soluções já foram usadas com sucesso para sulfeto dissolvido, já que o íon nitrato faz o trabalho. O nitrato de amônio acrescenta carga de amônia.<sup class="cite"><a href="#r13">[13]</a><a href="#r16">[16]</a></sup></p></div></details>
+<details><summary>Por que o sulfeto retorna após a dosagem?</summary><div class="faq-a"><p>O nitrato é consumido à medida que a água percorre o trajeto. Em uma rede de recalque alemã de 9 km, o sulfeto se regenerou após cerca de 3 horas de detenção no trecho dosado, por isso a localização e a continuidade da dosagem são importantes.<sup class="cite"><a href="#r8">[8]</a></sup></p></div></details>
+<details><summary>A dosagem de nitrato cria um problema de nitrogênio?</summary><div class="faq-a"><p>Ela acrescenta N-nitrato (e N-amônio, se nitrato de amônio for usado) à corrente, portanto as estações a jusante com limites de nitrogênio devem ser consultadas; a dosagem de nitrato de amônio foi limitada em Corfu por motivos de amônia.<sup class="cite"><a href="#r16">[16]</a></sup></p></div></details>
+<details><summary>O nitrato de cálcio da HRSU pode ser usado no controle de odor de águas residuais?</summary><div class="faq-a"><p>A HRSU fornece nitrato de cálcio tetra-hidratado de grau industrial com COA por lote. Ele não é vendido como produto certificado para controle de odor; portanto, confirme o teor de N-nitrato e os limites de impurezas e faça um ensaio antes.</p></div></details>
+</div>
+<h2>Guias relacionados</h2>
+<ul>
+<li><a href="/learn/calcium-nitrate-oilfield-souring-control/">Nitrato de cálcio para controle de souring em campos de petróleo</a></li>
+<li><a href="/learn/calcium-nitrate-lake-sediment-remediation/">Nitrato de cálcio na remediação de sedimentos de lagos</a></li>
+<li><a href="/learn/calcium-nitrate-safety-handling-storage/">Manuseio e armazenamento seguros do nitrato de cálcio</a></li>
+<li><a href="/learn/calcium-nitrate-uses/">Usos do nitrato de cálcio: o guia completo</a></li>
+</ul>
+<h2>Referências</h2>
+<ol class="lrn-refs">
+<li id="r1"><a href="http://nepis.epa.gov/Exe/ZyPURL.cgi?Dockey=300045C6.txt" rel="noopener nofollow" target="_blank">Odor and corrosion control in sanitary sewerage systems and treatment plants: design manual (EPA/625/1-85/018)</a> — U.S. Environmental Protection Agency, 1985 (NEPIS). <span class="ref-type">Government design manual</span></li>
+<li id="r2"><a href="https://www.ontario.ca/document/design-guidelines-sewage-works/odour-control-and-design-sewer" rel="noopener nofollow" target="_blank">Design Guidelines for Sewage Works, Chapter 4: Odour control and design of sewers</a> — Ontario Ministry of the Environment, Conservation and Parks. <span class="ref-type">Government guideline</span></li>
+<li id="r3"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4752510/" rel="noopener nofollow" target="_blank">Kinetics of indigenous nitrate reducing sulfide oxidizing activity in microaerophilic wastewater biofilms (Villahermosa et al.)</a> — PLoS ONE 11(2):e0149096, 2016 (PMC). <span class="ref-type">Peer-reviewed</span></li>
+<li id="r4"><a href="https://busqueda.bvsalud.org/portal/resource/es/mdl-19625067" rel="noopener nofollow" target="_blank">Sulfur transformation in rising main sewers receiving nitrate dosage (Jiang, Sharma, Guisasola, Keller, Yuan)</a> — Water Research 43(17):4430-4440, 2009 (PubMed record). <span class="ref-type">Peer-reviewed</span></li>
+<li id="r5"><a href="https://opus.lib.uts.edu.au/handle/10453/119145" rel="noopener nofollow" target="_blank">Effects of nitrate dosing on sulfidogenic and methanogenic activities in sewer sediment (Liu et al.)</a> — Water Research 74:155-165, 2015. <span class="ref-type">Peer-reviewed</span></li>
+<li id="r6"><a href="https://era.library.ualberta.ca/items/972cef6a-792d-460e-80eb-211f57258384" rel="noopener nofollow" target="_blank">Hydrogen sulfide generation and control in sewer systems with drop structures and pump stations (Yang, PhD thesis)</a> — University of Alberta, 2021. <span class="ref-type">University thesis</span></li>
+<li id="r7"><a href="https://oasis.library.unlv.edu/rtds/382" rel="noopener nofollow" target="_blank">Odor control in sewers using calcium nitrate (Kalakuntla, MS thesis)</a> — University of Nevada, Las Vegas, 1994. <span class="ref-type">University thesis</span></li>
+<li id="r8"><a href="https://depositonce.tu-berlin.de/items/d6f4b9d0-9135-4b3c-b1b0-f265f2f97e02" rel="noopener nofollow" target="_blank">Assessment of limited downstream nitrate dosing for sulphide control in pressure sewers: case study in Germany (Despot, Reinhold, Barjenbruch)</a> — Water Practice and Technology, IWA, 2022 (TU Berlin repository). <span class="ref-type">Peer-reviewed</span></li>
+<li id="r9"><a href="https://www.osha.gov/hydrogen-sulfide/hazards" rel="noopener nofollow" target="_blank">Hydrogen sulfide: hazards</a> — U.S. Occupational Safety and Health Administration (OSHA). <span class="ref-type">Government regulator</span></li>
+<li id="r10"><a href="https://www.atsdr.cdc.gov/toxprofiles/tp114-c3.pdf" rel="noopener nofollow" target="_blank">Toxicological profile for hydrogen sulfide (Chapter 3)</a> — Agency for Toxic Substances and Disease Registry (ATSDR), CDC. <span class="ref-type">Government</span></li>
+<li id="r11"><a href="https://scholars.cityu.edu.hk/en/publications/multifaceted-benefits-of-magnesium-hydroxide-dosing-in-sewer-syst/" rel="noopener nofollow" target="_blank">Multifaceted benefits of magnesium hydroxide dosing in sewer systems: impacts on downstream wastewater treatment processes (Cen et al.)</a> — Water Research, 2023. <span class="ref-type">Peer-reviewed</span></li>
+<li id="r12"><a href="https://journal.hep.com.cn/fese/EN/1159762548893474875" rel="noopener nofollow" target="_blank">Mitigation of hydrogen sulfide production in sewer systems by inhibiting sulfate-reducing bacteria: a review (Qi et al.)</a> — Frontiers of Environmental Science &amp; Engineering 19(3):39, 2025. <span class="ref-type">Peer-reviewed review</span></li>
+<li id="r13"><a href="https://patents.google.com/patent/US4911843A/en" rel="noopener nofollow" target="_blank">US 4,911,843 A - Process for removal of dissolved hydrogen sulfide and reduction of sewage BOD in sewer or other waste systems (Hunniford, Davis)</a> — U.S. Patent and Trademark Office, via Google Patents, 1990. <span class="ref-type">Patent</span></li>
+<li id="r14"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC1800771" rel="noopener nofollow" target="_blank">Succession of sulfur-oxidizing bacteria in the microbial community on corroding concrete in sewer systems (Okabe et al.)</a> — Applied and Environmental Microbiology 73(3):971-980, 2007 (PMC). <span class="ref-type">Peer-reviewed</span></li>
+<li id="r15"><a href="https://hit.globalimpact.cn/en/publications/simultaneous-use-of-nitrate-and-calcium-peroxide-to-control-sulfi/" rel="noopener nofollow" target="_blank">Simultaneous use of nitrate and calcium peroxide to control sulfide and greenhouse gas emission in sewers (Zhang et al.)</a> — Science of the Total Environment, 2023. <span class="ref-type">Peer-reviewed</span></li>
+<li id="r16"><a href="https://cosmos.gnest.org/publication/370" rel="noopener nofollow" target="_blank">Addition of nitrate for odor control in sewer networks: laboratory and field experiments (Mathioudakis, Vaiopoulou, Aivasidis)</a> — Global NEST Journal 8(1), 2006. <span class="ref-type">Peer-reviewed</span></li>
+<li id="r17"><a href="https://ascelibrary.com/doi/10.1061/%28ASCE%29EE.1943-7870.0002016" rel="noopener nofollow" target="_blank">Sulfide generation in force mains and its control using nitrate dosing</a> — Journal of Environmental Engineering, ASCE. <span class="ref-type">Peer-reviewed</span></li>
+<li id="r18"><a href="https://www.recercat.cat/handle/10256/12604?show=full" rel="noopener nofollow" target="_blank">Implications of downstream nitrate dosage in anaerobic sewers to control sulfide and methane emissions</a> — University of Girona repository (recercat). <span class="ref-type">Peer-reviewed</span></li>
+<li id="r19"><a href="https://image-ppubs.uspto.gov/dirsearch-public/print/downloadPdf/5833864" rel="noopener nofollow" target="_blank">US 5,833,864 - Method for the reduction and control of the release of gas and odors from sewage and waste water</a> — U.S. Patent and Trademark Office. <span class="ref-type">Patent</span></li>
+<li id="r20"><a href="https://www.accesswater.org/publications/proceedings/-10091932/bakersfield-s-odor-control-breakthrough-sulfelox-saves-money-improves-performance" rel="noopener nofollow" target="_blank">Bakersfield odor control breakthrough: SulFeLox saves money, improves performance</a> — Water Environment Federation proceedings (utility/vendor paper). <span class="ref-type">Conference paper (vendor-involved)</span></li>
+<li id="r21"><a href="https://en.wikipedia.org/wiki/Hydrogen_sulfide" rel="noopener nofollow" target="_blank">Hydrogen sulfide</a> — Wikipedia. <span class="ref-type">Encyclopedia</span></li>
+<li id="r22"><a href="https://en.wikipedia.org/wiki/Calcium_nitrate" rel="noopener nofollow" target="_blank">Calcium nitrate</a> — Wikipedia. <span class="ref-type">Encyclopedia</span></li>
+<li id="r23"><a href="https://www.accesswater.org/publications/proceedings/-10091920/oc-san-strategies-and-pilot-testing-to-optimize-collection-system-odor-control" rel="noopener nofollow" target="_blank">OC San strategies and pilot testing to optimize collection system odor control</a> — Water Environment Federation proceedings. <span class="ref-type">Conference paper</span></li>
+<li id="r24"><a href="https://ro.uow.edu.au/articles/journal_contribution/Enhanced_mechanistic_insights_and_performance_optimization_Controlling_methane_and_sulfide_in_sewers_using_nitrate_dosing_strategies/27819870" rel="noopener nofollow" target="_blank">Enhanced mechanistic insights and performance optimization: controlling methane and sulfide in sewers using nitrate dosing strategies</a> — University of Wollongong research online. <span class="ref-type">Peer-reviewed</span></li>
+</ol>
+<div class="lrn-byline">Editor responsável: Sujay Shrivastava, HRSU Indore Pvt. Ltd., HRSU Indore Pvt. Ltd. A HRSU Indore fabrica nitrato de cálcio solúvel em água em Madhya Pradesh, Índia, e atende pedidos de exportação a granel.</div>
+</main>
+<section aria-label="Solicitar cotação" class="lrn-quick"><div class="lead-box"><div data-quick=""></div></div></section>
+<footer>
+<div class="ft-in">
+<div class="ft-grid">
+<div>
+<div class="ft-brand">HRSU</div>
+<div class="ft-brand-sub">Indore</div>
+<p class="ft-tag">Nitrato de cálcio<br/>de grau industrial.</p>
+</div>
+<div class="ft-col">
+<div class="ft-col-title">Produto</div>
+<a href="/#product">Nitrato de Cálcio</a>
+<a href="/#specs">Especificações</a>
+<a href="/calcium-nitrate-tds-hrsu.pdf" rel="noopener" target="_blank">Baixar TDS</a>
+<a href="/calcium-nitrate-sds-hrsu.pdf" rel="noopener" target="_blank">Baixar SDS</a>
+</div>
+<div class="ft-col">
+<div class="ft-col-title">Aprender</div>
+<a href="/learn/">Base de conhecimento</a>
+<a href="/learn/calcium-nitrate-uses/">Usos do Nitrato de Cálcio</a>
+<a href="/learn/calcium-nitrate-drip-irrigation/">Irrigação por gotejamento</a>
+<a href="/learn/bulk-calcium-nitrate-export-india/">Exportação a granel</a>
+</div>
+<div class="ft-col">
+<div class="ft-col-title">Contato</div>
+<a href="mailto:contact@hrsuindore.com">contact@hrsuindore.com</a>
+<a href="tel:+919425000484">+91 94250 00484</a>
+<a class="wa-link" href="https://wa.me/919425000484" rel="noopener" target="_blank">Conversa no WhatsApp</a>
+<a href="/store/" style="opacity:.55;font-size:.85em">Loja de varejo (embalagens pequenas, Índia)</a>
+</div>
+</div>
+<div class="ft-bottom">
+<span>© 2026 HRSU Indore Pvt. Ltd.</span>
+<span>Industrial Grade Calcium Nitrate Manufacturer &amp; Exporter, India</span>
+</div>
+</div>
+</footer>
+<script defer="" src="/js/quick.js"></script>
+<!--i18n:start--><script src="/js/lang-suggest.js" defer></script><!--i18n:end-->
+</body>
+</html>

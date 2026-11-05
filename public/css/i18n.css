@@ -1,0 +1,42 @@
+/* Language switcher + per-language typography for translated learn pages */
+.lang-sw { position: relative; display: inline-block; margin-inline-start: 14px; }
+.lang-sw details { position: relative; }
+.lang-sw summary {
+  list-style: none; cursor: pointer; padding: 6px 12px; border-radius: 6px;
+  border: 1px solid rgba(255,255,255,.45); color: #fff; font-size: .85rem; line-height: 1.2; white-space: nowrap; user-select: none;
+}
+.lang-sw summary::-webkit-details-marker { display: none; }
+.lang-sw ul {
+  position: absolute; inset-inline-end: 0; top: calc(100% + 6px); z-index: 1000; margin: 0; padding: 6px; list-style: none;
+  background: #fff; color: #0a192f; border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,.25); min-width: 160px; max-height: 70vh; overflow: auto;
+}
+.lang-sw li a { display: block; padding: 8px 12px; border-radius: 6px; color: #0a192f !important; text-decoration: none; font-size: .95rem; }
+.lang-sw li a:hover, .lang-sw li a[aria-current] { background: #eef2f7; }
+.lang-sw li a[aria-current] { font-weight: 700; }
+
+html[lang^="ja"] body { font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", Meiryo, sans-serif; }
+html[lang^="zh"] body { font-family: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif; }
+html[lang^="my"] body { font-family: "Noto Sans Myanmar", "Myanmar Text", Padauk, sans-serif; line-height: 1.9; }
+html[lang^="ar"] body { font-family: "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif; line-height: 1.85; }
+html[lang^="ja"] h1, html[lang^="ja"] h2, html[lang^="ja"] h3,
+html[lang^="zh"] h1, html[lang^="zh"] h2, html[lang^="zh"] h3,
+html[lang^="my"] h1, html[lang^="my"] h2, html[lang^="my"] h3,
+html[lang^="ar"] h1, html[lang^="ar"] h2, html[lang^="ar"] h3 { font-family: inherit; letter-spacing: 0; }
+
+html[dir="rtl"] body { text-align: right; }
+html[dir="rtl"] .lrn-main ul, html[dir="rtl"] .lrn-main ol { padding-inline-start: 1.5em; padding-inline-end: 0; }
+html[dir="rtl"] .lrn-table th, html[dir="rtl"] .lrn-table td { text-align: right; }
+html[dir="rtl"] .lrn-main sub, html[dir="rtl"] .lrn-main sup, html[dir="rtl"] .lrn-refs { direction: ltr; unicode-bidi: isolate; }
+
+/* geo / language suggestion bar */
+.lang-suggest {
+  position: fixed; inset-inline: 0; bottom: 0; z-index: 2000; background: #0a192f; color: #fff;
+  padding: 12px 16px; display: flex; gap: 12px; align-items: center; justify-content: center; flex-wrap: wrap;
+  box-shadow: 0 -4px 20px rgba(0,0,0,.3); font-size: .95rem;
+}
+.lang-suggest a, .lang-suggest button {
+  border-radius: 6px; padding: 8px 14px; font-size: .9rem; cursor: pointer; text-decoration: none;
+  border: 1px solid #fff; background: transparent; color: #fff;
+}
+.lang-suggest a.go { background: #fff; color: #0a192f; font-weight: 700; }
+@media (max-width: 640px) { .lang-sw { margin-inline-start: 6px; } .lang-sw summary { padding: 5px 8px; } }
