@@ -14,8 +14,8 @@
 
 ## Industrial and export buyers (primary offer)
 
-- [Industrial grade calcium nitrate tetrahydrate](https://hrsuindore.com/industrial/): assay 99-103%, soluble calcium 16.4% min, nitrate nitrogen 11.7% min, pH (5%) 5.0-7.0, insoluble matter 0.005% max, melting point 42-44 C, shelf life 60 months sealed. Packing: 50 kg PP woven bag with inner plastic liner. Minimum order per the TDS: 10 MT (container scale); ask about trial quantities.
-- Sample COA (batch HRSU/CNP/04/42/2025): assay 99.8%, insoluble matter 0.003%, all parameters within specification.
+- [Industrial grade calcium nitrate tetrahydrate](https://hrsuindore.com/industrial/): assay 98.0% min, soluble calcium 15.5–17.0%, nitrate nitrogen 11.5–12.0%, pH (5%) 4.5–7.0, insoluble matter 0.15% max, melting point 42-44 C, shelf life 36 months sealed. Packing: 50 kg PP woven bag with inner plastic liner. Minimum order: 10 MT (container scale); ask about trial quantities.
+- Sample COA (batch HRSU/CNP/04/42/2025): assay 98.8%, insoluble matter 0.06%, all parameters within specification.
 - How to request a quote (any of these): https://hrsuindore.com/industrial/#quote , email contact@hrsuindore.com , book a 30-minute call at https://calendar.app.google/aQ8ioyAbckEuVqZe6 , or WhatsApp +91 94250 00484 (India, Middle East, Southeast Asia). Replies within one business day.
 - Programmatic quote request: `POST https://hrsuindore.com/api/quote` with JSON `{"contact": "email or phone", "application": "...", "quantity": "...", "product": "..."}`. Only `contact` is required.
 - Bulk and export guide: https://hrsuindore.com/learn/bulk-calcium-nitrate-export-india/
@@ -38,7 +38,7 @@ The sections below describe the India-only retail store.
 
 ## Products
 
-- [Calcium Nitrate Tetrahydrate — 25 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-25KG-001. ₹1,200 per bag (₹48/kg). Calcium nitrate tetrahydrate, assay 99–103%, Ca 16.4% min (soluble), N 11.7% min (nitrate form). Insoluble matter 0.005% max. Woven bag with inner liner, colourless to white crystals.
+- [Calcium Nitrate Tetrahydrate — 25 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-25KG-001. ₹1,200 per bag (₹48/kg). Calcium nitrate tetrahydrate, assay 98.0% min, Ca 15.5–17.0% (soluble), N 11.5–12.0% (nitrate form). Insoluble matter 0.15% max. Woven bag with inner liner, colourless to white crystals.
 - [Calcium Nitrate Tetrahydrate — 50 kg](https://hrsuindore.com/store/calcium-nitrate-fertilizer-grade/): SKU HRSU-CN-50KG-001. ₹2,400 per bag (₹48/kg). Same specification as 25 kg variant.
 
 All prices MRP inclusive of all taxes (Indian Legal Metrology Act). Certificate of Analysis with every batch.

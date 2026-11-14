@@ -1,18 +1,18 @@
 # Get Calcium Nitrate Product Information
 
-HRSU Indore manufactures industrial grade calcium nitrate tetrahydrate for container-scale export orders (page: https://hrsuindore.com/industrial/, TDS minimum order 10 MT, 50 kg woven bags) and separately sells 25 kg and 50 kg retail bags in India (prices below). For machine-readable retail data, call `GET https://hrsuindore.com/api/products`.
+HRSU Indore manufactures industrial grade calcium nitrate tetrahydrate for container-scale export orders (page: https://hrsuindore.com/industrial/, minimum order 10 MT, 50 kg woven bags) and separately sells 25 kg and 50 kg retail bags in India (prices below). For machine-readable retail data, call `GET https://hrsuindore.com/api/products`.
 
 ## Product
 
-**Calcium Nitrate Tetrahydrate** — Ca(NO₃)₂ · 4H₂O — industrial grade (assay 99–103%), colourless to white crystals, freely water-soluble
+**Calcium Nitrate Tetrahydrate** — Ca(NO₃)₂ · 4H₂O — industrial grade (assay 98.0% min), colourless to white crystals, freely water-soluble
 
 | Property | Value |
 |---|---|
-| Assay | 99–103% (as Ca(NO₃)₂·4H₂O) |
-| Calcium (Ca) | 16.4% min (soluble) |
-| Nitrogen (N) | 11.7% min (nitrate nitrogen) |
-| Water solubility | 121 g per 100 g water (typical); insoluble matter 0.005% max |
-| pH (5% solution) | 5.0–7.0 |
+| Assay | 98.0% min (as Ca(NO₃)₂·4H₂O) |
+| Calcium (Ca) | 15.5–17.0% (soluble) |
+| Nitrogen (N) | 11.5–12.0% (nitrate nitrogen) |
+| Water solubility | 121 g per 100 g water (typical); insoluble matter 0.15% max |
+| pH (5% solution) | 4.5–7.0 |
 | Appearance | Colourless to white crystals |
 | CAS Number | 13477-34-4 |
 | Pack material | Woven bag with inner plastic liner |
@@ -42,7 +42,7 @@ All prices MRP inclusive of all taxes. Certificate of Analysis with every batch.
 - Cold-weather concrete acceleration
 - Industrial wastewater treatment
 
-## Bulk / Export (container scale, TDS minimum 10 MT)
+## Bulk / Export (container scale, minimum 10 MT)
 
 - Export ports: Mundra (Gujarat) or Nhava Sheva / JNPT (Maharashtra)
 - Lead time: confirmed in your quote

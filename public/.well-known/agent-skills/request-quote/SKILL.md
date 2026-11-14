@@ -27,7 +27,7 @@ Or use the MCP server at `POST https://hrsuindore.com/api/mcp` (tools: `calculat
 
 Prices: 25 kg ₹1,200 · 50 kg ₹2,400. Free delivery on orders ₹14,400+.
 
-## Bulk / Export Quote (container scale; TDS minimum order 10 MT)
+## Bulk / Export Quote (container scale; minimum order 10 MT)
 
 Fastest: `POST https://hrsuindore.com/api/quote` with JSON `{"contact": "buyer email or phone", "application": "concrete | wastewater | mining | oil and gas | other", "quantity": "e.g. 1 x 20ft container", "country": "destination"}`. Only `contact` is required. Or book a call: https://calendar.app.google/aQ8ioyAbckEuVqZe6
 

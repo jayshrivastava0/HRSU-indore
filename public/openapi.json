@@ -138,10 +138,10 @@
                       "availability": "in_stock",
                       "specs": {
                         "formula": "Ca(NO3)2·4H2O",
-                        "calcium_ca": "16.4% min (soluble)",
-                        "nitrogen_n": "11.7% min (nitrate)",
+                        "calcium_ca": "15.5–17.0% (soluble)",
+                        "nitrogen_n": "11.5–12.0% (nitrate)",
                         "water_solubility": "121 g per 100 g water (typical)",
-                        "ph_5pct_solution": "5.0–7.0",
+                        "ph_5pct_solution": "4.5–7.0",
                         "form": "Colourless to white crystals"
                       }
                     }
@@ -671,17 +671,17 @@
               },
               "assay": {
                 "type": "string",
-                "example": "99–103% as Ca(NO3)2·4H2O"
+                "example": "98.0% min as Ca(NO3)2·4H2O"
               },
               "calcium_ca": {
                 "type": "string",
                 "description": "Calcium content by weight",
-                "example": "16.4% min (soluble)"
+                "example": "15.5–17.0% (soluble)"
               },
               "nitrogen_n": {
                 "type": "string",
                 "description": "Nitrogen content by weight",
-                "example": "11.7% min (nitrate)"
+                "example": "11.5–12.0% (nitrate)"
               },
               "water_solubility": {
                 "type": "string",
@@ -691,7 +691,7 @@
               "ph_5pct_solution": {
                 "type": "string",
                 "description": "pH of 5% aqueous solution",
-                "example": "5.0–7.0"
+                "example": "4.5–7.0"
               },
               "origin": {
                 "type": "string",
